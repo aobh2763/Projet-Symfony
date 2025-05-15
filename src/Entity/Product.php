@@ -53,9 +53,16 @@ class Product
     #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'product')]
     private Collection $orders;
 
+    /**
+     * @var Collection<int, Wish>
+     */
+    #[ORM\OneToMany(targetEntity: Wish::class, mappedBy: 'product', orphanRemoval: true)]
+    private Collection $wishes;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->wishes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -183,6 +190,36 @@ class Product
             // set the owning side to null (unless already changed)
             if ($order->getProduct() === $this) {
                 $order->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Wish>
+     */
+    public function getWishes(): Collection
+    {
+        return $this->wishes;
+    }
+
+    public function addWish(Wish $wish): static
+    {
+        if (!$this->wishes->contains($wish)) {
+            $this->wishes->add($wish);
+            $wish->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWish(Wish $wish): static
+    {
+        if ($this->wishes->removeElement($wish)) {
+            // set the owning side to null (unless already changed)
+            if ($wish->getProduct() === $this) {
+                $wish->setProduct(null);
             }
         }
 

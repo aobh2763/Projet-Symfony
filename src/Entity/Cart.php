@@ -24,6 +24,9 @@ class Cart
     #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'cart')]
     private Collection $orders;
 
+    #[ORM\OneToOne(mappedBy: 'cart', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -72,6 +75,23 @@ class Cart
                 $order->setCart(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): static
+    {
+        // set the owning side of the relation if necessary
+        if ($user->getCart() !== $this) {
+            $user->setCart($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }
