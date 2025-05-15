@@ -50,7 +50,7 @@
               <div class="top-bar-item me-4">
                 <i class="bi bi-telephone-fill me-2"></i>
                 <span>Customer Support: </span>
-                <a href="tel:+1234567890">+1 (234) 567-890</a>
+                <a href="{{ asset('tel:+1234567890') }}">+1 (234) 567-890</a>
               </div>
               <div class="top-bar-item">
                 <i class="bi bi-envelope-fill me-2"></i>
@@ -62,7 +62,7 @@
           <div class="col-lg-6">
             <div class="d-flex justify-content-end">
               <div class="top-bar-item me-4">
-                <a href="track-order.html">
+                <a href="{{ asset('track-order.html.twig') }}">
                   <i class="bi bi-truck me-2"></i>Track Order
                 </a>
               </div>
@@ -99,7 +99,7 @@
         <div class="d-flex py-3 align-items-center justify-content-between">
 
           <!-- Logo -->
-          <a href="index.html.twig" class="logo d-flex align-items-center">
+          <a href="{{ asset('index.html.twig') }}" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">Fashion<span>Store</span></h1>
@@ -135,36 +135,36 @@
                   <p class="mb-0">Access account &amp; manage orders</p>
                 </div>
                 <div class="dropdown-body">
-                  <a class="dropdown-item d-flex align-items-center" href="account.html.twig">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('account.html.twig') }}">
                     <i class="bi bi-person-circle me-2"></i>
                     <span>My Profile</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="orders.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('orders.html.twig') }}">
                     <i class="bi bi-bag-check me-2"></i>
                     <span>My Orders</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="wishlist.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('wishlist.html.twig') }}">
                     <i class="bi bi-heart me-2"></i>
                     <span>My Wishlist</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="returns.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('returns.html.twig') }}">
                     <i class="bi bi-arrow-return-left me-2"></i>
                     <span>Returns &amp; Refunds</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="settings.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('settings.html.twig') }}">
                     <i class="bi bi-gear me-2"></i>
                     <span>Settings</span>
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="../user/login.html.twig" class="btn btn-primary w-100 mb-2">Sign In</a>
-                  <a href="../user/register.html.twig" class="btn btn-outline-primary w-100">Register</a>
+                  <a href="{{ asset('../user/login.html.twig') }}" class="btn btn-primary w-100 mb-2">Sign In</a>
+                  <a href="{{ asset('../user/register.html.twig') }}" class="btn btn-outline-primary w-100">Register</a>
                 </div>
               </div>
             </div>
 
             <!-- Wishlist -->
-            <a href="wishlist.html" class="header-action-btn d-none d-md-flex">
+            <a href="{{ asset('wishlist.html.twig') }}" class="header-action-btn d-none d-md-flex">
               <i class="bi bi-heart"></i>
               <span class="action-text d-none d-md-inline-block">Wishlist</span>
               <span class="badge">0</span>
@@ -232,8 +232,8 @@
                     <span class="cart-total-price">$279.97</span>
                   </div>
                   <div class="cart-actions">
-                    <a href="cart.html" class="btn btn-outline-primary">View Cart</a>
-                    <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                    <a href="{{ asset('cart.html.twig') }}" class="btn btn-outline-primary">View Cart</a>
+                    <a href="{{ asset('checkout.html.twig') }}" class="btn btn-primary">Checkout</a>
                   </div>
                 </div>
               </div>
@@ -252,12 +252,12 @@
       <div class="container-fluid container-xl position-relative">
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html.twig">About</a></li>
-            <li><a href="category.html.twig">Category</a></li>
-            <li><a href="product-details.html.twig">Product Details</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="{{ asset('index.html.twig') }}" class="active">Home</a></li>
+            <li><a href="{{ asset('about.html.twig') }}">About</a></li>
+            <li><a href="{{ asset('category.html.twig') }}">Category</a></li>
+            <li><a href="{{ asset('product-details.html.twig') }}">Product Details</a></li>
+            <li><a href="{{ asset('cart.html.twig') }}">Cart</a></li>
+            <li><a href="{{ asset('checkout.html.twig') }}">Checkout</a></li>
             <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="#">Dropdown 1</a></li>
@@ -832,7 +832,7 @@
 
             </li><!-- End Products Mega Menu 2 -->
 
-            <li><a href="contact.html.twig">Contact</a></li>
+            <li><a href="{{ asset('contact.html.twig') }}">Contact</a></li>
 
           </ul>
         </nav>
@@ -1315,7 +1315,7 @@
               </div>
               <div class="product-details">
                 <div class="product-category">Women's Fashion</div>
-                <h4 class="product-title"><a href="product-details.html.twig">Tempor Incididunt</a></h4>
+                <h4 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Tempor Incididunt</a></h4>
                 <div class="product-meta">
                   <div class="product-price">$129.00</div>
                   <div class="product-rating">
@@ -1347,7 +1347,7 @@
               </div>
               <div class="product-details">
                 <div class="product-category">Men's Collection</div>
-                <h4 class="product-title"><a href="product-details.html.twig">Elit Consectetur</a></h4>
+                <h4 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Elit Consectetur</a></h4>
                 <div class="product-meta">
                   <div class="product-price">$95.00</div>
                   <div class="product-rating">
@@ -1379,7 +1379,7 @@
               </div>
               <div class="product-details">
                 <div class="product-category">Accessories</div>
-                <h4 class="product-title"><a href="product-details.html.twig">Adipiscing Magna</a></h4>
+                <h4 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Adipiscing Magna</a></h4>
                 <div class="product-meta">
                   <div class="product-price">
                     $75.00
@@ -1413,7 +1413,7 @@
               </div>
               <div class="product-details">
                 <div class="product-category">Footwear</div>
-                <h4 class="product-title"><a href="product-details.html.twig">Labore Dolore</a></h4>
+                <h4 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Labore Dolore</a></h4>
                 <div class="product-meta">
                   <div class="product-price">$145.00</div>
                   <div class="product-rating">
@@ -1444,7 +1444,7 @@
               </div>
               <div class="product-details">
                 <div class="product-category">Men's Fashion</div>
-                <h4 class="product-title"><a href="product-details.html.twig">Magna Aliqua</a></h4>
+                <h4 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Magna Aliqua</a></h4>
                 <div class="product-meta">
                   <div class="product-price">$89.00</div>
                   <div class="product-rating">
@@ -1476,7 +1476,7 @@
               </div>
               <div class="product-details">
                 <div class="product-category">Women's Fashion</div>
-                <h4 class="product-title"><a href="product-details.html.twig">Eiusmod Tempor</a></h4>
+                <h4 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Eiusmod Tempor</a></h4>
                 <div class="product-meta">
                   <div class="product-price">
                     $110.00
@@ -1510,7 +1510,7 @@
               </div>
               <div class="product-details">
                 <div class="product-category">Accessories</div>
-                <h4 class="product-title"><a href="product-details.html.twig">Incididunt Labore</a></h4>
+                <h4 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Incididunt Labore</a></h4>
                 <div class="product-meta">
                   <div class="product-price">$55.00</div>
                   <div class="product-rating">
@@ -1542,7 +1542,7 @@
               </div>
               <div class="product-details">
                 <div class="product-category">Men's Fashion</div>
-                <h4 class="product-title"><a href="product-details.html.twig">Aliqua Magna</a></h4>
+                <h4 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Aliqua Magna</a></h4>
                 <div class="product-meta">
                   <div class="product-price">$79.00</div>
                   <div class="product-rating">
@@ -1588,7 +1588,7 @@
                 <img src="assets/img/product/product-1.webp" alt="Product" class="img-fluid main-img">
                 <img src="assets/img/product/product-1-variant.webp" alt="Product Hover" class="img-fluid hover-img">
                 <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                  <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
                   <div class="product-actions">
                     <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
                     <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
@@ -1597,7 +1597,7 @@
                 </div>
               </div>
               <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html.twig">Lorem ipsum dolor sit amet</a></h5>
+                <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Lorem ipsum dolor sit amet</a></h5>
                 <div class="product-price">
                   <span class="current-price">$89.99</span>
                   <span class="old-price">$129.99</span>
@@ -1621,7 +1621,7 @@
                 <img src="assets/img/product/product-2.webp" alt="Product" class="img-fluid main-img">
                 <img src="assets/img/product/product-2-variant.webp" alt="Product Hover" class="img-fluid hover-img">
                 <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                  <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
                   <div class="product-actions">
                     <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
                     <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
@@ -1630,7 +1630,7 @@
                 </div>
               </div>
               <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html.twig">Consectetur adipiscing elit</a></h5>
+                <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Consectetur adipiscing elit</a></h5>
                 <div class="product-price">
                   <span class="current-price">$249.99</span>
                 </div>
@@ -1654,7 +1654,7 @@
                 <img src="assets/img/product/product-3.webp" alt="Product" class="img-fluid main-img">
                 <img src="assets/img/product/product-3-variant.webp" alt="Product Hover" class="img-fluid hover-img">
                 <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                  <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
                   <div class="product-actions">
                     <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
                     <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
@@ -1663,7 +1663,7 @@
                 </div>
               </div>
               <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html.twig">Sed do eiusmod tempor</a></h5>
+                <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Sed do eiusmod tempor</a></h5>
                 <div class="product-price">
                   <span class="current-price">$59.99</span>
                 </div>
@@ -1686,7 +1686,7 @@
                 <img src="assets/img/product/product-4.webp" alt="Product" class="img-fluid main-img">
                 <img src="assets/img/product/product-4-variant.webp" alt="Product Hover" class="img-fluid hover-img">
                 <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                  <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
                   <div class="product-actions">
                     <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
                     <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
@@ -1695,7 +1695,7 @@
                 </div>
               </div>
               <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html.twig">Incididunt ut labore et dolore</a></h5>
+                <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Incididunt ut labore et dolore</a></h5>
                 <div class="product-price">
                   <span class="current-price">$79.99</span>
                   <span class="old-price">$99.99</span>
@@ -1720,7 +1720,7 @@
                 <img src="assets/img/product/product-5.webp" alt="Product" class="img-fluid main-img">
                 <img src="assets/img/product/product-5-variant.webp" alt="Product Hover" class="img-fluid hover-img">
                 <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                  <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
                   <div class="product-actions">
                     <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
                     <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
@@ -1729,7 +1729,7 @@
                 </div>
               </div>
               <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html.twig">Magna aliqua ut enim ad minim</a></h5>
+                <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Magna aliqua ut enim ad minim</a></h5>
                 <div class="product-price">
                   <span class="current-price">$199.99</span>
                   <span class="old-price">$249.99</span>
@@ -1753,7 +1753,7 @@
                 <img src="assets/img/product/product-6.webp" alt="Product" class="img-fluid main-img">
                 <img src="assets/img/product/product-6-variant.webp" alt="Product Hover" class="img-fluid hover-img">
                 <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                  <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
                   <div class="product-actions">
                     <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
                     <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
@@ -1762,7 +1762,7 @@
                 </div>
               </div>
               <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html.twig">Veniam quis nostrud exercitation</a></h5>
+                <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Veniam quis nostrud exercitation</a></h5>
                 <div class="product-price">
                   <span class="current-price">$45.99</span>
                 </div>
@@ -1786,7 +1786,7 @@
                 <img src="assets/img/product/product-7.webp" alt="Product" class="img-fluid main-img">
                 <img src="assets/img/product/product-7-variant.webp" alt="Product Hover" class="img-fluid hover-img">
                 <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                  <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
                   <div class="product-actions">
                     <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
                     <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
@@ -1795,7 +1795,7 @@
                 </div>
               </div>
               <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html.twig">Ullamco laboris nisi ut aliquip</a></h5>
+                <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Ullamco laboris nisi ut aliquip</a></h5>
                 <div class="product-price">
                   <span class="current-price">$69.99</span>
                 </div>
@@ -1818,7 +1818,7 @@
                 <img src="assets/img/product/product-8.webp" alt="Product" class="img-fluid main-img">
                 <img src="assets/img/product/product-8-variant.webp" alt="Product Hover" class="img-fluid hover-img">
                 <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                  <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
                   <div class="product-actions">
                     <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
                     <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
@@ -1827,7 +1827,7 @@
                 </div>
               </div>
               <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html.twig">Ex ea commodo consequat</a></h5>
+                <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Ex ea commodo consequat</a></h5>
                 <div class="product-price">
                   <span class="current-price">$159.99</span>
                 </div>
@@ -1846,7 +1846,7 @@
         </div>
 
         <div class="text-center mt-5" data-aos="fade-up">
-          <a href="category.html.twig" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
+          <a href="{{ asset('category.html.twig') }}" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
         </div>
 
       </div>
@@ -1861,7 +1861,7 @@
         <div class="row gy-4">
           <div class="col-lg-4 col-md-6">
             <div class="footer-widget footer-about">
-              <a href="index.html" class="logo">
+              <a href="{{ asset('index.html.twig') }}" class="logo">
                 <span class="sitename">FashionStore</span>
               </a>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula, facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
@@ -1884,12 +1884,12 @@
             <div class="footer-widget">
               <h4>Shop</h4>
               <ul class="footer-links">
-                <li><a href="category.html.twig">New Arrivals</a></li>
-                <li><a href="category.html.twig">Bestsellers</a></li>
-                <li><a href="category.html.twig">Women's Clothing</a></li>
-                <li><a href="category.html.twig">Men's Clothing</a></li>
-                <li><a href="category.html.twig">Accessories</a></li>
-                <li><a href="category.html.twig">Sale</a></li>
+                <li><a href="{{ asset('category.html.twig') }}">New Arrivals</a></li>
+                <li><a href="{{ asset('category.html.twig') }}">Bestsellers</a></li>
+                <li><a href="{{ asset('category.html.twig') }}">Women's Clothing</a></li>
+                <li><a href="{{ asset('category.html.twig') }}">Men's Clothing</a></li>
+                <li><a href="{{ asset('category.html.twig') }}">Accessories</a></li>
+                <li><a href="{{ asset('category.html.twig') }}">Sale</a></li>
               </ul>
             </div>
           </div>
@@ -1898,12 +1898,12 @@
             <div class="footer-widget">
               <h4>Support</h4>
               <ul class="footer-links">
-                <li><a href="support.html">Help Center</a></li>
-                <li><a href="account.html.twig">Order Status</a></li>
-                <li><a href="shiping-info.html">Shipping Info</a></li>
-                <li><a href="return-policy.html.twig">Returns &amp; Exchanges</a></li>
+                <li><a href="{{ asset('support.html.twig') }}">Help Center</a></li>
+                <li><a href="{{ asset('account.html.twig') }}">Order Status</a></li>
+                <li><a href="{{ asset('shiping-info.html.twig') }}">Shipping Info</a></li>
+                <li><a href="{{ asset('return-policy.html.twig') }}">Returns &amp; Exchanges</a></li>
                 <li><a href="#">Size Guide</a></li>
-                <li><a href="contact.html.twig">Contact Us</a></li>
+                <li><a href="{{ asset('contact.html.twig') }}">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -1976,9 +1976,9 @@
               </div>
 
               <div class="legal-links">
-                <a href="tos.html.twig">Terms</a>
-                <a href="privacy.html.twig">Privacy</a>
-                <a href="tos.html.twig">Cookies</a>
+                <a href="{{ asset('tos.html.twig') }}">Terms</a>
+                <a href="{{ asset('privacy.html.twig') }}">Privacy</a>
+                <a href="{{ asset('tos.html.twig') }}">Cookies</a>
               </div>
             </div>
           </div>

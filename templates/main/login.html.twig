@@ -50,7 +50,7 @@
               <div class="top-bar-item me-4">
                 <i class="bi bi-telephone-fill me-2"></i>
                 <span>Customer Support: </span>
-                <a href="tel:+1234567890">+1 (234) 567-890</a>
+                <a href="{{ asset('tel:+1234567890') }}">+1 (234) 567-890</a>
               </div>
               <div class="top-bar-item">
                 <i class="bi bi-envelope-fill me-2"></i>
@@ -62,7 +62,7 @@
           <div class="col-lg-6">
             <div class="d-flex justify-content-end">
               <div class="top-bar-item me-4">
-                <a href="track-order.html">
+                <a href="{{ asset('track-order.html.twig') }}">
                   <i class="bi bi-truck me-2"></i>Track Order
                 </a>
               </div>
@@ -99,7 +99,7 @@
         <div class="d-flex py-3 align-items-center justify-content-between">
 
           <!-- Logo -->
-          <a href="../main/index.html.twig" class="logo d-flex align-items-center">
+          <a href="{{ asset('../main/index.html.twig') }}" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">Fashion<span>Store</span></h1>
@@ -135,36 +135,36 @@
                   <p class="mb-0">Access account &amp; manage orders</p>
                 </div>
                 <div class="dropdown-body">
-                  <a class="dropdown-item d-flex align-items-center" href="../main/account.html.twig">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('../main/account.html.twig') }}">
                     <i class="bi bi-person-circle me-2"></i>
                     <span>My Profile</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="orders.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('orders.html.twig') }}">
                     <i class="bi bi-bag-check me-2"></i>
                     <span>My Orders</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="wishlist.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('wishlist.html.twig') }}">
                     <i class="bi bi-heart me-2"></i>
                     <span>My Wishlist</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="returns.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('returns.html.twig') }}">
                     <i class="bi bi-arrow-return-left me-2"></i>
                     <span>Returns &amp; Refunds</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="settings.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ asset('settings.html.twig') }}">
                     <i class="bi bi-gear me-2"></i>
                     <span>Settings</span>
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="login.html" class="btn btn-primary w-100 mb-2">Sign In</a>
-                  <a href="register.html.twig" class="btn btn-outline-primary w-100">Register</a>
+                  <a href="{{ asset('login.html.twig') }}" class="btn btn-primary w-100 mb-2">Sign In</a>
+                  <a href="{{ asset('register.html.twig') }}" class="btn btn-outline-primary w-100">Register</a>
                 </div>
               </div>
             </div>
 
             <!-- Wishlist -->
-            <a href="wishlist.html" class="header-action-btn d-none d-md-flex">
+            <a href="{{ asset('wishlist.html.twig') }}" class="header-action-btn d-none d-md-flex">
               <i class="bi bi-heart"></i>
               <span class="action-text d-none d-md-inline-block">Wishlist</span>
               <span class="badge">0</span>
@@ -232,8 +232,8 @@
                     <span class="cart-total-price">$279.97</span>
                   </div>
                   <div class="cart-actions">
-                    <a href="cart.html.twig" class="btn btn-outline-primary">View Cart</a>
-                    <a href="checkout.html.twig" class="btn btn-primary">Checkout</a>
+                    <a href="{{ asset('cart.html.twig') }}" class="btn btn-outline-primary">View Cart</a>
+                    <a href="{{ asset('checkout.html.twig') }}" class="btn btn-primary">Checkout</a>
                   </div>
                 </div>
               </div>
@@ -252,12 +252,12 @@
       <div class="container-fluid container-xl position-relative">
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="../main/index.html.twig">Home</a></li>
-            <li><a href="../main/about.html.twig">About</a></li>
-            <li><a href="../main/category.html.twig">Category</a></li>
-            <li><a href="../main/product-details.html.twig">Product Details</a></li>
-            <li><a href="cart.html.twig">Cart</a></li>
-            <li><a href="checkout.html.twig">Checkout</a></li>
+            <li><a href="{{ asset('../main/index.html.twig') }}">Home</a></li>
+            <li><a href="{{ asset('../main/about.html.twig') }}">About</a></li>
+            <li><a href="{{ asset('../main/category.html.twig') }}">Category</a></li>
+            <li><a href="{{ asset('../main/product-details.html.twig') }}">Product Details</a></li>
+            <li><a href="{{ asset('cart.html.twig') }}">Cart</a></li>
+            <li><a href="{{ asset('checkout.html.twig') }}">Checkout</a></li>
             <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="#">Dropdown 1</a></li>
@@ -834,7 +834,7 @@
 
             </li><!-- End Products Mega Menu 2 -->
 
-            <li><a href="../main/contact.html.twig">Contact</a></li>
+            <li><a href="{{ asset('../main/contact.html.twig') }}">Contact</a></li>
 
           </ul>
         </nav>
@@ -890,7 +890,7 @@
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="../main/index.html.twig">Home</a></li>
+            <li><a href="{{ asset('../main/index.html.twig') }}">Home</a></li>
             <li class="current">Login</li>
           </ol>
         </nav>
@@ -954,7 +954,7 @@
         <div class="row gy-4">
           <div class="col-lg-4 col-md-6">
             <div class="footer-widget footer-about">
-              <a href="../main/index.html.twig" class="logo">
+              <a href="{{ asset('../main/index.html.twig') }}" class="logo">
                 <span class="sitename">FashionStore</span>
               </a>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula, facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
@@ -977,12 +977,12 @@
             <div class="footer-widget">
               <h4>Shop</h4>
               <ul class="footer-links">
-                <li><a href="../main/category.html.twig">New Arrivals</a></li>
-                <li><a href="../main/category.html.twig">Bestsellers</a></li>
-                <li><a href="../main/category.html.twig">Women's Clothing</a></li>
-                <li><a href="../main/category.html.twig">Men's Clothing</a></li>
-                <li><a href="../main/category.html.twig">Accessories</a></li>
-                <li><a href="../main/category.html.twig">Sale</a></li>
+                <li><a href="{{ asset('../main/category.html.twig') }}">New Arrivals</a></li>
+                <li><a href="{{ asset('../main/category.html.twig') }}">Bestsellers</a></li>
+                <li><a href="{{ asset('../main/category.html.twig') }}">Women's Clothing</a></li>
+                <li><a href="{{ asset('../main/category.html.twig') }}">Men's Clothing</a></li>
+                <li><a href="{{ asset('../main/category.html.twig') }}">Accessories</a></li>
+                <li><a href="{{ asset('../main/category.html.twig') }}">Sale</a></li>
               </ul>
             </div>
           </div>
@@ -991,12 +991,12 @@
             <div class="footer-widget">
               <h4>Support</h4>
               <ul class="footer-links">
-                <li><a href="support.html.twig">Help Center</a></li>
-                <li><a href="../main/account.html.twig">Order Status</a></li>
-                <li><a href="shiping-info.html.twig">Shipping Info</a></li>
-                <li><a href="../main/return-policy.html.twig">Returns &amp; Exchanges</a></li>
+                <li><a href="{{ asset('support.html.twig') }}">Help Center</a></li>
+                <li><a href="{{ asset('../main/account.html.twig') }}">Order Status</a></li>
+                <li><a href="{{ asset('shiping-info.html.twig') }}">Shipping Info</a></li>
+                <li><a href="{{ asset('../main/return-policy.html.twig') }}">Returns &amp; Exchanges</a></li>
                 <li><a href="#">Size Guide</a></li>
-                <li><a href="../main/contact.html.twig">Contact Us</a></li>
+                <li><a href="{{ asset('../main/contact.html.twig') }}">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -1069,9 +1069,9 @@
               </div>
 
               <div class="legal-links">
-                <a href="../main/tos.html.twig">Terms</a>
-                <a href="../main/privacy.html.twig">Privacy</a>
-                <a href="../main/tos.html.twig">Cookies</a>
+                <a href="{{ asset('../main/tos.html.twig') }}">Terms</a>
+                <a href="{{ asset('../main/privacy.html.twig') }}">Privacy</a>
+                <a href="{{ asset('../main/tos.html.twig') }}">Cookies</a>
               </div>
             </div>
           </div>
