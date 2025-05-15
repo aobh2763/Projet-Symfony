@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - FashionStore Bootstrap Template</title>
+  <title>Product Details - FashionStore Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -37,7 +37,7 @@
   ======================================================== -->
 </head>
 
-<body class="index-page">
+<body class="product-details-page">
 
   <header id="header" class="header position-relative">
     <!-- Top Bar -->
@@ -98,7 +98,7 @@
         <div class="d-flex py-3 align-items-center justify-content-between">
 
           <!-- Logo -->
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="index.html.twig" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">Fashion<span>Store</span></h1>
@@ -134,7 +134,7 @@
                   <p class="mb-0">Access account &amp; manage orders</p>
                 </div>
                 <div class="dropdown-body">
-                  <a class="dropdown-item d-flex align-items-center" href="account.html">
+                  <a class="dropdown-item d-flex align-items-center" href="account.html.twig">
                     <i class="bi bi-person-circle me-2"></i>
                     <span>My Profile</span>
                   </a>
@@ -156,8 +156,8 @@
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="login.html" class="btn btn-primary w-100 mb-2">Sign In</a>
-                  <a href="register.html" class="btn btn-outline-primary w-100">Register</a>
+                  <a href="../user/login.html.twig" class="btn btn-primary w-100 mb-2">Sign In</a>
+                  <a href="../user/register.html.twig" class="btn btn-outline-primary w-100">Register</a>
                 </div>
               </div>
             </div>
@@ -251,10 +251,10 @@
       <div class="container-fluid container-xl position-relative">
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="category.html">Category</a></li>
-            <li><a href="product-details.html">Product Details</a></li>
+            <li><a href="index.html.twig">Home</a></li>
+            <li><a href="about.html.twig">About</a></li>
+            <li><a href="category.html.twig">Category</a></li>
+            <li><a href="product-details.html" class="active">Product Details</a></li>
             <li><a href="cart.html">Cart</a></li>
             <li><a href="checkout.html">Checkout</a></li>
             <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -831,7 +831,7 @@
 
             </li><!-- End Products Mega Menu 2 -->
 
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html.twig">Contact</a></li>
 
           </ul>
         </nav>
@@ -882,975 +882,563 @@
 
   <main class="main">
 
-    <!-- Hero Section -->
-    <section class="ecommerce-hero-2 hero section" id="hero">
+    <!-- Page Title -->
+    <div class="page-title light-background">
       <div class="container">
-        <div class="hero-slider swiper init-swiper" data-aos="fade-up">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 800,
-              "autoplay": {
-                "delay": 5000
-              },
-              "effect": "fade",
-              "fadeEffect": {
-                "crossFade": true
-              },
-              "navigation": {
-                "nextEl": ".swiper-button-next",
-                "prevEl": ".swiper-button-prev"
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-            <!-- New Collection Slide -->
-            <div class="swiper-slide slide-new">
-              <div class="row align-items-center">
-                <div class="col-lg-6 content-col" data-aos="fade-right" data-aos-delay="100">
-                  <div class="slide-content">
-                    <span class="slide-badge">New Arrivals</span>
-                    <h1>Discover Our <span>Latest</span> Collection</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
-                    <div class="slide-cta">
-                      <a href="#" class="btn btn-shop">Shop New Arrivals <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 image-col" data-aos="fade-left" data-aos-delay="200">
-                  <div class="product-showcase">
-                    <div class="product-grid">
-                      <div class="product-item" data-aos="fade-up" data-aos-delay="300">
-                        <div class="product-image">
-                          <img src="assets/img/product/product-1.webp" alt="New Product 1">
-                        </div>
-                        <div class="product-info">
-                          <h4>Modern Style</h4>
-                          <span class="price">$79.99</span>
-                        </div>
-                      </div>
-                      <div class="product-item" data-aos="fade-up" data-aos-delay="400">
-                        <div class="product-image">
-                          <img src="assets/img/product/product-2.webp" alt="New Product 2">
-                        </div>
-                        <div class="product-info">
-                          <h4>Casual Collection</h4>
-                          <span class="price">$64.99</span>
-                        </div>
-                      </div>
-                      <div class="product-item" data-aos="fade-up" data-aos-delay="500">
-                        <div class="product-image">
-                          <img src="assets/img/product/product-6.webp" alt="New Product 3">
-                        </div>
-                        <div class="product-info">
-                          <h4>Premium Design</h4>
-                          <span class="price">$89.99</span>
-                        </div>
-                      </div>
-                      <div class="product-item" data-aos="fade-up" data-aos-delay="600">
-                        <div class="product-image">
-                          <img src="assets/img/product/product-7.webp" alt="New Product 4">
-                        </div>
-                        <div class="product-info">
-                          <h4>Elegant Series</h4>
-                          <span class="price">$74.99</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sale Products Slide -->
-            <div class="swiper-slide slide-sale">
-              <div class="row align-items-center">
-                <div class="col-lg-6 content-col" data-aos="fade-right" data-aos-delay="100">
-                  <div class="slide-content">
-                    <span class="slide-badge">Limited Time</span>
-                    <h1>Season <span>Sale</span> Up To 50% Off</h1>
-                    <p>Curabitur aliquet quam id dui posuere blandit. Nulla quis lorem ut libero malesuada feugiat. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar.</p>
-                    <div class="slide-cta">
-                      <a href="#" class="btn btn-shop">Shop Sale <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                    <div class="countdown-container">
-                      <div class="countdown-label">Offer ends in:</div>
-                      <div class="countdown d-flex" data-count="2025/6/15">
-                        <div>
-                          <h3 class="count-days"></h3>
-                          <h4>Days</h4>
-                        </div>
-                        <div>
-                          <h3 class="count-hours"></h3>
-                          <h4>Hours</h4>
-                        </div>
-                        <div>
-                          <h3 class="count-minutes"></h3>
-                          <h4>Minutes</h4>
-                        </div>
-                        <div>
-                          <h3 class="count-seconds"></h3>
-                          <h4>Seconds</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 image-col" data-aos="fade-left" data-aos-delay="200">
-                  <div class="sale-showcase">
-                    <div class="main-product">
-                      <img src="assets/img/product/product-8.webp" alt="Sale Product">
-                      <div class="discount-badge">
-                        <span class="percent">50%</span>
-                        <span class="text">OFF</span>
-                      </div>
-                    </div>
-                    <div class="floating-tag" data-aos="zoom-in" data-aos-delay="300">
-                      <div class="tag-content">
-                        <span class="tag-label">Best Seller</span>
-                        <span class="tag-price">
-                          <span class="old-price">$129.99</span>
-                          <span class="new-price">$64.99</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Featured Products Slide -->
-            <div class="swiper-slide slide-featured">
-              <div class="row align-items-center">
-                <div class="col-lg-6 content-col" data-aos="fade-right" data-aos-delay="100">
-                  <div class="slide-content">
-                    <span class="slide-badge">Featured Collection</span>
-                    <h1>Premium <span>Quality</span> Products</h1>
-                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta.</p>
-                    <div class="slide-cta">
-                      <a href="#" class="btn btn-shop">Explore Collection <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                    <div class="feature-list">
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Premium Materials</span>
-                      </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Handcrafted Quality</span>
-                      </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lifetime Warranty</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 image-col" data-aos="fade-left" data-aos-delay="200">
-                  <div class="featured-showcase">
-                    <div class="featured-image">
-                      <img src="assets/img/product/product-9.webp" alt="Featured Product">
-                      <div class="featured-badge">
-                        <i class="bi bi-star-fill"></i>
-                        <span>Featured</span>
-                      </div>
-                    </div>
-                    <div class="floating-review" data-aos="fade-up" data-aos-delay="300">
-                      <div class="review-stars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                      </div>
-                      <div class="review-text">
-                        "Exceptional quality and design"
-                      </div>
-                      <div class="review-author">
-                        - Satisfied Customer
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html.twig">Home</a></li>
+            <li class="current">Product Details</li>
+          </ol>
+        </nav>
+        <h1>Product Details</h1>
       </div>
-    </section><!-- /Hero Section -->
+    </div><!-- End Page Title -->
 
-    <!-- Promo Cards Section -->
-    <section id="promo-cards" class="promo-cards section">
+    <!-- Product Details Section -->
+    <section id="product-details" class="product-details section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row g-4">
-          <!-- Promo Card 1 -->
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="promo-card card-1">
-              <div class="promo-content">
-                <p class="small-text">Etiam vel augue</p>
-                <h3 class="promo-title">Nullam quis ante</h3>
-                <p class="promo-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu in enim justo rhoncus ut.</p>
-                <a href="#" class="btn-shop">Shop Now</a>
+        <div class="row g-5">
+          <!-- Product Images Column -->
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+            <div class="product-gallery">
+              <!-- Vertical Thumbnails -->
+              <div class="thumbnails-vertical">
+                <div class="thumbnails-container">
+                  <div class="thumbnail-item active" data-image="assets/img/product/product-details-1.webp">
+                    <img src="assets/img/product/product-details-1.webp" alt="Product Thumbnail" class="img-fluid">
+                  </div>
+                  <div class="thumbnail-item" data-image="assets/img/product/product-details-2.webp">
+                    <img src="assets/img/product/product-details-2.webp" alt="Product Thumbnail" class="img-fluid">
+                  </div>
+                  <div class="thumbnail-item" data-image="assets/img/product/product-details-3.webp">
+                    <img src="assets/img/product/product-details-3.webp" alt="Product Thumbnail" class="img-fluid">
+                  </div>
+                  <div class="thumbnail-item" data-image="assets/img/product/product-details-4.webp">
+                    <img src="assets/img/product/product-details-4.webp" alt="Product Thumbnail" class="img-fluid">
+                  </div>
+                  <div class="thumbnail-item" data-image="assets/img/product/product-details-5.webp">
+                    <img src="assets/img/product/product-details-5.webp" alt="Product Thumbnail" class="img-fluid">
+                  </div>
+                </div>
               </div>
-              <div class="promo-image">
-                <img src="assets/img/product/product-1.webp" alt="Product" class="img-fluid">
-              </div>
-            </div>
-          </div>
 
-          <!-- Promo Card 2 -->
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="promo-card card-2">
-              <div class="promo-content">
-                <p class="small-text">Maecenas tempus</p>
-                <h3 class="promo-title">Sed fringilla mauris</h3>
-                <p class="promo-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu in enim justo rhoncus ut.</p>
-                <a href="#" class="btn-shop">Shop Now</a>
-              </div>
-              <div class="promo-image">
-                <img src="assets/img/product/product-2.webp" alt="Product" class="img-fluid">
-              </div>
-            </div>
-          </div>
-
-          <!-- Promo Card 3 -->
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-            <div class="promo-card card-3">
-              <div class="promo-content">
-                <p class="small-text">Aenean commodo</p>
-                <h3 class="promo-title">Fusce vulputate eleifend</h3>
-                <p class="promo-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu in enim justo rhoncus ut.</p>
-                <a href="#" class="btn-shop">Shop Now</a>
-              </div>
-              <div class="promo-image">
-                <img src="assets/img/product/product-f-1.webp" alt="Product" class="img-fluid">
-              </div>
-            </div>
-          </div>
-
-          <!-- Promo Card 4 -->
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-            <div class="promo-card card-4">
-              <div class="promo-content">
-                <p class="small-text">Pellentesque auctor</p>
-                <h3 class="promo-title">Vestibulum dapibus nunc</h3>
-                <p class="promo-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu in enim justo rhoncus ut.</p>
-                <a href="#" class="btn-shop">Shop Now</a>
-              </div>
-              <div class="promo-image">
-                <img src="assets/img/product/product-m-1.webp" alt="Product" class="img-fluid">
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Promo Cards Section -->
-
-    <!-- Category Cards Section -->
-    <section id="category-cards" class="category-cards section light-background">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="category-tabs">
-          <ul class="nav justify-content-center" id="category-cards-tabs" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="category-cards-men-tab" data-bs-toggle="tab" data-bs-target="#category-cards-men-content" type="button" role="tab" aria-controls="category-cards-men-content" aria-selected="false">SHOP MEN</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="category-cards-women-tab" data-bs-toggle="tab" data-bs-target="#category-cards-women-content" type="button" role="tab" aria-controls="category-cards-women-content" aria-selected="true">SHOP WOMEN</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="category-cards-accesoires-tab" data-bs-toggle="tab" data-bs-target="#category-cards-accesoires-content" type="button" role="tab" aria-controls="category-cards-accesoires-content" aria-selected="false">SHOP ACCESSOIRCES</button>
-            </li>
-          </ul>
-        </div>
-
-        <div class="tab-content" id="category-cards-tabContent">
-          <!-- Men's Categories -->
-          <div class="tab-pane fade" id="category-cards-men-content" role="tabpanel" aria-labelledby="category-cards-men-tab">
-            <div class="row g-4">
-              <!-- Leather Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="category-card">
-                  <img src="assets/img/product/product-m-11.webp" alt="Men's Leather" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    LEATHER <i class="bi bi-arrow-right"></i>
+              <!-- Main Image -->
+              <div class="main-image-wrapper">
+                <div class="image-zoom-container">
+                  <a href="assets/img/product/product-details-1.webp" class="glightbox" data-gallery="product-gallery">
+                    <img src="assets/img/product/product-details-1.webp" alt="Product Image" class="img-fluid main-image drift-zoom" id="main-product-image" data-zoom="assets/img/product/product-details-1.webp">
+                    <div class="zoom-overlay">
+                      <i class="bi bi-zoom-in"></i>
+                    </div>
                   </a>
                 </div>
-              </div>
-
-              <!-- Denim Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="category-card">
-                  <img src="assets/img/product/product-m-12.webp" alt="Men's Denim" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    DENIM <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Swimwear Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="category-card">
-                  <img src="assets/img/product/product-m-19.webp" alt="Men's Swimwear" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    SWIMWEAR <i class="bi bi-arrow-right"></i>
-                  </a>
+                <div class="image-nav">
+                  <button class="image-nav-btn prev-image">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                  <button class="image-nav-btn next-image">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Women's Categories -->
-          <div class="tab-pane fade show active" id="category-cards-women-content" role="tabpanel" aria-labelledby="category-cards-women-tab">
-            <div class="row g-4">
-              <!-- Dresses Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="category-card">
-                  <img src="assets/img/product/product-f-11.webp" alt="Women's Dresses" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    DRESSES <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Tops Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="category-card">
-                  <img src="assets/img/product/product-f-18.webp" alt="Women's Tops" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    TOPS <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Accessories Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="category-card">
-                  <img src="assets/img/product/product-f-13.webp" alt="Women's Accessories" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    ACCESSORIES <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kid's Categories -->
-          <div class="tab-pane fade" id="category-cards-accesoires-content" role="tabpanel" aria-labelledby="category-cards-accesoires-tab">
-            <div class="row g-4">
-              <!-- Boys Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="category-card">
-                  <img src="assets/img/product/product-1.webp" alt="Boys Clothing" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    BOYS <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Girls Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="category-card">
-                  <img src="assets/img/product/product-2.webp" alt="Girls Clothing" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    GIRLS <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Toys Category -->
-              <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="category-card">
-                  <img src="assets/img/product/product-3.webp" alt="Kids Toys" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
-                    TOYS <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Category Cards Section -->
-
-    <!-- Best Sellers Section -->
-    <section id="best-sellers" class="best-sellers section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Best Sellers</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-4">
-          <!-- Product 1 -->
-          <div class="col-6 col-lg-3">
-            <div class="product-card" data-aos="zoom-in">
-              <div class="product-image">
-                <img src="assets/img/product/product-f-1.webp" class="main-image img-fluid" alt="Product">
-                <img src="assets/img/product/product-f-2.webp" class="hover-image img-fluid" alt="Product Variant">
-                <div class="product-overlay">
-                  <div class="product-actions">
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                      <i class="bi bi-eye"></i>
+          <!-- Product Info Column -->
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+            <div class="product-info-wrapper" id="product-info-sticky">
+              <!-- Product Meta -->
+              <div class="product-meta">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="product-category">Headphones</span>
+                  <div class="product-share">
+                    <button class="share-btn" aria-label="Share product">
+                      <i class="bi bi-share"></i>
                     </button>
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart">
-                      <i class="bi bi-cart-plus"></i>
-                    </button>
+                    <div class="share-dropdown">
+                      <a href="#" aria-label="Share on Facebook"><i class="bi bi-facebook"></i></a>
+                      <a href="#" aria-label="Share on Twitter"><i class="bi bi-twitter-x"></i></a>
+                      <a href="#" aria-label="Share on Pinterest"><i class="bi bi-pinterest"></i></a>
+                      <a href="#" aria-label="Share via Email"><i class="bi bi-envelope"></i></a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="product-details">
-                <div class="product-category">Women's Fashion</div>
-                <h4 class="product-title"><a href="product-details.html">Tempor Incididunt</a></h4>
-                <div class="product-meta">
-                  <div class="product-price">$129.00</div>
-                  <div class="product-rating">
-                    <i class="bi bi-star-fill"></i>
-                    4.8 <span>(42)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Product 2 -->
-          <div class="col-6 col-lg-3">
-            <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
-              <div class="product-image">
-                <img src="assets/img/product/product-m-1.webp" class="main-image img-fluid" alt="Product">
-                <img src="assets/img/product/product-m-2.webp" class="hover-image img-fluid" alt="Product Variant">
-                <div class="product-overlay">
-                  <div class="product-actions">
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                      <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart">
-                      <i class="bi bi-cart-plus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-badge new">New</div>
-              </div>
-              <div class="product-details">
-                <div class="product-category">Men's Collection</div>
-                <h4 class="product-title"><a href="product-details.html">Elit Consectetur</a></h4>
-                <div class="product-meta">
-                  <div class="product-price">$95.00</div>
-                  <div class="product-rating">
-                    <i class="bi bi-star-fill"></i>
-                    4.6 <span>(28)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                <h1 class="product-title">Lorem Ipsum Wireless Noise Cancelling Headphones</h1>
 
-          <!-- Product 3 -->
-          <div class="col-6 col-lg-3">
-            <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
-              <div class="product-image">
-                <img src="assets/img/product/product-f-3.webp" class="main-image img-fluid" alt="Product">
-                <img src="assets/img/product/product-f-4.webp" class="hover-image img-fluid" alt="Product Variant">
-                <div class="product-overlay">
-                  <div class="product-actions">
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                      <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart">
-                      <i class="bi bi-cart-plus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-badge sale">-25%</div>
-              </div>
-              <div class="product-details">
-                <div class="product-category">Accessories</div>
-                <h4 class="product-title"><a href="product-details.html">Adipiscing Magna</a></h4>
-                <div class="product-meta">
-                  <div class="product-price">
-                    $75.00
-                    <span class="original-price">$99.00</span>
-                  </div>
-                  <div class="product-rating">
-                    <i class="bi bi-star-fill"></i>
-                    4.9 <span>(56)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product 4 -->
-          <div class="col-6 col-lg-3">
-            <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
-              <div class="product-image">
-                <img src="assets/img/product/product-m-3.webp" class="main-image img-fluid" alt="Product">
-                <img src="assets/img/product/product-m-4.webp" class="hover-image img-fluid" alt="Product Variant">
-                <div class="product-overlay">
-                  <div class="product-actions">
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                      <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart">
-                      <i class="bi bi-cart-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-details">
-                <div class="product-category">Footwear</div>
-                <h4 class="product-title"><a href="product-details.html">Labore Dolore</a></h4>
-                <div class="product-meta">
-                  <div class="product-price">$145.00</div>
-                  <div class="product-rating">
-                    <i class="bi bi-star-fill"></i>
-                    4.7 <span>(35)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product 5 -->
-          <div class="col-6 col-lg-3">
-            <div class="product-card" data-aos="zoom-in" data-aos-delay="400">
-              <div class="product-image">
-                <img src="assets/img/product/product-f-5.webp" class="main-image img-fluid" alt="Product">
-                <img src="assets/img/product/product-f-6.webp" class="hover-image img-fluid" alt="Product Variant">
-                <div class="product-overlay">
-                  <div class="product-actions">
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                      <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart">
-                      <i class="bi bi-cart-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-details">
-                <div class="product-category">Men's Fashion</div>
-                <h4 class="product-title"><a href="product-details.html">Magna Aliqua</a></h4>
-                <div class="product-meta">
-                  <div class="product-price">$89.00</div>
-                  <div class="product-rating">
-                    <i class="bi bi-star-fill"></i>
-                    4.5 <span>(23)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product 6 -->
-          <div class="col-6 col-lg-3">
-            <div class="product-card" data-aos="zoom-in" data-aos-delay="500">
-              <div class="product-image">
-                <img src="assets/img/product/product-m-5.webp" class="main-image img-fluid" alt="Product">
-                <img src="assets/img/product/product-m-6.webp" class="hover-image img-fluid" alt="Product Variant">
-                <div class="product-overlay">
-                  <div class="product-actions">
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                      <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart">
-                      <i class="bi bi-cart-plus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-badge sale">-15%</div>
-              </div>
-              <div class="product-details">
-                <div class="product-category">Women's Fashion</div>
-                <h4 class="product-title"><a href="product-details.html">Eiusmod Tempor</a></h4>
-                <div class="product-meta">
-                  <div class="product-price">
-                    $110.00
-                    <span class="original-price">$129.00</span>
-                  </div>
-                  <div class="product-rating">
-                    <i class="bi bi-star-fill"></i>
-                    4.8 <span>(47)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product 7 -->
-          <div class="col-6 col-lg-3">
-            <div class="product-card" data-aos="zoom-in" data-aos-delay="600">
-              <div class="product-image">
-                <img src="assets/img/product/product-f-7.webp" class="main-image img-fluid" alt="Product">
-                <img src="assets/img/product/product-f-8.webp" class="hover-image img-fluid" alt="Product Variant">
-                <div class="product-overlay">
-                  <div class="product-actions">
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                      <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart">
-                      <i class="bi bi-cart-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-details">
-                <div class="product-category">Accessories</div>
-                <h4 class="product-title"><a href="product-details.html">Incididunt Labore</a></h4>
-                <div class="product-meta">
-                  <div class="product-price">$55.00</div>
-                  <div class="product-rating">
-                    <i class="bi bi-star-fill"></i>
-                    4.6 <span>(31)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product 8 -->
-          <div class="col-6 col-lg-3">
-            <div class="product-card" data-aos="zoom-in" data-aos-delay="700">
-              <div class="product-image">
-                <img src="assets/img/product/product-m-7.webp" class="main-image img-fluid" alt="Product">
-                <img src="assets/img/product/product-m-8.webp" class="hover-image img-fluid" alt="Product Variant">
-                <div class="product-overlay">
-                  <div class="product-actions">
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                      <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart">
-                      <i class="bi bi-cart-plus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-badge new">New</div>
-              </div>
-              <div class="product-details">
-                <div class="product-category">Men's Fashion</div>
-                <h4 class="product-title"><a href="product-details.html">Aliqua Magna</a></h4>
-                <div class="product-meta">
-                  <div class="product-price">$79.00</div>
-                  <div class="product-rating">
-                    <i class="bi bi-star-fill"></i>
-                    4.7 <span>(39)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Best Sellers Section -->
-
-    <!-- Product List Section -->
-    <section id="product-list" class="product-list section">
-
-      <div class="container isotope-layout" data-aos="fade-up" data-aos-delay="100" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-        <div class="row">
-          <div class="col-12">
-            <div class="product-filters isotope-filters mb-5 d-flex justify-content-center" data-aos="fade-up">
-              <ul class="d-flex flex-wrap gap-2 list-unstyled">
-                <li class="filter-active" data-filter="*">All</li>
-                <li data-filter=".filter-clothing">Clothing</li>
-                <li data-filter=".filter-accessories">Accessories</li>
-                <li data-filter=".filter-electronics">Electronics</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="row product-container isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-          <!-- Product Item 1 -->
-          <div class="col-md-6 col-lg-3 product-item isotope-item filter-clothing">
-            <div class="product-card">
-              <div class="product-image">
-                <span class="badge">Sale</span>
-                <img src="assets/img/product/product-1.webp" alt="Product" class="img-fluid main-img">
-                <img src="assets/img/product/product-1-variant.webp" alt="Product Hover" class="img-fluid hover-img">
-                <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                  <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html">Lorem ipsum dolor sit amet</a></h5>
-                <div class="product-price">
-                  <span class="current-price">$89.99</span>
-                  <span class="old-price">$129.99</span>
-                </div>
                 <div class="product-rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-half"></i>
-                  <span>(24)</span>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Product Item -->
-
-          <!-- Product Item 2 -->
-          <div class="col-md-6 col-lg-3 product-item isotope-item filter-electronics">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="assets/img/product/product-2.webp" alt="Product" class="img-fluid main-img">
-                <img src="assets/img/product/product-2-variant.webp" alt="Product Hover" class="img-fluid hover-img">
-                <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                  <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <span class="rating-value">4.5</span>
                   </div>
+                  <a href="#reviews" class="rating-count">42 Reviews</a>
                 </div>
               </div>
-              <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html">Consectetur adipiscing elit</a></h5>
-                <div class="product-price">
+
+              <!-- Product Price -->
+              <div class="product-price-container">
+                <div class="price-wrapper">
                   <span class="current-price">$249.99</span>
+                  <span class="original-price">$299.99</span>
                 </div>
-                <div class="product-rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star"></i>
-                  <span>(18)</span>
+                <span class="discount-badge">Save 17%</span>
+                <div class="stock-info">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>In Stock</span>
+                  <span class="stock-count">(24 items left)</span>
                 </div>
               </div>
-            </div>
-          </div><!-- End Product Item -->
 
-          <!-- Product Item 3 -->
-          <div class="col-md-6 col-lg-3 product-item isotope-item filter-accessories">
-            <div class="product-card">
-              <div class="product-image">
-                <span class="badge">New</span>
-                <img src="assets/img/product/product-3.webp" alt="Product" class="img-fluid main-img">
-                <img src="assets/img/product/product-3-variant.webp" alt="Product Hover" class="img-fluid hover-img">
-                <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                  <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
+              <!-- Product Description -->
+              <div class="product-short-description">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Phasellus egestas nisi vitae lectus imperdiet venenatis.</p>
+              </div>
+
+              <!-- Product Options -->
+              <div class="product-options">
+                <!-- Color Options -->
+                <div class="option-group">
+                  <div class="option-header">
+                    <h6 class="option-title">Color</h6>
+                    <span class="selected-option">Black</span>
+                  </div>
+                  <div class="color-options">
+                    <div class="color-option active" data-color="Black" style="background-color: #222;">
+                      <i class="bi bi-check"></i>
+                    </div>
+                    <div class="color-option" data-color="Silver" style="background-color: #C0C0C0;">
+                      <i class="bi bi-check"></i>
+                    </div>
+                    <div class="color-option" data-color="Blue" style="background-color: #1E3A8A;">
+                      <i class="bi bi-check"></i>
+                    </div>
+                    <div class="color-option" data-color="Rose Gold" style="background-color: #B76E79;">
+                      <i class="bi bi-check"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Size Options -->
+                <div class="option-group">
+                  <div class="option-header">
+                    <h6 class="option-title">Size</h6>
+                    <span class="selected-option">M</span>
+                  </div>
+                  <div class="size-options">
+                    <div class="size-option" data-size="S">S</div>
+                    <div class="size-option active" data-size="M">M</div>
+                    <div class="size-option" data-size="L">L</div>
+                  </div>
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="option-group">
+                  <h6 class="option-title">Quantity</h6>
+                  <div class="quantity-selector">
+                    <button class="quantity-btn decrease">
+                      <i class="bi bi-dash"></i>
+                    </button>
+                    <input type="number" class="quantity-input" value="1" min="1" max="24">
+                    <button class="quantity-btn increase">
+                      <i class="bi bi-plus"></i>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html">Sed do eiusmod tempor</a></h5>
-                <div class="product-price">
-                  <span class="current-price">$59.99</span>
-                </div>
-                <div class="product-rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star"></i>
-                  <i class="bi bi-star"></i>
-                  <span>(7)</span>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Product Item -->
 
-          <!-- Product Item 4 -->
-          <div class="col-md-6 col-lg-3 product-item isotope-item filter-clothing">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="assets/img/product/product-4.webp" alt="Product" class="img-fluid main-img">
-                <img src="assets/img/product/product-4-variant.webp" alt="Product Hover" class="img-fluid hover-img">
-                <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                  <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
+              <!-- Action Buttons -->
+              <div class="product-actions">
+                <button class="btn btn-primary add-to-cart-btn">
+                  <i class="bi bi-cart-plus"></i> Add to Cart
+                </button>
+                <button class="btn btn-outline-primary buy-now-btn">
+                  <i class="bi bi-lightning-fill"></i> Buy Now
+                </button>
+                <button class="btn btn-outline-secondary wishlist-btn" aria-label="Add to wishlist">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+
+              <!-- Delivery Options -->
+              <div class="delivery-options">
+                <div class="delivery-option">
+                  <i class="bi bi-truck"></i>
+                  <div>
+                    <h6>Free Shipping</h6>
+                    <p>On orders over $50</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-arrow-repeat"></i>
+                  <div>
+                    <h6>30-Day Returns</h6>
+                    <p>Hassle-free returns</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-shield-check"></i>
+                  <div>
+                    <h6>2-Year Warranty</h6>
+                    <p>Full coverage</p>
                   </div>
                 </div>
               </div>
-              <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html">Incididunt ut labore et dolore</a></h5>
-                <div class="product-price">
-                  <span class="current-price">$79.99</span>
-                  <span class="old-price">$99.99</span>
-                </div>
-                <div class="product-rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(32)</span>
-                </div>
-              </div>
             </div>
-          </div><!-- End Product Item -->
-
-          <!-- Product Item 5 -->
-          <div class="col-md-6 col-lg-3 product-item isotope-item filter-electronics">
-            <div class="product-card">
-              <div class="product-image">
-                <span class="badge">Sale</span>
-                <img src="assets/img/product/product-5.webp" alt="Product" class="img-fluid main-img">
-                <img src="assets/img/product/product-5-variant.webp" alt="Product Hover" class="img-fluid hover-img">
-                <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                  <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html">Magna aliqua ut enim ad minim</a></h5>
-                <div class="product-price">
-                  <span class="current-price">$199.99</span>
-                  <span class="old-price">$249.99</span>
-                </div>
-                <div class="product-rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-half"></i>
-                  <i class="bi bi-star"></i>
-                  <span>(15)</span>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Product Item -->
-
-          <!-- Product Item 6 -->
-          <div class="col-md-6 col-lg-3 product-item isotope-item filter-accessories">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="assets/img/product/product-6.webp" alt="Product" class="img-fluid main-img">
-                <img src="assets/img/product/product-6-variant.webp" alt="Product Hover" class="img-fluid hover-img">
-                <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                  <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html">Veniam quis nostrud exercitation</a></h5>
-                <div class="product-price">
-                  <span class="current-price">$45.99</span>
-                </div>
-                <div class="product-rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star"></i>
-                  <span>(21)</span>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Product Item -->
-
-          <!-- Product Item 7 -->
-          <div class="col-md-6 col-lg-3 product-item isotope-item filter-clothing">
-            <div class="product-card">
-              <div class="product-image">
-                <span class="badge">New</span>
-                <img src="assets/img/product/product-7.webp" alt="Product" class="img-fluid main-img">
-                <img src="assets/img/product/product-7-variant.webp" alt="Product Hover" class="img-fluid hover-img">
-                <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                  <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html">Ullamco laboris nisi ut aliquip</a></h5>
-                <div class="product-price">
-                  <span class="current-price">$69.99</span>
-                </div>
-                <div class="product-rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-half"></i>
-                  <i class="bi bi-star"></i>
-                  <span>(11)</span>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Product Item -->
-
-          <!-- Product Item 8 -->
-          <div class="col-md-6 col-lg-3 product-item isotope-item filter-electronics">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="assets/img/product/product-8.webp" alt="Product" class="img-fluid main-img">
-                <img src="assets/img/product/product-8-variant.webp" alt="Product Hover" class="img-fluid hover-img">
-                <div class="product-overlay">
-                  <a href="cart.html" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                  <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="product-info">
-                <h5 class="product-title"><a href="product-details.html">Ex ea commodo consequat</a></h5>
-                <div class="product-price">
-                  <span class="current-price">$159.99</span>
-                </div>
-                <div class="product-rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(29)</span>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Product Item -->
-
+          </div>
         </div>
 
-        <div class="text-center mt-5" data-aos="fade-up">
-          <a href="category.html" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
+        <!-- Sticky Add to Cart Bar (appears on scroll) -->
+        <div class="sticky-add-to-cart">
+          <div class="container">
+            <div class="sticky-content">
+              <div class="product-preview">
+                <img src="assets/img/product/product-details-1.webp" alt="Product" class="product-thumbnail">
+                <div class="product-info">
+                  <h5 class="product-title">Lorem Ipsum Wireless Headphones</h5>
+                  <div class="product-price">$249.99</div>
+                </div>
+              </div>
+              <div class="sticky-actions">
+                <div class="quantity-selector">
+                  <button class="quantity-btn decrease">
+                    <i class="bi bi-dash"></i>
+                  </button>
+                  <input type="number" class="quantity-input" value="1" min="1" max="24">
+                  <button class="quantity-btn increase">
+                    <i class="bi bi-plus"></i>
+                  </button>
+                </div>
+                <button class="btn btn-primary add-to-cart-btn">
+                  <i class="bi bi-cart-plus"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
+        <!-- Product Details Accordion -->
+        <div class="row mt-5" data-aos="fade-up">
+          <div class="col-12">
+            <div class="product-details-accordion">
+              <!-- Description Accordion -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="true" aria-controls="description">
+                    Product Description
+                  </button>
+                </h2>
+                <div id="description" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <div class="product-description">
+                      <h4>Product Overview</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Phasellus egestas nisi vitae lectus imperdiet venenatis. Suspendisse vulputate quam diam, et consectetur augue condimentum in. Aenean dapibus urna eget nisi pharetra, in iaculis nulla blandit. Praesent at consectetur sem, sed sollicitudin nibh. Ut interdum risus ac nulla placerat aliquet.</p>
+
+                      <div class="row mt-4">
+                        <div class="col-md-6">
+                          <h4>Key Features</h4>
+                          <ul class="feature-list">
+                            <li><i class="bi bi-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                            <li><i class="bi bi-check-circle"></i> Vestibulum at lacus congue, suscipit elit nec, tincidunt orci</li>
+                            <li><i class="bi bi-check-circle"></i> Phasellus egestas nisi vitae lectus imperdiet venenatis</li>
+                            <li><i class="bi bi-check-circle"></i> Suspendisse vulputate quam diam, et consectetur augue</li>
+                            <li><i class="bi bi-check-circle"></i> Aenean dapibus urna eget nisi pharetra, in iaculis nulla</li>
+                          </ul>
+                        </div>
+                        <div class="col-md-6">
+                          <h4>What's in the Box</h4>
+                          <ul class="feature-list">
+                            <li><i class="bi bi-box"></i> Lorem Ipsum Wireless Headphones</li>
+                            <li><i class="bi bi-box"></i> Carrying Case</li>
+                            <li><i class="bi bi-box"></i> USB-C Charging Cable</li>
+                            <li><i class="bi bi-box"></i> 3.5mm Audio Cable</li>
+                            <li><i class="bi bi-box"></i> User Manual</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Specifications Accordion -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#specifications" aria-expanded="false" aria-controls="specifications">
+                    Technical Specifications
+                  </button>
+                </h2>
+                <div id="specifications" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <div class="product-specifications">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="specs-group">
+                            <h4>Technical Specifications</h4>
+                            <div class="specs-table">
+                              <div class="specs-row">
+                                <div class="specs-label">Connectivity</div>
+                                <div class="specs-value">Bluetooth 5.0, 3.5mm jack</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Battery Life</div>
+                                <div class="specs-value">Up to 30 hours</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Charging Time</div>
+                                <div class="specs-value">3 hours</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Driver Size</div>
+                                <div class="specs-value">40mm</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Frequency Response</div>
+                                <div class="specs-value">20Hz - 20kHz</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Impedance</div>
+                                <div class="specs-value">32 Ohm</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Weight</div>
+                                <div class="specs-value">250g</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="specs-group">
+                            <h4>Features</h4>
+                            <div class="specs-table">
+                              <div class="specs-row">
+                                <div class="specs-label">Noise Cancellation</div>
+                                <div class="specs-value">Active Noise Cancellation (ANC)</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Controls</div>
+                                <div class="specs-value">Touch controls, Voice assistant</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Microphone</div>
+                                <div class="specs-value">Dual beamforming microphones</div>
+                              </div>
+                              <div class="specs-row">
+                                <div class="specs-label">Water Resistance</div>
+                                <div class="specs-value">IPX4 (splash resistant)</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reviews Accordion -->
+              <div class="accordion-item" id="reviews">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#reviewsContent" aria-expanded="false" aria-controls="reviewsContent">
+                    Customer Reviews (42)
+                  </button>
+                </h2>
+                <div id="reviewsContent" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <div class="product-reviews">
+                      <div class="reviews-summary">
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="overall-rating">
+                              <div class="rating-number">4.5</div>
+                              <div class="rating-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                              </div>
+                              <div class="rating-count">Based on 42 reviews</div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-8">
+                            <div class="rating-breakdown">
+                              <div class="rating-bar">
+                                <div class="rating-label">5 stars</div>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="rating-count">27</div>
+                              </div>
+                              <div class="rating-bar">
+                                <div class="rating-label">4 stars</div>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="rating-count">10</div>
+                              </div>
+                              <div class="rating-bar">
+                                <div class="rating-label">3 stars</div>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 8%;" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="rating-count">3</div>
+                              </div>
+                              <div class="rating-bar">
+                                <div class="rating-label">2 stars</div>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 2%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="rating-count">1</div>
+                              </div>
+                              <div class="rating-bar">
+                                <div class="rating-label">1 star</div>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 2%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="rating-count">1</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="reviews-list">
+                        <!-- Review Item -->
+                        <div class="review-item">
+                          <div class="review-header">
+                            <div class="reviewer-info">
+                              <img src="assets/img/person/person-m-1.webp" alt="Reviewer" class="reviewer-avatar">
+                              <div>
+                                <h5 class="reviewer-name">John Doe</h5>
+                                <div class="review-date">03/15/2024</div>
+                              </div>
+                            </div>
+                            <div class="review-rating">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                            </div>
+                          </div>
+                          <h5 class="review-title">Exceptional sound quality and comfort</h5>
+                          <div class="review-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Phasellus egestas nisi vitae lectus imperdiet venenatis. Suspendisse vulputate quam diam, et consectetur augue condimentum in.</p>
+                          </div>
+                        </div><!-- End Review Item -->
+
+                        <!-- Review Item -->
+                        <div class="review-item">
+                          <div class="review-header">
+                            <div class="reviewer-info">
+                              <img src="assets/img/person/person-f-2.webp" alt="Reviewer" class="reviewer-avatar">
+                              <div>
+                                <h5 class="reviewer-name">Jane Smith</h5>
+                                <div class="review-date">02/28/2024</div>
+                              </div>
+                            </div>
+                            <div class="review-rating">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star"></i>
+                            </div>
+                          </div>
+                          <h5 class="review-title">Great headphones, battery could be better</h5>
+                          <div class="review-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Phasellus egestas nisi vitae lectus imperdiet venenatis.</p>
+                          </div>
+                        </div><!-- End Review Item -->
+
+                        <!-- Review Item -->
+                        <div class="review-item">
+                          <div class="review-header">
+                            <div class="reviewer-info">
+                              <img src="assets/img/person/person-m-3.webp" alt="Reviewer" class="reviewer-avatar">
+                              <div>
+                                <h5 class="reviewer-name">Michael Johnson</h5>
+                                <div class="review-date">02/15/2024</div>
+                              </div>
+                            </div>
+                            <div class="review-rating">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </div>
+                          </div>
+                          <h5 class="review-title">Impressive noise cancellation</h5>
+                          <div class="review-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Phasellus egestas nisi vitae lectus imperdiet venenatis. Suspendisse vulputate quam diam.</p>
+                          </div>
+                        </div><!-- End Review Item -->
+                      </div>
+
+                      <div class="review-form-container mt-5">
+                        <h4>Write a Review</h4>
+                        <form class="review-form">
+                          <div class="rating-select mb-4">
+                            <label class="form-label">Your Rating</label>
+                            <div class="star-rating">
+                              <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars"><i class="bi bi-star-fill"></i></label>
+                              <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars"><i class="bi bi-star-fill"></i></label>
+                              <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars"><i class="bi bi-star-fill"></i></label>
+                              <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars"><i class="bi bi-star-fill"></i></label>
+                              <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star"><i class="bi bi-star-fill"></i></label>
+                            </div>
+                          </div>
+
+                          <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                              <label for="review-name" class="form-label">Your Name</label>
+                              <input type="text" class="form-control" id="review-name" required="">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="review-email" class="form-label">Your Email</label>
+                              <input type="email" class="form-control" id="review-email" required="">
+                            </div>
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="review-title" class="form-label">Review Title</label>
+                            <input type="text" class="form-control" id="review-title" required="">
+                          </div>
+
+                          <div class="mb-4">
+                            <label for="review-content" class="form-label">Your Review</label>
+                            <textarea class="form-control" id="review-content" rows="4" required=""></textarea>
+                            <div class="form-text">Tell others what you think about this product. Be honest and helpful!</div>
+                          </div>
+
+                          <div class="loading">Loading</div>
+                          <div class="error-message"></div>
+                          <div class="sent-message">Your review has been submitted. Thank you!</div>
+
+                          <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-    </section><!-- /Product List Section -->
+    </section><!-- /Product Details Section -->
 
   </main>
 
@@ -1860,7 +1448,7 @@
         <div class="row gy-4">
           <div class="col-lg-4 col-md-6">
             <div class="footer-widget footer-about">
-              <a href="index.html" class="logo">
+              <a href="index.html.twig" class="logo">
                 <span class="sitename">FashionStore</span>
               </a>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula, facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
@@ -1883,12 +1471,12 @@
             <div class="footer-widget">
               <h4>Shop</h4>
               <ul class="footer-links">
-                <li><a href="category.html">New Arrivals</a></li>
-                <li><a href="category.html">Bestsellers</a></li>
-                <li><a href="category.html">Women's Clothing</a></li>
-                <li><a href="category.html">Men's Clothing</a></li>
-                <li><a href="category.html">Accessories</a></li>
-                <li><a href="category.html">Sale</a></li>
+                <li><a href="category.html.twig">New Arrivals</a></li>
+                <li><a href="category.html.twig">Bestsellers</a></li>
+                <li><a href="category.html.twig">Women's Clothing</a></li>
+                <li><a href="category.html.twig">Men's Clothing</a></li>
+                <li><a href="category.html.twig">Accessories</a></li>
+                <li><a href="category.html.twig">Sale</a></li>
               </ul>
             </div>
           </div>
@@ -1898,11 +1486,11 @@
               <h4>Support</h4>
               <ul class="footer-links">
                 <li><a href="support.html">Help Center</a></li>
-                <li><a href="account.html">Order Status</a></li>
+                <li><a href="account.html.twig">Order Status</a></li>
                 <li><a href="shiping-info.html">Shipping Info</a></li>
-                <li><a href="return-policy.html">Returns &amp; Exchanges</a></li>
+                <li><a href="return-policy.html.twig">Returns &amp; Exchanges</a></li>
                 <li><a href="#">Size Guide</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html.twig">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -1975,9 +1563,9 @@
               </div>
 
               <div class="legal-links">
-                <a href="tos.html">Terms</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="tos.html">Cookies</a>
+                <a href="tos.html.twig">Terms</a>
+                <a href="privacy.html.twig">Privacy</a>
+                <a href="tos.html.twig">Cookies</a>
               </div>
             </div>
           </div>

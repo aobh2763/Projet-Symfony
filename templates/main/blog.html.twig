@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Payment Methods - FashionStore Bootstrap Template</title>
+  <title>Blog - FashionStore Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -37,7 +37,7 @@
   ======================================================== -->
 </head>
 
-<body class="payment-methods-page">
+<body class="blog-page">
 
   <header id="header" class="header position-relative">
     <!-- Top Bar -->
@@ -98,7 +98,7 @@
         <div class="d-flex py-3 align-items-center justify-content-between">
 
           <!-- Logo -->
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="index.html.twig" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">Fashion<span>Store</span></h1>
@@ -134,7 +134,7 @@
                   <p class="mb-0">Access account &amp; manage orders</p>
                 </div>
                 <div class="dropdown-body">
-                  <a class="dropdown-item d-flex align-items-center" href="account.html">
+                  <a class="dropdown-item d-flex align-items-center" href="account.html.twig">
                     <i class="bi bi-person-circle me-2"></i>
                     <span>My Profile</span>
                   </a>
@@ -156,8 +156,8 @@
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="login.html" class="btn btn-primary w-100 mb-2">Sign In</a>
-                  <a href="register.html" class="btn btn-outline-primary w-100">Register</a>
+                  <a href="../user/login.html.twig" class="btn btn-primary w-100 mb-2">Sign In</a>
+                  <a href="../user/register.html.twig" class="btn btn-outline-primary w-100">Register</a>
                 </div>
               </div>
             </div>
@@ -251,10 +251,10 @@
       <div class="container-fluid container-xl position-relative">
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="category.html">Category</a></li>
-            <li><a href="product-details.html">Product Details</a></li>
+            <li><a href="index.html.twig">Home</a></li>
+            <li><a href="about.html.twig">About</a></li>
+            <li><a href="category.html.twig">Category</a></li>
+            <li><a href="product-details.html.twig">Product Details</a></li>
             <li><a href="cart.html">Cart</a></li>
             <li><a href="checkout.html">Checkout</a></li>
             <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -831,7 +831,7 @@
 
             </li><!-- End Products Mega Menu 2 -->
 
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html.twig">Contact</a></li>
 
           </ul>
         </nav>
@@ -887,198 +887,275 @@
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Payment Methods</li>
+            <li><a href="index.html.twig">Home</a></li>
+            <li class="current">Blog</li>
           </ol>
         </nav>
-        <h1>Payment Methods</h1>
+        <h1>Blog</h1>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Paymnt Methods Section -->
-    <section id="paymnt-methods" class="paymnt-methods section">
+    <!-- Blog Hero Section -->
+    <section id="blog-hero" class="blog-hero section">
 
-      <div class="container" data-aos="fade-up">
-        <!-- Header -->
-        <div class="payment-header text-center" data-aos="fade-up">
-          <h2>Payment Methods</h2>
-          <p>Choose from our secure and convenient payment options</p>
-        </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <!-- Payment Options Grid -->
-        <div class="payment-options" data-aos="fade-up" data-aos-delay="100">
-          <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-              <div class="payment-card credit-card">
-                <div class="card-content">
-                  <div class="icon-box">
-                    <i class="bi bi-credit-card"></i>
-                  </div>
-                  <h4>Credit / Debit Cards</h4>
-                  <p>Visa, Mastercard, American Express</p>
-                  <div class="accepted-cards">
-                    <span class="card-icon visa">Visa</span>
-                    <span class="card-icon mastercard">Mastercard</span>
-                    <span class="card-icon amex">Amex</span>
-                  </div>
+        <div class="blog-grid">
+
+          <!-- Main Featured Post -->
+          <article class="blog-item main-feature" data-aos="fade-up">
+            <img src="assets/img/blog/blog-post-9.webp" alt="Blog Image" class="img-fluid">
+            <div class="blog-content">
+              <div class="post-meta">
+                <span class="date">Apr. 14th, 2022</span>
+                <span class="category">Technology</span>
+              </div>
+              <h2 class="post-title">
+                <a href="blog-details.html.twig" title="Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</a>
+              </h2>
+              <p class="post-excerpt">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+          </article><!-- End Main Featured Post -->
+
+          <!-- Secondary Featured Posts -->
+          <div class="secondary-features">
+            <article class="blog-item" data-aos="fade-up" data-aos-delay="100">
+              <img src="assets/img/blog/blog-post-portrait-1.webp" alt="Blog Image" class="img-fluid">
+              <div class="blog-content">
+                <div class="post-meta">
+                  <span class="date">Apr. 13th, 2022</span>
+                  <span class="category">Business</span>
                 </div>
+                <h3 class="post-title">
+                  <a href="blog-details.html.twig" title="Ut enim ad minim veniam quis nostrud exercitation">Ut enim ad minim veniam quis nostrud exercitation</a>
+                </h3>
               </div>
-            </div>
+            </article>
 
-            <div class="col-md-6 col-lg-4">
-              <div class="payment-card paypal">
-                <div class="card-content">
-                  <div class="icon-box">
-                    <i class="bi bi-paypal"></i>
-                  </div>
-                  <h4>PayPal</h4>
-                  <p>Fast and secure online payments</p>
-                  <div class="accepted-cards">
-                    <span class="card-icon paypal">PayPal</span>
-                  </div>
+            <article class="blog-item" data-aos="fade-up" data-aos-delay="200">
+              <img src="assets/img/blog/blog-post-portrait-2.webp" alt="Blog Image" class="img-fluid">
+              <div class="blog-content">
+                <div class="post-meta">
+                  <span class="date">Apr. 12th, 2022</span>
+                  <span class="category">Lifestyle</span>
                 </div>
+                <h3 class="post-title">
+                  <a href="blog-details.html.twig" title="Duis aute irure dolor in reprehenderit in voluptate">Duis aute irure dolor in reprehenderit in voluptate</a>
+                </h3>
               </div>
-            </div>
+            </article>
+          </div><!-- End Secondary Features -->
 
-            <div class="col-md-6 col-lg-4">
-              <div class="payment-card bank-transfer">
-                <div class="card-content">
-                  <div class="icon-box">
-                    <i class="bi bi-bank"></i>
-                  </div>
-                  <h4>Bank Transfer</h4>
-                  <p>Direct bank-to-bank transfers</p>
-                  <div class="accepted-cards">
-                    <span class="card-icon bank">Bank</span>
-                  </div>
+          <!-- Regular Posts Grid -->
+          <div class="regular-posts">
+            <article class="blog-item" data-aos="fade-up" data-aos-delay="300">
+              <img src="assets/img/blog/blog-post-9.webp" alt="Blog Image" class="img-fluid">
+              <div class="blog-content">
+                <div class="post-meta">
+                  <span class="date">Apr. 11th, 2022</span>
+                  <span class="category">Tech</span>
                 </div>
+                <h3 class="post-title">
+                  <a href="blog-details.html.twig" title="Excepteur sint occaecat cupidatat non proident">Excepteur sint occaecat cupidatat non proident</a>
+                </h3>
               </div>
-            </div>
-          </div>
-        </div>
+            </article>
 
-        <!-- Security Features -->
-        <div class="security-features" data-aos="fade-up" data-aos-delay="200">
-          <div class="row align-items-center">
-            <div class="col-lg-6">
-              <div class="security-content">
-                <h3>Secure Payments</h3>
-                <p class="subtitle">Your security is our top priority</p>
-                <ul class="security-list">
-                  <li>
-                    <i class="bi bi-shield-check"></i>
-                    <div class="feature-text">
-                      <h5>SSL Encryption</h5>
-                      <p>All transactions are protected with 256-bit SSL encryption</p>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="bi bi-lock"></i>
-                    <div class="feature-text">
-                      <h5>PCI Compliant</h5>
-                      <p>We follow strict PCI DSS security standards</p>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="bi bi-shield-lock"></i>
-                    <div class="feature-text">
-                      <h5>Fraud Protection</h5>
-                      <p>Advanced fraud detection and prevention systems</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="process-steps">
-                <h4>Payment Process</h4>
-                <div class="steps-list">
-                  <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                      <h5>Choose Payment Method</h5>
-                      <p>Select your preferred payment option at checkout</p>
-                    </div>
-                  </div>
-                  <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                      <h5>Enter Details</h5>
-                      <p>Provide your payment information securely</p>
-                    </div>
-                  </div>
-                  <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                      <h5>Confirm Payment</h5>
-                      <p>Review and confirm your payment details</p>
-                    </div>
-                  </div>
+            <article class="blog-item" data-aos="fade-up" data-aos-delay="400">
+              <img src="assets/img/blog/blog-post-3.webp" alt="Blog Image" class="img-fluid">
+              <div class="blog-content">
+                <div class="post-meta">
+                  <span class="date">Apr. 10th, 2022</span>
+                  <span class="category">Sports</span>
                 </div>
+                <h3 class="post-title">
+                  <a href="blog-details.html.twig" title="Sunt in culpa qui officia deserunt mollit anim">Sunt in culpa qui officia deserunt mollit anim</a>
+                </h3>
               </div>
-            </div>
-          </div>
-        </div>
+            </article>
 
-        <!-- FAQ Section -->
-        <div class="payment-faqs" data-aos="fade-up" data-aos-delay="300">
-          <h3>Payment FAQs</h3>
-          <div class="faq-grid">
-            <div class="faq-item">
-              <h3>
-                When will I be charged?
-                <i class="bi bi-chevron-down faq-toggle"></i>
-              </h3>
-              <div class="faq-answer">
-                <p>Your payment will be processed immediately after you place your order. The charge will appear on your statement within 1-2 business days.</p>
+            <article class="blog-item" data-aos="fade-up" data-aos-delay="500">
+              <img src="assets/img/blog/blog-post-6.webp" alt="Blog Image" class="img-fluid">
+              <div class="blog-content">
+                <div class="post-meta">
+                  <span class="date">Apr. 9th, 2022</span>
+                  <span class="category">Culture</span>
+                </div>
+                <h3 class="post-title">
+                  <a href="blog-details.html.twig" title="Id est laborum et dolorum fuga et harum quidem">Id est laborum et dolorum fuga et harum quidem</a>
+                </h3>
               </div>
-            </div>
+            </article>
+          </div><!-- End Regular Posts -->
 
-            <div class="faq-item">
-              <h3>
-                Is it safe to save my card?
-                <i class="bi bi-chevron-down faq-toggle"></i>
-              </h3>
-              <div class="faq-answer">
-                <p>Yes, we use industry-standard encryption to protect your payment information. Your card details are never stored on our servers.</p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <h3>
-                What currencies do you accept?
-                <i class="bi bi-chevron-down faq-toggle"></i>
-              </h3>
-              <div class="faq-answer">
-                <p>We accept payments in USD, EUR, GBP, and many other major currencies. The available currencies will be shown at checkout.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Support Section -->
-        <div class="payment-support" data-aos="fade-up" data-aos-delay="400">
-          <div class="support-content">
-            <i class="bi bi-headset"></i>
-            <h4>Need Help?</h4>
-            <p>Our payment support team is available 24/7 to assist you</p>
-            <div class="support-actions">
-              <a href="#" class="btn-primary">
-                <i class="bi bi-chat-dots"></i>
-                Chat Now
-              </a>
-              <span class="divider">or</span>
-              <a href="#" class="contact-email">
-                <i class="bi bi-envelope"></i>
-                payment.support@example.com
-              </a>
-            </div>
-          </div>
         </div>
 
       </div>
 
-    </section><!-- /Paymnt Methods Section -->
+    </section><!-- /Blog Hero Section -->
+
+    <!-- Recent Posts Section -->
+    <section id="recent-posts" class="recent-posts section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Recent Posts</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+          <div class="col-lg-4">
+            <article>
+
+              <div class="post-img position-relative">
+                <img src="assets/img/blog/blog-post-1.webp" alt="" class="img-fluid" loading="lazy">
+                <div class="post-content">
+                  <p class="post-category">Politics</p>
+                  <h2 class="title">
+                    <a href="blog-details.html.twig">Dolorum optio tempore voluptas dignissimos</a>
+                  </h2>
+                  <div class="post-meta">
+                    <time datetime="2025-01-01">Jan 1, 2025</time>
+                    <span class="px-2">•</span>
+                    <span>No Comments</span>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-lg-4">
+            <article>
+
+              <div class="post-img position-relative">
+                <img src="assets/img/blog/blog-post-2.webp" alt="" class="img-fluid" loading="lazy">
+                <div class="post-content">
+                  <p class="post-category">Sports</p>
+                  <h2 class="title">
+                    <a href="blog-details.html.twig">Nisi magni odit consequatur autem nulla dolorem</a>
+                  </h2>
+                  <div class="post-meta">
+                    <time datetime="2025-06-05">Jun 5, 2025</time>
+                    <span class="px-2">•</span>
+                    <span>No Comments</span>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-lg-4">
+            <article>
+
+              <div class="post-img position-relative">
+                <img src="assets/img/blog/blog-post-3.webp" alt="" class="img-fluid" loading="lazy">
+                <div class="post-content">
+                  <p class="post-category">Entertainment</p>
+                  <h2 class="title">
+                    <a href="blog-details.html.twig">Possimus soluta ut id suscipit ea ut in quo quia et soluta</a>
+                  </h2>
+                  <div class="post-meta">
+                    <time datetime="2025-06-22">Jun 22, 2025</time>
+                    <span class="px-2">•</span>
+                    <span>No Comments</span>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-lg-4">
+            <article>
+
+              <div class="post-img position-relative">
+                <img src="assets/img/blog/blog-post-4.webp" alt="" class="img-fluid" loading="lazy">
+                <div class="post-content">
+                  <p class="post-category">Sports</p>
+                  <h2 class="title">
+                    <a href="blog-details.html.twig">Non rem rerum nam cum quo minus olor distincti</a>
+                  </h2>
+                  <div class="post-meta">
+                    <time datetime="2025-06-30">Jun 30, 2025</time>
+                    <span class="px-2">•</span>
+                    <span>No Comments</span>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-lg-4">
+            <article>
+
+              <div class="post-img position-relative">
+                <img src="assets/img/blog/blog-post-5.webp" alt="" class="img-fluid" loading="lazy">
+                <div class="post-content">
+                  <p class="post-category">Politics</p>
+                  <h2 class="title">
+                    <a href="blog-details.html.twig">Accusamus quaerat aliquam qui debitis facilis consequatur</a>
+                  </h2>
+                  <div class="post-meta">
+                    <time datetime="2025-01-30">Jan 30, 2025</time>
+                    <span class="px-2">•</span>
+                    <span>No Comments</span>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-lg-4">
+            <article>
+
+              <div class="post-img position-relative">
+                <img src="assets/img/blog/blog-post-6.webp" alt="" class="img-fluid" loading="lazy">
+                <div class="post-content">
+                  <p class="post-category">Entertainment</p>
+                  <h2 class="title">
+                    <a href="blog-details.html.twig">Distinctio provident quibusdam numquam aperiam aut</a>
+                  </h2>
+                  <div class="post-meta">
+                    <time datetime="2025-02-14">Feb 14, 2025</time>
+                    <span class="px-2">•</span>
+                    <span>No Comments</span>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+        </div>
+      </div>
+
+    </section><!-- /Recent Posts Section -->
+
+    <!-- Blog Pagination Section -->
+    <section id="blog-pagination" class="blog-pagination section">
+
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <ul>
+            <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#" class="active">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li>...</li>
+            <li><a href="#">10</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+    </section><!-- /Blog Pagination Section -->
 
   </main>
 
@@ -1088,7 +1165,7 @@
         <div class="row gy-4">
           <div class="col-lg-4 col-md-6">
             <div class="footer-widget footer-about">
-              <a href="index.html" class="logo">
+              <a href="index.html.twig" class="logo">
                 <span class="sitename">FashionStore</span>
               </a>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula, facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
@@ -1111,12 +1188,12 @@
             <div class="footer-widget">
               <h4>Shop</h4>
               <ul class="footer-links">
-                <li><a href="category.html">New Arrivals</a></li>
-                <li><a href="category.html">Bestsellers</a></li>
-                <li><a href="category.html">Women's Clothing</a></li>
-                <li><a href="category.html">Men's Clothing</a></li>
-                <li><a href="category.html">Accessories</a></li>
-                <li><a href="category.html">Sale</a></li>
+                <li><a href="category.html.twig">New Arrivals</a></li>
+                <li><a href="category.html.twig">Bestsellers</a></li>
+                <li><a href="category.html.twig">Women's Clothing</a></li>
+                <li><a href="category.html.twig">Men's Clothing</a></li>
+                <li><a href="category.html.twig">Accessories</a></li>
+                <li><a href="category.html.twig">Sale</a></li>
               </ul>
             </div>
           </div>
@@ -1126,11 +1203,11 @@
               <h4>Support</h4>
               <ul class="footer-links">
                 <li><a href="support.html">Help Center</a></li>
-                <li><a href="account.html">Order Status</a></li>
+                <li><a href="account.html.twig">Order Status</a></li>
                 <li><a href="shiping-info.html">Shipping Info</a></li>
-                <li><a href="return-policy.html">Returns &amp; Exchanges</a></li>
+                <li><a href="return-policy.html.twig">Returns &amp; Exchanges</a></li>
                 <li><a href="#">Size Guide</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html.twig">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -1203,9 +1280,9 @@
               </div>
 
               <div class="legal-links">
-                <a href="tos.html">Terms</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="tos.html">Cookies</a>
+                <a href="tos.html.twig">Terms</a>
+                <a href="privacy.html.twig">Privacy</a>
+                <a href="tos.html.twig">Cookies</a>
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Checkout - FashionStore Bootstrap Template</title>
+  <title>Cart - FashionStore Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -37,7 +37,7 @@
   ======================================================== -->
 </head>
 
-<body class="checkout-page">
+<body class="cart-page">
 
   <header id="header" class="header position-relative">
     <!-- Top Bar -->
@@ -156,8 +156,8 @@
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="login.html" class="btn btn-primary w-100 mb-2">Sign In</a>
-                  <a href="register.html" class="btn btn-outline-primary w-100">Register</a>
+                  <a href="login.html.twig" class="btn btn-primary w-100 mb-2">Sign In</a>
+                  <a href="register.html.twig" class="btn btn-outline-primary w-100">Register</a>
                 </div>
               </div>
             </div>
@@ -232,7 +232,7 @@
                   </div>
                   <div class="cart-actions">
                     <a href="cart.html" class="btn btn-outline-primary">View Cart</a>
-                    <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                    <a href="checkout.html.twig" class="btn btn-primary">Checkout</a>
                   </div>
                 </div>
               </div>
@@ -255,8 +255,8 @@
             <li><a href="about.html">About</a></li>
             <li><a href="category.html">Category</a></li>
             <li><a href="product-details.html">Product Details</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="checkout.html" class="active">Checkout</a></li>
+            <li><a href="cart.html" class="active">Cart</a></li>
+            <li><a href="checkout.html.twig">Checkout</a></li>
             <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="#">Dropdown 1</a></li>
@@ -888,393 +888,262 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Checkout</li>
+            <li class="current">Cart</li>
           </ol>
         </nav>
-        <h1>Checkout</h1>
+        <h1>Cart</h1>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Checkout Section -->
-    <section id="checkout" class="checkout section">
+    <!-- Cart Section -->
+    <section id="cart" class="cart section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row">
-          <div class="col-lg-8">
-            <!-- Checkout Steps -->
-            <div class="checkout-steps mb-4" data-aos="fade-up">
-              <div class="step active" data-step="1">
-                <div class="step-number">1</div>
-                <div class="step-title">Information</div>
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="cart-items">
+              <div class="cart-header d-none d-lg-block">
+                <div class="row align-items-center">
+                  <div class="col-lg-6">
+                    <h5>Product</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Price</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Quantity</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Total</h5>
+                  </div>
+                </div>
               </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="2">
-                <div class="step-number">2</div>
-                <div class="step-title">Shipping</div>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="3">
-                <div class="step-number">3</div>
-                <div class="step-title">Payment</div>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="4">
-                <div class="step-number">4</div>
-                <div class="step-title">Review</div>
+
+              <!-- Cart Item 1 -->
+              <div class="cart-item">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 col-12 mt-3 mt-lg-0 mb-lg-0 mb-3">
+                    <div class="product-info d-flex align-items-center">
+                      <div class="product-image">
+                        <img src="assets/img/product/product-1.webp" alt="Product" class="img-fluid" loading="lazy">
+                      </div>
+                      <div class="product-details">
+                        <h6 class="product-title">Lorem ipsum dolor sit amet</h6>
+                        <div class="product-meta">
+                          <span class="product-color">Color: Black</span>
+                          <span class="product-size">Size: M</span>
+                        </div>
+                        <button class="remove-item" type="button">
+                          <i class="bi bi-trash"></i> Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="price-tag">
+                      <span class="current-price">$89.99</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="quantity-selector">
+                      <button class="quantity-btn decrease">
+                        <i class="bi bi-dash"></i>
+                      </button>
+                      <input type="number" class="quantity-input" value="1" min="1" max="10">
+                      <button class="quantity-btn increase">
+                        <i class="bi bi-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="item-total">
+                      <span>$89.99</span>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Cart Item -->
+
+              <!-- Cart Item 2 -->
+              <div class="cart-item">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 col-12 mt-3 mt-lg-0 mb-lg-0 mb-3">
+                    <div class="product-info d-flex align-items-center">
+                      <div class="product-image">
+                        <img src="assets/img/product/product-3.webp" alt="Product" class="img-fluid" loading="lazy">
+                      </div>
+                      <div class="product-details">
+                        <h6 class="product-title">Consectetur adipiscing elit</h6>
+                        <div class="product-meta">
+                          <span class="product-color">Color: White</span>
+                          <span class="product-size">Size: L</span>
+                        </div>
+                        <button class="remove-item" type="button">
+                          <i class="bi bi-trash"></i> Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="price-tag">
+                      <span class="current-price">$64.99</span>
+                      <span class="original-price">$79.99</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="quantity-selector">
+                      <button class="quantity-btn decrease">
+                        <i class="bi bi-dash"></i>
+                      </button>
+                      <input type="number" class="quantity-input" value="2" min="1" max="10">
+                      <button class="quantity-btn increase">
+                        <i class="bi bi-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="item-total">
+                      <span>$129.98</span>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Cart Item -->
+
+              <!-- Cart Item 3 -->
+              <div class="cart-item">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 col-12 mt-3 mt-lg-0 mb-lg-0 mb-3">
+                    <div class="product-info d-flex align-items-center">
+                      <div class="product-image">
+                        <img src="assets/img/product/product-5.webp" alt="Product" class="img-fluid" loading="lazy">
+                      </div>
+                      <div class="product-details">
+                        <h6 class="product-title">Sed do eiusmod tempor</h6>
+                        <div class="product-meta">
+                          <span class="product-color">Color: Blue</span>
+                          <span class="product-size">Size: S</span>
+                        </div>
+                        <button class="remove-item" type="button">
+                          <i class="bi bi-trash"></i> Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="price-tag">
+                      <span class="current-price">$49.99</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="quantity-selector">
+                      <button class="quantity-btn decrease">
+                        <i class="bi bi-dash"></i>
+                      </button>
+                      <input type="number" class="quantity-input" value="1" min="1" max="10">
+                      <button class="quantity-btn increase">
+                        <i class="bi bi-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                    <div class="item-total">
+                      <span>$49.99</span>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Cart Item -->
+
+              <div class="cart-actions">
+                <div class="row">
+                  <div class="col-lg-6 mb-3 mb-lg-0">
+                    <div class="coupon-form">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Coupon code">
+                        <button class="btn btn-outline-accent" type="button">Apply Coupon</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 text-md-end">
+                    <button class="btn btn-outline-heading me-2">
+                      <i class="bi bi-arrow-clockwise"></i> Update Cart
+                    </button>
+                    <button class="btn btn-outline-remove">
+                      <i class="bi bi-trash"></i> Clear Cart
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            <!-- Checkout Forms Container -->
-            <div class="checkout-forms" data-aos="fade-up" data-aos-delay="150">
-              <!-- Step 1: Customer Information -->
-              <div class="checkout-form active" data-form="1">
-                <div class="form-header">
-                  <h3>Customer Information</h3>
-                  <p>Please enter your contact details</p>
-                </div>
-                <form class="checkout-form-element">
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <label for="first-name">First Name</label>
-                      <input type="text" name="first-name" class="form-control" id="first-name" placeholder="Your First Name" required="">
-                    </div>
-                    <div class="col-md-6 form-group mt-3 mt-md-0">
-                      <label for="last-name">Last Name</label>
-                      <input type="text" name="last-name" class="form-control" id="last-name" placeholder="Your Last Name" required="">
-                    </div>
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="email">Email Address</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number" required="">
-                  </div>
-                  <div class="text-end mt-4">
-                    <button type="button" class="btn btn-primary next-step" data-next="2">Continue to Shipping</button>
-                  </div>
-                </form>
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="cart-summary">
+              <h4 class="summary-title">Order Summary</h4>
+
+              <div class="summary-item">
+                <span class="summary-label">Subtotal</span>
+                <span class="summary-value">$269.96</span>
               </div>
 
-              <!-- Step 2: Shipping Address -->
-              <div class="checkout-form" data-form="2">
-                <div class="form-header">
-                  <h3>Shipping Address</h3>
-                  <p>Where should we deliver your order?</p>
-                </div>
-                <form class="checkout-form-element">
-                  <div class="form-group">
-                    <label for="address">Street Address</label>
-                    <input type="text" class="form-control" name="address" id="address" placeholder="Street Address" required="">
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="apartment">Apartment, Suite, etc. (optional)</label>
-                    <input type="text" class="form-control" name="apartment" id="apartment" placeholder="Apartment, Suite, Unit, etc.">
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-4 form-group">
-                      <label for="city">City</label>
-                      <input type="text" name="city" class="form-control" id="city" placeholder="City" required="">
-                    </div>
-                    <div class="col-md-4 form-group mt-3 mt-md-0">
-                      <label for="state">State</label>
-                      <input type="text" name="state" class="form-control" id="state" placeholder="State" required="">
-                    </div>
-                    <div class="col-md-4 form-group mt-3 mt-md-0">
-                      <label for="zip">ZIP Code</label>
-                      <input type="text" name="zip" class="form-control" id="zip" placeholder="ZIP Code" required="">
-                    </div>
-                  </div>
-                  <div class="form-group mt-3">
-                    <label for="country">Country</label>
-                    <select class="form-select" id="country" name="country" required="">
-                      <option value="">Select Country</option>
-                      <option value="US">United States</option>
-                      <option value="CA">Canada</option>
-                      <option value="UK">United Kingdom</option>
-                      <option value="AU">Australia</option>
-                      <option value="DE">Germany</option>
-                      <option value="FR">France</option>
-                    </select>
-                  </div>
-                  <div class="form-check mt-3">
-                    <input class="form-check-input" type="checkbox" id="save-address" name="save-address">
-                    <label class="form-check-label" for="save-address">
-                      Save this address for future orders
+              <div class="summary-item shipping-item">
+                <span class="summary-label">Shipping</span>
+                <div class="shipping-options">
+                  <div class="form-check text-end">
+                    <input class="form-check-input" type="radio" name="shipping" id="standard" checked="">
+                    <label class="form-check-label" for="standard">
+                      Standard Delivery - $4.99
                     </label>
                   </div>
-                  <div class="d-flex justify-content-between mt-4">
-                    <button type="button" class="btn btn-outline-secondary prev-step" data-prev="1">Back to Information</button>
-                    <button type="button" class="btn btn-primary next-step" data-next="3">Continue to Payment</button>
-                  </div>
-                </form>
-              </div>
-
-              <!-- Step 3: Payment Method -->
-              <div class="checkout-form" data-form="3">
-                <div class="form-header">
-                  <h3>Payment Method</h3>
-                  <p>Choose how you'd like to pay</p>
-                </div>
-                <form class="checkout-form-element">
-                  <div class="payment-methods">
-                    <div class="payment-method active">
-                      <div class="payment-method-header">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="payment-method" id="credit-card" checked="">
-                          <label class="form-check-label" for="credit-card">
-                            Credit / Debit Card
-                          </label>
-                        </div>
-                        <div class="payment-icons">
-                          <i class="bi bi-credit-card-2-front"></i>
-                          <i class="bi bi-credit-card"></i>
-                        </div>
-                      </div>
-                      <div class="payment-method-body">
-                        <div class="row">
-                          <div class="col-12 form-group">
-                            <label for="card-number">Card Number</label>
-                            <input type="text" class="form-control" name="card-number" id="card-number" placeholder="1234 5678 9012 3456" required="">
-                          </div>
-                        </div>
-                        <div class="row mt-3">
-                          <div class="col-md-6 form-group">
-                            <label for="expiry">Expiration Date</label>
-                            <input type="text" class="form-control" name="expiry" id="expiry" placeholder="MM/YY" required="">
-                          </div>
-                          <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <label for="cvv">Security Code (CVV)</label>
-                            <input type="text" class="form-control" name="cvv" id="cvv" placeholder="123" required="">
-                          </div>
-                        </div>
-                        <div class="form-group mt-3">
-                          <label for="card-name">Name on Card</label>
-                          <input type="text" class="form-control" name="card-name" id="card-name" placeholder="John Doe" required="">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="payment-method mt-3">
-                      <div class="payment-method-header">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="payment-method" id="paypal">
-                          <label class="form-check-label" for="paypal">
-                            PayPal
-                          </label>
-                        </div>
-                        <div class="payment-icons">
-                          <i class="bi bi-paypal"></i>
-                        </div>
-                      </div>
-                      <div class="payment-method-body d-none">
-                        <p>You will be redirected to PayPal to complete your purchase securely.</p>
-                      </div>
-                    </div>
-
-                    <div class="payment-method mt-3">
-                      <div class="payment-method-header">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="payment-method" id="apple-pay">
-                          <label class="form-check-label" for="apple-pay">
-                            Apple Pay
-                          </label>
-                        </div>
-                        <div class="payment-icons">
-                          <i class="bi bi-apple"></i>
-                        </div>
-                      </div>
-                      <div class="payment-method-body d-none">
-                        <p>You will be prompted to authorize payment with Apple Pay.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex justify-content-between mt-4">
-                    <button type="button" class="btn btn-outline-secondary prev-step" data-prev="2">Back to Shipping</button>
-                    <button type="button" class="btn btn-primary next-step" data-next="4">Review Order</button>
-                  </div>
-                </form>
-              </div>
-
-              <!-- Step 4: Order Review -->
-              <div class="checkout-form" data-form="4">
-                <div class="form-header">
-                  <h3>Review Your Order</h3>
-                  <p>Please review your information before placing your order</p>
-                </div>
-                <form class="checkout-form-element">
-                  <div class="review-sections">
-                    <div class="review-section">
-                      <div class="review-section-header">
-                        <h4>Contact Information</h4>
-                        <button type="button" class="btn-edit" data-edit="1">Edit</button>
-                      </div>
-                      <div class="review-section-content">
-                        <p class="review-name">John Doe</p>
-                        <p class="review-email">johndoe@example.com</p>
-                        <p class="review-phone">+1 (555) 123-4567</p>
-                      </div>
-                    </div>
-
-                    <div class="review-section mt-3">
-                      <div class="review-section-header">
-                        <h4>Shipping Address</h4>
-                        <button type="button" class="btn-edit" data-edit="2">Edit</button>
-                      </div>
-                      <div class="review-section-content">
-                        <p>123 Main Street, Apt 4B</p>
-                        <p>New York, NY 10001</p>
-                        <p>United States</p>
-                      </div>
-                    </div>
-
-                    <div class="review-section mt-3">
-                      <div class="review-section-header">
-                        <h4>Payment Method</h4>
-                        <button type="button" class="btn-edit" data-edit="3">Edit</button>
-                      </div>
-                      <div class="review-section-content">
-                        <p><i class="bi bi-credit-card-2-front me-2"></i> Credit Card ending in 3456</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-check mt-4">
-                    <input class="form-check-input" type="checkbox" id="terms" name="terms" required="">
-                    <label class="form-check-label" for="terms">
-                      I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a> and <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                  <div class="form-check text-end">
+                    <input class="form-check-input" type="radio" name="shipping" id="express">
+                    <label class="form-check-label" for="express">
+                      Express Delivery - $12.99
                     </label>
                   </div>
-                  <div class="success-message d-none">Your order has been placed successfully! Thank you for your purchase.</div>
-                  <div class="d-flex justify-content-between mt-4">
-                    <button type="button" class="btn btn-outline-secondary prev-step" data-prev="3">Back to Payment</button>
-                    <button type="submit" class="btn btn-success place-order-btn">Place Order</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <!-- Order Summary -->
-            <div class="order-summary" data-aos="fade-left" data-aos-delay="200">
-              <div class="order-summary-header">
-                <h3>Order Summary</h3>
-                <button type="button" class="btn-toggle-summary d-lg-none">
-                  <i class="bi bi-chevron-down"></i>
-                </button>
-              </div>
-
-              <div class="order-summary-content">
-                <div class="order-items">
-                  <div class="order-item">
-                    <div class="order-item-image">
-                      <img src="assets/img/product/product-1.webp" alt="Product" class="img-fluid">
-                    </div>
-                    <div class="order-item-details">
-                      <h4>Lorem Ipsum Dolor</h4>
-                      <p class="order-item-variant">Color: Black | Size: M</p>
-                      <div class="order-item-price">
-                        <span class="quantity">1 ×</span>
-                        <span class="price">$89.99</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="order-item">
-                    <div class="order-item-image">
-                      <img src="assets/img/product/product-2.webp" alt="Product" class="img-fluid">
-                    </div>
-                    <div class="order-item-details">
-                      <h4>Sit Amet Consectetur</h4>
-                      <p class="order-item-variant">Color: White | Size: L</p>
-                      <div class="order-item-price">
-                        <span class="quantity">2 ×</span>
-                        <span class="price">$59.99</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="order-totals">
-                  <div class="order-subtotal d-flex justify-content-between">
-                    <span>Subtotal</span>
-                    <span>$209.97</span>
-                  </div>
-                  <div class="order-shipping d-flex justify-content-between">
-                    <span>Shipping</span>
-                    <span>$9.99</span>
-                  </div>
-                  <div class="order-tax d-flex justify-content-between">
-                    <span>Tax</span>
-                    <span>$21.00</span>
-                  </div>
-                  <div class="order-total d-flex justify-content-between">
-                    <span>Total</span>
-                    <span>$240.96</span>
-                  </div>
-                </div>
-
-                <div class="promo-code mt-3">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Promo Code" aria-label="Promo Code">
-                    <button class="btn btn-outline-primary" type="button">Apply</button>
-                  </div>
-                </div>
-
-                <div class="secure-checkout mt-4">
-                  <div class="secure-checkout-header">
-                    <i class="bi bi-shield-lock"></i>
-                    <span>Secure Checkout</span>
-                  </div>
-                  <div class="payment-icons mt-2">
-                    <i class="bi bi-credit-card-2-front"></i>
-                    <i class="bi bi-credit-card"></i>
-                    <i class="bi bi-paypal"></i>
-                    <i class="bi bi-apple"></i>
+                  <div class="form-check text-end">
+                    <input class="form-check-input" type="radio" name="shipping" id="free">
+                    <label class="form-check-label" for="free">
+                      Free Shipping (Orders over $300)
+                    </label>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Terms and Privacy Modals -->
-        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="summary-item">
+                <span class="summary-label">Tax</span>
+                <span class="summary-value">$27.00</span>
               </div>
-              <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-                <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-                <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="summary-item discount">
+                <span class="summary-label">Discount</span>
+                <span class="summary-value">-$0.00</span>
               </div>
-              <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.</p>
-                <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-                <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
+
+              <div class="summary-total">
+                <span class="summary-label">Total</span>
+                <span class="summary-value">$301.95</span>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+
+              <div class="checkout-button">
+                <a href="#" class="btn btn-accent w-100">
+                  Proceed to Checkout <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+
+              <div class="continue-shopping">
+                <a href="#" class="btn btn-link w-100">
+                  <i class="bi bi-arrow-left"></i> Continue Shopping
+                </a>
+              </div>
+
+              <div class="payment-methods">
+                <p class="payment-title">We Accept</p>
+                <div class="payment-icons">
+                  <i class="bi bi-credit-card"></i>
+                  <i class="bi bi-paypal"></i>
+                  <i class="bi bi-wallet2"></i>
+                  <i class="bi bi-bank"></i>
+                </div>
               </div>
             </div>
           </div>
@@ -1282,7 +1151,7 @@
 
       </div>
 
-    </section><!-- /Checkout Section -->
+    </section><!-- /Cart Section -->
 
   </main>
 
@@ -1329,9 +1198,9 @@
             <div class="footer-widget">
               <h4>Support</h4>
               <ul class="footer-links">
-                <li><a href="support.html">Help Center</a></li>
+                <li><a href="support.html.twig">Help Center</a></li>
                 <li><a href="account.html">Order Status</a></li>
-                <li><a href="shiping-info.html">Shipping Info</a></li>
+                <li><a href="shiping-info.html.twig">Shipping Info</a></li>
                 <li><a href="return-policy.html">Returns &amp; Exchanges</a></li>
                 <li><a href="#">Size Guide</a></li>
                 <li><a href="contact.html">Contact Us</a></li>

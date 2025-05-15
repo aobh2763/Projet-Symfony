@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Blog - FashionStore Bootstrap Template</title>
+  <title>Shiping Info - FashionStore Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -37,7 +37,7 @@
   ======================================================== -->
 </head>
 
-<body class="blog-page">
+<body class="shiping-info-page">
 
   <header id="header" class="header position-relative">
     <!-- Top Bar -->
@@ -156,8 +156,8 @@
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="login.html" class="btn btn-primary w-100 mb-2">Sign In</a>
-                  <a href="register.html" class="btn btn-outline-primary w-100">Register</a>
+                  <a href="login.html.twig" class="btn btn-primary w-100 mb-2">Sign In</a>
+                  <a href="register.html.twig" class="btn btn-outline-primary w-100">Register</a>
                 </div>
               </div>
             </div>
@@ -231,8 +231,8 @@
                     <span class="cart-total-price">$279.97</span>
                   </div>
                   <div class="cart-actions">
-                    <a href="cart.html" class="btn btn-outline-primary">View Cart</a>
-                    <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                    <a href="cart.html.twig" class="btn btn-outline-primary">View Cart</a>
+                    <a href="checkout.html.twig" class="btn btn-primary">Checkout</a>
                   </div>
                 </div>
               </div>
@@ -255,8 +255,8 @@
             <li><a href="about.html">About</a></li>
             <li><a href="category.html">Category</a></li>
             <li><a href="product-details.html">Product Details</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="cart.html.twig">Cart</a></li>
+            <li><a href="checkout.html.twig">Checkout</a></li>
             <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="#">Dropdown 1</a></li>
@@ -888,274 +888,174 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Blog</li>
+            <li class="current">Shiping Info</li>
           </ol>
         </nav>
-        <h1>Blog</h1>
+        <h1>Shiping Info</h1>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Blog Hero Section -->
-    <section id="blog-hero" class="blog-hero section">
+    <!-- Shipping Info Section -->
+    <section id="shipping-info" class="shipping-info section">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="container" data-aos="fade-up">
 
-        <div class="blog-grid">
-
-          <!-- Main Featured Post -->
-          <article class="blog-item main-feature" data-aos="fade-up">
-            <img src="assets/img/blog/blog-post-9.webp" alt="Blog Image" class="img-fluid">
-            <div class="blog-content">
-              <div class="post-meta">
-                <span class="date">Apr. 14th, 2022</span>
-                <span class="category">Technology</span>
-              </div>
-              <h2 class="post-title">
-                <a href="blog-details.html" title="Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</a>
-              </h2>
-              <p class="post-excerpt">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="content-wrapper">
+          <!-- Delivery Options -->
+          <div class="content-block" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-heading">
+              <i class="bi bi-truck"></i>
+              <h3>Delivery Options</h3>
+              <p>Choose the delivery option that best suits your needs</p>
             </div>
-          </article><!-- End Main Featured Post -->
 
-          <!-- Secondary Featured Posts -->
-          <div class="secondary-features">
-            <article class="blog-item" data-aos="fade-up" data-aos-delay="100">
-              <img src="assets/img/blog/blog-post-portrait-1.webp" alt="Blog Image" class="img-fluid">
-              <div class="blog-content">
-                <div class="post-meta">
-                  <span class="date">Apr. 13th, 2022</span>
-                  <span class="category">Business</span>
+            <div class="row gy-4 gx-lg-5">
+              <div class="col-md-6 col-lg-4">
+                <div class="delivery-card">
+                  <div class="card-icon">
+                    <i class="bi bi-lightning-charge"></i>
+                  </div>
+                  <h4>Express Delivery</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Delivery within 1-2 business days.</p>
+                  <div class="delivery-time">
+                    <i class="bi bi-clock"></i>
+                    <span>1-2 Business Days</span>
+                  </div>
                 </div>
-                <h3 class="post-title">
-                  <a href="blog-details.html" title="Ut enim ad minim veniam quis nostrud exercitation">Ut enim ad minim veniam quis nostrud exercitation</a>
-                </h3>
               </div>
-            </article>
 
-            <article class="blog-item" data-aos="fade-up" data-aos-delay="200">
-              <img src="assets/img/blog/blog-post-portrait-2.webp" alt="Blog Image" class="img-fluid">
-              <div class="blog-content">
-                <div class="post-meta">
-                  <span class="date">Apr. 12th, 2022</span>
-                  <span class="category">Lifestyle</span>
+              <div class="col-md-6 col-lg-4">
+                <div class="delivery-card">
+                  <div class="card-icon">
+                    <i class="bi bi-box-seam"></i>
+                  </div>
+                  <h4>Standard Shipping</h4>
+                  <p>Proin dapibus nisl ornare diam varius tempus. Delivery within 3-5 business days.</p>
+                  <div class="delivery-time">
+                    <i class="bi bi-clock"></i>
+                    <span>3-5 Business Days</span>
+                  </div>
                 </div>
-                <h3 class="post-title">
-                  <a href="blog-details.html" title="Duis aute irure dolor in reprehenderit in voluptate">Duis aute irure dolor in reprehenderit in voluptate</a>
-                </h3>
               </div>
-            </article>
-          </div><!-- End Secondary Features -->
+              <div class="col-md-6 col-lg-4">
+                <div class="delivery-card">
+                  <div class="card-icon">
+                    <i class="bi bi-pin-map"></i>
+                  </div>
+                  <h4>Local Shipping</h4>
+                  <p>Duis aute irure dolor in reprehenderit in voluptate velit. Delivery within 2-3 business days.</p>
+                  <div class="delivery-time">
+                    <i class="bi bi-clock"></i>
+                    <span>2-3 Business Days</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <!-- Regular Posts Grid -->
-          <div class="regular-posts">
-            <article class="blog-item" data-aos="fade-up" data-aos-delay="300">
-              <img src="assets/img/blog/blog-post-9.webp" alt="Blog Image" class="img-fluid">
-              <div class="blog-content">
-                <div class="post-meta">
-                  <span class="date">Apr. 11th, 2022</span>
-                  <span class="category">Tech</span>
-                </div>
-                <h3 class="post-title">
-                  <a href="blog-details.html" title="Excepteur sint occaecat cupidatat non proident">Excepteur sint occaecat cupidatat non proident</a>
-                </h3>
-              </div>
-            </article>
+          <!-- Shipping Costs -->
+          <div class="content-block" data-aos="fade-up" data-aos-delay="200">
+            <div class="section-heading">
+              <i class="bi bi-cash-coin"></i>
+              <h3>Shipping Costs</h3>
+              <p>Transparent pricing for all shipping options</p>
+            </div>
 
-            <article class="blog-item" data-aos="fade-up" data-aos-delay="400">
-              <img src="assets/img/blog/blog-post-3.webp" alt="Blog Image" class="img-fluid">
-              <div class="blog-content">
-                <div class="post-meta">
-                  <span class="date">Apr. 10th, 2022</span>
-                  <span class="category">Sports</span>
-                </div>
-                <h3 class="post-title">
-                  <a href="blog-details.html" title="Sunt in culpa qui officia deserunt mollit anim">Sunt in culpa qui officia deserunt mollit anim</a>
-                </h3>
+            <div class="shipping-rates">
+              <div class="rate-item">
+                <div class="rate-type">Standard Shipping</div>
+                <div class="rate-cost">$5.99</div>
+                <div class="rate-info">For orders under $50</div>
               </div>
-            </article>
+              <div class="rate-item highlight">
+                <div class="rate-type">Free Shipping</div>
+                <div class="rate-cost">$0.00</div>
+                <div class="rate-info">For orders over $50</div>
+              </div>
+              <div class="rate-item">
+                <div class="rate-type">Express Shipping</div>
+                <div class="rate-cost">$12.99</div>
+                <div class="rate-info">1-2 business days delivery</div>
+              </div>
+            </div>
+          </div>
 
-            <article class="blog-item" data-aos="fade-up" data-aos-delay="500">
-              <img src="assets/img/blog/blog-post-6.webp" alt="Blog Image" class="img-fluid">
-              <div class="blog-content">
-                <div class="post-meta">
-                  <span class="date">Apr. 9th, 2022</span>
-                  <span class="category">Culture</span>
-                </div>
-                <h3 class="post-title">
-                  <a href="blog-details.html" title="Id est laborum et dolorum fuga et harum quidem">Id est laborum et dolorum fuga et harum quidem</a>
-                </h3>
+          <!-- International Shipping -->
+          <div class="content-block" data-aos="fade-up" data-aos-delay="300">
+            <div class="section-heading">
+              <i class="bi bi-globe"></i>
+              <h3>International Shipping</h3>
+              <p>We deliver worldwide with reliable carriers</p>
+            </div>
+
+            <div class="international-info">
+              <div class="info-item">
+                <i class="bi bi-clock-history"></i>
+                <h5>Delivery Time</h5>
+                <p>5-10 business days for most international destinations</p>
               </div>
-            </article>
-          </div><!-- End Regular Posts -->
+              <div class="info-item">
+                <i class="bi bi-currency-dollar"></i>
+                <h5>Customs &amp; Duties</h5>
+                <p>Import duties and taxes are not included in the shipping cost</p>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-shield-check"></i>
+                <h5>Reliable Service</h5>
+                <p>Tracked shipping with leading international carriers</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="content-block" data-aos="fade-up" data-aos-delay="400">
+            <div class="section-heading">
+              <i class="bi bi-question-circle"></i>
+              <h3>Shipping FAQ</h3>
+              <p>Common questions about our shipping services</p>
+            </div>
+
+            <div class="faq-list">
+              <div class="faq-item">
+                <h3>
+                  <i class="bi bi-question-circle"></i>
+                  How can I track my order?
+                  <i class="bi bi-chevron-down faq-toggle"></i>
+                </h3>
+                <div class="faq-answer">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. You can track your order using the tracking number provided in your shipping confirmation email.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3>
+                  <i class="bi bi-question-circle"></i>
+                  What if I'm not home for delivery?
+                  <i class="bi bi-chevron-down faq-toggle"></i>
+                </h3>
+                <div class="faq-answer">
+                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. The carrier will leave a notification and attempt delivery again or leave your package at a secure location.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3>
+                  <i class="bi bi-question-circle"></i>
+                  Do you offer weekend delivery?
+                  <i class="bi bi-chevron-down faq-toggle"></i>
+                </h3>
+                <div class="faq-answer">
+                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Weekend delivery is available for express shipping in select areas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
 
       </div>
 
-    </section><!-- /Blog Hero Section -->
-
-    <!-- Recent Posts Section -->
-    <section id="recent-posts" class="recent-posts section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Recent Posts</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img position-relative">
-                <img src="assets/img/blog/blog-post-1.webp" alt="" class="img-fluid" loading="lazy">
-                <div class="post-content">
-                  <p class="post-category">Politics</p>
-                  <h2 class="title">
-                    <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos</a>
-                  </h2>
-                  <div class="post-meta">
-                    <time datetime="2025-01-01">Jan 1, 2025</time>
-                    <span class="px-2">•</span>
-                    <span>No Comments</span>
-                  </div>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img position-relative">
-                <img src="assets/img/blog/blog-post-2.webp" alt="" class="img-fluid" loading="lazy">
-                <div class="post-content">
-                  <p class="post-category">Sports</p>
-                  <h2 class="title">
-                    <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
-                  </h2>
-                  <div class="post-meta">
-                    <time datetime="2025-06-05">Jun 5, 2025</time>
-                    <span class="px-2">•</span>
-                    <span>No Comments</span>
-                  </div>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img position-relative">
-                <img src="assets/img/blog/blog-post-3.webp" alt="" class="img-fluid" loading="lazy">
-                <div class="post-content">
-                  <p class="post-category">Entertainment</p>
-                  <h2 class="title">
-                    <a href="blog-details.html">Possimus soluta ut id suscipit ea ut in quo quia et soluta</a>
-                  </h2>
-                  <div class="post-meta">
-                    <time datetime="2025-06-22">Jun 22, 2025</time>
-                    <span class="px-2">•</span>
-                    <span>No Comments</span>
-                  </div>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img position-relative">
-                <img src="assets/img/blog/blog-post-4.webp" alt="" class="img-fluid" loading="lazy">
-                <div class="post-content">
-                  <p class="post-category">Sports</p>
-                  <h2 class="title">
-                    <a href="blog-details.html">Non rem rerum nam cum quo minus olor distincti</a>
-                  </h2>
-                  <div class="post-meta">
-                    <time datetime="2025-06-30">Jun 30, 2025</time>
-                    <span class="px-2">•</span>
-                    <span>No Comments</span>
-                  </div>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img position-relative">
-                <img src="assets/img/blog/blog-post-5.webp" alt="" class="img-fluid" loading="lazy">
-                <div class="post-content">
-                  <p class="post-category">Politics</p>
-                  <h2 class="title">
-                    <a href="blog-details.html">Accusamus quaerat aliquam qui debitis facilis consequatur</a>
-                  </h2>
-                  <div class="post-meta">
-                    <time datetime="2025-01-30">Jan 30, 2025</time>
-                    <span class="px-2">•</span>
-                    <span>No Comments</span>
-                  </div>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-lg-4">
-            <article>
-
-              <div class="post-img position-relative">
-                <img src="assets/img/blog/blog-post-6.webp" alt="" class="img-fluid" loading="lazy">
-                <div class="post-content">
-                  <p class="post-category">Entertainment</p>
-                  <h2 class="title">
-                    <a href="blog-details.html">Distinctio provident quibusdam numquam aperiam aut</a>
-                  </h2>
-                  <div class="post-meta">
-                    <time datetime="2025-02-14">Feb 14, 2025</time>
-                    <span class="px-2">•</span>
-                    <span>No Comments</span>
-                  </div>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-        </div>
-      </div>
-
-    </section><!-- /Recent Posts Section -->
-
-    <!-- Blog Pagination Section -->
-    <section id="blog-pagination" class="blog-pagination section">
-
-      <div class="container">
-        <div class="d-flex justify-content-center">
-          <ul>
-            <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#" class="active">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li>...</li>
-            <li><a href="#">10</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
-          </ul>
-        </div>
-      </div>
-
-    </section><!-- /Blog Pagination Section -->
+    </section><!-- /Shipping Info Section -->
 
   </main>
 
@@ -1202,7 +1102,7 @@
             <div class="footer-widget">
               <h4>Support</h4>
               <ul class="footer-links">
-                <li><a href="support.html">Help Center</a></li>
+                <li><a href="support.html.twig">Help Center</a></li>
                 <li><a href="account.html">Order Status</a></li>
                 <li><a href="shiping-info.html">Shipping Info</a></li>
                 <li><a href="return-policy.html">Returns &amp; Exchanges</a></li>

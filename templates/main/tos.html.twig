@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Register - FashionStore Bootstrap Template</title>
+  <title>Tos - FashionStore Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -37,7 +37,7 @@
   ======================================================== -->
 </head>
 
-<body class="register-page">
+<body class="tos-page">
 
   <header id="header" class="header position-relative">
     <!-- Top Bar -->
@@ -98,7 +98,7 @@
         <div class="d-flex py-3 align-items-center justify-content-between">
 
           <!-- Logo -->
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="index.html.twig" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">Fashion<span>Store</span></h1>
@@ -134,7 +134,7 @@
                   <p class="mb-0">Access account &amp; manage orders</p>
                 </div>
                 <div class="dropdown-body">
-                  <a class="dropdown-item d-flex align-items-center" href="account.html">
+                  <a class="dropdown-item d-flex align-items-center" href="account.html.twig">
                     <i class="bi bi-person-circle me-2"></i>
                     <span>My Profile</span>
                   </a>
@@ -156,8 +156,8 @@
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="login.html" class="btn btn-primary w-100 mb-2">Sign In</a>
-                  <a href="register.html" class="btn btn-outline-primary w-100">Register</a>
+                  <a href="../user/login.html.twig" class="btn btn-primary w-100 mb-2">Sign In</a>
+                  <a href="../user/register.html.twig" class="btn btn-outline-primary w-100">Register</a>
                 </div>
               </div>
             </div>
@@ -251,10 +251,10 @@
       <div class="container-fluid container-xl position-relative">
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="category.html">Category</a></li>
-            <li><a href="product-details.html">Product Details</a></li>
+            <li><a href="index.html.twig">Home</a></li>
+            <li><a href="about.html.twig">About</a></li>
+            <li><a href="category.html.twig">Category</a></li>
+            <li><a href="product-details.html.twig">Product Details</a></li>
             <li><a href="cart.html">Cart</a></li>
             <li><a href="checkout.html">Checkout</a></li>
             <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -831,7 +831,7 @@
 
             </li><!-- End Products Mega Menu 2 -->
 
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html.twig">Contact</a></li>
 
           </ul>
         </nav>
@@ -887,106 +887,152 @@
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Register</li>
+            <li><a href="index.html.twig">Home</a></li>
+            <li class="current">Tos</li>
           </ol>
         </nav>
-        <h1>Register</h1>
+        <h1>Tos</h1>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Register Section -->
-    <section id="register" class="register section">
+    <!-- Terms Of Service Section -->
+    <section id="terms-of-service" class="terms-of-service section">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="container" data-aos="fade-up">
+        <!-- Page Header -->
+        <div class="tos-header text-center" data-aos="fade-up">
+          <span class="last-updated">Last Updated: February 27, 2025</span>
+          <h2>Terms of Service</h2>
+          <p>Please read these terms of service carefully before using our services</p>
+        </div>
 
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-
-            <div class="registration-form-wrapper" data-aos="zoom-in" data-aos-delay="200">
-
-              <div class="section-header mb-4 text-center">
-                <h2>Create Your Account</h2>
-                <p>Sign up to start shopping and enjoy exclusive offers</p>
-              </div>
-
-              <form action="#" method="POST">
-
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <label for="firstName">First Name</label>
-                      <input type="text" class="form-control" name="firstName" id="firstName" required="" minlength="2" placeholder="John">
-                    </div>
-                  </div>
-
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <label for="lastName">Last Name</label>
-                      <input type="text" class="form-control" name="lastName" id="lastName" required="" minlength="2" placeholder="Doe">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="email">Email Address</label>
-                  <input type="email" class="form-control" name="email" id="email" required="" placeholder="you@example.com">
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="password">Password</label>
-                  <div class="password-input">
-                    <input type="password" class="form-control" name="password" id="password" required="" minlength="8" placeholder="At least 8 characters">
-                    <i class="bi bi-eye toggle-password"></i>
-                  </div>
-                  <small class="password-requirements">
-                    Must be at least 8 characters long and include uppercase, lowercase, number, and special character
-                  </small>
-                </div>
-
-                <div class="form-group mb-4">
-                  <label for="confirmPassword">Confirm Password</label>
-                  <div class="password-input">
-                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required="" minlength="8" placeholder="Repeat your password">
-                    <i class="bi bi-eye toggle-password"></i>
-                  </div>
-                </div>
-
-                <div class="form-group mb-4">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="newsletter" id="newsletter">
-                    <label class="form-check-label" for="newsletter">
-                      Subscribe to our newsletter for exclusive offers and updates
-                    </label>
-                  </div>
-                </div>
-
-                <div class="form-group mb-4">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="terms" id="terms" required="">
-                    <label class="form-check-label" for="terms">
-                      I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-                    </label>
-                  </div>
-                </div>
-                <div class="text-center mb-4">
-                  <button type="submit" class="btn btn-primary w-100">Create Account</button>
-                </div>
-
-                <div class="text-center">
-                  <p class="mb-0">Already have an account? <a href="#">Sign in</a></p>
-                </div>
-
-              </form>
-
+        <!-- Content -->
+        <div class="tos-content" data-aos="fade-up" data-aos-delay="200">
+          <!-- Agreement Section -->
+          <div id="agreement" class="content-section">
+            <h3>1. Agreement to Terms</h3>
+            <p>By accessing our website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing our services.</p>
+            <div class="info-box">
+              <i class="bi bi-info-circle"></i>
+              <p>These terms apply to all users, visitors, and others who access or use our services.</p>
             </div>
+          </div>
 
+          <!-- Intellectual Property -->
+          <div id="intellectual-property" class="content-section">
+            <h3>2. Intellectual Property Rights</h3>
+            <p>Our service and its original content, features, and functionality are owned by us and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+            <ul class="list-items">
+              <li>All content is our exclusive property</li>
+              <li>You may not copy or modify the content</li>
+              <li>Our trademarks may not be used without permission</li>
+              <li>Content is for personal, non-commercial use only</li>
+            </ul>
+          </div>
+
+          <!-- User Accounts -->
+          <div id="user-accounts" class="content-section">
+            <h3>3. User Accounts</h3>
+            <p>When you create an account with us, you must provide accurate, complete, and current information. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account.</p>
+            <div class="alert-box">
+              <i class="bi bi-exclamation-triangle"></i>
+              <div class="alert-content">
+                <h5>Important Notice</h5>
+                <p>You are responsible for safeguarding the password and for all activities that occur under your account.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prohibited Activities -->
+          <div id="prohibited" class="content-section">
+            <h3>4. Prohibited Activities</h3>
+            <p>You may not access or use the Service for any purpose other than that for which we make it available.</p>
+            <div class="prohibited-list">
+              <div class="prohibited-item">
+                <i class="bi bi-x-circle"></i>
+                <span>Systematic retrieval of data or content</span>
+              </div>
+              <div class="prohibited-item">
+                <i class="bi bi-x-circle"></i>
+                <span>Publishing malicious content</span>
+              </div>
+              <div class="prohibited-item">
+                <i class="bi bi-x-circle"></i>
+                <span>Engaging in unauthorized framing</span>
+              </div>
+              <div class="prohibited-item">
+                <i class="bi bi-x-circle"></i>
+                <span>Attempting to gain unauthorized access</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Disclaimers -->
+          <div id="disclaimer" class="content-section">
+            <h3>5. Disclaimers</h3>
+            <p>Your use of our service is at your sole risk. The service is provided "AS IS" and "AS AVAILABLE" without warranties of any kind, whether express or implied.</p>
+            <div class="disclaimer-box">
+              <p>We do not guarantee that:</p>
+              <ul>
+                <li>The service will meet your requirements</li>
+                <li>The service will be uninterrupted or error-free</li>
+                <li>Results from using the service will be accurate</li>
+                <li>Any errors will be corrected</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Limitation of Liability -->
+          <div id="limitation" class="content-section">
+            <h3>6. Limitation of Liability</h3>
+            <p>In no event shall we be liable for any indirect, punitive, incidental, special, consequential, or exemplary damages arising out of or in connection with your use of the service.</p>
+          </div>
+
+          <!-- Indemnification -->
+          <div id="indemnification" class="content-section">
+            <h3>7. Indemnification</h3>
+            <p>You agree to defend, indemnify, and hold us harmless from and against any claims, liabilities, damages, losses, and expenses arising out of your use of the service.</p>
+          </div>
+
+          <!-- Termination -->
+          <div id="termination" class="content-section">
+            <h3>8. Termination</h3>
+            <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+          </div>
+
+          <!-- Governing Law -->
+          <div id="governing-law" class="content-section">
+            <h3>9. Governing Law</h3>
+            <p>These Terms shall be governed by and construed in accordance with the laws of [Your Country], without regard to its conflict of law provisions.</p>
+          </div>
+
+          <!-- Changes -->
+          <div id="changes" class="content-section">
+            <h3>10. Changes to Terms</h3>
+            <p>We reserve the right to modify or replace these Terms at any time. We will provide notice of any changes by posting the new Terms on this page.</p>
+            <div class="notice-box">
+              <i class="bi bi-bell"></i>
+              <p>By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms.</p>
+            </div>
           </div>
         </div>
 
+        <!-- Contact Section -->
+        <div class="tos-contact" data-aos="fade-up" data-aos-delay="300">
+          <div class="contact-box">
+            <div class="contact-icon">
+              <i class="bi bi-envelope"></i>
+            </div>
+            <div class="contact-content">
+              <h4>Questions About Terms?</h4>
+              <p>If you have any questions about these Terms, please contact us.</p>
+              <a href="#" class="contact-link">Contact Support</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-    </section><!-- /Register Section -->
+    </section><!-- /Terms Of Service Section -->
 
   </main>
 
@@ -996,7 +1042,7 @@
         <div class="row gy-4">
           <div class="col-lg-4 col-md-6">
             <div class="footer-widget footer-about">
-              <a href="index.html" class="logo">
+              <a href="index.html.twig" class="logo">
                 <span class="sitename">FashionStore</span>
               </a>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula, facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
@@ -1019,12 +1065,12 @@
             <div class="footer-widget">
               <h4>Shop</h4>
               <ul class="footer-links">
-                <li><a href="category.html">New Arrivals</a></li>
-                <li><a href="category.html">Bestsellers</a></li>
-                <li><a href="category.html">Women's Clothing</a></li>
-                <li><a href="category.html">Men's Clothing</a></li>
-                <li><a href="category.html">Accessories</a></li>
-                <li><a href="category.html">Sale</a></li>
+                <li><a href="category.html.twig">New Arrivals</a></li>
+                <li><a href="category.html.twig">Bestsellers</a></li>
+                <li><a href="category.html.twig">Women's Clothing</a></li>
+                <li><a href="category.html.twig">Men's Clothing</a></li>
+                <li><a href="category.html.twig">Accessories</a></li>
+                <li><a href="category.html.twig">Sale</a></li>
               </ul>
             </div>
           </div>
@@ -1034,11 +1080,11 @@
               <h4>Support</h4>
               <ul class="footer-links">
                 <li><a href="support.html">Help Center</a></li>
-                <li><a href="account.html">Order Status</a></li>
+                <li><a href="account.html.twig">Order Status</a></li>
                 <li><a href="shiping-info.html">Shipping Info</a></li>
-                <li><a href="return-policy.html">Returns &amp; Exchanges</a></li>
+                <li><a href="return-policy.html.twig">Returns &amp; Exchanges</a></li>
                 <li><a href="#">Size Guide</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html.twig">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -1112,7 +1158,7 @@
 
               <div class="legal-links">
                 <a href="tos.html">Terms</a>
-                <a href="privacy.html">Privacy</a>
+                <a href="privacy.html.twig">Privacy</a>
                 <a href="tos.html">Cookies</a>
               </div>
             </div>
