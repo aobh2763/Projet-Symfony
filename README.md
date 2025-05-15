@@ -13,3 +13,6 @@ endpoints:
     admin/
         dashboard/
         crud.../
+
+TODO: 
+    refactor navbar and footer to base twig
