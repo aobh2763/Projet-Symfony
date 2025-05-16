@@ -1,3 +1,105 @@
+{% set showcase = [
+    {
+        category: "Clothing",
+        title: "Lorem ipsum dolor sit amet",
+        main_image: "assets/img/product/product-1.webp",
+        hover_image: "assets/img/product/product-1-variant.webp",
+        price: 89.99,
+        old_price: 129.99,
+        rating: 4.5,
+        reviews: 24,
+        badge: "Sale",
+        filter: "filter-clothing"
+    },
+    {
+        category: "Electronics",
+        title: "Consectetur adipiscing elit",
+        main_image: "assets/img/product/product-2.webp",
+        hover_image: "assets/img/product/product-2-variant.webp",
+        price: 249.99,
+        old_price: null,
+        rating: 4.0,
+        reviews: 18,
+        badge: null,
+        filter: "filter-electronics"
+    },
+    {
+        category: "Accessories",
+        title: "Sed do eiusmod tempor",
+        main_image: "assets/img/product/product-3.webp",
+        hover_image: "assets/img/product/product-3-variant.webp",
+        price: 59.99,
+        old_price: null,
+        rating: 3.0,
+        reviews: 7,
+        badge: "New",
+        filter: "filter-accessories"
+    },
+    {
+        category: "Clothing",
+        title: "Incididunt ut labore et dolore",
+        main_image: "assets/img/product/product-4.webp",
+        hover_image: "assets/img/product/product-4-variant.webp",
+        price: 79.99,
+        old_price: 99.99,
+        rating: 5.0,
+        reviews: 32,
+        badge: null,
+        filter: "filter-clothing"
+    },
+    {
+        category: "Electronics",
+        title: "Magna aliqua ut enim ad minim",
+        main_image: "assets/img/product/product-5.webp",
+        hover_image: "assets/img/product/product-5-variant.webp",
+        price: 199.99,
+        old_price: 249.99,
+        rating: 3.5,
+        reviews: 15,
+        badge: "Sale",
+        filter: "filter-electronics"
+    },
+    {
+        category: "Accessories",
+        title: "Veniam quis nostrud exercitation",
+        main_image: "assets/img/product/product-6.webp",
+        hover_image: "assets/img/product/product-6-variant.webp",
+        price: 45.99,
+        old_price: null,
+        rating: 4.0,
+        reviews: 21,
+        badge: null,
+        filter: "filter-accessories"
+    },
+    {
+        category: "Clothing",
+        title: "Ullamco laboris nisi ut aliquip",
+        main_image: "assets/img/product/product-7.webp",
+        hover_image: "assets/img/product/product-7-variant.webp",
+        price: 69.99,
+        old_price: null,
+        rating: 3.5,
+        reviews: 11,
+        badge: "New",
+        filter: "filter-clothing"
+    },
+    {
+        category: "Electronics",
+        title: "Ex ea commodo consequat",
+        main_image: "assets/img/product/product-8.webp",
+        hover_image: "assets/img/product/product-8-variant.webp",
+        price: 159.99,
+        old_price: null,
+        rating: 5.0,
+        reviews: 29,
+        badge: null,
+        filter: "filter-electronics"
+    }
+] %}
+
+
+
+
 <section id="product-list" class="product-list section">
 
     <div class="container isotope-layout" data-aos="fade-up" data-aos-delay="100" data-default-filter="*" data-layout="masonry" data-sort="original-order">
@@ -17,268 +119,43 @@
 
         <div class="row product-container isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-            <!-- Product Item 1 -->
-            <div class="col-md-6 col-lg-3 product-item isotope-item filter-clothing">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge">Sale</span>
-                        <img src="{{ asset('assets/img/product/product-1.webp') }}" alt="Product" class="img-fluid main-img">
-                        <img src="{{ asset('assets/img/product/product-1-variant.webp') }}" alt="Product Hover" class="img-fluid hover-img">
-                        <div class="product-overlay">
-                            <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                            <div class="product-actions">
-                                <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Lorem ipsum dolor sit amet</a></h5>
-                        <div class="product-price">
-                            <span class="current-price">$89.99</span>
-                            <span class="old-price">$129.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <span>(24)</span>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Product Item -->
 
-            <!-- Product Item 2 -->
-            <div class="col-md-6 col-lg-3 product-item isotope-item filter-electronics">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{ asset('assets/img/product/product-2.webp') }}" alt="Product" class="img-fluid main-img">
-                        <img src="{{ asset('assets/img/product/product-2-variant.webp') }}" alt="Product Hover" class="img-fluid hover-img">
-                        <div class="product-overlay">
-                            <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                            <div class="product-actions">
-                                <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Consectetur adipiscing elit</a></h5>
-                        <div class="product-price">
-                            <span class="current-price">$249.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <span>(18)</span>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Product Item -->
 
-            <!-- Product Item 3 -->
-            <div class="col-md-6 col-lg-3 product-item isotope-item filter-accessories">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge">New</span>
-                        <img src="{{ asset('assets/img/product/product-3.webp') }}" alt="Product" class="img-fluid main-img">
-                        <img src="{{ asset('assets/img/product/product-3-variant.webp') }}" alt="Product Hover" class="img-fluid hover-img">
-                        <div class="product-overlay">
-                            <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                            <div class="product-actions">
-                                <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
+            {% for product in showcase %}
+                <div class="col-md-6 col-lg-3 product-item isotope-item {{ product.filter }}">
+                    <div class="product-card">
+                        <div class="product-image">
+                            {% if product.badge %}<span class="badge">{{ product.badge }}</span>{% endif %}
+                            <img src="{{ asset(product.main_image) }}" alt="Product" class="img-fluid main-img">
+                            <img src="{{ asset(product.hover_image) }}" alt="Product Hover" class="img-fluid hover-img">
+                            <div class="product-overlay">
+                                <a href="{{ path('app_user_cart') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                                <div class="product-actions">
+                                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
+                                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
+                                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">
+                                <a href="{{ path('app_product_details') }}">{{ product.title }}</a>
+                            </h5>
+                            <div class="product-price">
+                                <span class="current-price">${{ product.price }}</span>
+                                {% if product.old_price %}<span class="old-price">${{ product.old_price }}</span>{% endif %}
+                            </div>
+                            <div class="product-rating">
+                                {% for i in 1..5 %}
+                                    <i class="bi bi-star{% if product.rating >= i %}-fill{% elseif product.rating >= i - 0.5 %}-half{% else %}{% endif %}"></i>
+                                {% endfor %}
+                                <span>({{ product.reviews }})</span>
                             </div>
                         </div>
                     </div>
-                    <div class="product-info">
-                        <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Sed do eiusmod tempor</a></h5>
-                        <div class="product-price">
-                            <span class="current-price">$59.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <span>(7)</span>
-                        </div>
-                    </div>
                 </div>
-            </div><!-- End Product Item -->
+            {% endfor %}
 
-            <!-- Product Item 4 -->
-            <div class="col-md-6 col-lg-3 product-item isotope-item filter-clothing">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{ asset('assets/img/product/product-4.webp') }}" alt="Product" class="img-fluid main-img">
-                        <img src="{{ asset('assets/img/product/product-4-variant.webp') }}" alt="Product Hover" class="img-fluid hover-img">
-                        <div class="product-overlay">
-                            <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                            <div class="product-actions">
-                                <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Incididunt ut labore et dolore</a></h5>
-                        <div class="product-price">
-                            <span class="current-price">$79.99</span>
-                            <span class="old-price">$99.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <span>(32)</span>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Product Item -->
-
-            <!-- Product Item 5 -->
-            <div class="col-md-6 col-lg-3 product-item isotope-item filter-electronics">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge">Sale</span>
-                        <img src="{{ asset('assets/img/product/product-5.webp') }}" alt="Product" class="img-fluid main-img">
-                        <img src="{{ asset('assets/img/product/product-5-variant.webp') }}" alt="Product Hover" class="img-fluid hover-img">
-                        <div class="product-overlay">
-                            <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                            <div class="product-actions">
-                                <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Magna aliqua ut enim ad minim</a></h5>
-                        <div class="product-price">
-                            <span class="current-price">$199.99</span>
-                            <span class="old-price">$249.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                            <span>(15)</span>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Product Item -->
-
-            <!-- Product Item 6 -->
-            <div class="col-md-6 col-lg-3 product-item isotope-item filter-accessories">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{ asset('assets/img/product/product-6.webp') }}" alt="Product" class="img-fluid main-img">
-                        <img src="{{ asset('assets/img/product/product-6-variant.webp') }}" alt="Product Hover" class="img-fluid hover-img">
-                        <div class="product-overlay">
-                            <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                            <div class="product-actions">
-                                <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Veniam quis nostrud exercitation</a></h5>
-                        <div class="product-price">
-                            <span class="current-price">$45.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <span>(21)</span>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Product Item -->
-
-            <!-- Product Item 7 -->
-            <div class="col-md-6 col-lg-3 product-item isotope-item filter-clothing">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge">New</span>
-                        <img src="{{ asset('assets/img/product/product-7.webp') }}" alt="Product" class="img-fluid main-img">
-                        <img src="{{ asset('assets/img/product/product-7-variant.webp') }}" alt="Product Hover" class="img-fluid hover-img">
-                        <div class="product-overlay">
-                            <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                            <div class="product-actions">
-                                <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Ullamco laboris nisi ut aliquip</a></h5>
-                        <div class="product-price">
-                            <span class="current-price">$69.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                            <span>(11)</span>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Product Item -->
-
-            <!-- Product Item 8 -->
-            <div class="col-md-6 col-lg-3 product-item isotope-item filter-electronics">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{ asset('assets/img/product/product-8.webp') }}" alt="Product" class="img-fluid main-img">
-                        <img src="{{ asset('assets/img/product/product-8-variant.webp') }}" alt="Product Hover" class="img-fluid hover-img">
-                        <div class="product-overlay">
-                            <a href="{{ asset('cart.html.twig') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                            <div class="product-actions">
-                                <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h5 class="product-title"><a href="{{ asset('product-details.html.twig') }}">Ex ea commodo consequat</a></h5>
-                        <div class="product-price">
-                            <span class="current-price">$159.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <span>(29)</span>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Product Item -->
 
         </div>
 

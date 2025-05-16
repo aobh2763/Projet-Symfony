@@ -1,3 +1,36 @@
+{% set orders = [
+  {
+    image: 'assets/img/product/product-1.webp',
+    title: 'Lorem ipsum dolor sit amet',
+    color: 'Black',
+    size: 'M',
+    unit_price: 89.99,
+    quantity: 1,
+    original_price: null
+  },
+  {
+    image: 'assets/img/product/product-3.webp',
+    title: 'Consectetur adipiscing elit',
+    color: 'White',
+    size: 'L',
+    unit_price: 64.99,
+    quantity: 2,
+    original_price: 79.99
+  },
+  {
+    image: 'assets/img/product/product-5.webp',
+    title: 'Sed do eiusmod tempor',
+    color: 'Blue',
+    size: 'S',
+    unit_price: 49.99,
+    quantity: 1,
+    original_price: null
+  }
+] %}
+
+
+
+
 
 {% extends 'base.html.twig' %}
 {% block title %}
@@ -62,17 +95,12 @@
                 </div>
               </div>
 
-              <!-- Cart Item 1 -->
-              {% include 'fragments/For cart/item1.html.twig' %}
-              <!-- End Cart Item -->
 
-              <!-- Cart Item 2 -->
-              {% include 'fragments/For cart/item2.html.twig' %}
-              <!-- End Cart Item -->
+              <!-- Rendering Items -->
+              {% include 'fragments/For cart/rendering.html.twig' %}
 
-              <!-- Cart Item 3 -->
-              {% include 'fragments/For cart/item3.html.twig' %}
-              <!-- End Cart Item -->
+
+              <!-- End Items Rendering -->
 
               <div class="cart-actions">
                 <div class="row">

@@ -33,46 +33,45 @@
                             </div>
                         </div>
                         <div class="col-lg-6 image-col" data-aos="fade-left" data-aos-delay="200">
+                            {% set newcollection = [
+                                {
+                                    'name': 'Modern Style',
+                                    'image': 'assets/img/product/product-1.webp',
+                                    'price': 79.99
+                                },
+                                {
+                                    'name': 'Casual Collection',
+                                    'image': 'assets/img/product/product-2.webp',
+                                    'price': 64.99
+                                },
+                                {
+                                    'name': 'Premium Design',
+                                    'image': 'assets/img/product/product-6.webp',
+                                    'price': 89.99
+                                },
+                                {
+                                    'name': 'Elegant Series',
+                                    'image': 'assets/img/product/product-7.webp',
+                                    'price': 74.99
+                                }
+                            ] %}
+
                             <div class="product-showcase">
                                 <div class="product-grid">
-                                    <div class="product-item" data-aos="fade-up" data-aos-delay="300">
-                                        <div class="product-image">
-                                            <img src="{{ asset('assets/img/product/product-1.webp') }}" alt="New Product 1">
+                                    {% for product in newcollection %}
+                                        <div class="product-item" data-aos="fade-up" data-aos-delay="{{ 300 + loop.index0 * 100 }}">
+                                            <div class="product-image">
+                                                <img src="{{ asset(product.image) }}" alt="{{ product.name }}">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>{{ product.name }}</h4>
+                                                <span class="price">${{ product.price }}</span>
+                                            </div>
                                         </div>
-                                        <div class="product-info">
-                                            <h4>Modern Style</h4>
-                                            <span class="price">$79.99</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-item" data-aos="fade-up" data-aos-delay="400">
-                                        <div class="product-image">
-                                            <img src="{{ asset('assets/img/product/product-2.webp') }}" alt="New Product 2">
-                                        </div>
-                                        <div class="product-info">
-                                            <h4>Casual Collection</h4>
-                                            <span class="price">$64.99</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-item" data-aos="fade-up" data-aos-delay="500">
-                                        <div class="product-image">
-                                            <img src="{{ asset('assets/img/product/product-6.webp') }}" alt="New Product 3">
-                                        </div>
-                                        <div class="product-info">
-                                            <h4>Premium Design</h4>
-                                            <span class="price">$89.99</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-item" data-aos="fade-up" data-aos-delay="600">
-                                        <div class="product-image">
-                                            <img src="{{ asset('assets/img/product/product-7.webp') }}" alt="New Product 4">
-                                        </div>
-                                        <div class="product-info">
-                                            <h4>Elegant Series</h4>
-                                            <span class="price">$74.99</span>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
