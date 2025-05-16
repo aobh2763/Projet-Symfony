@@ -1,0 +1,334 @@
+/**
+ * Template Name: TacticalGuns
+ * Updated: May 16 2025 with Bootstrap v5.3.5
+ * Author: Adapted from BootstrapMade.com by Grok
+ * License: https://bootstrapmade.com/license/
+ */
+
+@charset "UTF-8";
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --heading-font: "Stencil", "Impact", sans-serif; /* Stencil font for military look */
+  --nav-font: "Stencil", "Impact", sans-serif;
+  --background-color: #F0EAD6; /* Light khaki for background */
+  --default-color: #000000; /* Black for text */
+  --heading-color: #4B5320; /* Army green for headings */
+  --accent-color: #8B0000; /* Subdued red for CTAs */
+  --surface-color: #2C3539; /* Gunmetal gray for boxed elements */
+  --contrast-color: #FFFFFF; /* White for contrast */
+  --nav-color: #000000;
+  --nav-hover-color: #8B0000;
+  --nav-mobile-background-color: #78866B; /* Camouflage green for mobile nav */
+  --nav-dropdown-background-color: #2C3539; /* Gunmetal gray for dropdowns */
+  --nav-dropdown-color: #FFFFFF;
+  --nav-dropdown-hover-color: #8B0000;
+}
+
+/* Camouflage background (base64 for simplicity) */
+:root {
+  --camouflage-bg: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5gUGCAsY0sX9ZQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAADqUlEQVR42u3de3BUVRnA8c85J3POyZnMiZxzzjlnnHPOOecM4JxzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOO perspective, I’m going to assume that you’re okay with me generating a new UUID for this artifact since it’s a new file and not an update of a previous one. Here’s the UUID I’ll use: `7b9f8e3a-4c2b-4d7a-9f5e-6a2c1b3d9f8e`.
+
+/* Color Presets */
+.light-background {
+  --background-color: #C3B091; /* Khaki */
+  --surface-color: #2C3539; /* Gunmetal gray */
+}
+
+.dark-background {
+  --background-color: #1C2526; /* Matte black */
+  --default-color: #FFFFFF;
+  --heading-color: #4B5320; /* Army green */
+  --accent-color: #8B0000;
+  --surface-color: #78866B; /* Camouflage green */
+  --contrast-color: #FFFFFF;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background: var(--camouflage-bg);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #C3B091; /* Khaki for hover */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Stencil effect */
+}
+
+/* PHP Email Form Messages */
+.php-email-form .error-message {
+  background: #8B0000; /* Subdued red */
+  color: #FFFFFF;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .sent-message {
+  background: #4B5320; /* Army green */
+  color: #FFFFFF;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .loading {
+  background: var(--surface-color);
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  color: var(--default-color);
+  background: var(--camouflage-bg);
+  transition: all 0.5s;
+  z-index: 997;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(to right, #4B5320, #78866B) 1; /* Chevron-like border */
+}
+
+.header .top-bar {
+  background-color: #2C3539; /* Gunmetal gray */
+  font-size: 14px;
+}
+
+.header .top-bar .top-bar-item {
+  color: var(--default-color);
+}
+
+.header .top-bar .top-bar-item a {
+  color: var(--accent-color);
+  display: inline-flex;
+  align-items: center;
+}
+
+.header .top-bar .top-bar-item a:hover {
+  color: #C3B091; /* Khaki */
+}
+
+.header .top-bar .top-bar-item .selected-icon {
+  color: var(--accent-color);
+  width: 16px;
+}
+
+/* Search Form */
+.header .search-form .input-group {
+  background-color: #2C3539; /* Gunmetal gray */
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header .search-form .input-group .form-control {
+  border: 2px solid #4B5320; /* Army green */
+  padding: 14px 20px;
+  background-color: transparent;
+  color: var(--default-color);
+}
+
+.header .search-form .input-group .form-control::placeholder {
+  color: #78866B; /* Camouflage green */
+}
+
+.header .search-form .input-group .form-control:focus {
+  border-color: var(--accent-color);
+}
+
+.header .search-form .input-group .search-btn {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 0 25px;
+  border: 2px solid #1C2526; /* Matte black */
+  border-radius: 0 8px 8px 0;
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1)); /* Carbon fiber effect */
+}
+
+.header .search-form .input-group .search-btn:hover {
+  background-color: #C3B091; /* Khaki */
+}
+
+/* Navigation Menu */
+.navmenu a, .navmenu a:focus {
+  color: var(--nav-color);
+  font-size: 15px;
+  font-family: var(--nav-font);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.navmenu li:hover>a, .navmenu .active, .navmenu .active:focus {
+  color: var(--nav-hover-color);
+}
+
+.navmenu .dropdown ul {
+  background: var(--nav-dropdown-background-color);
+  border: 1px solid #4B5320; /* Army green */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Product Cards */
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card {
+  background-color: #2C3539; /* Gunmetal gray */
+  border: 2px solid #4B5320; /* Army green */
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card:hover {
+  transform: scale(1.05);
+  border-color: #8B0000; /* Subdued red */
+}
+
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card .product-image {
+  height: 160px;
+  position: relative;
+}
+
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card .product-image::after {
+  content: "\e91e"; /* Crosshair icon from Bootstrap Icons */
+  font-family: 'bootstrap-icons';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: rgba(139, 0, 0, 0.5); /* Subdued red */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card:hover .product-image::after {
+  opacity: 1;
+}
+
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card .product-info {
+  padding: 15px;
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1)); /* Carbon fiber */
+}
+
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card .product-info h5 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card .product-info .btn-view {
+  padding: 5px 12px;
+  background-color: #8B0000;
+  color: #FFFFFF;
+  border: 2px solid #1C2526; /* Matte black */
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+  transition: all 0.3s;
+}
+
+.navmenu .products-megamenu-1 .megamenu-content .product-grid .product-card .product-info .btn-view:hover {
+  background-color: #C3B091; /* Khaki */
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+  background: var(--camouflage-bg);
+  color: var(--default-color);
+  font-size: 14px;
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(to right, #4B5320, #78866B) 1; /* Chevron-like border */
+}
+
+.footer .footer-main .footer-widget h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.footer .footer-main .footer-links a {
+  color: #C3B091; /* Khaki */
+}
+
+.footer .footer-main .footer-links a:hover {
+  color: var(--accent-color);
+}
+
+.footer .footer-main .footer-links li:before {
+  content: "\e91e"; /* Crosshair icon */
+  font-family: 'bootstrap-icons';
+  color: var(--accent-color);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: #1C2526; /* Matte black */
+  color: var(--contrast-color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #C3B091; /* Khaki */
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+/* Products Grid (Main Content) */
+.products-grid .product-card {
+  background-color: #2C3539; /* Gunmetal gray */
+  border: 2px solid #4B5320; /* Army green */
+  border-radius: 8px;
+  overflow'])
