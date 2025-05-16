@@ -39,40 +39,40 @@
                             <p class="mb-0">Access account &amp; manage orders</p>
                         </div>
                         <div class="dropdown-body">
-                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('account.html.twig') }}">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ path('app_user_account') }}">
                                 <i class="bi bi-person-circle me-2"></i>
                                 <span>My Profile</span>
                             </a>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('orders.html.twig') }}">
-                                <i class="bi bi-bag-check me-2"></i>
-                                <span>My Orders</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('wishlist.html.twig') }}">
-                                <i class="bi bi-heart me-2"></i>
-                                <span>My Wishlist</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('returns.html.twig') }}">
-                                <i class="bi bi-arrow-return-left me-2"></i>
-                                <span>Returns &amp; Refunds</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('settings.html.twig') }}">
-                                <i class="bi bi-gear me-2"></i>
-                                <span>Settings</span>
-                            </a>
+{#                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('orders.html.twig') }}">#}
+{#                                <i class="bi bi-bag-check me-2"></i>#}
+{#                                <span>My Orders</span>#}
+{#                            </a>#}
+{#                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('wishlist.html.twig') }}">#}
+{#                                <i class="bi bi-heart me-2"></i>#}
+{#                                <span>My Wishlist</span>#}
+{#                            </a>#}
+{#                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('returns.html.twig') }}">#}
+{#                                <i class="bi bi-arrow-return-left me-2"></i>#}
+{#                                <span>Returns &amp; Refunds</span>#}
+{#                            </a>#}
+{#                            <a class="dropdown-item d-flex align-items-center" href="{{ asset('settings.html.twig') }}">#}
+{#                                <i class="bi bi-gear me-2"></i>#}
+{#                                <span>Settings</span>#}
+{#                            </a>#}
                         </div>
                         <div class="dropdown-footer">
-                            <a href="{{ asset('../main/login') }}" class="btn btn-primary w-100 mb-2">Sign In</a>
-                            <a href="{{ asset('../main/register') }}" class="btn btn-outline-primary w-100">Register</a>
+                            <a href="{{ path('app_login') }}" class="btn btn-primary w-100 mb-2">Sign In</a>
+                            <a href="{{ path('app_register') }}" class="btn btn-outline-primary w-100">Register</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Wishlist -->
-                <a href="{{ asset('wishlist.html.twig') }}" class="header-action-btn d-none d-md-flex">
-                    <i class="bi bi-heart"></i>
-                    <span class="action-text d-none d-md-inline-block">Wishlist</span>
-                    <span class="badge">0</span>
-                </a>
+{#                <a href="{{ asset('wishlist.html.twig') }}" class="header-action-btn d-none d-md-flex">#}
+{#                    <i class="bi bi-heart"></i>#}
+{#                    <span class="action-text d-none d-md-inline-block">Wishlist</span>#}
+{#                    <span class="badge">0</span>#}
+{#                </a>#}
 
                 <!-- Cart -->
                 <div class="dropdown cart-dropdown">
@@ -136,8 +136,8 @@
                                 <span class="cart-total-price">$279.97</span>
                             </div>
                             <div class="cart-actions">
-                                <a href="{{ asset('cart.html.twig') }}" class="btn btn-outline-primary">View Cart</a>
-                                <a href="{{ asset('checkout.html.twig') }}" class="btn btn-primary">Checkout</a>
+                                <a href="{{ path('app_user_cart') }}" class="btn btn-outline-primary">View Cart</a>
+                                <a href="{{ path('app_user_checkout') }}" class="btn btn-primary">Checkout</a>
                             </div>
                         </div>
                     </div>

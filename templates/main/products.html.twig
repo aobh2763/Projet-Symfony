@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  Category - FashionStore Bootstrap Template
+{% endblock %}
+{% block body %}
+
+<body class="category-page">
+
+<header id="header" class="header position-relative">
+  <!-- Top Bar -->
+  {% include 'fragments/topbar.html.twig' %}
+
+  <!-- Main Header -->
+  {% include 'fragments/mainheader.html.twig' %}
+
+  <!-- Navigation -->
+  {% include 'fragments/navbar.html.twig' %}
+
+  <!-- Announcement Bar -->
+  {% include 'fragments/announcementbar.html.twig' %}
+
+</header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+            <li class="current">Category</li>
+          </ol>
+        </nav>
+        <h1>Category</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 sidebar">
+
+          <div class="widgets-container">
+
+            <!-- Product Categories Widget -->
+            {% include 'fragments/For products/categories.html.twig' %}
+
+            <!--/Product Categories Widget -->
+
+            <!-- Pricing Range Widget -->
+            {% include 'fragments/For products/pricerange.html.twig' %}
+            <!--/Pricing Range Widget -->
+
+            <!-- Brand Filter Widget -->
+            {% include 'fragments/For products/brand.html.twig' %}
+            <!--/Brand Filter Widget -->
+
+            <!-- Color Filter Widget -->
+            {% include 'fragments/For products/color.html.twig' %}
+            <!--/Color Filter Widget -->
+
+            <!-- Brand Filter Widget -->
+            {% include 'fragments/For products/brandfilter.html.twig' %}
+            <!--/Brand Filter Widget -->
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-8">
+
+          <!-- Category Header Section -->
+          {% include 'fragments/For products/productsheader.html.twig' %}
+          <!-- /Category Header Section -->
+
+          <!-- Category Product List Section -->
+          {% include 'fragments/For products/list.html.twig' %}
+          <!-- /Category Product List Section -->
+
+          <!-- Category Pagination Section -->
+          <section id="category-pagination" class="category-pagination section">
+
+            <div class="container">
+              <nav class="d-flex justify-content-center" aria-label="Page navigation">
+                <ul>
+                  <li>
+                    <a href="#" aria-label="Previous page">
+                      <i class="bi bi-arrow-left"></i>
+                      <span class="d-none d-sm-inline">Previous</span>
+                    </a>
+                  </li>
+
+                  <li><a href="#" class="active">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li class="ellipsis">...</li>
+                  <li><a href="#">8</a></li>
+                  <li><a href="#">9</a></li>
+                  <li><a href="#">10</a></li>
+
+                  <li>
+                    <a href="#" aria-label="Next page">
+                      <span class="d-none d-sm-inline">Next</span>
+                      <i class="bi bi-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+          </section><!-- /Category Pagination Section -->
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+{% endblock %}
