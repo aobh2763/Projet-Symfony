@@ -49,30 +49,39 @@ Login - FashionStore Bootstrap Template
                 <p>Welcome back! Please enter your details</p>
               </div>
 
-              <form>
+              {% if error %}
+                <div class="alert alert-danger">
+                  {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+              {% endif %}
+
+              {% if app.user %}
+                <div class="mb-3 text-center">
+                  You are logged in as {{ app.user.userIdentifier }},
+                  <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+              {% endif %}
+
+              <form method="post">
                 <div class="mb-4">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter your email" required="" autocomplete="email">
+                  <label for="inputUsername" class="form-label">Username</label>
+                  <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Enter your username" autocomplete="username" required autofocus>
                 </div>
 
                 <div class="mb-3">
-                  <div class="d-flex justify-content-between">
-                    <label for="password" class="form-label">Password</label>
-                    <a href="#" class="forgot-link">Forgot password?</a>
-                  </div>
-                  <input type="password" class="form-control" id="password" placeholder="Enter your password" required="" autocomplete="current-password">
+                  <label for="inputPassword" class="form-label">Password</label>
+                  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
                 </div>
 
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
                 <div class="mb-4 form-check">
-                  <input type="checkbox" class="form-check-input" id="remember">
-                  <label class="form-check-label" for="remember">Remember for 30 days</label>
+                  <input type="checkbox" class="form-check-input" name="_remember_me" id="remember">
+                  <label class="form-check-label" for="remember">Remember me</label>
                 </div>
 
                 <div class="d-grid gap-2 mb-4">
                   <button type="submit" class="btn btn-primary">Sign in</button>
-                  <button type="button" class="btn btn-outline">
-                    <i class="bi bi-google me-2"></i>Sign in with Google
-                  </button>
                 </div>
 
                 <div class="signup-link text-center">
@@ -80,11 +89,13 @@ Login - FashionStore Bootstrap Template
                   <a href="#">Sign up for free</a>
                 </div>
               </form>
+
             </div>
           </div>
         </div>
       </div>
-    </section><!-- /Login Section -->
+    </section>
+    <!-- /Login Section -->
 
   </main>
   {% endblock %}
