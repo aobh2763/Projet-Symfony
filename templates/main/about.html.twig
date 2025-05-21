@@ -1,0 +1,54 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}
+  About - FashionStore Bootstrap Template
+{% endblock %}
+{% block body %}
+
+<body class="about-page">
+
+<header id="header" class="header position-relative">
+  <!-- Top Bar -->
+  {% include 'fragments/topbar.html.twig' %}
+
+  <!-- Main Header -->
+  {% include 'fragments/mainheader.html.twig' %}
+
+  <!-- Navigation -->
+  {% include 'fragments/navbar.html.twig' %}
+
+  <!-- Announcement Bar -->
+  {% include 'fragments/announcementbar.html.twig' %}
+
+</header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+            <li class="current">About</li>
+          </ol>
+        </nav>
+        <h1>About</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- About 1 Section -->
+    {% include 'fragments/For about/section1.html.twig' %}
+    <!-- /About 1 Section -->
+
+    <!-- Stats Section -->
+    {% include 'fragments/For about/stats.html.twig' %}
+    <!-- /Stats Section -->
+
+    <!-- Testimonials Section -->
+    {% include 'fragments/For about/testimonials.html.twig' %}
+    <!-- /Testimonials Section -->
+
+  </main>
+
+{% endblock %}

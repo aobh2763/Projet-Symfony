@@ -1,0 +1,81 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}
+v{% endblock %}
+{% block body %}
+
+<body class="account-page">
+
+<header id="header" class="header position-relative">
+  <!-- Top Bar -->
+  {% include 'fragments/topbar.html.twig' %}
+
+  <!-- Main Header -->
+  {% include 'fragments/mainheader.html.twig' %}
+
+  <!-- Navigation -->
+  {% include 'fragments/navbar.html.twig' %}
+
+  <!-- Announcement Bar -->
+  {% include 'fragments/announcementbar.html.twig' %}
+
+</header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+            <li class="current">Account</li>
+          </ol>
+        </nav>
+        <h1>Account</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Account Section -->
+    <section id="account" class="account section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+
+
+        <div class="row">
+          <!-- Profile Sidebar -->
+            {% include 'fragments/For account/profilesidebar.html.twig' %}
+          <!-- Profile Content -->
+          <div class="col-lg-9 profile-content" data-aos="fade-left" data-aos-delay="300">
+            <div class="tab-content" id="profileTabsContent">
+              <!-- Orders Tab -->
+                {% include 'fragments/For account/orderstab.html.twig'%}
+              <!-- Wishlist Tab -->
+              {% include 'fragments/For account/wishlisttab.html.twig'%}
+              <!-- Payment Methods Tab -->
+              {% include 'fragments/For account/paymentmethod.html.twig'%}
+
+              <!-- Reviews Tab -->
+              {% include 'fragments/For account/reviewstab.html.twig'%}
+
+              <!-- Personal Info Tab -->
+              {% include 'fragments/For account/personalinfos.html.twig'%}
+
+              <!-- Addresses Tab -->
+              {% include 'fragments/For account/addressetab.html.twig'%}
+
+              <!-- Notifications Tab -->
+              {% include 'fragments/For account/notificationtab.html.twig'%}
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Account Section -->
+
+  </main>
+
+{% endblock %}

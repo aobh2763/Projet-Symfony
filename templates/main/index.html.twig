@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  Index - FashionStore Bootstrap Template
+{% endblock %}
+{% block body %}
+
+
+
+<body class="index-page">
+
+  <header id="header" class="header position-relative">
+    <!-- Top Bar -->
+    {% include 'fragments/topbar.html.twig' %}
+
+    <!-- Main Header -->
+    {% include 'fragments/mainheader.html.twig' %}
+
+    <!-- Navigation -->
+    {% include 'fragments/navbar.html.twig' %}
+
+    <!-- Announcement Bar -->
+    {% include 'fragments/announcementbar.html.twig' %}
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    {% include 'fragments/For index/slides.html.twig' %}
+    <!-- /Hero Section -->
+
+    <!-- Promo Cards Section -->
+    {% include 'fragments/For index/promocards.html.twig' %}
+    <!-- /Promo Cards Section -->
+
+    <!-- Category Cards Section -->
+    {% include 'fragments/For index/categories.html.twig' %}
+    <!-- /Category Cards Section -->
+
+    <!-- Best Sellers Section -->
+    {% include 'fragments/For index/bestsellers.html.twig' %}
+    <!-- /Best Sellers Section -->
+
+    <!-- Product List Section -->
+    {% include 'fragments/For index/productlist.html.twig' %}
+    <!-- /Product List Section -->
+
+  </main>
+  {% endblock %}

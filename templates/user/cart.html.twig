@@ -1,0 +1,139 @@
+{% set orders = [
+  {
+    image: 'assets/img/product/product-1.webp',
+    title: 'Lorem ipsum dolor sit amet',
+    color: 'Black',
+    size: 'M',
+    unit_price: 89.99,
+    quantity: 1,
+    original_price: null
+  },
+  {
+    image: 'assets/img/product/product-3.webp',
+    title: 'Consectetur adipiscing elit',
+    color: 'White',
+    size: 'L',
+    unit_price: 64.99,
+    quantity: 2,
+    original_price: 79.99
+  },
+  {
+    image: 'assets/img/product/product-5.webp',
+    title: 'Sed do eiusmod tempor',
+    color: 'Blue',
+    size: 'S',
+    unit_price: 49.99,
+    quantity: 1,
+    original_price: null
+  }
+] %}
+
+
+
+
+
+{% extends 'base.html.twig' %}
+{% block title %}
+  Cart - FashionStore Bootstrap Template
+{% endblock %}
+{% block body %}
+
+<body class="cart-page">
+
+<header id="header" class="header position-relative">
+  <!-- Top Bar -->
+  {% include 'fragments/topbar.html.twig' %}
+
+  <!-- Main Header -->
+  {% include 'fragments/mainheader.html.twig' %}
+
+  <!-- Navigation -->
+  {% include 'fragments/navbar.html.twig' %}
+
+  <!-- Announcement Bar -->
+  {% include 'fragments/announcementbar.html.twig' %}
+
+</header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+            <li class="current">Cart</li>
+          </ol>
+        </nav>
+        <h1>Cart</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Cart Section -->
+    <section id="cart" class="cart section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="cart-items">
+              <div class="cart-header d-none d-lg-block">
+                <div class="row align-items-center">
+                  <div class="col-lg-6">
+                    <h5>Product</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Price</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Quantity</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Total</h5>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Rendering Items -->
+              {% include 'fragments/For cart/rendering.html.twig' %}
+
+
+              <!-- End Items Rendering -->
+
+              <div class="cart-actions">
+                <div class="row">
+                  <div class="col-lg-6 mb-3 mb-lg-0">
+                    <div class="coupon-form">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Coupon code">
+                        <button class="btn btn-outline-accent" type="button">Apply Coupon</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 text-md-end">
+                    <button class="btn btn-outline-heading me-2">
+                      <i class="bi bi-arrow-clockwise"></i> Update Cart
+                    </button>
+                    <button class="btn btn-outline-remove">
+                      <i class="bi bi-trash"></i> Clear Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Summary Sidebar -->
+          {% include 'fragments/For cart/ordersummary.html.twig' %}
+
+        </div>
+
+      </div>
+
+    </section><!-- /Cart Section -->
+
+  </main>
+
+{% endblock %}
