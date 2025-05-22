@@ -17,6 +17,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -24,13 +26,35 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 final class MainController extends AbstractController
 {
-    public function __construct(private EmailVerifier $emailVerifier)
+    private EmailVerifier $emailVerifier;
+    private SessionInterface $session;
+    private RequestStack $requestStack;
+
+    public function __construct(EmailVerifier $emailVerifier, RequestStack $requestStack)
     {
+        $this->emailVerifier = $emailVerifier;
+        $this->session = $requestStack->getCurrentRequest()?->getSession();
+    }
+
+    public function onFirstVisit() {
+        if (!$this->session->has('firstVisit')) {
+            $this->session->set('firstVisit', true);
+
+            $cart = new Cart();
+            $cart->setPrixtotal(0.0);
+
+            $wishlist = new Wishlist();
+
+            $this->session->set('cart', $cart);
+            $this->session->set('wishlist', $wishlist);
+        }
     }
 
     #[Route('/main', name: 'app_main')]
     public function index(): Response
     {
+        $this->onFirstVisit();
+
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
         ]);
@@ -39,6 +63,8 @@ final class MainController extends AbstractController
     #[Route('/main/products', name: 'app_products')]
     public function products(): Response
     {
+        $this->onFirstVisit();
+
         return $this->render('main/products.html.twig', [
             'controller_name' => 'MainController',
         ]);
@@ -48,6 +74,8 @@ final class MainController extends AbstractController
     #[Route('/main/product-details', name: 'app_product_details')]
     public function productDetails(): Response
     {
+        $this->onFirstVisit();
+
         return $this->render('main/product-details.html.twig', [
             'controller_name' => 'MainController',
         ]);
@@ -55,6 +83,8 @@ final class MainController extends AbstractController
 
     #[Route('/main/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response {
+        $this->onFirstVisit();
+
         $error = $authenticationUtils->getLastAuthenticationError();
         
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -70,6 +100,8 @@ final class MainController extends AbstractController
     #[Route('/main/about', name: 'app_about')]
     public function about(): Response
     {
+        $this->onFirstVisit();
+
         return $this->render('main/about.html.twig', [
             'controller_name' => 'MainController',
         ]);
@@ -78,6 +110,8 @@ final class MainController extends AbstractController
     #[Route('/main/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
     {
+        $this->onFirstVisit();
+
         $user = new User();
         $form = $this->createForm(RegistrationForm::class, $user);
         $form->handleRequest($request);
@@ -89,12 +123,8 @@ final class MainController extends AbstractController
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
 
-            $cart = new Cart();
-            $cart->setPrixtotal(0.0);
-            $wishlist = new Wishlist();
-
-            $user->setCart($cart);
-            $user->setWishlist($wishlist);
+            $user->setCart($this->session->get('cart'));
+            $user->setWishlist($this->session->get('wishlist'));
             $user->setRoles(['ROLE_USER']);
 
             $entityManager->persist($user);
@@ -106,7 +136,7 @@ final class MainController extends AbstractController
                     ->from(new Address('gunstore@gmail.com', 'GunStore'))
                     ->to((string) $user->getEmail())
                     ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->htmlTemplate('main/confirmation_email.html.twig')
             );
 
             // do anything else you need here, like send an email
