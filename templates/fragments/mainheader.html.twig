@@ -95,7 +95,13 @@
                 <a href="{{ asset('wishlist.html.twig') }}" class="header-action-btn d-none d-md-flex">
                     <i class="bi bi-heart"></i>
                     <span class="action-text d-none d-md-inline-block">Wishlist</span>
-                    <span class="badge">0</span>
+                    <span class="badge">
+                        {% if is_granted('ROLE_USER') %}
+                        {{ app.user.wishlist.wishes|length }}
+                        {% else %}
+                        {{ app.session.get('wishlist').wishes|length }}
+                        {% endif %}
+                    </span>
                 </a>
 
                 <!-- Cart -->
@@ -103,11 +109,21 @@
                     <button class="header-action-btn" data-bs-toggle="dropdown">
                         <i class="bi bi-cart3"></i>
                         <span class="action-text d-none d-md-inline-block">Cart</span>
-                        <span class="badge">3</span>
+                        <span class="badge">
+                            {% if is_granted('ROLE_USER') %}
+                            {{ app.user.cart.orders|length }}
+                            {% else %}
+                            {{ app.session.get('cart').orders|length }}
+                            {% endif %}
+                        </span>
                     </button>
                     <div class="dropdown-menu cart-dropdown-menu">
                         <div class="dropdown-header">
-                            <h6>Shopping Cart (3)</h6>
+                            {% if is_granted('ROLE_USER') %}
+                            <h6>Shopping Cart ({{ app.user.cart.orders|length }})</h6>
+                            {% else %}
+                            <h6>Shopping Cart ({{ app.session.get('cart').orders|length }})</h6>
+                            {% endif %}
                         </div>
                         <div class="dropdown-body">
                             <div class="cart-items">

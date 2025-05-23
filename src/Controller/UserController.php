@@ -11,6 +11,8 @@ final class UserController extends AbstractController
     #[Route('/user', name: 'app_user')]
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
         ]);
@@ -19,6 +21,8 @@ final class UserController extends AbstractController
     #[Route('/user/account', name: 'app_user_account')]
     public function account(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         return $this->render('user/account.html.twig', [
             'controller_name' => 'UserController',
         ]);
@@ -26,7 +30,9 @@ final class UserController extends AbstractController
 
     #[Route('/user/checkout', name: 'app_user_checkout')]
     public function checkout(): Response
-    {
+    {   
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         return $this->render('user/checkout.html.twig', [
             'controller_name' => 'UserController',
         ]);

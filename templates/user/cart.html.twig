@@ -1,35 +1,8 @@
-{% set orders = [
-  {
-    image: 'assets/img/product/product-1.webp',
-    title: 'Lorem ipsum dolor sit amet',
-    color: 'Black',
-    size: 'M',
-    unit_price: 89.99,
-    quantity: 1,
-    original_price: null
-  },
-  {
-    image: 'assets/img/product/product-3.webp',
-    title: 'Consectetur adipiscing elit',
-    color: 'White',
-    size: 'L',
-    unit_price: 64.99,
-    quantity: 2,
-    original_price: 79.99
-  },
-  {
-    image: 'assets/img/product/product-5.webp',
-    title: 'Sed do eiusmod tempor',
-    color: 'Blue',
-    size: 'S',
-    unit_price: 49.99,
-    quantity: 1,
-    original_price: null
-  }
-] %}
-
-
-
+{% if is_granted("ROLE_USER") %}
+  {% set orders = app.user.cart.orders %}
+{% else %}
+  {% set orders = app.session.get('cart').orders %}
+{% endif %}
 
 
 {% extends 'base.html.twig' %}

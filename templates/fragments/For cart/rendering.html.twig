@@ -121,18 +121,19 @@
 </script>
 
 {% for order in orders %}
+    {% set product = order.product %}
     <div class="cart-item">
         <div class="row align-items-center">
             <div class="col-lg-6 col-12 mt-3 mt-lg-0 mb-lg-0 mb-3">
                 <div class="product-info d-flex align-items-center">
                     <div class="product-image">
-                        <img src="{{ asset(order.image) }}" alt="Product" class="img-fluid" loading="lazy">
+                        <img src="{{ asset(product.image) }}" alt="Product" class="img-fluid" loading="lazy">
                     </div>
                     <div class="product-details">
-                        <h6 class="product-title">{{ order.title }}</h6>
+                        <h6 class="product-title">{{ product.name }}</h6>
                         <div class="product-meta">
-                            <span class="product-color">Color: {{ order.color }}</span>
-                            <span class="product-size">Size: {{ order.size }}</span>
+                            <span class="product-color">Weight: {{ product.weight }}</span>
+                            <span class="product-size">Rating: {{ product.rating }}</span>
                         </div>
                         <button class="remove-item" type="button">
                             <i class="bi bi-trash"></i> Remove
@@ -142,9 +143,9 @@
             </div>
             <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
                 <div class="price-tag">
-                    <span class="current-price">${{ '%.2f'|format(order.unit_price) }}</span>
-                    {% if order.original_price %}
-                        <span class="original-price">${{ '%.2f'|format(order.original_price) }}</span>
+                    <span class="current-price">${{ '%.2f'|format(product.price - product.sale * product.price) }}</span>
+                    {% if product.sale != 0 %}
+                        <span class="original-price">${{ '%.2f'|format(product.price) }}</span>
                     {% endif %}
                 </div>
             </div>
@@ -161,7 +162,7 @@
             </div>
             <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
                 <div class="item-total">
-                    <span>${{ '%.2f'|format(order.unit_price * order.quantity) }}</span>
+                    <span>${{ '%.2f'|format((product.price - product.sale * product.price) * order.quantity) }}</span>
                 </div>
             </div>
         </div>
