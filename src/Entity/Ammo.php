@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: AmmoRepository::class)]
 class Ammo extends Product
 {
+
     #[ORM\Column]
     private ?int $quantity = null;
 
@@ -36,5 +37,10 @@ class Ammo extends Product
         $this->gun = $gun;
 
         return $this;
+    }
+
+    public function getCategory(): string
+    {
+        return 'ammo';
     }
 }

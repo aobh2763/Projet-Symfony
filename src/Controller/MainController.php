@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Cart;
+use App\Entity\Product;
 use App\Entity\Wishlist;
+use App\Form\FilterTypeForm;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +17,7 @@ use App\Form\RegistrationForm;
 use App\Security\AppCustomAuthenticator;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,6 +54,13 @@ final class MainController extends AbstractController
         }
     }
 
+    #[Route('/', name: 'app_home')]
+    public function home() {
+        $this->onFirstVisit();
+
+        return new RedirectResponse($this->generateUrl('app_main'));
+    }
+
     #[Route('/main', name: 'app_main')]
     public function index(): Response
     {
@@ -60,13 +71,35 @@ final class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/main/products', name: 'app_products')]
-    public function products(): Response
+    #[Route('/main/products/{page}', name: 'app_products', defaults: ['page' => 1])]
+    public function products(ManagerRegistry $doctrine, int $page, Request $request): Response
     {
         $this->onFirstVisit();
+        
+        $form = $this->createForm(FilterTypeForm::class, null, [
+            'action' => $this->generateUrl('app_products', ['page' => $page]),
+            'method' => 'GET'
+        ]);
+        $form->handleRequest($request);
+
+        $data = $form->getData();
+        
+        /** @var ProductRepository $prod_rep */
+        $prod_rep = $doctrine->getRepository(Product::class);
+
+        $products = $prod_rep->getFilteredProducts(
+            $data['name'] ?? '',
+            $data['type'] ?? 'any',
+            $data['range'] ?? 'all',
+            $data['sort'] ?? 'featured'
+        );
+
+        $view = $form->createView();
 
         return $this->render('main/products.html.twig', [
-            'controller_name' => 'MainController',
+            'products' => $products,
+            'page' => $page,
+            'filterform' => $view
         ]);
     }
 
