@@ -99,18 +99,28 @@ final class MainController extends AbstractController
         return $this->render('main/products.html.twig', [
             'products' => $products,
             'page' => $page,
-            'filterform' => $view
+            'filterform' => $view,
+            'filters' => $request->query->all()
         ]);
     }
 
     // TODO: root needs a product id
-    #[Route('/main/product-details', name: 'app_product_details')]
-    public function productDetails(): Response
+    #[Route('/main/product-details/{pid}', name: 'app_product_details', requirements: ['pid' => '\d+'])]
+    public function productDetails(ManagerRegistry $doctrine, int $pid): Response
     {
         $this->onFirstVisit();
 
+        $prod_rep = $doctrine->getRepository(Product::class);
+
+        $product = $prod_rep->find($pid);
+        if (!$product) {
+            return $this->render('main/404.html.twig', [
+                'message' => 'Product not found.'
+            ]);
+        }
+
         return $this->render('main/product-details.html.twig', [
-            'controller_name' => 'MainController',
+            'product' => $product
         ]);
     }
 

@@ -14,7 +14,7 @@
                     <a href="{{ path('app_products') }}" class="{% if current_route == 'app_products' %}active{% endif %}">Products</a>
                 </li>
                 <li>
-                    <a href="{{ path('app_product_details') }}" class="{% if current_route == 'app_product_details' %}active{% endif %}">Product Details</a>
+                    <a href="{{ path('app_product_details', {'pid': 200}) }}" class="{% if current_route == 'app_product_details' %}active{% endif %}">Product Details</a>
                 </li>
                 <li>
                     <a href="{{ path('app_user_checkout') }}" class="{% if current_route == 'app_user_checkout' %}active{% endif %}">Checkout</a>

@@ -91,7 +91,8 @@ class ProductRepository extends ServiceEntityRepository
                 $qb->orderBy('p.rating', 'DESC');
                 break;
             case 'on_sale':
-                $qb->andWhere('p.onSale = true');
+                $qb->andWhere('p.sale > 0.0')
+                   ->orderBy('p.sale', 'DESC');
                 break;
             default:
                 throw new \InvalidArgumentException('Invalid sortby value');

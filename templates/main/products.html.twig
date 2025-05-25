@@ -62,69 +62,69 @@
                 <ul>
                   <li>
                     {% if page != 1 %}
-                    <a href="{{ path('app_products', {'page': page - 1}) }}" aria-label="Previous page">
+                    <a href="{{ path('app_products', filters|merge({'page': page - 1})) }}" aria-label="Previous page">
                     {% else %}
-                    <a href="{{ path('app_products', {'page': 1}) }}" aria-label="Previous page" class="disabled">
+                    <a href="{{ path('app_products', filters|merge({'page': 1})) }}" aria-label="Previous page" class="disabled">
                     {% endif %}
                       <i class="bi bi-arrow-left"></i>
                       <span class="d-none d-sm-inline">Previous</span>
                     </a>
                   </li>
 
-                  {% if pages > 7 %}
-                    {% if page == 1 %}
-                      <li><a href="{{ path('app_products', {'page': 1}) }}" class="active">1</a></li>
-                      <li><a href="{{ path('app_products', {'page': 2}) }}">2</a></li>
-                      <li><a href="{{ path('app_products', {'page': 3}) }}">3</a></li>
-                      <li class="ellipsis">...</li>
-                      <li><a href="{{ path('app_products', {'page': pages - 2}) }}">{{ pages - 2 }}</a></li>
-                      <li><a href="{{ path('app_products', {'page': pages - 1}) }}">{{ pages - 1 }}</a></li>
-                      <li><a href="{{ path('app_products', {'page': pages}) }}">{{ pages }}</a></li>
-                    {% elseif page == 2 %}
-                      <li><a href="{{ path('app_products', {'page': 1}) }}">1</a></li>
-                      <li><a href="{{ path('app_products', {'page': 2}) }}" class="active">2</a></li>
-                      <li><a href="{{ path('app_products', {'page': 3}) }}">3</a></li>
-                      <li class="ellipsis">...</li>
-                      <li><a href="{{ path('app_products', {'page': pages - 2}) }}">{{ pages - 2 }}</a></li>
-                      <li><a href="{{ path('app_products', {'page': pages - 1}) }}">{{ pages - 1 }}</a></li>
-                      <li><a href="{{ path('app_products', {'page': pages}) }}">{{ pages }}</a></li>
-                    {% elseif page == 3 %}
-                      <li><a href="{{ path('app_products', {'page': 1}) }}">1</a></li>
-                      <li><a href="{{ path('app_products', {'page': 2}) }}">2</a></li>
-                      <li><a href="{{ path('app_products', {'page': 3}) }}" class="active">3</a></li>
-                      <li class="ellipsis">...</li>
-                      <li><a href="{{ path('app_products', {'page': pages - 2}) }}">{{ pages - 2 }}</a></li>
-                      <li><a href="{{ path('app_products', {'page': pages - 1}) }}">{{ pages - 1 }}</a></li>
-                      <li><a href="{{ path('app_products', {'page': pages}) }}">{{ pages }}</a></li>
-                    {% else %}
-                      <li><a href="{{ path('app_products', {'page': 1}) }}">1</a></li>
-                      <li><a href="{{ path('app_products', {'page': 2}) }}">2</a></li>
-                      <li><a href="{{ path('app_products', {'page': 3}) }}">3</a></li>
-                      <li class="ellipsis">...</li>
-                      <li><a href="{{ path('app_products', {'page': page - 1}) }}">{{ page - 1 }}</a></li>
-                      {% if page == pages %}
-                        <li><a href="{{ path('app_products', {'page': page}) }}" class="active">{{ page }}</a></li>
-                      {% else %}
-                        <li><a href="{{ path('app_products', {'page': page}) }}" class="active">{{ page }}</a></li>
-                        <li><a href="{{ path('app_products', {'page': page + 1}) }}">{{ page + 1 }}</a></li>
+                    {% if pages > 7 %}
+                      {% if page == 1 %}
+                        <li><a href="{{ path('app_products', filters|merge({'page': 1})) }}" class="active">1</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}">2</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 3})) }}">3</a></li>
                         <li class="ellipsis">...</li>
-                      {% endif %}
-                    {% endif %}
-                  {% else %}
-                    {% for i in 1..pages %}
-                      {% if i == page %}
-                        <li><a href="{{ path('app_products', {'page': i}) }}" class="active">{{ i }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages - 2})) }}">{{ pages - 2 }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages - 1})) }}">{{ pages - 1 }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages})) }}">{{ pages }}</a></li>
+                      {% elseif page == 2 %}
+                        <li><a href="{{ path('app_products', filters|merge({'page': 1})) }}">1</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}" class="active">2</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 3})) }}">3</a></li>
+                        <li class="ellipsis">...</li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages - 2})) }}">{{ pages - 2 }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages - 1})) }}">{{ pages - 1 }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages})) }}">{{ pages }}</a></li>
+                      {% elseif page == 3 %}
+                        <li><a href="{{ path('app_products', filters|merge({'page': 1})) }}">1</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}">2</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 3})) }}" class="active">3</a></li>
+                        <li class="ellipsis">...</li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages - 2})) }}">{{ pages - 2 }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages - 1})) }}">{{ pages - 1 }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': pages})) }}">{{ pages }}</a></li>
                       {% else %}
-                        <li><a href="{{ path('app_products', {'page': i}) }}">{{ i }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 1})) }}">1</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}">2</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': 3})) }}">3</a></li>
+                        <li class="ellipsis">...</li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': page - 1})) }}">{{ page - 1 }}</a></li>
+                        {% if page == pages %}
+                        <li><a href="{{ path('app_products', filters|merge({'page': page})) }}" class="active">{{ page }}</a></li>
+                        {% else %}
+                        <li><a href="{{ path('app_products', filters|merge({'page': page})) }}" class="active">{{ page }}</a></li>
+                        <li><a href="{{ path('app_products', filters|merge({'page': page + 1})) }}">{{ page + 1 }}</a></li>
+                        <li class="ellipsis">...</li>
+                        {% endif %}
                       {% endif %}
-                    {% endfor %}
-                  {% endif %}
-
-                  <li>
-                    {% if page != pages %}
-                    <a href="{{ path('app_products', {'page': page + 1}) }}" aria-label="Next page">
                     {% else %}
-                    <a href="{{ path('app_products', {'page': page}) }}" aria-label="Next page" class="disabled">
+                      {% for i in 1..pages %}
+                        {% if i == page %}
+                        <li><a href="{{ path('app_products', filters|merge({'page': i})) }}" class="active">{{ i }}</a></li>
+                        {% else %}
+                        <li><a href="{{ path('app_products', filters|merge({'page': i})) }}">{{ i }}</a></li>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+
+                    <li>
+                    {% if page != pages %}
+                    <a href="{{ path('app_products', filters|merge({'page': page + 1})) }}" aria-label="Next page">
+                    {% else %}
+                    <a href="{{ path('app_products', filters|merge({'page': page})) }}" aria-label="Next page" class="disabled">
                     {% endif %}
                       <span class="d-none d-sm-inline">Next</span>
                       <i class="bi bi-arrow-right"></i>
