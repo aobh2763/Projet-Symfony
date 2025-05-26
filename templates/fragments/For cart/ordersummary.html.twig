@@ -1,10 +1,15 @@
+{% if is_granted('ROLE_USER') %}
+    {% set cart = app.user.cart %}
+{% else %}
+    {% set cart = app.session.get('cart') %}
+{% endif %}
 <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
     <div class="cart-summary">
         <h4 class="summary-title">Order Summary</h4>
 
         <div class="summary-item">
             <span class="summary-label">Subtotal</span>
-            <span class="summary-value">$269.96</span>
+            <span class="summary-value">${{ '%.2f'|format(cart.prixtotal) }}</span>
         </div>
 
         <div class="summary-item shipping-item">
@@ -22,38 +27,45 @@
                         Express Delivery - $12.99
                     </label>
                 </div>
+                {% if cart.prixtotal > 300 %}
                 <div class="form-check text-end">
                     <input class="form-check-input" type="radio" name="shipping" id="free">
                     <label class="form-check-label" for="free">
                         Free Shipping (Orders over $300)
                     </label>
                 </div>
+                {% endif %}
             </div>
         </div>
 
+         
         <div class="summary-item">
             <span class="summary-label">Tax</span>
-            <span class="summary-value">$27.00</span>
+            <span class="summary-value">${{ '%.2f'|format(cart.prixtotal * 0.01) }}</span>
         </div>
 
+        {#
         <div class="summary-item discount">
             <span class="summary-label">Discount</span>
             <span class="summary-value">-$0.00</span>
         </div>
+        #}
 
         <div class="summary-total">
             <span class="summary-label">Total</span>
-            <span class="summary-value">$301.95</span>
+            <span class="summary-value">${{ '%.2f'|format(cart.prixtotal + 4.99 + cart.prixtotal * 0.01)  }}</span>
         </div>
 
+        {% if cart.prixtotal != 0 %}
         <div class="checkout-button">
             <a href="#" class="btn btn-accent w-100">
                 Proceed to Checkout <i class="bi bi-arrow-right"></i>
             </a>
         </div>
+        {% endif %}
 
         <div class="continue-shopping">
-            <a href="#" class="btn btn-link w-100">
+            <a href="{{ path('app_products') }}" class="btn btn-link w-100">
                 <i class="bi bi-arrow-left"></i> Continue Shopping
             </a>
         </div>

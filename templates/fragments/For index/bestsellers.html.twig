@@ -127,7 +127,8 @@
                         <div class="product-details">
                             <div class="product-category">{{ product.category }}</div>
                             <h4 class="product-title">
-                                <a href="{{ path('app_product_details') }}">{{ product.name }}</a>
+                                {% set pid = '200' %}
+                                <a href="{{ path('app_product_details', {'pid': 200}) }}">{{ product.name }}</a>
                             </h4>
                             <div class="product-meta">
                                 <div class="product-price">

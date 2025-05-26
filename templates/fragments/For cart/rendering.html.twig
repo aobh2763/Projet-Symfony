@@ -98,15 +98,6 @@
             });
         });
 
-        // Handle clear cart button
-        const clearCartButton = document.querySelector('.btn-outline-remove');
-        if (clearCartButton) {
-            clearCartButton.addEventListener('click', function () {
-                document.querySelectorAll('.cart-item').forEach(item => item.remove());
-                updateTotals();
-            });
-        }
-
         // Handle update cart button
         const updateCartButton = document.querySelector('.btn-outline-heading');
         if (updateCartButton) {
@@ -135,9 +126,9 @@
                             <span class="product-color">Weight: {{ product.weight }}</span>
                             <span class="product-size">Rating: {{ product.rating }}</span>
                         </div>
-                        <button class="remove-item" type="button">
+                        <a href="{{ path('app_user_cart_remove', {'pid': product.id}) }}" class="remove-item">
                             <i class="bi bi-trash"></i> Remove
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@
                             </div>
                             {% else %}
                             <div class="add-to-cart-container">
-                                <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                                <a href="{{ path('app_user_cart_add', {'pid': product.id, 'qte': 1}) }}"><button type="button" class="add-to-cart-btn">Add to Cart</button></a>
                             </div>
                             {% endif %}
                         </div>

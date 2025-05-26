@@ -146,6 +146,7 @@
                 </div>
               </div><br>
 
+              {#
               <!-- Product Options -->
               <div class="product-options">
                 <!-- Quantity Selector -->
@@ -162,15 +163,13 @@
                   </div>
                 </div>
               </div>
+              #}
 
               <!-- Action Buttons -->
               <div class="product-actions">
-                <button class="btn btn-primary add-to-cart-btn">
+                <a href="{{ path('app_user_cart_add', {'pid': product.id, 'qte': 1}) }}" class="btn btn-primary add-to-cart-btn">
                   <i class="bi bi-cart-plus"></i> Add to Cart
-                </button>
-                <button class="btn btn-outline-primary buy-now-btn">
-                  <i class="bi bi-lightning-fill"></i> Buy Now
-                </button>
+                </a>
                 <button class="btn btn-outline-secondary wishlist-btn" aria-label="Add to wishlist">
                   <i class="bi bi-heart"></i>
                 </button>
