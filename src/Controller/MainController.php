@@ -30,8 +30,8 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 final class MainController extends AbstractController
 {
-    public EmailVerifier $emailVerifier;
-    public SessionInterface $session;
+    private EmailVerifier $emailVerifier;
+    private SessionInterface $session;
 
     public function __construct(EmailVerifier $emailVerifier, RequestStack $requestStack) {
         $this->emailVerifier = $emailVerifier;

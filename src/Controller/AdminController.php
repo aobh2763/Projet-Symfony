@@ -6,37 +6,35 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+use App\Service\AdminService;
+
 final class AdminController extends AbstractController
 {
+
+    private AdminService $adminService;
+
+    public function __construct(AdminService $adminService){
+        $this->adminService = $adminService;
+    }
+
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
-    }
+        // visualise stats and give orders preview
 
-    #[Route('/admin/dashboard', name: 'app_admin_dashboard')]
-    public function dashboard(): Response
-    {
         return $this->render('admin/dashboard.html.twig', [
             'controller_name' => 'AdminController',
         ]);
     }
 
-    #[Route('/admin/order-confirmation', name: 'app_admin_order_confirmation')]
-    public function orderConfirmation(): Response
+    #[Route('/admin/orders', name: 'app_admin_orders')]
+    public function orders(): Response
     {
-        return $this->render('admin/order-confirmation.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
-    }
+        // visualize list of orders
 
-    #[Route('/admin/acount', name: 'app_admin_account')]
-    public function account(): Response
-    {
-        return $this->render('admin/account.html.twig', [
+        return $this->render('admin/orders.html.twig', [
             'controller_name' => 'AdminController',
+            'orders' => $this->adminService->getOrders()
         ]);
     }
 }
