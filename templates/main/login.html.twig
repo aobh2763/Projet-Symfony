@@ -1,101 +1,89 @@
-
 {% extends 'base.html.twig' %}
+
 {% block title %}
-Login - FashionStore Bootstrap Template
+    Login - GunStore
 {% endblock %}
+
 {% block body %}
+    <body class="login-page">
 
-<body class="login-page">
+        <!-- Page Header -->
+        {% include 'fragments/header.html.twig' %}
 
-  <header id="header" class="header position-relative">
-    <!-- Top Bar -->
-    {% include 'fragments/topbar.html.twig' %}
+        <main class="main">
 
-    <!-- Main Header -->
-    {% include 'fragments/mainheader.html.twig' %}
-
-    <!-- Navigation -->
-    {% include 'fragments/navbar.html.twig' %}
-
-    <!-- Announcement Bar -->
-    {% include 'fragments/announcementbar.html.twig' %}
-
-
-  </header>
-
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title light-background position-relative">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="{{ asset('../main/index.html.twig') }}">Home</a></li>
-            <li class="current">Login</li>
-          </ol>
-        </nav>
-        <h1>Login</h1>
-      </div>
-    </div><!-- End Page Title -->
-
-    <!-- Login Section -->
-    <section id="login" class="login section">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-center">
-          <div class="col-lg-5 col-md-8" data-aos="zoom-in" data-aos-delay="200">
-            <div class="login-form-wrapper">
-              <div class="login-header text-center">
-                <h2>Login</h2>
-                <p>Welcome back! Please enter your details</p>
-              </div>
-
-              {% if error %}
-                <div class="alert alert-danger">
-                  {{ error.messageKey|trans(error.messageData, 'security') }}
+            <!-- Page Title -->
+            <div class="page-title light-background position-relative">
+                <div class="container">
+                    <nav class="breadcrumbs">
+                        <ol>
+                            <li><a href="{{ asset('../main/index.html.twig') }}">Home</a></li>
+                            <li class="current">Login</li>
+                        </ol>
+                    </nav>
+                    <h1>Login</h1>
                 </div>
-              {% endif %}
+            </div><!-- End Page Title -->
 
-              {% if app.user %}
-                <div class="mb-3 text-center">
-                  You are logged in as {{ app.user.userIdentifier }},
-                  <a href="{{ path('app_logout') }}">Logout</a>
+            <!-- Login Section -->
+            <section id="login" class="login section">
+                <div class="container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5 col-md-8" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="login-form-wrapper">
+                                <div class="login-header text-center">
+                                    <h2>Login</h2>
+                                    <p>Welcome back! Please enter your details</p>
+                                </div>
+
+                                {% if error %}
+                                    <div class="alert alert-danger">
+                                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                                    </div>
+                                {% endif %}
+
+                                {% if app.user %}
+                                    <div class="mb-3 text-center">
+                                        You are logged in as {{ app.user.userIdentifier }},
+                                        <a href="{{ path('app_logout') }}">Logout</a>
+                                    </div>
+                                {% endif %}
+
+                                <form method="post">
+                                    <div class="mb-4">
+                                        <label for="inputUsername" class="form-label">Username</label>
+                                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Enter your username" autocomplete="username" required autofocus>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="inputPassword" class="form-label">Password</label>
+                                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
+                                    </div>
+
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" name="_remember_me" id="remember">
+                                        <label class="form-check-label" for="remember">Remember me</label>
+                                    </div>
+
+                                    <div class="d-grid gap-2 mb-4">
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                    </div>
+
+                                    <div class="signup-link text-center">
+                                        <span>Don't have an account?</span>
+                                        <a href="{{ path('app_register') }}">Sign up for free</a>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              {% endif %}
+            </section>
+            <!-- /Login Section -->
 
-              <form method="post">
-                <div class="mb-4">
-                  <label for="inputUsername" class="form-label">Username</label>
-                  <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Enter your username" autocomplete="username" required autofocus>
-                </div>
-
-                <div class="mb-3">
-                  <label for="inputPassword" class="form-label">Password</label>
-                  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
-                </div>
-
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-                <div class="mb-4 form-check">
-                  <input type="checkbox" class="form-check-input" name="_remember_me" id="remember">
-                  <label class="form-check-label" for="remember">Remember me</label>
-                </div>
-
-                <div class="d-grid gap-2 mb-4">
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
-
-                <div class="signup-link text-center">
-                  <span>Don't have an account?</span>
-                  <a href="{{ path('app_register') }}">Sign up for free</a>
-                </div>
-              </form>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /Login Section -->
-
-  </main>
-  {% endblock %}
+        </main>
+    </body>
+{% endblock %}
