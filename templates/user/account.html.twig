@@ -6,20 +6,8 @@ v{% endblock %}
 
 <body class="account-page">
 
-<header id="header" class="header position-relative">
-  <!-- Top Bar -->
-  {% include 'fragments/topbar.html.twig' %}
-
-  <!-- Main Header -->
-  {% include 'fragments/mainheader.html.twig' %}
-
-  <!-- Navigation -->
-  {% include 'fragments/navbar.html.twig' %}
-
-  <!-- Announcement Bar -->
-  {% include 'fragments/announcementbar.html.twig' %}
-
-</header>
+<!-- Page Header -->
+{% include 'fragments/header.html.twig' %}
 
   <main class="main">
 
@@ -45,28 +33,28 @@ v{% endblock %}
 
         <div class="row">
           <!-- Profile Sidebar -->
-            {% include 'fragments/For account/profilesidebar.html.twig' %}
+            {% include 'fragments/account/profilesidebar.html.twig' %}
           <!-- Profile Content -->
           <div class="col-lg-9 profile-content" data-aos="fade-left" data-aos-delay="300">
             <div class="tab-content" id="profileTabsContent">
               <!-- Orders Tab -->
-                {% include 'fragments/For account/orderstab.html.twig'%}
+                {% include 'fragments/account/orderstab.html.twig'%}
               <!-- Wishlist Tab -->
-              {% include 'fragments/For account/wishlisttab.html.twig'%}
+              {% include 'fragments/account/wishlisttab.html.twig'%}
               <!-- Payment Methods Tab -->
-              {% include 'fragments/For account/paymentmethod.html.twig'%}
+              {% include 'fragments/account/paymentmethod.html.twig'%}
 
               <!-- Reviews Tab -->
-              {% include 'fragments/For account/reviewstab.html.twig'%}
+              {% include 'fragments/account/reviewstab.html.twig'%}
 
               <!-- Personal Info Tab -->
-              {% include 'fragments/For account/personalinfos.html.twig'%}
+              {% include 'fragments/account/personalinfos.html.twig'%}
 
               <!-- Addresses Tab -->
-              {% include 'fragments/For account/addressetab.html.twig'%}
+              {% include 'fragments/account/addressetab.html.twig'%}
 
               <!-- Notifications Tab -->
-              {% include 'fragments/For account/notificationtab.html.twig'%}
+              {% include 'fragments/account/notificationtab.html.twig'%}
 
             </div>
           </div>

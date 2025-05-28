@@ -1,0 +1,52 @@
+<div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+    <div class="tab-header">
+        <h2>Orders</h2>
+        <div class="tab-filters">
+            {% include 'fragments/dashboard/orders/filterForm.html.twig' with {'filterform': form} %}
+        </div>
+    </div>
+
+    <div class="orders-table">
+        <div class="table-header">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="sort-header">
+                        Order #
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="sort-header">
+                        Order date
+                        <i class="bi bi-arrow-down-up"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="sort-header">
+                        Status
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="sort-header">
+                        Total
+                        <i class="bi bi-arrow-down-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-items">
+            {% include 'fragments/dashboard/orders/list.html.twig' with {'orders': orders} %}
+        </div>
+
+        <div class="pagination-container">
+            <nav aria-label="Orders pagination">
+                <ul class="pagination">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

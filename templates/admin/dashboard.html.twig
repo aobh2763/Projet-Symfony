@@ -1,0 +1,54 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    DashBoard - GunStore
+{% endblock %}
+
+{% block body %}
+    <body class="account-page">
+
+        <!-- Page Header -->
+        {% include 'fragments/header.html.twig' %}
+
+        <main class="main">
+            <!-- Page Title -->
+                <div class="page-title light-background">
+                    <div class="container">
+                        <nav class="breadcrumbs">
+                            <ol>
+                                <li><a href="{{ asset('index.html.twig') }}">Administrator</a></li>
+                                <li class="current">Dashboard</li>
+                            </ol>
+                        </nav>
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            <!-- End Page Title -->
+
+            <!-- Account Section -->
+                <section id="account" class="account section">
+                    <div class="container" data-aos="fade-up" data-aos-delay="100">
+                        <div class="row">
+                            <!-- Profile Sidebar -->
+                            {% include 'fragments/dashboard/profilesidebar.html.twig' %}
+                            <!-- Profile Content -->
+                            <div class="col-lg-9 profile-content" data-aos="fade-left" data-aos-delay="300">
+                                <div class="tab-content" id="profileTabsContent">
+                                    {# <!-- Create Product Tab -->
+                                    {% include 'fragments/dashboard/create-product.html.twig' %} #}
+                                    
+                                    <!-- Orders Tab -->
+                                    {% include 'fragments/dashboard/orders.html.twig' with {'orders': orders} %}
+
+                                    <!-- Users Tab -->
+                                    {% include 'fragments/dashboard/notificationtab.html.twig'%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            <!-- /Account Section -->
+        </main>
+    </body>
+{% endblock %}

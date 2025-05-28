@@ -5,22 +5,29 @@ namespace App\Controller;
 use App\Entity\Cart;
 use App\Entity\Order;
 use App\Entity\Product;
+use App\Service\AdminService;
+use App\Service\UserService;
 use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\{Response, RequestStack};
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class UserController extends AbstractController
 {
+
+    public function __construct(
+        private RequestStack $requestStack,
+        private UserService $userService
+    ){}
+
     #[Route('/user', name: 'app_user')]
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
-        return $this->render('user/index.html.twig', [
+        return $this->render('user/account.html.twig', [
             'controller_name' => 'UserController',
         ]);
     }
@@ -134,6 +141,7 @@ final class UserController extends AbstractController
         return $this->redirectToRoute('app_user_cart');
     }
 
+    //TODO: change this to a form submit (action)
     #[Route('/user/cart/clear', name: 'app_user_cart_clear')]
     public function clearCart(ManagerRegistry $doctrine, SessionInterface $session) {
         if (!$this->getUser()) {

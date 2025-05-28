@@ -13,20 +13,8 @@
 
 <body class="cart-page">
 
-<header id="header" class="header position-relative">
-  <!-- Top Bar -->
-  {% include 'fragments/topbar.html.twig' %}
-
-  <!-- Main Header -->
-  {% include 'fragments/mainheader.html.twig' %}
-
-  <!-- Navigation -->
-  {% include 'fragments/navbar.html.twig' %}
-
-  <!-- Announcement Bar -->
-  {% include 'fragments/announcementbar.html.twig' %}
-
-</header>
+<!-- Page Header -->
+{% include 'fragments/header.html.twig' %}
 
   <main class="main">
 
@@ -70,7 +58,7 @@
 
 
               <!-- Rendering Items -->
-              {% include 'fragments/For cart/rendering.html.twig' %}
+              {% include 'fragments/cart/rendering.html.twig' %}
 
 
               <!-- End Items Rendering -->
@@ -105,7 +93,7 @@
           </div>
 
           <!-- Order Summary Sidebar -->
-          {% include 'fragments/For cart/ordersummary.html.twig' %}
+          {% include 'fragments/cart/ordersummary.html.twig' %}
 
         </div>
 

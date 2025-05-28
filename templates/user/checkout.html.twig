@@ -7,20 +7,8 @@
 
 <body class="checkout-page">
 
-<header id="header" class="header position-relative">
-  <!-- Top Bar -->
-  {% include 'fragments/topbar.html.twig' %}
-
-  <!-- Main Header -->
-  {% include 'fragments/mainheader.html.twig' %}
-
-  <!-- Navigation -->
-  {% include 'fragments/navbar.html.twig' %}
-
-  <!-- Announcement Bar -->
-  {% include 'fragments/announcementbar.html.twig' %}
-
-</header>
+<!-- Page Header -->
+{% include 'fragments/header.html.twig' %}
 
   <main class="main">
 
@@ -70,22 +58,22 @@
             <!-- Checkout Forms Container -->
             <div class="checkout-forms" data-aos="fade-up" data-aos-delay="150">
               <!-- Step 1: Customer Information -->
-              {% include 'fragments/For checkout/step1.html.twig' %}
+              {% include 'fragments/checkout/step1.html.twig' %}
               <!-- Step 2: Shipping Address -->
-              {% include 'fragments/For checkout/step2.html.twig' %}
+              {% include 'fragments/checkout/step2.html.twig' %}
 
               <!-- Step 3: Payment Method -->
-              {% include 'fragments/For checkout/step3.html.twig' %}
+              {% include 'fragments/checkout/step3.html.twig' %}
 
               <!-- Step 4: Order Review -->
-              {% include 'fragments/For checkout/step4.html.twig' %}
+              {% include 'fragments/checkout/step4.html.twig' %}
 
             </div>
           </div>
 
           <div class="col-lg-4">
             <!-- Order Summary -->
-            {% include 'fragments/For checkout/ordersummary.html.twig' %}
+            {% include 'fragments/checkout/ordersummary.html.twig' %}
 
           </div>
         </div>
