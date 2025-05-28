@@ -2,27 +2,27 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\{RequestStack, Response, RedirectResponse};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\{Response, RedirectResponse};
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use App\Entity\User;
-use App\Form\RegistrationForm;
+
+use App\Entity\{User, Cart, Wishlist};
+use App\Form\{FilterTypeForm, RegistrationForm};
 use App\Service\MainService;
-use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Request;
 
 final class MainController extends AbstractController
 {
 
     public function __construct(
+        private RequestStack $requestStack,
         private MainService $mainService
     ){}
 
     #[Route('/', name: 'app_main')]
     public function index(): Response
     {
-        $this->mainService->onFirstVisit();
+        $this->onFirstVisit();
         
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
@@ -31,23 +31,37 @@ final class MainController extends AbstractController
 
     //TODO: paging through request params
     #[Route('/products', name: 'app_products')]
-    public function products(Request $request): Response
+    public function products(): Response
     {
-        $this->mainService->onFirstVisit();
+        $this->onFirstVisit();
 
-        $products = $this->mainService->getProducts();
+        $request = $this->requestStack->getCurrentRequest();
+
+        $form = $this->createForm(FilterTypeForm::class, null, [
+            'method' => 'GET'
+        ]);
+        $form->handleRequest($request);
+
+        $filters = $form->isSubmitted() && $form->isValid()
+            ? $form->getData()
+            : [];
+
+        $page = $request->query->getInt('page', 1);
+        $limit = $request->query->getInt('limit', 10);
+
+        $products = $this->mainService->getProducts($filters, $page, $limit);
 
         return $this->render('main/products.html.twig', [
             'products' => $products,
-            // 'filterform' => $view,
-            // 'filters' => $request->query->all()
+            'filterform' => $form,
+            'filters' => $filters,
         ]);
     }
 
     #[Route('/products/{pid}', name: 'app_product_details', requirements: ['pid' => '\d+'])]
-    public function productDetails(ManagerRegistry $doctrine, int $pid): Response
+    public function productDetails(int $pid): Response
     {
-        $this->mainService->onFirstVisit();
+        $this->onFirstVisit();
         
         $product = $this->mainService->getProduct($pid);
 
@@ -58,8 +72,6 @@ final class MainController extends AbstractController
 
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response {
-        // $this->mainService->onFirstVisit();
-        
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
@@ -74,23 +86,26 @@ final class MainController extends AbstractController
 
     #[Route('/about', name: 'app_about')]
     public function about(): Response {
-        // $this->mainService->onFirstVisit();
-        
         return $this->render('main/about.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request): Response {
-        // $this->mainService->onFirstVisit();
-        
+    public function register(): Response {
+        $request = $this->requestStack->getCurrentRequest();
+        $session = $this->requestStack->getSession();
+
         $user = new User();
         $form = $this->createForm(RegistrationForm::class, $user);
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            return $this->mainService->registerUser($user);
+            return $this->mainService->registerUser(
+                $user, 
+                $session->get('cart'), 
+                $session->get('wishlist')
+            );
         }
 
         return $this->render('main/register.html.twig', [
@@ -100,7 +115,7 @@ final class MainController extends AbstractController
 
     // #[Route('/verify/email', name: 'app_verify_email')]
     // public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response {
-    //     $this->mainService->onFirstVisit();
+    //     $this->onFirstVisit();
         
     //     $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -119,4 +134,20 @@ final class MainController extends AbstractController
 
     //     return $this->redirectToRoute('app_main');
     // }
+
+    public function onFirstVisit() {
+        $session = $this->requestStack->getSession();
+
+        if (!$session->has('firstVisit')) {
+            $session->set('firstVisit', true);
+
+            $cart = new Cart();
+            $cart->setPrixtotal(0.0);
+
+            $wishlist = new Wishlist();
+
+            $session->set('cart', $cart);
+            $session->set('wishlist', $wishlist);
+        }
+    }
 }

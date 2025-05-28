@@ -30,30 +30,27 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
+use Knp\Component\Pager\PaginatorInterface;
+
 class MainService {
 
-    private ?Request $request;
-    private ?SessionInterface $session;
-
     public function __construct(
-                private EntityManagerInterface $entityManager, 
-                private EmailVerifier $emailVerifier, 
-                private UserPasswordHasherInterface $userPasswordHasher, 
-                private Security $security,
-                RequestStack $requestStack, 
-    ) {
-        $this->session = $requestStack->getSession();
-        $this->request = $requestStack->getCurrentRequest();
-    }
+        private PaginatorInterface $paginator,
+        private EntityManagerInterface $entityManager, 
+        private EmailVerifier $emailVerifier, 
+        private Security $security,
+    ) {}
 
-    public function getProducts(){
-        $productsRepository = $this->entityManager->getRepository(Product::class);
+    public function getProducts($filters, $page, $limit){
+        $query = $this->entityManager->getRepository(Product::class)
+                ->createQueryBuilder('p')
+                ->getQuery();
 
-        $page = max(1, (int) $this->request->query->get('page', 1));
-        $limit = min(100, (int) $this->request->query->get('limit', 10));
-        $offset = ($page - 1) * $limit;
-
-        $products = $productsRepository->findBy([], null, $limit, $offset);
+        $products = $this->paginator->paginate(
+            $query,
+            $page,
+            $limit
+        );
 
         return $products;
     }
@@ -64,9 +61,9 @@ class MainService {
         return $product;
     }
 
-    public function registerUser(User $user): Response {
-        $user->setCart($this->getSessionCart());
-        $user->setWishlist($this->getSessionWishlist());
+    public function registerUser(User $user, Cart $sessionCart, Wishlist $sessionWishlist): Response {
+        $user->setCart($this->getCleanCart($sessionCart));
+        $user->setWishlist($this->getCleanWishlist($sessionWishlist));
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
@@ -85,23 +82,8 @@ class MainService {
         return $this->security->login($user, AppCustomAuthenticator::class, 'main');
     }
 
-    public function onFirstVisit() {
-        if (!$this->session->has('firstVisit')) {
-            $this->session->set('firstVisit', true);
-
-            $cart = new Cart();
-            $cart->setPrixtotal(0.0);
-
-            $wishlist = new Wishlist();
-
-            $this->session->set('cart', $cart);
-            $this->session->set('wishlist', $wishlist);
-        }
-    }
-
-    public function getSessionCart() {
+    public function getCleanCart(Cart $sessionCart) {
         $cart = new Cart();
-        $sessionCart = $this->session->get('cart') ?? new Cart();
 
         foreach ($sessionCart->getOrders() as $order) {
             $product = $order->getProduct();
@@ -114,9 +96,8 @@ class MainService {
         return $cart;
     }
 
-    public function getSessionWishlist(){
+    public function getCleanWishlist(Wishlist $sessionWishlist){
         $wishlist = new Wishlist();
-        $sessionWishlist = $this->session->get('wishlist') ?? new Wishlist();
 
         foreach ($sessionWishlist->getWishes() as $wish) {
             $product = $wish->getProduct();

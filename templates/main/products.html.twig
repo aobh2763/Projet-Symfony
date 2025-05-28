@@ -9,7 +9,9 @@
     <body class="category-page">
 
         <!-- Page Header -->
-        {% include 'fragments/header.html.twig' %}
+            {% include 'fragments/header.html.twig' %}
+        <!-- Page Header -->
+
 
         <main class="main">
 
@@ -25,117 +27,27 @@
                         <h1>Products</h1>
                     </div>
                 </div>
-            <!-- End Page Title -->
+            <!-- /Page Title -->
 
             <div class="container">
                 <div class="row">
-
                     <div class="col-lg-12">
-
                         <!-- Category Header Section -->
-                            {% include 'fragments/products/productsheader.html.twig' %}
+                            {% include 'fragments/products/filterForm.html.twig' with {'filterform': filterform} %}
                         <!-- /Category Header Section -->
 
                         <!-- Category Product List Section -->
-                            {% include 'fragments/products/list.html.twig' %}
+                            {% include 'fragments/products/list.html.twig' with {'products': products} %}
                         <!-- /Category Product List Section -->
 
                         <!-- Category Pagination Section -->
                             <section id="category-pagination" class="category-pagination section">
-
-                                {% set pages = products|length // 9 %}
-                                {% if products|length % 9 != 0 %}
-                                    {% set pages = pages + 1 %}
-                                {% endif %}
-
-                                <div class="container">
-                                    <nav class="d-flex justify-content-center" aria-label="Page navigation">
-                                        <ul>
-                                            <li>
-                                                {% if page != 1 %}
-                                                    <a href="{{ path('app_products', filters|merge({'page': page - 1})) }}" aria-label="Previous page">
-                                                {% else %}
-                                                    <a href="{{ path('app_products', filters|merge({'page': 1})) }}" aria-label="Previous page" class="disabled">
-                                                {% endif %}
-                                                        <i class="bi bi-arrow-left"></i>
-                                                        <span class="d-none d-sm-inline">Previous</span>
-                                                    </a>
-                                            </li>
-
-                                            {% if pages > 7 %}
-                                                {% if page == 1 %}
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 1})) }}" class="active">1</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}">2</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}">2</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 3})) }}">3</a></li>
-                                                    <li class="ellipsis">...</li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages - 2})) }}">{{ pages - 2 }}</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages - 1})) }}">{{ pages - 1 }}</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages})) }}">{{ pages }}</a></li>
-                                                {% elseif page == 2 %}
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 1})) }}">1</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}" class="active">2</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 3})) }}">3</a></li>
-                                                    <li class="ellipsis">...</li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages - 2})) }}">{{ pages - 2 }}</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages - 1})) }}">{{ pages - 1 }}</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages})) }}">{{ pages }}</a></li>
-                                                {% elseif page == 3 %}
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 1})) }}">1</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}">2</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 3})) }}" class="active">3</a></li>
-                                                    <li class="ellipsis">...</li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages - 2})) }}">{{ pages - 2 }}</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages - 1})) }}">{{ pages - 1 }}</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': pages})) }}">{{ pages }}</a></li>
-                                                {% else %}
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 1})) }}">1</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 2})) }}">2</a></li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': 3})) }}">3</a></li>
-                                                    <li class="ellipsis">...</li>
-                                                    <li><a href="{{ path('app_products', filters|merge({'page': page - 1})) }}">{{ page - 1 }}</a></li>
-                                                    {% if page == pages %}
-                                                        <li><a href="{{ path('app_products', filters|merge({'page': page})) }}" class="active">{{ page }}</a></li>
-                                                    {% else %}
-                                                        <li><a href="{{ path('app_products', filters|merge({'page': page})) }}" class="active">{{ page }}</a></li>
-                                                        <li><a href="{{ path('app_products', filters|merge({'page': page + 1})) }}">{{ page + 1 }}</a></li>
-                                                        <li class="ellipsis">...</li>
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% else %}
-                                                {% for i in 1..pages %}
-                                                    {% if i == page %}
-                                                        <li><a href="{{ path('app_products', filters|merge({'page': i})) }}" class="active">{{ i }}</a></li>
-                                                    {% else %}
-                                                        <li><a href="{{ path('app_products', filters|merge({'page': i})) }}">{{ i }}</a></li>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            {% endif %}
-
-                                            <li>
-                                                {% if page != pages %}
-                                                    <a href="{{ path('app_products', filters|merge({'page': page + 1})) }}" aria-label="Next page">
-                                                {% else %}
-                                                    <a href="{{ path('app_products', filters|merge({'page': page})) }}" aria-label="Next page" class="disabled">
-                                                {% endif %}
-                                                        <span class="d-none d-sm-inline">Next</span>
-                                                        <i class="bi bi-arrow-right"></i>
-                                                    </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-
+                                {{ knp_pagination_render(products, 'fragments/products/pageNavigation.html.twig') }} 
                             </section>
                         <!-- /Category Pagination Section -->
-
                     </div>
-
                 </div>
             </div>
-
         </main>
-
     </body>
-
 {% endblock %}

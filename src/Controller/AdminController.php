@@ -3,17 +3,18 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\{Response, RequestStack};
+
 
 use App\Service\AdminService;
 
 final class AdminController extends AbstractController
 {
     public function __construct(
-                private AdminService $adminService
-        ){
-    }
+        private RequestStack $requestStack,
+        private AdminService $adminService
+    ){}
 
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
