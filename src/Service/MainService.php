@@ -42,9 +42,45 @@ class MainService {
     ) {}
 
     public function getProducts($filters, $page, $limit){
-        $query = $this->entityManager->getRepository(Product::class)
-                ->createQueryBuilder('p')
-                ->getQuery();
+        $qb = $this->entityManager->getRepository(Product::class)
+            ->createQueryBuilder('p');
+
+        // Filter by name
+        if (!empty($filters['name'])) {
+            $qb->andWhere('p.name LIKE :name')
+               ->setParameter('name', '%' . $filters['name'] . '%');
+        }
+
+        // Filter by type
+        if (!empty($filters['type'])) {
+            $qb->andWhere('p.type = :type')
+               ->setParameter('type', $filters['type']);
+        }
+
+        // Filter by price range
+        if (!empty($filters['price_min'])) {
+            $qb->andWhere('p.price >= :price_min')
+               ->setParameter('price_min', $filters['price_min']);
+        }
+        if (!empty($filters['price_max'])) {
+            $qb->andWhere('p.price <= :price_max')
+               ->setParameter('price_max', $filters['price_max']);
+        }
+
+        // Sorting
+        if (!empty($filters['sort'])) {
+            $sort = $filters['sort'];
+            $order = 'ASC';
+            if (str_starts_with($sort, '-')) {
+                $order = 'DESC';
+                $sort = ltrim($sort, '-');
+            }
+            if (in_array($sort, ['name', 'price', 'type'])) {
+                $qb->orderBy('p.' . $sort, $order);
+            }
+        }
+
+        $query = $qb->getQuery();
 
         $products = $this->paginator->paginate(
             $query,

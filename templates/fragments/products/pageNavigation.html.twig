@@ -1,21 +1,49 @@
 {% if pageCount > 1 %}
-    <nav class="custom-pagination">
-        <ul class="pagination-list">
-            {% if previous is defined %}
-                <li><a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">&laquo;</a></li>
-            {% endif %}
+  <div class="container">
+    <nav class="d-flex justify-content-center" aria-label="Page navigation">
+      <ul class="pagination-list d-flex list-unstyled gap-2 align-items-center">
 
-            {% for page in pagesInRange %}
-                {% if page != current %}
-                    <li><a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a></li>
-                {% else %}
-                    <li class="active"><span>{{ page }}</span></li>
-                {% endif %}
-            {% endfor %}
+        {# Previous page link #}
+        <li>
+          {% if previous is defined %}
+            <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}" aria-label="Previous page">
+              <i class="bi bi-arrow-left"></i>
+              <span class="d-none d-sm-inline">Previous</span>
+            </a>
+          {% else %}
+            <a href="#" aria-label="Previous page" class="disabled" tabindex="-1" aria-disabled="true">
+              <i class="bi bi-arrow-left"></i>
+              <span class="d-none d-sm-inline">Previous</span>
+            </a>
+          {% endif %}
+        </li>
 
-            {% if next is defined %}
-                <li><a href="{{ path(route, query|merge({(pageParameterName): next})) }}">&raquo;</a></li>
+        {# Page number links #}
+        {% for page in pagesInRange %}
+          <li>
+            {% if page != current %}
+              <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+            {% else %}
+              <a href="#" class="active" aria-current="page">{{ page }}</a>
             {% endif %}
-        </ul>
+          </li>
+        {% endfor %}
+
+        {# Next page link #}
+        <li>
+          {% if next is defined %}
+            <a href="{{ path(route, query|merge({(pageParameterName): next})) }}" aria-label="Next page">
+              <span class="d-none d-sm-inline">Next</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          {% else %}
+            <a href="#" aria-label="Next page" class="disabled" tabindex="-1" aria-disabled="true">
+              <span class="d-none d-sm-inline">Next</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          {% endif %}
+        </li>
+      </ul>
     </nav>
+  </div>
 {% endif %}
