@@ -4,12 +4,11 @@ namespace App\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-use App\Entity\Order;
+use App\Entity\{User, Order};
 use Knp\Component\Pager\PaginatorInterface;
 
 class AdminService {
 
-    
     public function __construct(
         private EntityManagerInterface $entityManager,
         private PaginatorInterface $paginator
@@ -34,11 +33,29 @@ class AdminService {
 
         $query = $qb->getQuery();
 
-        $products = $this->paginator->paginate(
+        $orders = $this->paginator->paginate(
             $query
         );
 
-        return $products;
+        return $orders;
+    }
+
+    public function getUsers($filters){
+        $qb = $this->entityManager->getRepository(User::class)
+            ->createQueryBuilder('u');
+
+        $query = $qb->getQuery();
+
+        $users = $this->paginator->paginate(
+            $query
+        );
+
+        return $users;
+    }
+
+    public function createProduct($product){
+        $this->entityManager->persist($product);
+        $this->entityManager->flush();
     }
 
 }

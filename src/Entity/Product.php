@@ -64,8 +64,6 @@ class Product
     {
         $this->orders = new ArrayCollection();
         $this->wishes = new ArrayCollection();
-        $this->sale = 0.0;
-        $this->rating = 0.0;
     }
 
     public function getId(): ?int

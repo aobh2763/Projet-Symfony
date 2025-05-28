@@ -93,4 +93,8 @@ class Order
 
         return $this;
     }
+
+    public function getTotal(){
+        return $this->product->getPrice() * $this->quantity;
+    }
 }
