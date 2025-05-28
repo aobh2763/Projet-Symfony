@@ -16,10 +16,8 @@ final class MainController extends AbstractController
 {
 
     public function __construct(
-                private MainService $mainService
-    ){
-
-    }
+        private MainService $mainService
+    ){}
 
     #[Route('/', name: 'app_main')]
     public function index(): Response
@@ -33,14 +31,14 @@ final class MainController extends AbstractController
 
     //TODO: paging through request params
     #[Route('/products', name: 'app_products')]
-    public function products(): Response
+    public function products(Request $request): Response
     {
         $this->mainService->onFirstVisit();
 
         $products = $this->mainService->getProducts();
 
         return $this->render('main/products.html.twig', [
-            'products' => $products
+            'products' => $products,
             // 'filterform' => $view,
             // 'filters' => $request->query->all()
         ]);
@@ -60,7 +58,7 @@ final class MainController extends AbstractController
 
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response {
-        $this->mainService->onFirstVisit();
+        // $this->mainService->onFirstVisit();
         
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -76,7 +74,7 @@ final class MainController extends AbstractController
 
     #[Route('/about', name: 'app_about')]
     public function about(): Response {
-        $this->mainService->onFirstVisit();
+        // $this->mainService->onFirstVisit();
         
         return $this->render('main/about.html.twig', [
             'controller_name' => 'MainController',
@@ -85,7 +83,7 @@ final class MainController extends AbstractController
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request): Response {
-        $this->mainService->onFirstVisit();
+        // $this->mainService->onFirstVisit();
         
         $user = new User();
         $form = $this->createForm(RegistrationForm::class, $user);

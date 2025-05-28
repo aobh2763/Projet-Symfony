@@ -15,8 +15,16 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
+use App\Form\DataTransformer\PasswordHashTransformer;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 class RegistrationForm extends AbstractType
 {
+
+    public function __construct(
+        private UserPasswordHasherInterface $passwordHasher
+    ){}
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -34,17 +42,8 @@ class RegistrationForm extends AbstractType
             ->add('username', TextType::class, [
                 'required' => true,
             ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-            ])
-            ->add('plainPassword', RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'mapped' => false,
                 'first_options' => [
                     'label' => 'Password',
                     'attr' => ['autocomplete' => 'new-password'],
@@ -64,8 +63,18 @@ class RegistrationForm extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+            ])->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'You should agree to our terms.',
+                    ]),
+                ],
             ])
         ;
+
+        $builder->get('password')
+            ->addModelTransformer(new PasswordHashTransformer($this->passwordHasher));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

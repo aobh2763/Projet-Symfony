@@ -32,7 +32,8 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class MainService {
 
-    private SessionInterface $session;
+    private ?Request $request;
+    private ?SessionInterface $session;
 
     public function __construct(
                 private EntityManagerInterface $entityManager, 
@@ -42,11 +43,18 @@ class MainService {
                 RequestStack $requestStack, 
     ) {
         $this->session = $requestStack->getSession();
+        $this->request = $requestStack->getCurrentRequest();
     }
 
     public function getProducts(){
         $productsRepository = $this->entityManager->getRepository(Product::class);
-        $products = $productsRepository->findAll();
+
+        $page = max(1, (int) $this->request->query->get('page', 1));
+        $limit = min(100, (int) $this->request->query->get('limit', 10));
+        $offset = ($page - 1) * $limit;
+
+        $products = $productsRepository->findBy([], null, $limit, $offset);
+
         return $products;
     }
 
@@ -57,8 +65,6 @@ class MainService {
     }
 
     public function registerUser(User $user): Response {
-        $user->setPassword($this->userPasswordHasher->hashPassword($user, $user->getPassword()));
-
         $user->setCart($this->getSessionCart());
         $user->setWishlist($this->getSessionWishlist());
 
@@ -93,41 +99,37 @@ class MainService {
         }
     }
 
-    public function getSessionCart(){
+    public function getSessionCart() {
+        $cart = new Cart();
         $sessionCart = $this->session->get('cart') ?? new Cart();
 
         foreach ($sessionCart->getOrders() as $order) {
             $product = $order->getProduct();
 
-            if ($product && $product->getId()) {
-                $managedProduct = $this->entityManager->getRepository(Product::class)->find($product->getId());
-                $order->setProduct($managedProduct);
-            }
-
-            if (!$order->getId()) {
-                $this->entityManager->persist($order);
+            if ($this->productExists($product->getId())) {
+                $cart->addOrder($order);
             }
         }
-        
-        return $sessionCart;
+
+        return $cart;
     }
 
     public function getSessionWishlist(){
+        $wishlist = new Wishlist();
         $sessionWishlist = $this->session->get('wishlist') ?? new Wishlist();
 
-        foreach ($sessionWishlist->getWishes() as $wishlistItem) {
-            $product = $wishlistItem->getProduct();
+        foreach ($sessionWishlist->getWishes() as $wish) {
+            $product = $wish->getProduct();
 
-            if ($product && $product->getId()) {
-                $managedProduct = $this->entityManager->getRepository(Product::class)->find($product->getId());
-                $wishlistItem->setProduct($managedProduct);
-            }
-            
-            if (!$wishlistItem->getId()) {
-                $this->entityManager->persist($wishlistItem);
+            if ($this->productExists($product->getId())) {
+                $wishlist->addWish($wish);
             }
         }
         
-        return $sessionWishlist;
+        return $wishlist;
+    }
+
+    public function productExists(int $id) {
+        return $this->getProduct($id) !== null;
     }
 }
