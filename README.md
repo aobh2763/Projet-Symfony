@@ -16,3 +16,6 @@ endpoints:
 
 TODO: 
     refactor navbar and footer to base twig
+
+crud orders
+crud products

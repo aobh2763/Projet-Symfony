@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\{Response, RequestStack};
 
-
 use App\Service\AdminService;
+use App\Form\OrdersFilterTypeForm;
 
 final class AdminController extends AbstractController
 {
@@ -19,21 +19,22 @@ final class AdminController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
-        // visualise stats and give orders preview
+        $request = $this->requestStack->getCurrentRequest();
+
+        $form = $this->createForm(OrdersFilterTypeForm::class, null, [
+            'method' => 'GET'
+        ]);
+        $form->handleRequest($request);
+
+        $filters = $form->isSubmitted() && $form->isValid()
+            ? $form->getData()
+            : [];
+
+        $orders = $this->adminService->getOrders($filters);
 
         return $this->render('admin/dashboard.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
-    }
-
-    #[Route('/admin/orders', name: 'app_admin_orders')]
-    public function orders(): Response
-    {
-        // visualize list of orders
-
-        return $this->render('admin/orders.html.twig', [
-            'controller_name' => 'AdminController',
-            'orders' => $this->adminService->getOrders()
+            'orders' => $orders,
+            'form' => $form
         ]);
     }
 }

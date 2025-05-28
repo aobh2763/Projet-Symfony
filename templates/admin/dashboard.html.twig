@@ -31,24 +31,18 @@
                     <div class="container" data-aos="fade-up" data-aos-delay="100">
                         <div class="row">
                             <!-- Profile Sidebar -->
-                            {% include 'fragments/account/profilesidebar.html.twig' %}
+                            {% include 'fragments/dashboard/profilesidebar.html.twig' %}
                             <!-- Profile Content -->
                             <div class="col-lg-9 profile-content" data-aos="fade-left" data-aos-delay="300">
                                 <div class="tab-content" id="profileTabsContent">
+                                    {# <!-- Create Product Tab -->
+                                    {% include 'fragments/dashboard/create-product.html.twig' %} #}
+                                    
                                     <!-- Orders Tab -->
-                                    {% include 'fragments/account/orderstab.html.twig'%}
-                                    <!-- Wishlist Tab -->
-                                    {% include 'fragments/account/wishlisttab.html.twig'%}
-                                    <!-- Payment Methods Tab -->
-                                    {% include 'fragments/account/paymentmethod.html.twig'%}
-                                    <!-- Reviews Tab -->
-                                    {% include 'fragments/account/reviewstab.html.twig'%}
-                                    <!-- Personal Info Tab -->
-                                    {% include 'fragments/account/personalinfos.html.twig'%}
-                                    <!-- Addresses Tab -->
-                                    {% include 'fragments/account/addressetab.html.twig'%}
-                                    <!-- Notifications Tab -->
-                                    {% include 'fragments/account/notificationtab.html.twig'%}
+                                    {% include 'fragments/dashboard/orders.html.twig' with {'orders': orders} %}
+
+                                    <!-- Users Tab -->
+                                    {% include 'fragments/dashboard/notificationtab.html.twig'%}
                                 </div>
                             </div>
                         </div>

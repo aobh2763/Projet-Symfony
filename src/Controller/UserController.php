@@ -27,7 +27,7 @@ final class UserController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
-        return $this->render('user/index.html.twig', [
+        return $this->render('user/account.html.twig', [
             'controller_name' => 'UserController',
         ]);
     }
