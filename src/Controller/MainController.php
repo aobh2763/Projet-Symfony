@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cart;
+use App\Entity\Product;
 use App\Entity\Wishlist;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -61,10 +62,12 @@ final class MainController extends AbstractController
     }
 
     #[Route('/main/products', name: 'app_products')]
-    public function products(): Response
+    public function products(Request $request): Response
     {
-        $this->onFirstVisit();
-
+        $searchTerm = $request->query->get('search');
+        if ($searchTerm !== null) {
+            dump($searchTerm);
+        }
         return $this->render('main/products.html.twig', [
             'controller_name' => 'MainController',
         ]);

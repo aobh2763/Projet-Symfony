@@ -6,19 +6,22 @@
             <a href="{{ asset('index.html.twig') }}" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="{{ asset('assets/img/logo.webp') }}" alt=""> -->
-                <h1 class="sitename">Fashion<span>Store</span></h1>
+                <h1 class="sitename">Gun<span>Store</span></h1>
             </a>
 
             <!-- Search -->
-            <form class="search-form desktop-search-form">
+            <form class="search-form desktop-search-form" action="{{ path('app_products') }}" method="get" >
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products...">
+                    <input type="text"
+                           class="form-control"
+                           name="search"
+                           placeholder="Search for products..."
+                           value="{{ app.request.query.get('search') }}">
                     <button class="btn search-btn" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
                 </div>
             </form>
-
             <!-- Actions -->
             <div class="header-actions d-flex align-items-center justify-content-end">
 
@@ -92,14 +95,14 @@
                 </div>
 
                 <!-- Wishlist -->
-                <a href="{{ asset('wishlist.html.twig') }}" class="header-action-btn d-none d-md-flex">
+                <a href="{{ path('app_user_account') }}#wishlist" class="header-action-btn d-none d-md-flex">
                     <i class="bi bi-heart"></i>
                     <span class="action-text d-none d-md-inline-block">Wishlist</span>
                     <span class="badge">
                         {% if is_granted('ROLE_USER') %}
-                        {{ app.user.wishlist.wishes|length }}
+                            {{ app.user.wishlist.wishes|length }}
                         {% else %}
-                        {{ app.session.get('wishlist').wishes|length }}
+                            {{ app.session.get('wishlist').wishes|length }}
                         {% endif %}
                     </span>
                 </a>
