@@ -134,6 +134,7 @@ final class UserController extends AbstractController
         return $this->redirectToRoute('app_user_cart');
     }
 
+    //TODO: change this to a form submit (action)
     #[Route('/user/cart/clear', name: 'app_user_cart_clear')]
     public function clearCart(ManagerRegistry $doctrine, SessionInterface $session) {
         if (!$this->getUser()) {

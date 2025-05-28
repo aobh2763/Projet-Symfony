@@ -2,13 +2,12 @@
 
 namespace App\Service;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 class UserService {
 
-    private EntityManager $entityManager;
-
-    public function __construct(EntityManager $entityManager){
-        $this->entityManager = $entityManager;
+    public function __construct(
+                private EntityManagerInterface $entityManager
+    ){
     }
 }

@@ -2,16 +2,16 @@
 
 namespace App\Service;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 use App\Entity\Order;
 
 class AdminService {
 
-    private EntityManager $entityManager;
-
-    public function __construct(EntityManager $entityManager){
-        $this->entityManager = $entityManager;
+    
+    public function __construct(
+                private EntityManagerInterface $entityManager
+    ){
     }
 
     public function getOrders(){

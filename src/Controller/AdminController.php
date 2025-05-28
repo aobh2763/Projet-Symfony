@@ -10,11 +10,9 @@ use App\Service\AdminService;
 
 final class AdminController extends AbstractController
 {
-
-    private AdminService $adminService;
-
-    public function __construct(AdminService $adminService){
-        $this->adminService = $adminService;
+    public function __construct(
+                private AdminService $adminService
+        ){
     }
 
     #[Route('/admin', name: 'app_admin')]
