@@ -4,7 +4,7 @@ namespace App\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-use App\Entity\{User, Order};
+use App\Entity\{User, Order, Product};
 use Knp\Component\Pager\PaginatorInterface;
 
 class AdminService {
@@ -56,6 +56,35 @@ class AdminService {
     public function createProduct($product){
         $this->entityManager->persist($product);
         $this->entityManager->flush();
+    }
+
+    public function updateProduct($updatedProduct){
+        $productRepository = $this->entityManager->getRepository(Product::class);
+        $product = $productRepository->find($updatedProduct->getId());
+
+        if ($product) {
+            $product->setName($updatedProduct->getName());
+            $product->setDescription($updatedProduct->getDescription());
+            $product->setImage($updatedProduct->getImage());
+            $product->setPrice($updatedProduct->getPrice());
+            $product->setRating($updatedProduct->getRating());
+            $product->setSale($updatedProduct->getSale());
+            $product->setStock($updatedProduct->getStock());
+            $product->setWeight($updatedProduct->getWeight());
+
+            $this->entityManager->flush();
+        }
+    }
+
+    //TODO: doesnt work if the product has orders on it
+    public function deleteProduct($id){
+        $productRepository = $this->entityManager->getRepository(Product::class);
+        $product = $productRepository->find($id);
+
+        if ($product) {
+            $this->entityManager->remove($product);
+            $this->entityManager->flush();        
+        }
     }
 
 }

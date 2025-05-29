@@ -6,8 +6,7 @@ use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextareaType, FileType};
 
 class CreateProductTypeForm extends AbstractType
 {
@@ -48,6 +47,15 @@ class CreateProductTypeForm extends AbstractType
                 'attr' => [
                     'placeholder' => 'Enter available stock',
                 ],
+            ])
+            ->add('weight', null, [
+                'label' => 'Product Weight',
+                'attr' => [
+                    'placeholder' => 'Enter product weight',
+                ],
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Submit',
             ])
         ;
     }
