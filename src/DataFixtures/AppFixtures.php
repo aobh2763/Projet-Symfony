@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $product1 = new Gun();
+       $product1 = new Gun();
         $product1->setName('Pistol')
                  ->setDescription('A standard pistol for self-defense.')
                  ->setPrice(100.0)
@@ -190,6 +190,28 @@ class AppFixtures extends Fixture
         $manager->persist($product13);
         $manager->persist($product14);
         $manager->persist($product15);
+
+        $kukri = new Melee();
+        $kukri->setName('Kukri Knife')
+            ->setDescription('A traditional Nepalese blade known for its sharp curve.')
+            ->setPrice(90.0)
+            ->setReach(0.4)
+            ->setType('knife')
+            ->setStock(40)
+            ->setWeight(0.7)
+            ->setImage("assets/img/uploads/kurkiknife.webp");
+
+        $nvgs = new Accessory();
+        $nvgs->setName('Night Vision Goggles')
+            ->setDescription('Optical devices that enhance visibility in low-light conditions.')
+            ->setPrice(1200.0)
+            ->setStock(10)
+            ->setWeight(1.3)
+            ->setImage("assets/img/uploads/nightvision.png")
+            ->setType('gadget');
+
+        $manager->persist($kukri);
+        $manager->persist($nvgs);
 
         $manager->flush();
     }
