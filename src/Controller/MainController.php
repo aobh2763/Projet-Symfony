@@ -38,18 +38,27 @@ final class MainController extends AbstractController
         $request = $this->requestStack->getCurrentRequest();
 
         $form = $this->createForm(FilterTypeForm::class, null, [
-            'method' => 'GET'
+            'method' => 'GET',
+            'allow_extra_fields' => true,
+            'csrf_protection' => false,
         ]);
-        $form->handleRequest($request);
+
+        $form->submit($request->query->all());
+
 
         $filters = $form->isSubmitted() && $form->isValid()
-            ? $form->getData()
-            : [];
+        ? [
+            'name' => $form->get('name')->getData(),
+            'type' => $form->get('type')->getData(),
+            'range' => $form->get('range')->getData(),
+            'sort' => $form->get('sort')->getData(),
+        ]
+        : [];
 
         $page = $request->query->getInt('page', 1);
-        $limit = $request->query->getInt('limit', 10);
+        $limit = $request->query->getInt('limit', 9);
 
-        $products = $this->mainService->getProducts($filters, $page, $limit);
+        $products = $this->mainService->getProducts(filters: $filters, page: $page, limit: $limit);
 
         return $this->render('main/products.html.twig', [
             'products' => $products,

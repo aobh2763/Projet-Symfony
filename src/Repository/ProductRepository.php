@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -25,7 +26,7 @@ class ProductRepository extends ServiceEntityRepository
      * @param string $sortby
      * @return Product[]
      */
-    public function getFilteredProducts($name, $type, $range, $sortby): array {
+    public function getFilteredProducts($name, $type, $range, $sortby): QueryBuilder {
         $qb = $this->createQueryBuilder('p');
 
         if (!empty($name)) {
@@ -37,19 +38,19 @@ class ProductRepository extends ServiceEntityRepository
             case 'all':
                 break;
             case 'under_25':
-                $qb->andWhere('p.price < 25');
+                $qb->andWhere('(p.price - p.price * p.sale) < 25');
                 break;
             case '25_to_50':
-                $qb->andWhere('p.price >= 25 AND p.price < 50');
+                $qb->andWhere('(p.price - p.price * p.sale) >= 25 AND (p.price - p.price * p.sale) < 50');
                 break;
             case '50_to_100':
-                $qb->andWhere('p.price >= 50 AND p.price < 100');
+                $qb->andWhere('(p.price - p.price * p.sale) >= 50 AND (p.price - p.price * p.sale) < 100');
                 break;
             case '100_to_200':
-                $qb->andWhere('p.price >= 100 AND p.price < 200');
+                $qb->andWhere('(p.price - p.price * p.sale) >= 100 AND (p.price - p.price * p.sale) < 200');
                 break;
             case '200above':
-                $qb->andWhere('p.price >= 200');
+                $qb->andWhere('(p.price - p.price * p.sale) >= 200');
                 break;
             default:
                 throw new \InvalidArgumentException('Invalid range value');
@@ -98,7 +99,7 @@ class ProductRepository extends ServiceEntityRepository
                 throw new \InvalidArgumentException('Invalid sortby value');
         }
         
-        return $qb->getQuery()->getResult();
+        return $qb;
     }
 
 //    /**

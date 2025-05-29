@@ -9,8 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FilterTypeForm extends AbstractType
-{
+class FilterTypeForm extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -20,6 +19,17 @@ class FilterTypeForm extends AbstractType
                     'placeholder' => 'Search for products...',
                     'length' => 255,
                     'class' => 'form-control'
+                ]
+            ])
+            ->add('limit', ChoiceType::class, [
+                'multiple' => false,
+                'expanded' => false,
+                'choices' => [
+                    '9' => '9',
+                    '12' => '12',
+                    '18' => '18',
+                    '24' => '24',
+                    '30' => '30'
                 ]
             ])
             ->add('type', ChoiceType::class, [
@@ -66,5 +76,9 @@ class FilterTypeForm extends AbstractType
         $resolver->setDefaults([
             // Configure your form options here
         ]);
+    }
+
+    public function getBlockPrefix(): string {
+        return '';
     }
 }
