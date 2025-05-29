@@ -8,7 +8,7 @@
                 // Get price, handle potential null or invalid values
                 const priceElement = item.querySelector('.current-price');
                 if (!priceElement) return;
-                const priceText = priceElement.textContent.replace('$', '').trim();
+                const priceText = priceElement.textContent.replace(' TND', '').trim();
                 const price = parseFloat(priceText);
                 if (isNaN(price)) return;
 
@@ -24,7 +24,7 @@
                 // Update item total display
                 const itemTotalElement = item.querySelector('.item-total span');
                 if (itemTotalElement) {
-                    itemTotalElement.textContent = `$${itemTotal.toFixed(2)}`;
+                    itemTotalElement.textContent = `${itemTotal.toFixed(2)} TND`;
                 }
 
                 // Add to cart total
@@ -34,7 +34,7 @@
             // Update grand total
             const grandTotalElement = document.querySelector('#cart-grand-total');
             if (grandTotalElement) {
-                grandTotalElement.textContent = `$${cartTotal.toFixed(2)}`;
+                grandTotalElement.textContent = `${cartTotal.toFixed(2)} TND`;
             }
 
             // Show/hide cart items container or display empty message
@@ -62,10 +62,10 @@
                 let quantity = parseInt(input.value, 10);
                 if (isNaN(quantity)) quantity = 1;
 
-                // if (this.classList.contains('increase') && quantity < 10) {
-                //     // quantity += 1;
+                // if (this.classList.contains('increase') && quantity < 100) {
+                //     quantity += 1;
                 // } else if (this.classList.contains('decrease') && quantity > 1) {
-                //     // quantity -= 1;
+                //     quantity -= 1;
                 // }
 
                 input.value = quantity;
@@ -79,21 +79,20 @@
                 let quantity = parseInt(this.value, 10);
                 if (isNaN(quantity) || quantity < 1) {
                     quantity = 1;
-                } else if (quantity > 10) {
-                    quantity = 10;
+                } else if (quantity > 100) {
+                    quantity = 100;
                 }
                 this.value = quantity;
                 updateTotals();
             });
         });
 
-        // Handle remove item buttons
+        // Handle remove item buttons (server-side, no client-side removal)
         document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', function () {
-                const cartItem = this.closest('.cart-item');
-                if (cartItem) {
-                    cartItem.remove();
-                    updateTotals();
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (confirm('Are you sure you want to remove this item?')) {
+                    window.location.href = this.getAttribute('href');
                 }
             });
         });
@@ -101,8 +100,10 @@
         // Handle update cart button
         const updateCartButton = document.querySelector('.btn-outline-heading');
         if (updateCartButton) {
-            updateCartButton.addEventListener('click', function () {
+            updateCartButton.addEventListener('click', function (e) {
+                e.preventDefault();
                 updateTotals();
+                document.getElementById('cart-form').submit();
             });
         }
 
@@ -111,51 +112,61 @@
     });
 </script>
 
-{% for order in orders %}
-    {% set product = order.product %}
-    <div class="cart-item">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-12 mt-3 mt-lg-0 mb-lg-0 mb-3">
-                <div class="product-info d-flex align-items-center">
-                    <div class="product-image">
-                        <img src="{{ asset(product.image) }}" alt="Product" class="img-fluid" loading="lazy">
-                    </div>
-                    <div class="product-details">
-                        <h6 class="product-title">{{ product.name }}</h6>
-                        <div class="product-meta">
-                            <span class="product-color">Weight: {{ product.weight }}</span>
-                            <span class="product-size">Rating: {{ product.rating }}</span>
+{% if orders is empty %}
+    <p class="text-center">Your cart is empty.</p>
+{% else %}
+    <form id="cart-form" action="{{ path('app_user_cart_update') }}" method="POST">
+        {% for order in orders %}
+            {% set product = order.getProduct() %}
+            <div class="cart-item">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-12 mt-3 mt-lg-0 mb-lg-0 mb-3">
+                        <div class="product-info d-flex align-items-center">
+                            <div class="product-image">
+                                <img src="{{ asset(product.image) }}" alt="Product" class="img-fluid" loading="lazy">
+                            </div>
+                            <div class="product-details">
+                                <h6 class="product-title">{{ product.name }}</h6>
+                                <div class="product-meta">
+                                    <span class="product-color">Weight: {{ product.weight }}</span>
+                                    <span class="product-size">Rating: {{ product.rating }}</span>
+                                </div>
+                                <a href="{{ path('app_user_cart_remove', {'pid': product.id}) }}" class="remove-item">
+                                    <i class="bi bi-trash"></i> Remove
+                                </a>
+                            </div>
                         </div>
-                        <a href="{{ path('app_user_cart_remove', {'pid': product.id}) }}" class="remove-item">
-                            <i class="bi bi-trash"></i> Remove
-                        </a>
+                    </div>
+                    <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                        <div class="price-tag">
+                            <span class="current-price">{{ '%.2f'|format(product.price - product.sale * product.price) }} TND</span>
+                            {% if product.sale > 0 %}
+                                <span class="original-price">{{ '%.2f'|format(product.price) }} TND</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                        <div class="quantity-selector">
+                            <button type="button" class="quantity-btn decrease">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <input type="number" name="quantities[{{ order.id }}]" class="quantity-input" value="{{ order.quantity }}" min="1" max="100" data-order-id="{{ order.id }}">
+                            <input type="hidden" name="order_ids[]" value="{{ order.id }}">
+                            <button type="button" class="quantity-btn increase">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                        <div class="item-total">
+                            <span>{{ '%.2f'|format((product.price - product.sale * product.price) * order.quantity) }} TND</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
-                <div class="price-tag">
-                    <span class="current-price">${{ '%.2f'|format(product.price - product.sale * product.price) }}</span>
-                    {% if product.sale != 0 %}
-                        <span class="original-price">${{ '%.2f'|format(product.price) }}</span>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
-                <div class="quantity-selector">
-                    <button class="quantity-btn decrease">
-                        <i class="bi bi-dash"></i>
-                    </button>
-                    <input type="number" class="quantity-input" value="{{ order.quantity }}" min="1" max="10">
-                    <button class="quantity-btn increase">
-                        <i class="bi bi-plus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
-                <div class="item-total">
-                    <span>${{ '%.2f'|format((product.price - product.sale * product.price) * order.quantity) }}</span>
-                </div>
-            </div>
+        {% endfor %}
+        <div class="cart-actions mt-3">
+            <button type="submit" class="btn btn-outline-primary btn-outline-heading">Update Cart</button>
         </div>
-    </div>
-{% endfor %}
+    </form>
+{% endif %}
