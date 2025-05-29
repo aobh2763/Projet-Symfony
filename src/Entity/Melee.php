@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: MeleeRepository::class)]
 class Melee extends Product
 {
+
     #[ORM\Column]
     private ?float $reach = null;
 
@@ -36,5 +37,10 @@ class Melee extends Product
         $this->type = $type;
 
         return $this;
+    }
+
+    public function getCategory(): string
+    {
+        return 'melee';
     }
 }

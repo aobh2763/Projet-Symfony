@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: AccessoryRepository::class)]
 class Accessory extends Product
 {
+
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
@@ -21,5 +22,10 @@ class Accessory extends Product
         $this->type = $type;
 
         return $this;
+    }
+
+    public function getCategory(): string
+    {
+        return 'accessory';
     }
 }

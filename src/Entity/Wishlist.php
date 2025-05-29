@@ -18,7 +18,7 @@ class Wishlist
     /**
      * @var Collection<int, Wish>
      */
-    #[ORM\OneToMany(targetEntity: Wish::class, mappedBy: 'wishlist')]
+    #[ORM\OneToMany(targetEntity: Wish::class, mappedBy: 'wishlist', cascade: ['persist'])]
     private Collection $wishes;
 
     public function __construct()

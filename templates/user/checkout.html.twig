@@ -1,3 +1,10 @@
+{% if is_granted('ROLE_USER') %}
+  {% set cart = app.user.cart %}
+  {% set orders = app.user.cart.orders %}
+{% else %}
+  {% set cart = app.session.get('cart') %}
+  {% set orders = app.session.get('cart').orders %}
+{% endif %}
 
 {% extends 'base.html.twig' %}
 {% block title %}
@@ -85,7 +92,7 @@
 
           <div class="col-lg-4">
             <!-- Order Summary -->
-            {% include 'fragments/For checkout/ordersummary.html.twig' %}
+            {% include 'fragments/For checkout/ordersummary.html.twig' with { shipping_price: shipping_price,orders: orders } %}
 
           </div>
         </div>

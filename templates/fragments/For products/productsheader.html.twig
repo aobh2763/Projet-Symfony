@@ -3,61 +3,42 @@
     <div class="container" data-aos="fade-up">
 
         <!-- Filter and Sort Options -->
-        <div class="filter-container mb-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="row g-3">
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="filter-item search-form">
-                        <label for="productSearch" class="form-label">Search Products</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="productSearch" placeholder="Search for products..." aria-label="Search for products">
-                            <button class="btn search-btn" type="button">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        {{ form_start(filterform, {'attr': {'class': 'filter-container mb-4 row g-3', 'data-aos': 'fade-up', 'data-aos-delay': '100'}}) }}
 
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="filter-item">
-                        <label for="category" class="form-label">Type</label>
-                        <select class="form-select" id="category">
-                            <option selected="">Guns</option>
-                            <option>Ammo</option>
-                            <option>Melee</option>
-                            <option>Accessories</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="filter-item">
-                        <label for="priceRange" class="form-label">Price Range</label>
-                        <select class="form-select" id="priceRange">
-                            <option selected="">All Prices</option>
-                            <option>Under $25</option>
-                            <option>$25 to $50</option>
-                            <option>$50 to $100</option>
-                            <option>$100 to $200</option>
-                            <option>$200 &amp; Above</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="filter-item">
-                        <label for="sortBy" class="form-label">Sort By</label>
-                        <select class="form-select" id="sortBy">
-                            <option selected="">Featured</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
-                            <option>Customer Rating</option>
-                            <option>On Sale</option>
-                        </select>
-                    </div>
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="filter-item search-form">
+                {{ form_label(filterform.name, 'Search Products', {'label_attr': {'class': 'form-label'}}) }}
+                <div class="input-group">
+                    {{ form_widget(filterform.name) }}
+                    <button class="btn search-btn" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
                 </div>
             </div>
-
         </div>
+
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="filter-item">
+                {{ form_label(filterform.type, 'Type', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(filterform.type, {'attr': {'class': 'form-select', 'id': 'category'}}) }}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="filter-item">
+                {{ form_label(filterform.range, 'Price Range', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(filterform.range, {'attr': {'class': 'form-select', 'id': 'priceRange'}}) }}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="filter-item">
+                {{ form_label(filterform.sort, 'Sort By', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(filterform.sort, {'attr': {'class': 'form-select', 'id': 'sortBy'}}) }}
+            </div>
+        </div>
+        {{ form_end(filterform, { 'render_rest': false }) }}
+
 
     </div>
 

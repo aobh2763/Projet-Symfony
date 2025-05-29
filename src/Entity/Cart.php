@@ -21,15 +21,17 @@ class Cart
     /**
      * @var Collection<int, Order>
      */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'cart')]
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'cart', cascade: ['persist'])]
     private Collection $orders;
 
     #[ORM\OneToOne(mappedBy: 'cart', cascade: ['persist', 'remove'])]
     private ?User $user = null;
 
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->prixtotal = 0.0;
     }
 
     public function getId(): ?int
@@ -49,6 +51,16 @@ class Cart
         return $this;
     }
 
+    public function updatePrixTotal(): static {
+        $total = 0.0;
+        foreach ($this->orders as $order) {
+            $total += ($order->getProduct()->getPrice() - $order->getProduct()->getPrice() * $order->getProduct()->getSale()) * $order->getQuantity();
+        }
+        $this->setPrixtotal($total);
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Order>
      */
@@ -63,18 +75,31 @@ class Cart
             $this->orders->add($order);
             $order->setCart($this);
         }
+        $this->updatePrixTotal();
 
         return $this;
     }
 
-    public function removeOrder(Order $order): static
-    {
+    public function removeOrder(Order $order): static {
         if ($this->orders->removeElement($order)) {
             // set the owning side to null (unless already changed)
             if ($order->getCart() === $this) {
                 $order->setCart(null);
             }
         }
+
+        $this->updatePrixTotal();
+
+        return $this;
+    }
+
+    public function clearOrders(): static {
+        foreach ($this->orders as $order) {
+            $order->setCart(null);
+        }
+        $this->orders->clear();
+
+        $this->setPrixtotal(0.0);
 
         return $this;
     }
@@ -95,4 +120,6 @@ class Cart
 
         return $this;
     }
+
+
 }

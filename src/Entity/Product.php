@@ -3,10 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ORM\InheritanceType("JOINED")]
 #[ORM\DiscriminatorColumn(name: "dtype", type: "string")]
 #[ORM\DiscriminatorMap([
@@ -63,6 +64,8 @@ class Product
     {
         $this->orders = new ArrayCollection();
         $this->wishes = new ArrayCollection();
+        $this->sale = 0.0;
+        $this->rating = 0.0;
     }
 
     public function getId(): ?int
@@ -224,5 +227,10 @@ class Product
         }
 
         return $this;
+    }
+
+    public function getCategory(): string
+    {
+        return 'product';
     }
 }

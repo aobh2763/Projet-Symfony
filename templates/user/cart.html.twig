@@ -4,14 +4,13 @@
   {% set orders = app.session.get('cart').orders %}
 {% endif %}
 
-
 {% extends 'base.html.twig' %}
 {% block title %}
-  Cart - FashionStore Bootstrap Template
+  Cart - GunStore
 {% endblock %}
 {% block body %}
 
-<body class="cart-page">
+  <body class="cart-page">
 
 <header id="header" class="header position-relative">
   <!-- Top Bar -->
@@ -25,88 +24,89 @@
 
   <!-- Announcement Bar -->
   {% include 'fragments/announcementbar.html.twig' %}
-
 </header>
 
-  <main class="main">
+<main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title light-background">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
-            <li class="current">Cart</li>
-          </ol>
-        </nav>
-        <h1>Cart</h1>
-      </div>
-    </div><!-- End Page Title -->
+  <!-- Page Title -->
+  <div class="page-title light-background">
+    <div class="container">
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{{ path('app_home') }}">Home</a></li>
+          <li class="current">Cart</li>
+        </ol>
+      </nav>
+      <h1>Cart</h1>
+    </div>
+  </div><!-- End Page Title -->
 
-    <!-- Cart Section -->
-    <section id="cart" class="cart section">
+  <!-- Cart Section -->
+  <section id="cart" class="cart section">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row">
-          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-            <div class="cart-items">
-              <div class="cart-header d-none d-lg-block">
-                <div class="row align-items-center">
-                  <div class="col-lg-6">
-                    <h5>Product</h5>
-                  </div>
-                  <div class="col-lg-2 text-center">
-                    <h5>Price</h5>
-                  </div>
-                  <div class="col-lg-2 text-center">
-                    <h5>Quantity</h5>
-                  </div>
-                  <div class="col-lg-2 text-center">
-                    <h5>Total</h5>
-                  </div>
+      {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+          {% for message in app.session.flashBag.get('success') %}
+            {{ message }}
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if app.session.flashBag.has('error') %}
+        <div class="alert alert-danger">
+          {% for message in app.session.flashBag.get('error') %}
+            {{ message }}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="row">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="cart-items">
+            <div class="cart-header d-none d-lg-block">
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <h5>Product</h5>
+                </div>
+                <div class="col-lg-2 text-center">
+                  <h5>Price</h5>
+                </div>
+                <div class="col-lg-2 text-center">
+                  <h5>Quantity</h5>
+                </div>
+                <div class="col-lg-2 text-center">
+                  <h5>Total</h5>
                 </div>
               </div>
+            </div>
 
+            <!-- Rendering Items -->
+            {% include 'fragments/For cart/rendering.html.twig' %}
 
-              <!-- Rendering Items -->
-              {% include 'fragments/For cart/rendering.html.twig' %}
+            <!-- End Items Rendering -->
 
-
-              <!-- End Items Rendering -->
-
-              <div class="cart-actions">
-                <div class="row">
-                  <div class="col-lg-6 mb-3 mb-lg-0">
-                    <div class="coupon-form">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Coupon code">
-                        <button class="btn btn-outline-accent" type="button">Apply Coupon</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 text-md-end">
-                    <button class="btn btn-outline-heading me-2">
-                      <i class="bi bi-arrow-clockwise"></i> Update Cart
-                    </button>
-                    <button class="btn btn-outline-remove">
-                      <i class="bi bi-trash"></i> Clear Cart
-                    </button>
-                  </div>
+            <div class="cart-actions">
+              <div class="row">
+                <div class="col-lg-6 text-md-start">
+                  <button id="cart-clear" class="btn btn-outline-remove">
+                    <i class="bi bi-trash"></i> Clear Cart
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Order Summary Sidebar -->
-          {% include 'fragments/For cart/ordersummary.html.twig' %}
-
         </div>
+
+        <!-- Order Summary Sidebar -->
+        {% include 'fragments/For cart/ordersummary.html.twig' %}
 
       </div>
 
-    </section><!-- /Cart Section -->
+    </div>
 
-  </main>
+  </section><!-- /Cart Section -->
+
+</main>
 
 {% endblock %}

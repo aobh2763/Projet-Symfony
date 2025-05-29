@@ -3,82 +3,57 @@
         <h3>Payment Method</h3>
         <p>Choose how you'd like to pay</p>
     </div>
-    <form class="checkout-form-element">
+    <form class="checkout-form-element" method="POST" action="{{ path('app_user_process_payment') }}" id="payment-form">
         <div class="payment-methods">
-            <div class="payment-method active">
-                <div class="payment-method-header">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="payment-method" id="credit-card" checked="">
-                        <label class="form-check-label" for="credit-card">
-                            Credit / Debit Card
-                        </label>
-                    </div>
-                    <div class="payment-icons">
-                        <i class="bi bi-credit-card-2-front"></i>
-                        <i class="bi bi-credit-card"></i>
-                    </div>
-                </div>
-                <div class="payment-method-body">
-                    <div class="row">
-                        <div class="col-12 form-group">
-                            <label for="card-number">Card Number</label>
-                            <input type="text" class="form-control" name="card-number" id="card-number" placeholder="1234 5678 9012 3456" required="">
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6 form-group">
-                            <label for="expiry">Expiration Date</label>
-                            <input type="text" class="form-control" name="expiry" id="expiry" placeholder="MM/YY" required="">
-                        </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <label for="cvv">Security Code (CVV)</label>
-                            <input type="text" class="form-control" name="cvv" id="cvv" placeholder="123" required="">
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="card-name">Name on Card</label>
-                        <input type="text" class="form-control" name="card-name" id="card-name" placeholder="John Doe" required="">
-                    </div>
-                </div>
-            </div>
-
             <div class="payment-method mt-3">
                 <div class="payment-method-header">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="payment-method" id="paypal">
-                        <label class="form-check-label" for="paypal">
-                            PayPal
-                        </label>
+                        <input class="form-check-input" type="radio" name="payment_method" id="flouci" value="flouci" required>
+                        <label class="form-check-label" for="flouci">Flouci</label>
                     </div>
                     <div class="payment-icons">
-                        <i class="bi bi-paypal"></i>
+                        <i class="bi bi-wallet2"></i>
                     </div>
                 </div>
                 <div class="payment-method-body d-none">
-                    <p>You will be redirected to PayPal to complete your purchase securely.</p>
+                    <p>You will be redirected to Flouci to complete your purchase securely.</p>
                 </div>
             </div>
-
             <div class="payment-method mt-3">
                 <div class="payment-method-header">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="payment-method" id="apple-pay">
-                        <label class="form-check-label" for="apple-pay">
-                            Apple Pay
-                        </label>
+                        <input class="form-check-input" type="radio" name="payment_method" id="edinar" value="edinar">
+                        <label class="form-check-label" for="edinar">e-Dinar</label>
                     </div>
                     <div class="payment-icons">
-                        <i class="bi bi-apple"></i>
+                        <i class="bi bi-wallet"></i>
                     </div>
                 </div>
                 <div class="payment-method-body d-none">
-                    <p>You will be prompted to authorize payment with Apple Pay.</p>
+                    <p>You will be redirected to e-Dinar to complete your purchase securely.</p>
                 </div>
             </div>
         </div>
         <div class="d-flex justify-content-between mt-4">
             <button type="button" class="btn btn-outline-secondary prev-step" data-prev="2">Back to Shipping</button>
-            <button type="button" class="btn btn-primary next-step" data-next="4">Review Order</button>
+            <button type="submit" class="btn btn-primary" id="submit-payment">Proceed to Payment</button>
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const paymentMethodRadios = document.querySelectorAll('input[name="payment_method"]');
+        paymentMethodRadios.forEach((radio) => {
+            radio.addEventListener('change', function () {
+                document.querySelectorAll('.payment-method-body').forEach((body) => {
+                    body.classList.add('d-none');
+                });
+                const selectedBody = this.closest('.payment-method').querySelector('.payment-method-body');
+                if (selectedBody) {
+                    selectedBody.classList.remove('d-none');
+                }
+            });
+        });
+    });
+</script>

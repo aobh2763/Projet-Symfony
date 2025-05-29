@@ -32,7 +32,7 @@ final class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/acount', name: 'app_admin_account')]
+    #[Route('/admin/account', name: 'app_admin_account')]
     public function account(): Response
     {
         return $this->render('admin/account.html.twig', [
