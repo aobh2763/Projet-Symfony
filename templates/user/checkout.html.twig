@@ -1,3 +1,10 @@
+{% if is_granted('ROLE_USER') %}
+  {% set cart = app.user.cart %}
+  {% set orders = app.user.cart.orders %}
+{% else %}
+  {% set cart = app.session.get('cart') %}
+  {% set orders = app.session.get('cart').orders %}
+{% endif %}
 
 {% extends 'base.html.twig' %}
 {% block title %}
@@ -5,122 +12,134 @@
 {% endblock %}
 {% block body %}
 
-<body class="checkout-page">
+  <body class="checkout-page">
 
-<!-- Page Header -->
-{% include 'fragments/header.html.twig' %}
+<header id="header" class="header position-relative">
+  <!-- Top Bar -->
+  {% include 'fragments/topbar.html.twig' %}
 
-  <main class="main">
+  <!-- Main Header -->
+  {% include 'fragments/mainheader.html.twig' %}
 
-    <!-- Page Title -->
-    <div class="page-title light-background">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
-            <li class="current">Checkout</li>
-          </ol>
-        </nav>
-        <h1>Checkout</h1>
-      </div>
-    </div><!-- End Page Title -->
+  <!-- Navigation -->
+  {% include 'fragments/navbar.html.twig' %}
 
-    <!-- Checkout Section -->
-    <section id="checkout" class="checkout section">
+  <!-- Announcement Bar -->
+  {% include 'fragments/announcementbar.html.twig' %}
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+</header>
 
-        <div class="row">
-          <div class="col-lg-8">
-            <!-- Checkout Steps -->
-            <div class="checkout-steps mb-4" data-aos="fade-up">
-              <div class="step active" data-step="1">
-                <div class="step-number">1</div>
-                <div class="step-title">Information</div>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="2">
-                <div class="step-number">2</div>
-                <div class="step-title">Shipping</div>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="3">
-                <div class="step-number">3</div>
-                <div class="step-title">Payment</div>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="4">
-                <div class="step-number">4</div>
-                <div class="step-title">Review</div>
-              </div>
+<main class="main">
+
+  <!-- Page Title -->
+  <div class="page-title light-background">
+    <div class="container">
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+          <li class="current">Checkout</li>
+        </ol>
+      </nav>
+      <h1>Checkout</h1>
+    </div>
+  </div><!-- End Page Title -->
+
+  <!-- Checkout Section -->
+  <section id="checkout" class="checkout section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- Checkout Steps -->
+          <div class="checkout-steps mb-4" data-aos="fade-up">
+            <div class="step active" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-title">Information</div>
             </div>
-
-            <!-- Checkout Forms Container -->
-            <div class="checkout-forms" data-aos="fade-up" data-aos-delay="150">
-              <!-- Step 1: Customer Information -->
-              {% include 'fragments/checkout/step1.html.twig' %}
-              <!-- Step 2: Shipping Address -->
-              {% include 'fragments/checkout/step2.html.twig' %}
-
-              <!-- Step 3: Payment Method -->
-              {% include 'fragments/checkout/step3.html.twig' %}
-
-              <!-- Step 4: Order Review -->
-              {% include 'fragments/checkout/step4.html.twig' %}
-
+            <div class="step-connector"></div>
+            <div class="step" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-title">Shipping</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-title">Payment</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="4">
+              <div class="step-number">4</div>
+              <div class="step-title">Review</div>
             </div>
           </div>
 
-          <div class="col-lg-4">
-            <!-- Order Summary -->
-            {% include 'fragments/checkout/ordersummary.html.twig' %}
+          <!-- Checkout Forms Container -->
+          <div class="checkout-forms" data-aos="fade-up" data-aos-delay="150">
+            <!-- Step 1: Customer Information -->
+            {% include 'fragments/checkout/step1.html.twig' %}
+            <!-- Step 2: Shipping Address -->
+            {% include 'fragments/checkout/step2.html.twig' %}
 
-          </div>
-        </div>
+            <!-- Step 3: Payment Method -->
+            {% include 'fragments/checkout/step3.html.twig' %}
 
-        <!-- Terms and Privacy Modals -->
-        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-                <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-                <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
-              </div>
-            </div>
+            <!-- Step 4: Order Review -->
+            {% include 'fragments/checkout/step4.html.twig' %}
+
           </div>
         </div>
 
-        <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.</p>
-                <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-                <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="col-lg-4">
+          <!-- Order Summary -->
+          {% include 'fragments/checkout/ordersummary.html.twig' with { shipping_price: shipping_price,orders: orders } %}
 
+        </div>
       </div>
 
-    </section><!-- /Checkout Section -->
+      <!-- Terms and Privacy Modals -->
+      <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
+              <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
+              <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  </main>
+      <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.</p>
+              <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
+              <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- /Checkout Section -->
+
+</main>
 
 {% endblock %}
