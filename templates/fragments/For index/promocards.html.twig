@@ -1,69 +1,65 @@
 <section id="promo-cards" class="promo-cards section">
-
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row g-4">
-            <!-- Promo Card 1 -->
+            <!-- Gun Category -->
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
                 <div class="promo-card card-1">
                     <div class="promo-content">
-                        <p class="small-text">Etiam vel augue</p>
-                        <h3 class="promo-title">Nullam quis ante</h3>
-                        <p class="promo-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu in enim justo rhoncus ut.</p>
-                        <a href="#" class="btn-shop">Shop Now</a>
+                        <p class="small-text">Premium Firearms</p>
+                        <h3 class="promo-title">Rifles & Handguns</h3>
+                        <p class="promo-description">High-quality firearms including pistols, rifles and sniper systems for sport and defense.</p>
+                        <a href="{{ path('app_products', {'filter': 'gun'}) }}" class="btn-shop">Shop Firearms</a>
                     </div>
                     <div class="promo-image">
-                        <img src="{{ asset('assets/img/product/product-1.webp') }}" alt="Product" class="img-fluid">
+                        <img src="{{ asset('assets/img/uploads/product4.png') }}" alt="Firearms" class="img-fluid">
                     </div>
                 </div>
             </div>
 
-            <!-- Promo Card 2 -->
+            <!-- Ammo Category -->
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="promo-card card-2">
                     <div class="promo-content">
-                        <p class="small-text">Maecenas tempus</p>
-                        <h3 class="promo-title">Sed fringilla mauris</h3>
-                        <p class="promo-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu in enim justo rhoncus ut.</p>
-                        <a href="#" class="btn-shop">Shop Now</a>
+                        <p class="small-text">Ammunition</p>
+                        <h3 class="promo-title">Caliber Specific Rounds</h3>
+                        <p class="promo-description">Premium ammunition for all firearm types including 9mm, 5.56 and 7.62 rounds.</p>
+                        <a href="{{ path('app_products', {'filter': 'ammo'}) }}" class="btn-shop">Shop Ammo</a>
                     </div>
                     <div class="promo-image">
-                        <img src="{{ asset('assets/img/product/product-2.webp') }}" alt="Product" class="img-fluid">
+                        <img src="{{ asset('assets/img/uploads/product5.png') }}" alt="Ammunition" class="img-fluid">
                     </div>
                 </div>
             </div>
 
-            <!-- Promo Card 3 -->
+            <!-- Accessories Category -->
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
                 <div class="promo-card card-3">
                     <div class="promo-content">
-                        <p class="small-text">Aenean commodo</p>
-                        <h3 class="promo-title">Fusce vulputate eleifend</h3>
-                        <p class="promo-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu in enim justo rhoncus ut.</p>
-                        <a href="#" class="btn-shop">Shop Now</a>
+                        <p class="small-text">Tactical Gear</p>
+                        <h3 class="promo-title">Equipment & Accessories</h3>
+                        <p class="promo-description">Essential tactical gear including shields, grenades and first aid kits.</p>
+                        <a href="{{ path('app_products', {'filter': 'accessories'}) }}" class="btn-shop">Shop Gear</a>
                     </div>
                     <div class="promo-image">
-                        <img src="{{ asset('assets/img/product/product-f-1.webp') }}" alt="Product" class="img-fluid">
+                        <img src="{{ asset('assets/img/uploads/product14.png') }}" alt="Accessories" class="img-fluid">
                     </div>
                 </div>
             </div>
 
-            <!-- Promo Card 4 -->
+            <!-- Melee Category -->
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                 <div class="promo-card card-4">
                     <div class="promo-content">
-                        <p class="small-text">Pellentesque auctor</p>
-                        <h3 class="promo-title">Vestibulum dapibus nunc</h3>
-                        <p class="promo-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu in enim justo rhoncus ut.</p>
-                        <a href="#" class="btn-shop">Shop Now</a>
+                        <p class="small-text">Close Combat</p>
+                        <h3 class="promo-title">Melee Weapons</h3>
+                        <p class="promo-description">Combat knives, axes and tactical batons for close-quarters defense.</p>
+                        <a href="{{ path('app_products', {'filter': 'melee'}) }}" class="btn-shop">Shop Melee</a>
                     </div>
                     <div class="promo-image">
-                        <img src="{{ asset('assets/img/product/product-m-1.webp') }}" alt="Product" class="img-fluid">
+                        <img src="{{ asset('assets/img/uploads/product9.png') }}" alt="Melee Weapons" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
 </section>

@@ -173,7 +173,8 @@ class AppFixtures extends Fixture
                   ->setImage("assets/img/uploads/product15.png")
                   ->setType('medkit')
                   ->setSale(0.35);
-        
+
+
         $manager->persist($product1);
         $manager->persist($product2);
         $manager->persist($product3);
