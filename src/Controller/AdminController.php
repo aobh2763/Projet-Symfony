@@ -7,8 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\{Response, RequestStack};
 
-use App\Service\{AdminService, MainService};
 use App\Entity\Product;
+use App\Service\{AdminService, MainService};
 use App\Form\{OrdersFilterTypeForm, FilterTypeForm};
 
 final class AdminController extends AbstractController
@@ -28,6 +28,7 @@ final class AdminController extends AbstractController
     #[Route('/admin/orders', name: 'app_admin_orders')]
     public function getOrders(): Response
     {
+        $user = $this->getUser();
         $request = $this->requestStack->getCurrentRequest();
 
         $form = $this->createForm(OrdersFilterTypeForm::class, null, [
@@ -39,20 +40,23 @@ final class AdminController extends AbstractController
             ? $form->getData()
             : [];
 
-        $orders = $this->adminService->getOrders(null);
+        $orders = $this->adminService->getOrders($filters);
 
         return $this->render('admin/orders.html.twig', [
-            'orders' => $orders,
-            'form' => $form
+            'user' => $user,
+            'form' => $form,
+            'orders' => $orders
         ]);
     }
 
     #[Route('/admin/users', name: 'app_admin_users')]
     public function getUsers(): Response
     {
-        $users = $this->adminService->getUsers(null);
+        $user = $this->getUser();
+        $users = $this->adminService->getUsers();
 
         return $this->render('admin/users.html.twig', [
+            'user' => $user,
             'users' => $users
         ]);
     }   
@@ -60,6 +64,7 @@ final class AdminController extends AbstractController
     #[Route('/admin/create-product', name: 'app_admin_create_product')]
     public function createProduct(): Response
     {
+        $user = $this->getUser();
         $request = $this->requestStack->getCurrentRequest();
 
         $product = new Product();
@@ -72,6 +77,7 @@ final class AdminController extends AbstractController
         }
 
         return $this->render('admin/create-product.html.twig', [
+            'user' => $user,
             'form' => $form
         ]);
     }   
@@ -95,9 +101,9 @@ final class AdminController extends AbstractController
         $products = $this->mainService->getProducts($filters, $page, $limit);
 
         return $this->render('admin/products.html.twig', [
-            'products' => $products,
-            'filterform' => $form,
             'filters' => $filters,
+            'filterform' => $form,
+            'products' => $products
         ]);
     }
 

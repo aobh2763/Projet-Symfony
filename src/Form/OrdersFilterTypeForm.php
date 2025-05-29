@@ -19,7 +19,10 @@ class OrdersFilterTypeForm extends AbstractType
                 'Delivered' => 'delivered',
                 'Canceled' => 'canceled',
             ],
-            'placeholder' => 'Select status',
+            'data' => 'all',
+            'attr' => [
+                'onchange' => 'this.form.submit();',
+            ],
             ])
             ->add('time', ChoiceType::class, [
             'choices' => [
@@ -29,6 +32,9 @@ class OrdersFilterTypeForm extends AbstractType
                 'Last 30 days' => 'last_30_days',
             ],
             'data' => 'all_time',
+            'attr' => [
+                'onchange' => 'this.form.submit();',
+            ],
             ])
         ;
     }

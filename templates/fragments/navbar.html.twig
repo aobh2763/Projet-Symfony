@@ -11,11 +11,17 @@
                     <a href="{{ path('app_about') }}" class="{% if current_route == 'app_about' %}active{% endif %}">About</a>
                 </li>
                 <li>
-                    <a href="{{ path('app_products') }}" class="{% if current_route == 'app_products' %}active{% endif %}">Products</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_admin_products') }}" class="{% if current_route == 'app_admin_products' %}active{% endif %}">Products</a>
+                    {% else %}
+                        <a href="{{ path('app_products') }}" class="{% if current_route == 'app_products' %}active{% endif %}">Products</a>
+                    {% endif %}
                 </li>
-                <li>
-                    <a href="{{ path('app_user_checkout') }}" class="{% if current_route == 'app_user_checkout' %}active{% endif %}">Checkout</a>
-                </li>
+                {% if not is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('app_user_checkout') }}" class="{% if current_route == 'app_user_checkout' %}active{% endif %}">Checkout</a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
     </div>

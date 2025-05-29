@@ -40,7 +40,7 @@ class AdminService {
         return $orders;
     }
 
-    public function getUsers($filters){
+    public function getUsers(){
         $qb = $this->entityManager->getRepository(User::class)
             ->createQueryBuilder('u');
 

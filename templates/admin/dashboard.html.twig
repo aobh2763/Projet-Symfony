@@ -29,15 +29,7 @@
                 <section id="account" class="account section">
                     <div class="container" data-aos="fade-up" data-aos-delay="100">
                         <div class="row">
-                            <!-- Profile Sidebar -->
-                                {% include 'fragments/dashboard/sidebar/profilesidebar.html.twig' %}
-                            <!-- /Profile Content -->
-                            
-                            <div class="col-lg-9 profile-content" data-aos="fade-left" data-aos-delay="300">
-                                <div class="tab-content" id="profileTabsContent">
-                                    {% block content %}{% endblock %}
-                                </div>
-                            </div>
+                            {% block content %}{% endblock %}
                         </div>
                     </div>
                 </section>
