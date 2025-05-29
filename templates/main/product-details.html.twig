@@ -158,9 +158,9 @@
                 <a href="{{ path('app_user_cart_add', {'pid': product.id, 'qte': 1}) }}" class="btn btn-primary add-to-cart-btn">
                   <i class="bi bi-cart-plus"></i> Add to Cart
                 </a>
-                <button class="btn btn-outline-secondary wishlist-btn" aria-label="Add to wishlist">
+                <a href="{{ path('app_user_wishlist_add', {'pid': product.id}) }}" class="btn btn-outline-secondary wishlist-btn" aria-label="Add to wishlist">
                   <i class="bi bi-heart"></i>
-                </button>
+                </a>
               </div>
 
               <!-- Extra Information -->

@@ -1,3 +1,5 @@
+{% set wishes = app.user.wishlist.wishes %}
+
 <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
     <div class="tab-header">
         <h2>Wishlist</h2>
@@ -5,55 +7,27 @@
     <div class="wishlist-items">
         <div class="row">
             <!-- Wishlist Item 1 -->
-            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="wishlist-item">
-                    <div class="wishlist-image">
-                        <img src="{{ asset('assets/img/product/product-1.webp') }}" alt="Product" loading="lazy">
-                        <button class="remove-wishlist" type="button">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                    </div>
-                    <div class="wishlist-content">
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                        <div class="product-price">$129.99</div>
-                        <button class="btn btn-add-cart">Add to cart</button>
-                    </div>
-                </div>
-            </div><!-- End Wishlist Item -->
-
-            <!-- Wishlist Item 2 -->
-            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="wishlist-item">
-                    <div class="wishlist-image">
-                        <img src="{{ asset('assets/img/product/product-2.webp') }}" alt="Product" loading="lazy">
-                        <button class="remove-wishlist" type="button">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                    </div>
-                    <div class="wishlist-content">
-                        <h5>Consectetur adipiscing elit</h5>
-                        <div class="product-price">$89.50</div>
-                        <button class="btn btn-add-cart">Add to cart</button>
+            {% for wish in wishes %}
+                {% set product = wish.product %}
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="wishlist-item">
+                        <div class="wishlist-image">
+                            <img src="{{ asset(product.image) }}" alt="Product" loading="lazy">
+                            <a href="{{ path('app_user_wishlist_remove', {'pid': product.id}) }}" class="remove-wishlist" type="button">
+                                <i class="bi bi-x-lg"></i>
+                            </a>
+                        </div>
+                        <div class="wishlist-content">
+                            <a href="{{ path('app_product_details', {'pid': product.id}) }}">
+                                <h5>{{ product.name }}</h5>
+                            </a>
+                            <div class="product-price">${{ (product.price - product.price * product.sale)|number_format(2, '.', '') }}</div>
+                            <a href="{{ path('app_user_cart_add', {'pid': product.id}) }}" class="btn btn-add-cart">Add to cart</a>
+                        </div>
                     </div>
                 </div>
-            </div><!-- End Wishlist Item -->
-
-            <!-- Wishlist Item 3 -->
-            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="wishlist-item">
-                    <div class="wishlist-image">
-                        <img src="{{ asset('assets/img/product/product-3.webp') }}" alt="Product" loading="lazy">
-                        <button class="remove-wishlist" type="button">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                    </div>
-                    <div class="wishlist-content">
-                        <h5>Sed do eiusmod tempor</h5>
-                        <div class="product-price">$199.99</div>
-                        <button class="btn btn-add-cart">Add to cart</button>
-                    </div>
-                </div>
-            </div><!-- End Wishlist Item -->
+            {% endfor %}
+            <!-- End Wishlist Item -->
         </div>
     </div>
 </div>

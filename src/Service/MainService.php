@@ -5,6 +5,7 @@ namespace App\Service;
 use Doctrine\ORM\EntityManager;
 
 use App\Entity\Cart;
+use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Wishlist;
 use App\Form\FilterTypeForm;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\User;
+use App\Entity\Wish;
 use App\Form\RegistrationForm;
 use App\Security\AppCustomAuthenticator;
 use App\Security\EmailVerifier;
@@ -39,6 +41,7 @@ class MainService {
         private EntityManagerInterface $entityManager, 
         private EmailVerifier $emailVerifier, 
         private Security $security,
+        private ManagerRegistry $doctrine
     ) {}
 
     public function getProducts($filters, $page, $limit){
@@ -73,8 +76,10 @@ class MainService {
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
-
+        
         // generate a signed url and email it to the user
+
+        /*
         $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
             (new TemplatedEmail())
                 ->from(new Address('gunstore@gmail.com', 'GunStore'))
@@ -84,18 +89,29 @@ class MainService {
         );
 
         // do anything else you need here, like send an email
+        */
 
         return $this->security->login($user, AppCustomAuthenticator::class, 'main');
     }
 
     public function getCleanCart(Cart $sessionCart) {
+        $doctrine = $this->doctrine->getManager();
         $cart = new Cart();
 
         foreach ($sessionCart->getOrders() as $order) {
-            $product = $order->getProduct();
+            $productId = $order->getProduct()->getId();
 
-            if ($this->productExists($product->getId())) {
-                $cart->addOrder($order);
+            if ($this->productExists($productId)) {
+                $product = $doctrine->getRepository(Product::class)->find($productId);
+
+                $newOrder = new Order();
+                $newOrder->setDate(new \DateTime());
+                $newOrder->setStatus("Pending");
+                $newOrder->setProduct($product);
+                $newOrder->setQuantity($order->getQuantity());
+                $newOrder->setCart($cart);
+
+                $cart->addOrder($newOrder);
             }
         }
 
@@ -103,13 +119,21 @@ class MainService {
     }
 
     public function getCleanWishlist(Wishlist $sessionWishlist){
+        $doctrine = $this->doctrine->getManager();
         $wishlist = new Wishlist();
 
         foreach ($sessionWishlist->getWishes() as $wish) {
-            $product = $wish->getProduct();
+            $curProduct = $wish->getProduct();
+            $productId = $wish->getProduct()->getId();
 
-            if ($this->productExists($product->getId())) {
-                $wishlist->addWish($wish);
+            if ($this->productExists($curProduct->getId())) {
+                $product = $doctrine->getRepository(Product::class)->find($productId);
+
+                $newWish = new Wish();
+                $newWish->setProduct($product);
+                $newWish->setWishlist($wishlist);
+
+                $wishlist->addWish($newWish);
             }
         }
         

@@ -23,7 +23,8 @@ class AppFixtures extends Fixture
                  ->setImage("assets/img/uploads/product1.png")
                  ->setCaliber(9.0)
                  ->setGunRange(50.0)
-                 ->setSale(0.1);
+                 ->setSale(0.1)
+                 ->setRating(mt_rand(0, 50) / 10);
 
         $product2 = new Gun();
         $product2->setName('Hunter Rifle')
@@ -34,7 +35,8 @@ class AppFixtures extends Fixture
                  ->setWeight(3.5)
                  ->setImage("assets/img/uploads/product2.png")
                  ->setCaliber(5.56)
-                 ->setGunRange(500.0);
+                 ->setGunRange(500.0)
+                 ->setRating(mt_rand(0, 50) / 10);
 
         $product3 = new Gun();
         $product3->setName('Sniper Rifle')
@@ -46,7 +48,8 @@ class AppFixtures extends Fixture
                  ->setImage("assets/img/uploads/product3.png")
                  ->setCaliber(7.62)
                  ->setGunRange(1000.0)
-                 ->setSale(0.2);
+                 ->setSale(0.2)
+                 ->setRating(mt_rand(0, 50) / 10);
         
         $product4 = new Gun();
         $product4->setName('AK-47')
@@ -57,7 +60,8 @@ class AppFixtures extends Fixture
                  ->setWeight(3.0)
                  ->setImage("assets/img/uploads/product4.png")
                  ->setCaliber(7.62)
-                 ->setGunRange(300.0);
+                 ->setGunRange(300.0)
+                 ->setRating(mt_rand(0, 50) / 10);
         
         $product5 = new Ammo();
         $product5->setName('9mm Ammo')
@@ -67,7 +71,8 @@ class AppFixtures extends Fixture
                  ->setStock(100)
                  ->setImage("assets/img/uploads/product7.png")
                  ->setWeight(0.5)
-                 ->setGun($product1);
+                 ->setGun($product1)
+                 ->setRating(mt_rand(0, 50) / 10);
         $product1->setAmmo($product5);
 
         $product6 = new Ammo();
@@ -78,7 +83,8 @@ class AppFixtures extends Fixture
                  ->setStock(60)
                  ->setImage("assets/img/uploads/product6.png")
                  ->setWeight(0.7)
-                 ->setGun($product2);
+                 ->setGun($product2)
+                 ->setRating(mt_rand(0, 50) / 10);
         $product2->setAmmo($product6);
 
         $product7 = new Ammo();
@@ -90,7 +96,8 @@ class AppFixtures extends Fixture
                  ->setImage("assets/img/uploads/product8.png")
                  ->setWeight(1.0)
                  ->setGun($product3)
-                 ->setSale(0.15);
+                 ->setSale(0.15)
+                 ->setRating(mt_rand(0, 50) / 10);
         $product3->setAmmo($product7);
 
         $product8 = new Ammo();
@@ -101,7 +108,8 @@ class AppFixtures extends Fixture
                  ->setStock(80)
                  ->setImage("assets/img/uploads/product5.png")
                  ->setWeight(0.8)
-                 ->setGun($product4);
+                 ->setGun($product4)
+                 ->setRating(mt_rand(0, 50) / 10);
         $product4->setAmmo($product8);
 
         $product9 = new Melee();
@@ -113,7 +121,8 @@ class AppFixtures extends Fixture
                  ->setStock(100)
                  ->setWeight(0.5)
                  ->setImage("assets/img/uploads/product9.png")
-                 ->setSale(0.05);
+                 ->setSale(0.05)
+                 ->setRating(mt_rand(0, 50) / 10);
 
         $product10 = new Melee();
         $product10->setName('Spear')
@@ -123,7 +132,8 @@ class AppFixtures extends Fixture
                   ->setType('spear')
                   ->setStock(50)
                   ->setWeight(2.0)
-                  ->setImage("assets/img/uploads/product10.png");
+                  ->setImage("assets/img/uploads/product10.png")
+                  ->setRating(mt_rand(0, 50) / 10);
         
         $product11 = new Melee();
         $product11->setName('Battle Axe')
@@ -134,7 +144,8 @@ class AppFixtures extends Fixture
                   ->setStock(30)
                   ->setWeight(3.0)
                   ->setImage("assets/img/uploads/product11.png")
-                  ->setSale(0.3);
+                  ->setSale(0.3)
+                  ->setRating(mt_rand(0, 50) / 10);
 
         $product12 = new Melee();
         $product12->setName('Baton')
@@ -144,7 +155,8 @@ class AppFixtures extends Fixture
                   ->setType('baton')
                   ->setStock(80)
                   ->setWeight(1.0)
-                  ->setImage("assets/img/uploads/product12.png");
+                  ->setImage("assets/img/uploads/product12.png")
+                  ->setRating(mt_rand(0, 50) / 10);
 
         $product13 = new Accessory();
         $product13->setName('Frag Grenade')
@@ -153,7 +165,8 @@ class AppFixtures extends Fixture
                   ->setStock(50)
                   ->setWeight(0.3)
                   ->setImage("assets/img/uploads/product13.png")
-                  ->setType('grenade');
+                  ->setType('grenade')
+                  ->setRating(mt_rand(0, 50) / 10);
         
         $product14 = new Accessory();
         $product14->setName('Tactical Shield')
@@ -162,7 +175,8 @@ class AppFixtures extends Fixture
                   ->setStock(20)
                   ->setWeight(5.0)
                   ->setImage("assets/img/uploads/product14.png")
-                  ->setType('shield');
+                  ->setType('shield')
+                  ->setRating(mt_rand(0, 50) / 10);
 
         $product15 = new Accessory();
         $product15->setName('First Aid Kit')
@@ -172,7 +186,8 @@ class AppFixtures extends Fixture
                   ->setWeight(1.5)
                   ->setImage("assets/img/uploads/product15.png")
                   ->setType('medkit')
-                  ->setSale(0.35);
+                  ->setSale(0.35)
+                  ->setRating(mt_rand(0, 50) / 10);
         
         $manager->persist($product1);
         $manager->persist($product2);

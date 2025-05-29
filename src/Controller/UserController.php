@@ -5,10 +5,13 @@ namespace App\Controller;
 use App\Entity\Cart;
 use App\Entity\Order;
 use App\Entity\Product;
+use App\Entity\Wish;
+use App\Entity\Wishlist;
 use App\Service\AdminService;
 use App\Service\UserService;
 use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Response, RequestStack};
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -60,7 +63,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/cart/add/{pid}/{qte}', name: 'app_user_cart_add', requirements: ['pid' => '\d+', 'qte' => '\d+'], defaults: ['qte' => 1])]
+    #[Route('/user/cart/add/{pid}/{qte}', name: 'app_user_cart_add', requirements: ['pid' => '\d+', 'qte' => '-?\d+'], defaults: ['qte' => 1])]
     public function addToCart(ManagerRegistry $doctrine, int $pid, int $qte, SessionInterface $session) {
         $prod_rep = $doctrine->getRepository(Product::class);
         $product = $prod_rep->find($pid);
@@ -141,7 +144,6 @@ final class UserController extends AbstractController
         return $this->redirectToRoute('app_user_cart');
     }
 
-    //TODO: change this to a form submit (action)
     #[Route('/user/cart/clear', name: 'app_user_cart_clear')]
     public function clearCart(ManagerRegistry $doctrine, SessionInterface $session) {
         if (!$this->getUser()) {
@@ -155,5 +157,87 @@ final class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('app_user_cart');
+    }
+
+    #[Route('/user/wishlist/add/{pid}', name: 'app_user_wishlist_add', requirements: ['pid' => '\d+'])]
+    public function addToWishlist(ManagerRegistry $doctrine, int $pid, SessionInterface $session) {
+        $referer = $this->requestStack->getCurrentRequest()->headers->get('referer');
+
+        $prod_rep = $doctrine->getRepository(Product::class);
+        $product = $prod_rep->find($pid);
+
+        if (!$product) {
+            return $this->redirectToRoute('app_user_account');
+        }
+
+        if (!$this->getUser()) {
+            $wishlist = $session->get('wishlist', new Wishlist());
+        } else {
+            $user = $this->getUser();
+            $wishlist = $user->getWishlist();
+        }
+
+        foreach ($wishlist->getWishes() as $wish) {
+            if ($wish->getProduct()->getId() === $pid) {
+                if ($referer) {
+                    return $this->redirect($referer);
+                }
+                return $this->redirectToRoute('app_user_account');
+            }
+        }
+
+        $wish = new Wish();
+        $wish->setProduct($product);
+
+        $wishlist->addWish($wish);
+        $wish->setWishlist($wishlist);
+
+        if ($this->getUser()) {
+            $doctrine->getManager()->persist($wish);
+            $doctrine->getManager()->flush();
+        } else {
+            $session->set('wishlist', $wishlist);
+        }
+
+        if ($referer) {
+            return $this->redirect($referer);
+        }
+
+        return $this->redirectToRoute('app_user_account');
+    }
+
+    #[Route('/user/wishlist/remove/{pid}', name: 'app_user_wishlist_remove', requirements: ['pid' => '\d+'])]
+    public function removeFromWishlist(ManagerRegistry $doctrine, int $pid, SessionInterface $session) {
+        $prod_rep = $doctrine->getRepository(Product::class);
+        $product = $prod_rep->find($pid);
+
+        if (!$this->getUser()) {
+            $wishlist = $session->get('wishlist', []);
+        } else {
+            $user = $this->getUser();
+            $wishlist = $user->getWishlist();
+        }
+
+        foreach ($wishlist->getWishes() as $wish) {
+            if ($wish->getProduct()->getId() == $pid) {
+                $wishlist->removeWish($wish);
+                $doctrine->getManager()->remove($wish);
+                break;
+            }
+        }
+
+        if ($this->getUser()) {
+            $doctrine->getManager()->persist($wishlist);
+            $doctrine->getManager()->flush();
+        } else {
+            $session->set('wishlist', $wishlist);
+        }
+
+        $referer = $this->requestStack->getCurrentRequest()->headers->get('referer');
+        if ($referer) {
+            return $this->redirect($referer);
+        }
+
+        return $this->redirectToRoute('app_user_account');
     }
 }

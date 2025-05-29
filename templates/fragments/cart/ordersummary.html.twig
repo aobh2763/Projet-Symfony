@@ -15,25 +15,20 @@
         <div class="summary-item shipping-item">
             <span class="summary-label">Shipping</span>
             <div class="shipping-options">
-                <div class="form-check text-end">
-                    <input class="form-check-input" type="radio" name="shipping" id="standard" checked="">
-                    <label class="form-check-label" for="standard">
-                        Standard Delivery - $4.99
-                    </label>
-                </div>
-                <div class="form-check text-end">
-                    <input class="form-check-input" type="radio" name="shipping" id="express">
-                    <label class="form-check-label" for="express">
-                        Express Delivery - $12.99
-                    </label>
-                </div>
                 {% if cart.prixtotal > 300 %}
-                <div class="form-check text-end">
-                    <input class="form-check-input" type="radio" name="shipping" id="free">
-                    <label class="form-check-label" for="free">
-                        Free Shipping (Orders over $300)
-                    </label>
-                </div>
+                    <div class="form-check text-end">
+                        <input class="form-check-input" type="radio" name="shipping" id="free" checked>
+                        <label class="form-check-label" for="free">
+                            Free Shipping (Orders over $300)
+                        </label>
+                    </div>
+                {% else %}
+                    <div class="form-check text-end">
+                        <input class="form-check-input" type="radio" name="shipping" id="express" checked>
+                        <label class="form-check-label" for="express">
+                        Standard Delivery - $4.99
+                        </label>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -53,7 +48,11 @@
 
         <div class="summary-total">
             <span class="summary-label">Total</span>
-            <span class="summary-value">${{ '%.2f'|format(cart.prixtotal + 4.99 + cart.prixtotal * 0.01)  }}</span>
+            {% if cart.prixtotal > 300 %}
+                <span class="summary-value">${{ '%.2f'|format(cart.prixtotal + cart.prixtotal * 0.01)  }}</span>
+            {% else %}
+                <span class="summary-value">${{ '%.2f'|format(cart.prixtotal + 4.99 + cart.prixtotal * 0.01)  }}</span>
+            {% endif %}
         </div>
 
         {% if cart.prixtotal != 0 %}

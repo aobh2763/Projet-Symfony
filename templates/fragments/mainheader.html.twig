@@ -12,12 +12,25 @@
             <!-- Search -->
             <form class="search-form desktop-search-form">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products...">
-                    <button class="btn search-btn" type="submit">
+                    <input id="main-search" type="text" class="form-control" placeholder="Search for products...">
+                    <button id="main-search-btn" class="btn search-btn" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
                 </div>
             </form>
+
+            <script>
+                const searchField = document.getElementById('main-search');
+                const searchBtn = document.getElementById('main-search-btn');
+
+                searchBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const query = searchField.value.trim();
+                    if (query) {
+                        window.location.href = "{{ path('app_products') }}?name=" + encodeURIComponent(query);
+                    }
+                });
+            </script>
 
             <!-- Actions -->
             <div class="header-actions d-flex align-items-center justify-content-end">
@@ -92,7 +105,11 @@
                 </div>
 
                 <!-- Wishlist -->
-                <a href="{{ asset('wishlist.html.twig') }}" class="header-action-btn d-none d-md-flex">
+                {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('app_user_account') }}" class="header-action-btn d-none d-md-flex">
+                {% else %}
+                <a href="{{ path('app_login') }}" class="header-action-btn d-none d-md-flex">
+                {% endif %}
                     <i class="bi bi-heart"></i>
                     <span class="action-text d-none d-md-inline-block">Wishlist</span>
                     <span class="badge">

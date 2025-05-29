@@ -18,12 +18,12 @@
                         <img src="{{ asset(product.image) }}" alt="Product Image" class="main-img" loading="lazy">
                         <div class="product-overlay">
                             <div class="product-quick-actions">
-                                <button type="button" class="quick-action-btn">
+                                <a href="{{ path('app_user_wishlist_add', {'pid': product.id}) }}" type="button" class="quick-action-btn">
                                     <i class="bi bi-heart"></i>
-                                </button>
-                                <button type="button" class="quick-action-btn">
+                                </a>
+                                <a href="{{ path('app_product_details', {'pid': product.id}) }}" type="button" class="quick-action-btn">
                                     <i class="bi bi-arrow-repeat"></i>
-                                </button>
+                                </a>
                             </div>
                             {% if product.stock == 0 %}
                             <div class="add-to-cart-container">
