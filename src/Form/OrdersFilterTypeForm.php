@@ -15,7 +15,7 @@ class OrdersFilterTypeForm extends AbstractType
             ->add('status', ChoiceType::class, [
             'choices' => [
                 'All statuses' => 'all',
-                'In progress' => 'in_progress',
+                'In progress' => 'in-progress',
                 'Delivered' => 'delivered',
                 'Canceled' => 'canceled',
             ],
@@ -26,12 +26,12 @@ class OrdersFilterTypeForm extends AbstractType
             ])
             ->add('time', ChoiceType::class, [
             'choices' => [
-                'For all time' => 'all_time',
-                'Last year' => 'last_year',
-                'Last month' => 'last_month',
-                'Last 30 days' => 'last_30_days',
+                'For all time' => 'all-time',
+                'Last year' => 'last-year',
+                'Last month' => 'last-month',
+                'Last 30 days' => 'last-30-days',
             ],
-            'data' => 'all_time',
+            'data' => 'all-time',
             'attr' => [
                 'onchange' => 'this.form.submit();',
             ],

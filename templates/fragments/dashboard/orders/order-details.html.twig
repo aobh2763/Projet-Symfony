@@ -15,7 +15,7 @@
     <div class="order-items-list">
         <div class="order-item-detail">
             <div class="item-image">
-                <img src="{{ asset('assets/img/product/product-1.webp') }}" alt="Product" loading="lazy">
+                <img src="{{ asset(order.product.image) }}" alt="Product" loading="lazy">
             </div>
             <div class="item-info">
                 <h6>{{ order.product.name }}</h6>

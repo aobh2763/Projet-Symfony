@@ -2,14 +2,20 @@
 
 namespace App\Controller;
 
-use App\Form\CreateProductTypeForm;
+use App\Entity\{Gun, Accessory, Ammo, Melee};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\{Response, RequestStack};
 
 use App\Entity\Product;
 use App\Service\{AdminService, MainService};
-use App\Form\{OrdersFilterTypeForm, FilterTypeForm};
+use App\Form\{OrdersFilterTypeForm, 
+            FilterTypeForm, 
+            CreateGunTypeForm, 
+            CreateMeleeTypeForm,
+            CreateAmmoTypeForm,
+            CreateAccessoryTypeForm
+        };
 
 final class AdminController extends AbstractController
 {
@@ -69,7 +75,7 @@ final class AdminController extends AbstractController
 
         $product = new Product();
 
-        $form = $this->createForm(CreateProductTypeForm::class, $product);
+        $form = $this->createForm(CreateGunTypeForm::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -112,7 +118,17 @@ final class AdminController extends AbstractController
         $request = $this->requestStack->getCurrentRequest();
 
         $product = $this->mainService->getProduct($id);
-        $form = $this->createForm(CreateProductTypeForm::class, $product);
+        
+        $form = null;
+        if($product instanceof Gun){
+            $form = $this->createForm(CreateGunTypeForm::class, $product);
+        } elseif($product instanceof Ammo){
+            $form = $this->createForm(CreateAmmoTypeForm::class, $product);
+        } elseif($product instanceof Accessory){
+            $form = $this->createForm(CreateAccessoryTypeForm::class, $product);
+        } elseif($product instanceof Melee){
+            $form = $this->createForm(CreateMeleeTypeForm::class, $product);
+        }
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){

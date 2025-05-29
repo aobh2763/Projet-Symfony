@@ -6,32 +6,28 @@ use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextareaType, FileType};
+use Symfony\Component\Form\Extension\Core\Type\{TextareaType, FileType};
 
 class CreateProductTypeForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description', TextareaType::class, [
-                'label' => 'Product Description',
-                'attr' => [
-                    'placeholder' => 'Enter product description',
-                ],
-            ])
             ->add('name', null, [
-                'label' => 'Product Name',
                 'attr' => [
                     'placeholder' => 'Enter product name',
                 ],
             ])
+            ->add('description', TextareaType::class, [
+                'attr' => [
+                    'placeholder' => 'Enter product description',
+                ],
+            ])
             ->add('image', FileType::class, [
-                'label' => 'Product Image',
                 'mapped' => false,
                 'required' => false,
             ])
             ->add('price', null, [
-                'label' => 'Price',
                 'attr' => [
                     'placeholder' => 'Enter the price (e.g., 19.99)',
                 ],
@@ -53,9 +49,6 @@ class CreateProductTypeForm extends AbstractType
                 'attr' => [
                     'placeholder' => 'Enter product weight',
                 ],
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Submit',
             ])
         ;
     }
