@@ -51,20 +51,27 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('filterForm');
-        if (!form) return;
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('filterForm');
+    if (!form) return;
 
-        // Select all the select inputs to listen for change event
-        const selects = ['limit', 'category', 'priceRange', 'sortBy'];
-
-        selects.forEach(id => {
-            const select = document.getElementById(id);
-            if (select) {
-                select.addEventListener('change', function() {
-                    form.submit();
-                });
-            }
+    // Submit form when any select changes
+    const selects = form.querySelectorAll('select');
+    selects.forEach(select => {
+        select.addEventListener('change', () => {
+            form.submit();
         });
     });
+
+    // Submit form when Enter pressed in search input
+    const searchInput = form.querySelector('input[type="text"]');
+    if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                form.submit();
+            }
+        });
+    }
+});
 </script>
