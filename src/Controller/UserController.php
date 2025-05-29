@@ -2,8 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
+use App\Entity\Order;
+use App\Entity\Product;
+use DateTime;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class UserController extends AbstractController
@@ -44,5 +51,101 @@ final class UserController extends AbstractController
         return $this->render('user/cart.html.twig', [
             'controller_name' => 'UserController',
         ]);
+    }
+
+    #[Route('/user/cart/add/{pid}/{qte}', name: 'app_user_cart_add', requirements: ['pid' => '\d+', 'qte' => '\d+'], defaults: ['qte' => 1])]
+    public function addToCart(ManagerRegistry $doctrine, int $pid, int $qte, SessionInterface $session) {
+        $prod_rep = $doctrine->getRepository(Product::class);
+        $product = $prod_rep->find($pid);
+
+        if (!$product) {
+            return $this->redirectToRoute('app_user_cart');
+        }
+
+        if (!$this->getUser()) {
+            $cart = $session->get('cart', new Cart());
+        } else {
+            $user = $this->getUser();
+            $cart = $user->getCart();
+        }
+
+        $orders = $cart->getOrders();
+        foreach ($orders as $od) {
+            $prod = $od->getProduct();
+            if ($prod->getId() === $product->getId()) {
+                $od->setQuantity($od->getQuantity() + $qte);
+                $cart->updatePrixTotal();
+                if ($this->getUser()) {
+                    $doctrine->getManager()->persist($od);
+                    $doctrine->getManager()->flush();
+                } else {
+                    $session->set('cart', $cart);
+                }
+                return $this->redirectToRoute('app_user_cart');
+            }
+        }
+
+        $order = new Order();
+        $order->setProduct($product)
+              ->setDate(new DateTime())
+              ->setStatus("Pending")
+              ->setQuantity($qte);
+
+        $cart->addOrder($order);
+
+        if ($this->getUser()) {
+            $cart->setUser($this->getUser());
+            $doctrine->getManager()->persist($cart);
+            $doctrine->getManager()->flush();
+        } else {
+            $session->set('cart', $cart);
+        }
+
+        return $this->redirectToRoute('app_user_cart');
+    }
+
+    #[Route('/user/cart/remove/{pid}', name: 'app_user_cart_remove', requirements: ['pid' => '\d+'])]
+    public function removeFromCart(ManagerRegistry $doctrine, int $pid, SessionInterface $session) {
+        $prod_rep = $doctrine->getRepository(Product::class);
+        $product = $prod_rep->find($pid);
+
+        if (!$this->getUser()) {
+            $cart = $session->get('cart', new Cart());
+        } else {
+            $user = $this->getUser();
+            $cart = $user->getCart();
+        }
+
+        $orders = $cart->getOrders();
+        foreach ($orders as $order) {
+            if ($order->getProduct()->getId() == $product->getId()) {
+                $cart->removeOrder($order);
+                break;
+            }
+        }
+
+        if ($this->getUser()) {
+            $doctrine->getManager()->persist($cart);
+            $doctrine->getManager()->flush();
+        } else {
+            $session->set('cart', $cart);
+        }
+
+        return $this->redirectToRoute('app_user_cart');
+    }
+
+    #[Route('/user/cart/clear', name: 'app_user_cart_clear')]
+    public function clearCart(ManagerRegistry $doctrine, SessionInterface $session) {
+        if (!$this->getUser()) {
+            $session->set('cart', new Cart());
+        } else {
+            $user = $this->getUser();
+            $cart = $user->getCart();
+            $cart->clearOrders();
+            $doctrine->getManager()->persist($cart);
+            $doctrine->getManager()->flush();
+        }
+
+        return $this->redirectToRoute('app_user_cart');
     }
 }

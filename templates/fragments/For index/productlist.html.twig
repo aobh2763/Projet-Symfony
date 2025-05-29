@@ -139,7 +139,7 @@
                         </div>
                         <div class="product-info">
                             <h5 class="product-title">
-                                <a href="{{ path('app_product_details') }}">{{ product.title }}</a>
+                                <a href="{{ path('app_product_details', {'pid': 200}) }}">{{ product.title }}</a>
                             </h5>
                             <div class="product-price">
                                 <span class="current-price">${{ product.price }}</span>
@@ -160,7 +160,7 @@
         </div>
 
         <div class="text-center mt-5" data-aos="fade-up">
-            <a href="{{ asset('category.html.twig') }}" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
+            <a href="{{ path("app_products")}}" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
         </div>
 
     </div>
