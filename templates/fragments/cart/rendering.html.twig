@@ -97,16 +97,6 @@
             });
         });
 
-        // Handle update cart button
-        const updateCartButton = document.querySelector('.btn-outline-heading');
-        if (updateCartButton) {
-            updateCartButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                updateTotals();
-                document.getElementById('cart-form').submit();
-            });
-        }
-
         // Initial total calculation on page load
         updateTotals();
     });
@@ -147,12 +137,12 @@
                     </div>
                     <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
                         <div class="quantity-selector">
-                            <button type="button" class="quantity-btn decrease">
+                            <button type="button" class="quantity-btn decrease" id="minus_quantity{{ product.id }}">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="number" name="quantities[{{ order.id }}]" class="quantity-input" value="{{ order.quantity }}" min="1" max="100" data-order-id="{{ order.id }}">
+                            <input type="number" name="quantities[{{ order.id }}]" class="quantity-input" value="{{ order.quantity }}" min="1" max="100" data-order-id="{{ order.id }}" id="quantity_field{{ product.id }}" disabled>
                             <input type="hidden" name="order_ids[]" value="{{ order.id }}">
-                            <button type="button" class="quantity-btn increase">
+                            <button type="button" class="quantity-btn increase" id="plus_quantity{{ product.id }}">
                                 <i class="bi bi-plus"></i>
                             </button>
                         </div>
@@ -164,9 +154,30 @@
                     </div>
                 </div>
             </div>
+            <script>
+                const quantityAdder{{ product.id }} = document.getElementById('plus_quantity{{ product.id }}');
+                const quantityField{{ product.id }} = document.getElementById('quantity_field{{ product.id }}');
+                const quantityRemover{{ product.id }} = document.getElementById('minus_quantity{{ product.id }}');
+
+                quantityAdder{{ product.id }}.addEventListener('click', function () {
+                    let currentQuantity = parseInt(quantityField{{ product.id }}.value, 10);
+                    if (isNaN(currentQuantity) || currentQuantity < 1) {
+                        currentQuantity = 1;
+                        console.log("oops");
+                    } else {
+                        window.location.href = "{{ path('app_user_cart_add', {'pid': product.id}) }}";
+                    }
+                });
+
+                quantityRemover{{ product.id }}.addEventListener('click', function () {
+                    let currentQuantity = parseInt(quantityField{{ product.id }}.value, 10);
+                    if (isNaN(currentQuantity) || currentQuantity <= 1) {
+                        currentQuantity = 1;
+                    } else {
+                        window.location.href = "{{ path('app_user_cart_add', {'pid': product.id, 'qte': -1}) }}";
+                    }
+                });
+            </script>
         {% endfor %}
-        <div class="cart-actions mt-3">
-            <button type="submit" class="btn btn-outline-primary btn-outline-heading">Update Cart</button>
-        </div>
     </form>
 {% endif %}

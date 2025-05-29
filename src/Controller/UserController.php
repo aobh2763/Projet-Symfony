@@ -84,9 +84,8 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/cart/add/{pid}/{qte}', name: 'app_user_cart_add', requirements: ['pid' => '\d+', 'qte' => '\d+'], defaults: ['qte' => 1])]
-    public function addToCart(ManagerRegistry $doctrine, int $pid, int $qte, SessionInterface $session): Response
-    {
+    #[Route('/user/cart/add/{pid}/{qte}', name: 'app_user_cart_add', requirements: ['pid' => '\d+', 'qte' => '-?\d+'], defaults: ['qte' => 1])]
+    public function addToCart(ManagerRegistry $doctrine, int $pid, int $qte, SessionInterface $session) {
         $prod_rep = $doctrine->getRepository(Product::class);
         $product = $prod_rep->find($pid);
 

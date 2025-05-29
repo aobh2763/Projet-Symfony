@@ -16,7 +16,7 @@
             <span class="summary-label">Shipping</span>
             <div class="shipping-options">
                 <div class="form-check text-end">
-                    <input class="form-check-input" type="radio" name="shipping" id="standard" data-price="4.99" {{ app.session.get('shipping_price', 4.99) == 4.99 ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="shipping" id="standard" data-price="4.99" {{ app.session.get('shipping_price', 4.99) == 4.99 ? 'checked' : '' }} checked>
                     <label class="form-check-label" for="standard">Standard Delivery - $4.99</label>
                 </div>
                 <div class="form-check text-end">
