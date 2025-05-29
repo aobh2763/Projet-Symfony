@@ -13028,7 +13028,7 @@ section,
     --nav-dropdown-background-color: #D6CBA1; /* Gunmetal gray */
     --nav-dropdown-color: #FFFFFF;
     --nav-dropdown-hover-color: #8B0000;
-    --camouflage-bg: url('../../myassets/img/camouflage.jpg'); /* Replace with actual path */
+    --camouflage-bg: url('../../assets/img/camouflage.jpg'); /* Replace with actual path */
 }
 
 /* Color Presets */
