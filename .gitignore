@@ -23,3 +23,9 @@
 #/public/assets/
 #/assets/vendor/
 ###< symfony/asset-mapper ###
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore JetBrains IDEs (WebStorm, PhpStorm, IntelliJ, etc.)
+.idea/
