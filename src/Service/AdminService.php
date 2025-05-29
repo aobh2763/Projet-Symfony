@@ -60,7 +60,7 @@ class AdminService {
 
     public function updateProduct($updatedProduct){
         $productRepository = $this->entityManager->getRepository(Product::class);
-        $product = $productRepository->find($updatedProduct->getProduct());
+        $product = $productRepository->find($updatedProduct->getId());
 
         if ($product) {
             $product->setName($updatedProduct->getName());
