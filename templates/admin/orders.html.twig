@@ -3,7 +3,7 @@
 {% block content %}
 
 <!-- Profile Sidebar -->
-    {% include 'fragments/dashboard/sidebar/profilesidebar.html.twig' with {'user': user} %}
+    {% include 'fragments/dashboard/sidebar/profilesidebar.html.twig' %}
 <!-- /Profile Content -->
 
 <div class="col-lg-9 profile-content" data-aos="fade-left" data-aos-delay="300">
@@ -12,7 +12,7 @@
             <div class="tab-header">
                 <h2>Orders</h2>
                 <div class="tab-filters">
-                    {% include 'fragments/dashboard/orders/filterForm.html.twig' with {'filterform': form} %}
+                    {% include 'fragments/dashboard/orders/filterForm.html.twig' %}
                 </div>
             </div>
 
