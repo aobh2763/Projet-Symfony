@@ -12,6 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
@@ -27,8 +28,9 @@ final class UserController extends AbstractController
     private $edinarApiKey;
     private $edinarApiSecret;
     private $edinarMerchantId;
+    private $requestStack;
 
-    public function __construct(HttpClientInterface $httpClient)
+    public function __construct(HttpClientInterface $httpClient,RequestStack $rs)
     {
         $this->httpClient = $httpClient;
         $this->flouciApiKey = $_ENV['FLOUCI_API_KEY'];
@@ -38,6 +40,7 @@ final class UserController extends AbstractController
         $this->edinarApiKey = $_ENV['EDINAR_API_KEY'];
         $this->edinarApiSecret = $_ENV['EDINAR_API_SECRET'];
         $this->edinarMerchantId = $_ENV['EDINAR_MERCHANT_ID'];
+        $this->requestStack= $rs;
     }
 
     #[Route('/user', name: 'app_user')]
