@@ -1,126 +1,227 @@
 {% set showcase = [
     {
-        category: "Clothing",
-        title: "Lorem ipsum dolor sit amet",
-        main_image: "assets/img/product/product-1.webp",
-        hover_image: "assets/img/product/product-1-variant.webp",
-        price: 89.99,
-        old_price: 129.99,
-        rating: 4.5,
-        reviews: 24,
-        badge: "Sale",
-        filter: "filter-clothing"
+        category: "Melee",
+        title: "Kukri Knife",
+        main_image: "assets/img/uploads/kurkiknife.webp",
+        hover_image: "assets/img/uploads/kurkiknife.webp",
+        price: 90.0,
+        old_price: null,
+        rating: 4.3,
+        reviews: 16,
+        badge: null,
+        filter: "filter-melee"
     },
     {
-        category: "Electronics",
-        title: "Consectetur adipiscing elit",
-        main_image: "assets/img/product/product-2.webp",
-        hover_image: "assets/img/product/product-2-variant.webp",
-        price: 249.99,
+        category: "Accessories",
+        title: "Frag Grenade",
+        main_image: "assets/img/uploads/product13.png",
+        hover_image: "assets/img/uploads/product13.png",
+        price: 60.0,
         old_price: null,
-        rating: 4.0,
+        rating: 4.2,
         reviews: 18,
         badge: null,
-        filter: "filter-electronics"
+        filter: "filter-accessories"
+    },
+    {
+        category: "Guns",
+        title: "Sniper Rifle",
+        main_image: "assets/img/uploads/product3.png",
+        hover_image: "assets/img/uploads/product3.png",
+        price: 1500.0 * (1 - 0.2),
+        old_price: 1500.0,
+        rating: 4.9,
+        reviews: 10,
+        badge: "Sale",
+        filter: "filter-guns"
+    },
+    {
+        category: "Ammo",
+        title: "7.62 AK-47 Ammo",
+        main_image: "assets/img/uploads/product5.png",
+        hover_image: "assets/img/uploads/product5.png",
+        price: 25.0,
+        old_price: null,
+        rating: 4.1,
+        reviews: 22,
+        badge: null,
+        filter: "filter-ammo"
     },
     {
         category: "Accessories",
-        title: "Sed do eiusmod tempor",
-        main_image: "assets/img/product/product-3.webp",
-        hover_image: "assets/img/product/product-3-variant.webp",
-        price: 59.99,
+        title: "Night Vision Goggles",
+        main_image: "assets/img/uploads/nightvision.png",
+        hover_image: "assets/img/uploads/nightvision.png",
+        price: 1200.0,
         old_price: null,
-        rating: 3.0,
-        reviews: 7,
+        rating: 4.9,
+        reviews: 8,
         badge: "New",
         filter: "filter-accessories"
     },
     {
-        category: "Clothing",
-        title: "Incididunt ut labore et dolore",
-        main_image: "assets/img/product/product-4.webp",
-        hover_image: "assets/img/product/product-4-variant.webp",
-        price: 79.99,
-        old_price: 99.99,
-        rating: 5.0,
-        reviews: 32,
-        badge: null,
-        filter: "filter-clothing"
+        category: "Melee",
+        title: "Battle Axe",
+        main_image: "assets/img/uploads/product11.png",
+        hover_image: "assets/img/uploads/product11.png",
+        price: 120.0 * (1 - 0.3),
+        old_price: 120.0,
+        rating: 4.6,
+        reviews: 10,
+        badge: "Sale",
+        filter: "filter-melee"
     },
     {
-        category: "Electronics",
-        title: "Magna aliqua ut enim ad minim",
-        main_image: "assets/img/product/product-5.webp",
-        hover_image: "assets/img/product/product-5-variant.webp",
-        price: 199.99,
-        old_price: 249.99,
-        rating: 3.5,
-        reviews: 15,
+        category: "Guns",
+        title: "Pistol",
+        main_image: "assets/img/uploads/product1.png",
+        hover_image: "assets/img/uploads/product1.png",
+        price: 100.0 * (1 - 0.1),
+        old_price: 100.0,
+        rating: 4.5,
+        reviews: 20,
         badge: "Sale",
-        filter: "filter-electronics"
+        filter: "filter-guns"
+    },
+    {
+        category: "Ammo",
+        title: "5.56 Ammo",
+        main_image: "assets/img/uploads/product6.png",
+        hover_image: "assets/img/uploads/product6.png",
+        price: 30.0,
+        old_price: null,
+        rating: 4.3,
+        reviews: 18,
+        badge: null,
+        filter: "filter-ammo"
     },
     {
         category: "Accessories",
-        title: "Veniam quis nostrud exercitation",
-        main_image: "assets/img/product/product-6.webp",
-        hover_image: "assets/img/product/product-6-variant.webp",
-        price: 45.99,
+        title: "Tactical Shield",
+        main_image: "assets/img/uploads/product14.png",
+        hover_image: "assets/img/uploads/product14.png",
+        price: 200.0,
+        old_price: null,
+        rating: 4.5,
+        reviews: 12,
+        badge: null,
+        filter: "filter-accessories"
+    },
+    {
+        category: "Melee",
+        title: "Spear",
+        main_image: "assets/img/uploads/product10.png",
+        hover_image: "assets/img/uploads/product10.png",
+        price: 80.0,
         old_price: null,
         rating: 4.0,
-        reviews: 21,
+        reviews: 15,
         badge: null,
+        filter: "filter-melee"
+    },
+    {
+        category: "Guns",
+        title: "Hunter Rifle",
+        main_image: "assets/img/uploads/product2.png",
+        hover_image: "assets/img/uploads/product2.png",
+        price: 300.0,
+        old_price: null,
+        rating: 4.8,
+        reviews: 15,
+        badge: null,
+        filter: "filter-guns"
+    },
+    {
+        category: "Ammo",
+        title: "9mm Ammo",
+        main_image: "assets/img/uploads/product7.png",
+        hover_image: "assets/img/uploads/product7.png",
+        price: 20.0,
+        old_price: null,
+        rating: 4.0,
+        reviews: 30,
+        badge: null,
+        filter: "filter-ammo"
+    },
+    {
+        category: "Accessories",
+        title: "First Aid Kit",
+        main_image: "assets/img/uploads/product15.png",
+        hover_image: "assets/img/uploads/product15.png",
+        price: 85.0 * (1 - 0.35),
+        old_price: 85.0,
+        rating: 4.8,
+        reviews: 25,
+        badge: "Sale",
         filter: "filter-accessories"
     },
     {
-        category: "Clothing",
-        title: "Ullamco laboris nisi ut aliquip",
-        main_image: "assets/img/product/product-7.webp",
-        hover_image: "assets/img/product/product-7-variant.webp",
-        price: 69.99,
+        category: "Guns",
+        title: "AK-47",
+        main_image: "assets/img/uploads/product4.png",
+        hover_image: "assets/img/uploads/product4.png",
+        price: 400.0,
         old_price: null,
-        rating: 3.5,
-        reviews: 11,
-        badge: "New",
-        filter: "filter-clothing"
+        rating: 4.2,
+        reviews: 25,
+        badge: null,
+        filter: "filter-guns"
     },
     {
-        category: "Electronics",
-        title: "Ex ea commodo consequat",
-        main_image: "assets/img/product/product-8.webp",
-        hover_image: "assets/img/product/product-8-variant.webp",
-        price: 159.99,
+        category: "Melee",
+        title: "Combat Knife",
+        main_image: "assets/img/uploads/product9.png",
+        hover_image: "assets/img/uploads/product9.png",
+        price: 50.0 * (1 - 0.05),
+        old_price: 50.0,
+        rating: 4.4,
+        reviews: 28,
+        badge: "Sale",
+        filter: "filter-melee"
+    },
+    {
+        category: "Ammo",
+        title: "7.62 Ammo",
+        main_image: "assets/img/uploads/product8.png",
+        hover_image: "assets/img/uploads/product8.png",
+        price: 50.0 * (1 - 0.15),
+        old_price: 50.0,
+        rating: 4.7,
+        reviews: 12,
+        badge: "Sale",
+        filter: "filter-ammo"
+    },
+    {
+        category: "Melee",
+        title: "Baton",
+        main_image: "assets/img/uploads/product12.png",
+        hover_image: "assets/img/uploads/product12.png",
+        price: 40.0,
         old_price: null,
-        rating: 5.0,
-        reviews: 29,
+        rating: 3.9,
+        reviews: 20,
         badge: null,
-        filter: "filter-electronics"
+        filter: "filter-melee"
     }
 ] %}
 
-
-
-
 <section id="product-list" class="product-list section">
-
     <div class="container isotope-layout" data-aos="fade-up" data-aos-delay="100" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
         <div class="row">
             <div class="col-12">
                 <div class="product-filters isotope-filters mb-5 d-flex justify-content-center" data-aos="fade-up">
                     <ul class="d-flex flex-wrap gap-2 list-unstyled">
                         <li class="filter-active" data-filter="*">All</li>
-                        <li data-filter=".filter-clothing">Clothing</li>
+                        <li data-filter=".filter-guns">Guns</li>
+                        <li data-filter=".filter-ammo">Ammo</li>
+                        <li data-filter=".filter-melee">Melee</li>
                         <li data-filter=".filter-accessories">Accessories</li>
-                        <li data-filter=".filter-electronics">Electronics</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="row product-container isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-
-
             {% for product in showcase %}
                 <div class="col-md-6 col-lg-3 product-item isotope-item {{ product.filter }}">
                     <div class="product-card">
@@ -155,14 +256,10 @@
                     </div>
                 </div>
             {% endfor %}
-
-
         </div>
 
         <div class="text-center mt-5" data-aos="fade-up">
-            <a href="{{ path("app_products")}}" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
+            <a href="{{ path('app_products') }}" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
         </div>
-
     </div>
-
 </section>

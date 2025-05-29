@@ -1,128 +1,154 @@
 <section id="category-cards" class="category-cards section light-background">
-
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="category-tabs">
             <ul class="nav justify-content-center" id="category-cards-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="category-cards-men-tab" data-bs-toggle="tab" data-bs-target="#category-cards-men-content" type="button" role="tab" aria-controls="category-cards-men-content" aria-selected="false">SHOP MEN</button>
+                    <button class="nav-link active" id="category-cards-guns-tab" data-bs-toggle="tab" data-bs-target="#category-cards-guns-content" type="button" role="tab" aria-controls="category-cards-guns-content" aria-selected="true">SHOP GUNS</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="category-cards-women-tab" data-bs-toggle="tab" data-bs-target="#category-cards-women-content" type="button" role="tab" aria-controls="category-cards-women-content" aria-selected="true">SHOP WOMEN</button>
+                    <button class="nav-link" id="category-cards-ammo-tab" data-bs-toggle="tab" data-bs-target="#category-cards-ammo-content" type="button" role="tab" aria-controls="category-cards-ammo-content" aria-selected="false">SHOP AMMO</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="category-cards-accesoires-tab" data-bs-toggle="tab" data-bs-target="#category-cards-accesoires-content" type="button" role="tab" aria-controls="category-cards-accesoires-content" aria-selected="false">SHOP ACCESSOIRCES</button>
+                    <button class="nav-link" id="category-cards-melee-tab" data-bs-toggle="tab" data-bs-target="#category-cards-melee-content" type="button" role="tab" aria-controls="category-cards-melee-content" aria-selected="false">SHOP MELEE</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="category-cards-accessories-tab" data-bs-toggle="tab" data-bs-target="#category-cards-accessories-content" type="button" role="tab" aria-controls="category-cards-accessories-content" aria-selected="false">SHOP ACCESSORIES</button>
                 </li>
             </ul>
         </div>
 
         <div class="tab-content" id="category-cards-tabContent">
-            <!-- Men's Categories -->
-            <div class="tab-pane fade" id="category-cards-men-content" role="tabpanel" aria-labelledby="category-cards-men-tab">
+            <!-- Guns Categories -->
+            <div class="tab-pane fade show active" id="category-cards-guns-content" role="tabpanel" aria-labelledby="category-cards-guns-tab">
                 <div class="row g-4">
-                    <!-- Leather Category -->
+                    <!-- Pistols Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-m-11.webp') }}" alt="Men's Leather" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product1.png') }}" alt="Pistols" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                LEATHER <i class="bi bi-arrow-right"></i>
+                                PISTOLS <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
-
-                    <!-- Denim Category -->
+                    <!-- Rifles Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-m-12.webp') }}" alt="Men's Denim" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product2.png') }}" alt="Rifles" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                DENIM <i class="bi bi-arrow-right"></i>
+                                RIFLES <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
-
-                    <!-- Swimwear Category -->
+                    <!-- Sniper Rifles Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-m-19.webp') }}" alt="Men's Swimwear" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product3.png') }}" alt="Sniper Rifles" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                SWIMWEAR <i class="bi bi-arrow-right"></i>
+                                SNIPER RIFLES <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Women's Categories -->
-            <div class="tab-pane fade show active" id="category-cards-women-content" role="tabpanel" aria-labelledby="category-cards-women-tab">
+            <!-- Ammo Categories -->
+            <div class="tab-pane fade" id="category-cards-ammo-content" role="tabpanel" aria-labelledby="category-cards-ammo-tab">
                 <div class="row g-4">
-                    <!-- Dresses Category -->
+                    <!-- 9mm Ammo Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-f-11.webp') }}" alt="Women's Dresses" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product7.png') }}" alt="9mm Ammo" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                DRESSES <i class="bi bi-arrow-right"></i>
+                                9MM AMMO <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
-
-                    <!-- Tops Category -->
+                    <!-- 5.56 Ammo Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-f-18.webp') }}" alt="Women's Tops" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product6.png') }}" alt="5.56 Ammo" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                TOPS <i class="bi bi-arrow-right"></i>
+                                5.56 AMMO <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
-
-                    <!-- Accessories Category -->
+                    <!-- 7.62 Ammo Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-f-13.webp') }}" alt="Women's Accessories" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product8.png') }}" alt="7.62 Ammo" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                ACCESSORIES <i class="bi bi-arrow-right"></i>
+                                7.62 AMMO <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Kid's Categories -->
-            <div class="tab-pane fade" id="category-cards-accesoires-content" role="tabpanel" aria-labelledby="category-cards-accesoires-tab">
+            <!-- Melee Categories -->
+            <div class="tab-pane fade" id="category-cards-melee-content" role="tabpanel" aria-labelledby="category-cards-melee-tab">
                 <div class="row g-4">
-                    <!-- Boys Category -->
+                    <!-- Knives Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-1.webp') }}" alt="Boys Clothing" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product9.png') }}" alt="Knives" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                BOYS <i class="bi bi-arrow-right"></i>
+                                KNIVES <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
-
-                    <!-- Girls Category -->
+                    <!-- Spears Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-2.webp') }}" alt="Girls Clothing" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product10.png') }}" alt="Spears" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                GIRLS <i class="bi bi-arrow-right"></i>
+                                SPEARS <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
-
-                    <!-- Toys Category -->
+                    <!-- Axes Category -->
                     <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400">
                         <div class="category-card">
-                            <img src="{{ asset('assets/img/product/product-3.webp') }}" alt="Kids Toys" class="img-fluid" loading="lazy">
+                            <img src="{{ asset('assets/img/uploads/product11.png') }}" alt="Axes" class="img-fluid" loading="lazy">
                             <a href="#" class="category-link">
-                                TOYS <i class="bi bi-arrow-right"></i>
+                                AXES <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessories Categories -->
+            <div class="tab-pane fade" id="category-cards-accessories-content" role="tabpanel" aria-labelledby="category-cards-accessories-tab">
+                <div class="row g-4">
+                    <!-- Grenades Category -->
+                    <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="category-card">
+                            <img src="{{ asset('assets/img/uploads/product13.png') }}" alt="Grenades" class="img-fluid" loading="lazy">
+                            <a href="#" class="category-link">
+                                GRENADES <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Shields Category -->
+                    <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="category-card">
+                            <img src="{{ asset('assets/img/uploads/product14.png') }}" alt="Shields" class="img-fluid" loading="lazy">
+                            <a href="#" class="category-link">
+                                SHIELDS <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Gadgets Category -->
+                    <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="category-card">
+                            <img src="{{ asset('assets/img/uploads/nightvision.png') }}" alt="Gadgets" class="img-fluid" loading="lazy">
+                            <a href="#" class="category-link">
+                                GADGETS <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
 </section>
