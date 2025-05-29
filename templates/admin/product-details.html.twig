@@ -92,9 +92,15 @@
                                     <div class="invalid-feedback d-block">{{ form_errors(form.image) }}</div>
                                 </div>
 
-                                <div class="d-flex justify-content-around">
-                                    <button type="submit" class="btn btn-primary flex-fill me-2" style="min-width: 0;">Save Changes</button>
-                                    <a class="flex-fill ms-2" href="{{ path('app_admin_products') }}"><button class="btn btn-secondary" style="min-width: 0;">Cancel</button></a>
+                                <div class="row align-items-stretch">
+                                    <div class="col-6 pe-1 d-flex">
+                                        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary w-100 h-100'}}) }}
+                                    </div>
+                                    <div class="col-6 ps-1 d-flex">
+                                        <a href="{{ path('app_admin_products') }}" class="w-100 d-block h-100">
+                                            <button type="button" class="btn btn-secondary w-100 h-100">Cancel</button>
+                                        </a>
+                                    </div>
                                 </div>
 
                                 {{ form_end(form) }}
