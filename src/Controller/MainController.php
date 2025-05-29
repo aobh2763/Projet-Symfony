@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
+use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\{RequestStack, Response, RedirectResponse};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
 use App\Entity\{User, Cart, Wishlist};
 use App\Form\{FilterTypeForm, RegistrationForm};
 use App\Service\MainService;
@@ -20,13 +20,15 @@ final class MainController extends AbstractController
     ){}
 
     #[Route('/', name: 'app_main')]
-    public function index(): Response
+    public function index(ProductRepository $productRepository): Response
     {
         $this->onFirstVisit();
-        
+        $products = $productRepository->findBy([], ['id' => 'DESC'], 6);
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
+            'products' => $products,
         ]);
+        
     }
 
     //TODO: paging through request params

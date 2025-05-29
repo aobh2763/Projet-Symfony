@@ -1,265 +1,83 @@
-{% set showcase = [
-    {
-        category: "Melee",
-        title: "Kukri Knife",
-        main_image: "assets/img/uploads/kurkiknife.webp",
-        hover_image: "assets/img/uploads/kurkiknife.webp",
-        price: 90.0,
-        old_price: null,
-        rating: 4.3,
-        reviews: 16,
-        badge: null,
-        filter: "filter-melee"
-    },
-    {
-        category: "Accessories",
-        title: "Frag Grenade",
-        main_image: "assets/img/uploads/product13.png",
-        hover_image: "assets/img/uploads/product13.png",
-        price: 60.0,
-        old_price: null,
-        rating: 4.2,
-        reviews: 18,
-        badge: null,
-        filter: "filter-accessories"
-    },
-    {
-        category: "Guns",
-        title: "Sniper Rifle",
-        main_image: "assets/img/uploads/product3.png",
-        hover_image: "assets/img/uploads/product3.png",
-        price: 1500.0 * (1 - 0.2),
-        old_price: 1500.0,
-        rating: 4.9,
-        reviews: 10,
-        badge: "Sale",
-        filter: "filter-guns"
-    },
-    {
-        category: "Ammo",
-        title: "7.62 AK-47 Ammo",
-        main_image: "assets/img/uploads/product5.png",
-        hover_image: "assets/img/uploads/product5.png",
-        price: 25.0,
-        old_price: null,
-        rating: 4.1,
-        reviews: 22,
-        badge: null,
-        filter: "filter-ammo"
-    },
-    {
-        category: "Accessories",
-        title: "Night Vision Goggles",
-        main_image: "assets/img/uploads/nightvision.png",
-        hover_image: "assets/img/uploads/nightvision.png",
-        price: 1200.0,
-        old_price: null,
-        rating: 4.9,
-        reviews: 8,
-        badge: "New",
-        filter: "filter-accessories"
-    },
-    {
-        category: "Melee",
-        title: "Battle Axe",
-        main_image: "assets/img/uploads/product11.png",
-        hover_image: "assets/img/uploads/product11.png",
-        price: 120.0 * (1 - 0.3),
-        old_price: 120.0,
-        rating: 4.6,
-        reviews: 10,
-        badge: "Sale",
-        filter: "filter-melee"
-    },
-    {
-        category: "Guns",
-        title: "Pistol",
-        main_image: "assets/img/uploads/product1.png",
-        hover_image: "assets/img/uploads/product1.png",
-        price: 100.0 * (1 - 0.1),
-        old_price: 100.0,
-        rating: 4.5,
-        reviews: 20,
-        badge: "Sale",
-        filter: "filter-guns"
-    },
-    {
-        category: "Ammo",
-        title: "5.56 Ammo",
-        main_image: "assets/img/uploads/product6.png",
-        hover_image: "assets/img/uploads/product6.png",
-        price: 30.0,
-        old_price: null,
-        rating: 4.3,
-        reviews: 18,
-        badge: null,
-        filter: "filter-ammo"
-    },
-    {
-        category: "Accessories",
-        title: "Tactical Shield",
-        main_image: "assets/img/uploads/product14.png",
-        hover_image: "assets/img/uploads/product14.png",
-        price: 200.0,
-        old_price: null,
-        rating: 4.5,
-        reviews: 12,
-        badge: null,
-        filter: "filter-accessories"
-    },
-    {
-        category: "Melee",
-        title: "Spear",
-        main_image: "assets/img/uploads/product10.png",
-        hover_image: "assets/img/uploads/product10.png",
-        price: 80.0,
-        old_price: null,
-        rating: 4.0,
-        reviews: 15,
-        badge: null,
-        filter: "filter-melee"
-    },
-    {
-        category: "Guns",
-        title: "Hunter Rifle",
-        main_image: "assets/img/uploads/product2.png",
-        hover_image: "assets/img/uploads/product2.png",
-        price: 300.0,
-        old_price: null,
-        rating: 4.8,
-        reviews: 15,
-        badge: null,
-        filter: "filter-guns"
-    },
-    {
-        category: "Ammo",
-        title: "9mm Ammo",
-        main_image: "assets/img/uploads/product7.png",
-        hover_image: "assets/img/uploads/product7.png",
-        price: 20.0,
-        old_price: null,
-        rating: 4.0,
-        reviews: 30,
-        badge: null,
-        filter: "filter-ammo"
-    },
-    {
-        category: "Accessories",
-        title: "First Aid Kit",
-        main_image: "assets/img/uploads/product15.png",
-        hover_image: "assets/img/uploads/product15.png",
-        price: 85.0 * (1 - 0.35),
-        old_price: 85.0,
-        rating: 4.8,
-        reviews: 25,
-        badge: "Sale",
-        filter: "filter-accessories"
-    },
-    {
-        category: "Guns",
-        title: "AK-47",
-        main_image: "assets/img/uploads/product4.png",
-        hover_image: "assets/img/uploads/product4.png",
-        price: 400.0,
-        old_price: null,
-        rating: 4.2,
-        reviews: 25,
-        badge: null,
-        filter: "filter-guns"
-    },
-    {
-        category: "Melee",
-        title: "Combat Knife",
-        main_image: "assets/img/uploads/product9.png",
-        hover_image: "assets/img/uploads/product9.png",
-        price: 50.0 * (1 - 0.05),
-        old_price: 50.0,
-        rating: 4.4,
-        reviews: 28,
-        badge: "Sale",
-        filter: "filter-melee"
-    },
-    {
-        category: "Ammo",
-        title: "7.62 Ammo",
-        main_image: "assets/img/uploads/product8.png",
-        hover_image: "assets/img/uploads/product8.png",
-        price: 50.0 * (1 - 0.15),
-        old_price: 50.0,
-        rating: 4.7,
-        reviews: 12,
-        badge: "Sale",
-        filter: "filter-ammo"
-    },
-    {
-        category: "Melee",
-        title: "Baton",
-        main_image: "assets/img/uploads/product12.png",
-        hover_image: "assets/img/uploads/product12.png",
-        price: 40.0,
-        old_price: null,
-        rating: 3.9,
-        reviews: 20,
-        badge: null,
-        filter: "filter-melee"
-    }
-] %}
+<section id="category-product-list" class="category-product-list section">
 
-<section id="product-list" class="product-list section">
-    <div class="container isotope-layout" data-aos="fade-up" data-aos-delay="100" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-        <div class="row">
-            <div class="col-12">
-                <div class="product-filters isotope-filters mb-5 d-flex justify-content-center" data-aos="fade-up">
-                    <ul class="d-flex flex-wrap gap-2 list-unstyled">
-                        <li class="filter-active" data-filter="*">All</li>
-                        <li data-filter=".filter-guns">Guns</li>
-                        <li data-filter=".filter-ammo">Ammo</li>
-                        <li data-filter=".filter-melee">Melee</li>
-                        <li data-filter=".filter-accessories">Accessories</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row product-container isotope-container" data-aos="fade-up" data-aos-delay="200">
-            {% for product in showcase %}
-                <div class="col-md-6 col-lg-3 product-item isotope-item {{ product.filter }}">
-                    <div class="product-card">
-                        <div class="product-image">
-                            {% if product.badge %}<span class="badge">{{ product.badge }}</span>{% endif %}
-                            <img src="{{ asset(product.main_image) }}" alt="Product" class="img-fluid main-img">
-                            <img src="{{ asset(product.hover_image) }}" alt="Product Hover" class="img-fluid hover-img">
-                            <div class="product-overlay">
-                                <a href="{{ path('app_user_cart') }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
-                                <div class="product-actions">
-                                    <a href="#" class="action-btn"><i class="bi bi-heart"></i></a>
-                                    <a href="#" class="action-btn"><i class="bi bi-eye"></i></a>
-                                    <a href="#" class="action-btn"><i class="bi bi-arrow-left-right"></i></a>
-                                </div>
+        <div class="row gy-4">
+            <!-- Product -->
+            {% for product in products %}
+            <div class="col-lg-4">
+                <div class="product-box">
+                    <div class="product-thumb">
+                        {% if product.stock == 0 %}
+                        <span class="product-label product-label-sold">Sold Out</span>
+                        {% elseif product.sale > 0 %}
+                        <span class="product-label product-label-sale">-{{ (product.sale * 100)|round(0, 'floor') }}%</span>
+                        {% endif %}
+                        
+                        <img src="{{ asset(product.image) }}" alt="{{ product.name }}" class="main-img" loading="lazy">
+                        <div class="product-overlay">
+                            <div class="product-quick-actions">
+                                <a href="{{ path('app_user_wishlist_add', {'pid': product.id}) }}" type="button" class="quick-action-btn">
+                                    <i class="bi bi-heart"></i>
+                                </a>
+                                <a href="{{ path('app_product_details', {'pid': product.id}) }}" type="button" class="quick-action-btn">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </a>
                             </div>
+                            {% if product.stock == 0 %}
+                            <div class="add-to-cart-container">
+                                <button type="button" class="add-to-cart-btn disabled">Sold Out</button>
+                            </div>
+                            {% else %}
+                            <div class="add-to-cart-container">
+                                <a href="{{ path('app_user_cart_add', {'pid': product.id, 'qte': 1}) }}">
+                                    <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                                </a>
+                            </div>
+                            {% endif %}
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">
-                                <a href="{{ path('app_product_details', {'pid': 200}) }}">{{ product.title }}</a>
-                            </h5>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-details">
+                            <h3 class="product-title">
+                                <a href="{{ path('app_product_details', {'pid': product.id}) }}">{{ product.name }}</a>
+                            </h3>
+                            {% if product.sale > 0 %}
                             <div class="product-price">
-                                <span class="current-price">${{ product.price }}</span>
-                                {% if product.old_price %}<span class="old-price">${{ product.old_price }}</span>{% endif %}
+                                <span class="original">${{ product.price|number_format(2, '.', '') }}</span>
+                                <span class="sale">${{ (product.price * (1 - product.sale))|number_format(2, '.', '') }}</span>
                             </div>
-                            <div class="product-rating">
-                                {% for i in 1..5 %}
-                                    <i class="bi bi-star{% if product.rating >= i %}-fill{% elseif product.rating >= i - 0.5 %}-half{% else %}{% endif %}"></i>
+                            {% else %}
+                            <div class="product-price">
+                                <span>${{ product.price|number_format(2, '.', '') }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="product-rating-container">
+                            <div class="rating-stars">
+                                {% set stars = product.rating|round(0, 'floor') %}
+                                {% set has_half = (product.rating - stars) >= 0.5 %}
+                                {% set empty_stars = 5 - stars - (has_half ? 1 : 0) %}
+                                
+                                {% for i in 1..stars %}
+                                    <i class="bi bi-star-fill"></i>
                                 {% endfor %}
-                                <span>({{ product.reviews }})</span>
+                                {% if has_half %}
+                                    <i class="bi bi-star-half"></i>
+                                {% endif %}
+                                {% for i in 1..empty_stars %}
+                                    <i class="bi bi-star"></i>
+                                {% endfor %}
                             </div>
+                            <span class="rating-number">{{ product.rating|number_format(1, '.', '') }}</span>
                         </div>
                     </div>
                 </div>
+            </div>
             {% endfor %}
+            <!-- End Product -->
         </div>
 
-        <div class="text-center mt-5" data-aos="fade-up">
-            <a href="{{ path('app_products') }}" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
-        </div>
     </div>
+
 </section>
