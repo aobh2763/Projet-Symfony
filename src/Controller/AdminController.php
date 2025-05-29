@@ -9,13 +9,16 @@ use Symfony\Component\HttpFoundation\{Response, RequestStack};
 
 use App\Entity\Product;
 use App\Service\{AdminService, MainService};
-use App\Form\{OrdersFilterTypeForm, 
-            FilterTypeForm, 
-            CreateGunTypeForm, 
-            CreateMeleeTypeForm,
-            CreateAmmoTypeForm,
-            CreateAccessoryTypeForm
-        };
+use App\Form\{
+    OrdersFilterTypeForm, 
+    FilterTypeForm, 
+    CreateProductTypeForm, 
+    CreateGunTypeForm, 
+    CreateMeleeTypeForm,
+    CreateAmmoTypeForm,
+    CreateAccessoryTypeForm,
+    PickProductTypeForm
+};
 
 final class AdminController extends AbstractController
 {
@@ -73,17 +76,35 @@ final class AdminController extends AbstractController
         $user = $this->getUser();
         $request = $this->requestStack->getCurrentRequest();
 
-        $product = new Product();
+        $pickTypeForm = $this->createForm(PickProductTypeForm::class);
+        $pickTypeForm->handleRequest($request);
 
-        $form = $this->createForm(CreateGunTypeForm::class, $product);
-        $form->handleRequest($request);
+        $data = $pickTypeForm->getData() ?? ['product_type' => 'gun'];
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($data['product_type'] === 'gun'){
+            $product = new Gun();
+            $form = $this->createForm(CreateGunTypeForm::class, $product);
+        }
+        if($data['product_type'] === 'ammo'){
+            $product = new Ammo();
+            $form = $this->createForm(CreateAmmoTypeForm::class, $product);
+        }
+        if($data['product_type'] === 'accessory'){
+            $product = new Accessory();
+            $form = $this->createForm(CreateAccessoryTypeForm::class, $product);
+        }
+        if($data['product_type'] === 'melee'){
+            $product = new Melee();
+            $form = $this->createForm(CreateMeleeTypeForm::class, $product);
+        }
+
+        if($form->isSubmitted() && $form->isValid()){
             $this->adminService->createProduct($product);
         }
 
         return $this->render('admin/create-product.html.twig', [
             'user' => $user,
+            'pickTypeForm' => $pickTypeForm,
             'form' => $form
         ]);
     }   

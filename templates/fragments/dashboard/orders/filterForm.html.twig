@@ -4,16 +4,12 @@
 <div class="row">
     <div class="col-md-6 mb-3 mb-md-0">
         <div class="dropdown">
-            <div class="filter-item">
-                {{ form_widget(filterform.status, {'attr': {'class': 'form-select', 'id': 'status'}}) }}
-            </div>
+            {{ form_widget(filterform.status, {'attr': {'class': 'btn', 'id': 'status'}}) }}
         </div>
     </div>
     <div class="col-md-6">
         <div class="dropdown">
-            <div class="filter-item">
-                {{ form_widget(filterform.time, {'attr': {'class': 'form-select', 'id': 'time'}}) }}
-            </div>
+            {{ form_widget(filterform.time, {'attr': {'class': 'btn', 'id': 'time'}}) }}
         </div>
     </div>
 </div>
