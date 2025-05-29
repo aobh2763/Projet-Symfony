@@ -1,0 +1,65 @@
+
+
+<div class="order-summary" data-aos="fade-left" data-aos-delay="200">
+    <div class="order-summary-header">
+        <h3>Order Summary</h3>
+        <button type="button" class="btn-toggle-summary d-lg-none">
+            <i class="bi bi-chevron-down"></i>
+        </button>
+    </div>
+
+    <div class="order-summary-content">
+        {% for order in orders %}
+        {% set product = order.product %}
+        <div class="order-items">
+            <div class="order-item">
+                <div class="order-item-image">
+                    <img src="{{ asset(product.image) }}" alt="Product" class="img-fluid" >
+                </div>
+                <div class="order-item-details">
+                    <h4>{{ product.name }}</h4>
+                    <p class="order-item-variant">Weight: {{ product.weight }}</p>
+                    <p class="order-item-variant">Rating: {{ product.rating }}</p>
+                    <div class="order-item-price">
+                        <span class="quantity">1 ×</span>
+                        <span class="price">${{ '%.2f'|format(product.price - product.sale * product.price) }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="order-totals">
+            <div class="order-subtotal d-flex justify-content-between">
+                <span>Subtotal</span>
+                <span>${{ '%.2f'|format(cart.prixtotal) }}</span>
+            </div>
+            <div class="order-shipping d-flex justify-content-between">
+                <span>Shipping</span>
+                <span>${{ '%.2f'|format(shipping_price) }}</span>
+            </div>
+            <div class="order-tax d-flex justify-content-between">
+                <span>Tax</span>
+                <span>${{ '%.2f'|format(cart.prixtotal*0.01) }}</span>
+            </div>
+            <div class="order-total d-flex justify-content-between">
+                <span>Total</span>
+                <span>${{ '%.2f'|format(cart.prixtotal*0.01+cart.prixtotal+shipping_price) }}</span>
+            </div>
+        </div>
+
+        <div class="secure-checkout mt-4">
+            <div class="secure-checkout-header">
+                <i class="bi bi-shield-lock"></i>
+                <span>Secure Checkout</span>
+            </div>
+            <div class="payment-icons mt-2">
+                <i class="bi bi-credit-card-2-front"></i>
+                <i class="bi bi-credit-card"></i>
+                <i class="bi bi-paypal"></i>
+                <i class="bi bi-apple"></i>
+            </div>
+        </div>
+    </div>
+
+</div>

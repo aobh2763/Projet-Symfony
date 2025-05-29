@@ -27,6 +27,7 @@ class Cart
     #[ORM\OneToOne(mappedBy: 'cart', cascade: ['persist', 'remove'])]
     private ?User $user = null;
 
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -119,4 +120,6 @@ class Cart
 
         return $this;
     }
+
+
 }
