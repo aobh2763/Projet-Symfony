@@ -106,7 +106,7 @@
 
                 <!-- Wishlist -->
                 {% if is_granted('ROLE_USER') %}
-                <a href="{{ path('app_user_account') }}" class="header-action-btn d-none d-md-flex">
+                <a href="{{ path('app_user_account') }}" class="header-action-btn d-none d-md-flex"></a>
                 {% else %}
                 <a href="{{ path('app_login') }}" class="header-action-btn d-none d-md-flex">
                 {% endif %}
