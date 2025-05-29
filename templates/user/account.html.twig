@@ -1,0 +1,69 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}
+v{% endblock %}
+{% block body %}
+
+<body class="account-page">
+
+<!-- Page Header -->
+{% include 'fragments/header.html.twig' %}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+            <li class="current">Account</li>
+          </ol>
+        </nav>
+        <h1>Account</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Account Section -->
+    <section id="account" class="account section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+
+
+        <div class="row">
+          <!-- Profile Sidebar -->
+            {% include 'fragments/account/profilesidebar.html.twig' %}
+          <!-- Profile Content -->
+          <div class="col-lg-9 profile-content" data-aos="fade-left" data-aos-delay="300">
+            <div class="tab-content" id="profileTabsContent">
+              <!-- Orders Tab -->
+                {% include 'fragments/account/orderstab.html.twig'%}
+              <!-- Wishlist Tab -->
+              {% include 'fragments/account/wishlisttab.html.twig'%}
+              <!-- Payment Methods Tab -->
+              {% include 'fragments/account/paymentmethod.html.twig'%}
+
+              <!-- Reviews Tab -->
+              {% include 'fragments/account/reviewstab.html.twig'%}
+
+              <!-- Personal Info Tab -->
+              {% include 'fragments/account/personalinfos.html.twig'%}
+
+              <!-- Addresses Tab -->
+              {% include 'fragments/account/addressetab.html.twig'%}
+
+              <!-- Notifications Tab -->
+              {% include 'fragments/account/notificationtab.html.twig'%}
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Account Section -->
+
+  </main>
+
+{% endblock %}

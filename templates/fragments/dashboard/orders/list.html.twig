@@ -1,0 +1,31 @@
+{% for order in orders %}
+    <div class="order-item">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="order-id">{{ order.id }}</div>
+            </div>
+            <div class="col-md-3">
+                <div class="order-date">{{ order.date|date('m/d/Y') }}</div>
+            </div>
+            <div class="col-md-3">
+                <div class="order-status">{{ order.status }}</div>
+            </div>
+            <div class="col-md-3">
+                <div class="order-total">{{ order.total }}</div>
+            </div>
+        </div>
+        <div class="order-products">
+            <div class="product-thumbnails">
+                <img src="{{ asset('assets/img/product/product-1.webp') }}" alt="Product" class="product-thumb" loading="lazy">
+                <img src="{{ asset('assets/img/product/product-2.webp') }}" alt="Product" class="product-thumb" loading="lazy">
+                <img src="{{ asset('assets/img/product/product-3.webp') }}" alt="Product" class="product-thumb" loading="lazy">
+            </div>
+            <button type="button" class="order-details-link" data-bs-toggle="collapse" data-bs-target="#orderDetails{{ loop.index }}" aria-expanded="false" aria-controls="orderDetails{{ loop.index }}">
+                <i class="bi bi-chevron-down"></i>
+            </button>
+        </div>
+        <div class="collapse order-details" id="orderDetails{{ loop.index }}">
+            {% include 'fragments/dashboard/orders/order-details.html.twig' with {'order': order} %}
+        </div>
+    </div>
+{% endfor %}

@@ -1,0 +1,106 @@
+{% if is_granted("ROLE_USER") %}
+  {% set orders = app.user.cart.orders %}
+{% else %}
+  {% set orders = app.session.get('cart').orders %}
+{% endif %}
+
+
+{% extends 'base.html.twig' %}
+{% block title %}
+  Cart - FashionStore Bootstrap Template
+{% endblock %}
+{% block body %}
+
+<body class="cart-page">
+
+<!-- Page Header -->
+{% include 'fragments/header.html.twig' %}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+            <li class="current">Cart</li>
+          </ol>
+        </nav>
+        <h1>Cart</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Cart Section -->
+    <section id="cart" class="cart section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="cart-items">
+              <div class="cart-header d-none d-lg-block">
+                <div class="row align-items-center">
+                  <div class="col-lg-6">
+                    <h5>Product</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Price</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Quantity</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Total</h5>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Rendering Items -->
+              {% include 'fragments/cart/rendering.html.twig' %}
+
+
+              <!-- End Items Rendering -->
+
+              <div class="cart-actions">
+                <div class="row">
+                  <div class="col-lg-6 text-md-start">
+                    <button id="cart-clear" class="btn btn-outline-remove">
+                      <i class="bi bi-trash"></i> Clear Cart
+                    </button>
+
+                    <script>
+                      document.getElementById('cart-clear').addEventListener('click', function() {
+                        if (confirm('Are you sure you want to clear the cart?')) {
+                          fetch('/user/cart/clear').then((response) => {
+                            if (response.ok) {
+                              window.location.reload();
+                            } else {
+                              alert('Failed to clear the cart. Please try again.');
+                            }
+                          }).catch(error => {
+                            console.error('Error clearing cart:', error);
+                            alert('An error occurred while clearing the cart.');
+                          });
+                        }
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Summary Sidebar -->
+          {% include 'fragments/cart/ordersummary.html.twig' %}
+
+        </div>
+
+      </div>
+
+    </section><!-- /Cart Section -->
+
+  </main>
+
+{% endblock %}

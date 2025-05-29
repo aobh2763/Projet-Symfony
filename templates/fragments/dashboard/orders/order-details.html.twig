@@ -1,0 +1,36 @@
+<div class="order-details-content">
+    <div class="order-details-header">
+        <h5>Order Details</h5>
+        <div class="order-info">
+            <div class="info-item">
+                <span class="info-label">Order Date:</span>
+                <span class="info-value">{{ order.date|date('m/d/Y') }}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Order Status:</span>
+                <span class="info-value">{{ order.status }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="order-items-list">
+        <div class="order-item-detail">
+            <div class="item-image">
+                <img src="{{ asset('assets/img/product/product-1.webp') }}" alt="Product" loading="lazy">
+            </div>
+            <div class="item-info">
+                <h6>{{ order.product.name }}</h6>
+                <div class="item-meta">
+                    <span class="item-sku">SKU: {{ order.product.id }}</span>
+                    <span class="item-qty">Qty: {{ order.quantity }}</span>
+                </div>
+            </div>
+            <div class="item-price">{{ order.total }}</div>
+        </div>
+    </div>
+    <div class="order-summary">
+        <div class="summary-row total">
+            <span>Total:</span>
+            <span>{{ order.total }}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="header-nav">
+    <div class="container-fluid container-xl position-relative">
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                {% set current_route = app.request.attributes.get('_route') %}
+
+                <li>
+                    <a href="{{ path('app_main') }}" class="{% if current_route == 'app_main' %}active{% endif %}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_about') }}" class="{% if current_route == 'app_about' %}active{% endif %}">About</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_products') }}" class="{% if current_route == 'app_products' %}active{% endif %}">Products</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_user_checkout') }}" class="{% if current_route == 'app_user_checkout' %}active{% endif %}">Checkout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

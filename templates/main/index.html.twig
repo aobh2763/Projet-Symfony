@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  HomePage - GunStore
+{% endblock %}
+
+{% block body %}
+
+<body class="index-page">
+
+    <!-- Page Header -->
+    {% include 'fragments/header.html.twig' %}
+
+    <main class="main">
+
+        <!-- Hero Section -->
+        {% include 'fragments/index/slides.html.twig' %}
+        <!-- /Hero Section -->
+
+        <!-- Promo Cards Section -->
+        {% include 'fragments/index/promocards.html.twig' %}
+        <!-- /Promo Cards Section -->
+
+        <!-- Category Cards Section -->
+        {% include 'fragments/index/categories.html.twig' %}
+        <!-- /Category Cards Section -->
+
+        <!-- Best Sellers Section -->
+        {% include 'fragments/index/bestsellers.html.twig' %}
+        <!-- /Best Sellers Section -->
+
+        <!-- Product List Section -->
+        {% include 'fragments/index/productlist.html.twig' %}
+        <!-- /Product List Section -->
+
+    </main>
+{% endblock %}

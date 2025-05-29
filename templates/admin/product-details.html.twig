@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Edit Product - GunStore
+{% endblock %}
+
+{% block body %}
+<body class="product-edit-page">
+
+    <!-- Page Header -->
+    {% include 'fragments/header.html.twig' %}
+    <!-- /Page Header -->
+
+    <main class="main">
+
+        <!-- Page Title -->
+        <div class="page-title light-background">
+            <div class="container">
+                <nav class="breadcrumbs">
+                    <ol>
+                        <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+                        <li class="current">Edit Product</li>
+                    </ol>
+                </nav>
+                <h1>Edit Product</h1>
+            </div>
+        </div>
+        <!-- End Page Title -->
+
+        <!-- Product Edit Form Section -->
+        <section id="product-edit" class="product-details section">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row g-5">
+                    <!-- Product Images Column -->
+                    <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+                        <div class="product-gallery">
+                        <div class="main-image-wrapper">
+                            <div class="image-zoom-container">
+                            <a href="{{ asset(product.image) }}" class="glightbox" data-gallery="product-gallery">
+                                <img src="{{ asset(product.image) }}" alt="Product Image" class="img-fluid main-image drift-zoom" id="main-product-image" data-zoom="{{ asset(product.image) }}">
+                            </a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Column -->
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                        <div class="card shadow-sm bg-transparent border-0" id="product-info-sticky">
+                            <div class="card-body">
+                                {{ form_start(form, {'attr': {'class': 'product-form'}}) }}
+
+                                <div class="mb-3">
+                                    {{ form_label(form.name, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="invalid-feedback d-block">{{ form_errors(form.name) }}</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form_label(form.price, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="invalid-feedback d-block">{{ form_errors(form.price) }}</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form_label(form.sale, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.sale, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="invalid-feedback d-block">{{ form_errors(form.sale) }}</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form_label(form.stock, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.stock, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="invalid-feedback d-block">{{ form_errors(form.stock) }}</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form_label(form.weight, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.weight, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="invalid-feedback d-block">{{ form_errors(form.weight) }}</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form_label(form.description, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': 4}}) }}
+                                    <div class="invalid-feedback d-block">{{ form_errors(form.description) }}</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form_label(form.image, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="invalid-feedback d-block">{{ form_errors(form.image) }}</div>
+                                </div>
+
+                                <div class="row align-items-stretch">
+                                    <div class="col-6 pe-1 d-flex">
+                                        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary w-100 h-100'}}) }}
+                                    </div>
+                                    <div class="col-6 ps-1 d-flex">
+                                        <a href="{{ path('app_admin_products') }}" class="w-100 d-block h-100">
+                                            <button type="button" class="btn btn-secondary w-100 h-100">Cancel</button>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}

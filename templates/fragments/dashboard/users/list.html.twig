@@ -1,0 +1,25 @@
+{% for user in users %}
+    <div class="table-row py-2">
+    <div class="row align-items-center text-center">
+        <div class="col-md-2">
+            <div class="sort-header fw-bold">{{ user.username }}</div>
+        </div>
+        <div class="col-md-2">
+            <div class="sort-header">{{ user.firstname }}</div>
+        </div>
+        <div class="col-md-2">
+            <div class="sort-header">{{ user.lastname }}</div>
+        </div>
+        <div class="col-md-4">
+            <div class="sort-header text-break">{{ user.email }}</div>
+        </div>
+        <div class="col-md-2">
+            <div class="sort-header d-flex justify-content-center gap-2">
+                {# <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-sm btn-outline-primary">Edit</a> #}
+                {# <a href="{{ path('user_delete', {'id': user.id}) }}" class="btn btn-sm btn-outline-danger">Delete</a> #}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}

@@ -1,0 +1,45 @@
+<section id="category-header" class="category-header section">
+
+    <div class="container" data-aos="fade-up">
+
+        <!-- Filter and Sort Options -->
+        {{ form_start(filterform, {'attr': {'class': 'filter-container mb-4 row g-3', 'data-aos': 'fade-up', 'data-aos-delay': '100'}}) }}
+
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="filter-item search-form">
+                {{ form_label(filterform.name, 'Search Products', {'label_attr': {'class': 'form-label'}}) }}
+                <div class="input-group">
+                    {{ form_widget(filterform.name) }}
+                    <button class="btn search-btn" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="filter-item">
+                {{ form_label(filterform.type, 'Type', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(filterform.type, {'attr': {'class': 'form-select', 'id': 'category'}}) }}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="filter-item">
+                {{ form_label(filterform.range, 'Price Range', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(filterform.range, {'attr': {'class': 'form-select', 'id': 'priceRange'}}) }}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="filter-item">
+                {{ form_label(filterform.sort, 'Sort By', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(filterform.sort, {'attr': {'class': 'form-select', 'id': 'sortBy'}}) }}
+            </div>
+        </div>
+        {{ form_end(filterform, { 'render_rest': false }) }}
+
+
+    </div>
+
+</section>

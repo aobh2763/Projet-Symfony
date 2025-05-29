@@ -1,0 +1,21 @@
+<!-- Filter Options -->
+{{ form_start(filterform) }}
+
+<div class="row">
+    <div class="col-md-6 mb-3 mb-md-0">
+        <div class="dropdown">
+            <div class="filter-item">
+                {{ form_widget(filterform.status, {'attr': {'class': 'form-select', 'id': 'status'}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <div class="filter-item">
+                {{ form_widget(filterform.time, {'attr': {'class': 'form-select', 'id': 'time'}}) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ form_end(filterform, { 'render_rest': false }) }}

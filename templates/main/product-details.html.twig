@@ -1,0 +1,269 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  Product Details - FashionStore Bootstrap Template
+{% endblock %}
+{% block body %}
+<body class="product-details-page">
+
+  <!-- Page Header -->
+  {% include 'fragments/header.html.twig' %}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+            <li class="current">Product Details</li>
+          </ol>
+        </nav>
+        <h1>Product Details</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Product Details Section -->
+    <section id="product-details" class="product-details section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-5">
+          <!-- Product Images Column -->
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+            <div class="product-gallery">
+              <div class="main-image-wrapper">
+                <div class="image-zoom-container">
+                  <a href="{{ asset(product.image) }}" class="glightbox" data-gallery="product-gallery">
+                    <img src="{{ asset(product.image) }}" alt="Product Image" class="img-fluid main-image drift-zoom" id="main-product-image" data-zoom="{{ asset(product.image) }}">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Info Column -->
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+            <div class="product-info-wrapper" id="product-info-sticky">
+              <!-- Product Meta -->
+              <div class="product-meta">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="product-category">{{ product.category }}</span>
+                  <div class="product-share">
+                    <button class="share-btn" aria-label="Share product">
+                      <i class="bi bi-share"></i>
+                    </button>
+                    <div class="share-dropdown">
+                      <a href="#" aria-label="Share on Facebook"><i class="bi bi-facebook"></i></a>
+                      <a href="#" aria-label="Share on Twitter"><i class="bi bi-twitter-x"></i></a>
+                      <a href="#" aria-label="Share on Pinterest"><i class="bi bi-pinterest"></i></a>
+                      <a href="#" aria-label="Share via Email"><i class="bi bi-envelope"></i></a>
+                    </div>
+                  </div>
+                </div>
+
+                <h1 class="product-title">{{ product.name }}</h1>
+
+                <div class="product-rating">
+                  <div class="stars">
+                    {% set stars = product.rating|round(0, 'floor') %}
+                    {% set has_half = (product.rating - stars) >= 0.5 %}
+
+                    {% if has_half == true %}
+                      {% set empty_stars = 5 - stars - 1 %}
+                    {% else %}
+                      {% set empty_stars = 5 - stars %}
+                    {% endif %}
+
+                    {% if stars != 0 %}
+                      {% for i in 0..stars - 1 %}
+                        <i class="bi bi-star-fill"></i>
+                      {% endfor %}
+                    {% endif %}
+                    {% if has_half %}
+                      <i class="bi bi-star-half"></i>
+                    {% endif %}
+                    {% if stars != 5 %}
+                      {% for i in 0..empty_stars - 1 %}
+                        <i class="bi bi-star"></i>
+                      {% endfor %}
+                    {% endif %}
+                    <span class="rating-value">{{ product.rating }}</span>
+                  </div>
+                  <a href="#reviews" class="rating-count">{{ random(0, 100) }}</a>
+                </div>
+              </div>
+
+              <!-- Product Price -->
+              <div class="product-price-container">
+                <div class="price-wrapper">
+                  {% if product.sale > 0 %}
+                    <span class="current-price">${{ (product.price - product.sale * product.price)|number_format(2, '.', '') }}</span>
+                    <span class="original-price">${{ product.price|number_format(2, '.', '') }}</span>
+                  {% else %}
+                    <span class="current-price">${{ product.price|number_format(2, '.', '') }}</span>
+                  {% endif %}
+                </div>
+                {% if product.sale > 0 %}
+                  <span class="discount-badge">Save {{ product.sale * 100 }}%</span>
+                {% endif %}
+                <div class="stock-info">
+                  {% if product.stock > 0 %}
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>In Stock</span>
+                    <span class="stock-count">({{ product.stock }} items left)</span>
+                  {% else %}
+                    <i class="bi bi-x-circle-fill"></i>
+                    <span>Out Of Stock</span>
+                  {% endif %}
+                </div>
+              </div>
+
+              <!-- Product Description -->
+              <div class="product-short-description">
+                <p>{{ product.description }}</p>
+              </div>
+
+              <!-- Weight Information -->
+              <div class="option-group">
+                <h6 class="option-title">Weight</h6>
+                <div class="delivery-options">
+                  <div class="delivery-option">
+                    <span>{{ product.weight }} dg</span>
+                  </div>
+                </div>
+              </div><br>
+
+              {#
+              <!-- Product Options -->
+              <div class="product-options">
+                <!-- Quantity Selector -->
+                <div class="option-group">
+                  <h6 class="option-title">Quantity</h6>
+                  <div class="quantity-selector">
+                    <button class="quantity-btn decrease">
+                      <i class="bi bi-dash"></i>
+                    </button>
+                    <input type="number" class="quantity-input" value="1" min="1" max="24">
+                    <button class="quantity-btn increase">
+                      <i class="bi bi-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              #}
+
+              <!-- Action Buttons -->
+              <div class="product-actions">
+                <a href="{{ path('app_user_cart_add', {'pid': product.id, 'qte': 1}) }}" class="btn btn-primary add-to-cart-btn">
+                  <i class="bi bi-cart-plus"></i> Add to Cart
+                </a>
+                <button class="btn btn-outline-secondary wishlist-btn" aria-label="Add to wishlist">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+
+              <!-- Extra Information -->
+              {% if product.category == 'gun'%}
+              <div class="delivery-options">
+                <div class="delivery-option">
+                  <i class="bi bi-truck"></i>
+                  <div>
+                    <h6>Pinpoint Precision</h6>
+                    <p>Delivers an accuracy of <strong>{{ product.accuracy }}%</strong>, perfect for hitting your mark every time.</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-arrow-repeat"></i>
+                  <div>
+                    <h6>High-Caliber Performance</h6>
+                    <p>Fires <strong>{{ product.caliber }} rounds</strong>, built for power and consistency.</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-shield-check"></i>
+                  <div>
+                    <h6>Maximum Reach</h6>
+                    <p>Effective range up to <strong>{{ product.gunrange }} meters</strong>, stay sharp from a distance.</p>
+                  </div>
+                </div>
+              </div>
+              {% elseif product.category == 'ammo' %}
+              <div class="delivery-options">
+                <div class="delivery-option">
+                  <i class="bi bi-truck"></i>
+                  <div>
+                    <h6>Compatible Firearm</h6>
+                    <p>Perfectly matched for your <strong>{{ product.gun.name }}</strong></p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-arrow-repeat"></i>
+                  <div>
+                    <h6>Loaded Value</h6>
+                    <p><strong>{{ product.quantity }} rounds</strong> per box, more shots, less reloads</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-shield-check"></i>
+                  <div>
+                    <h6>Performance Insight</h6>
+                    <p>Engineered for reliability, power, and precision in every round</p>
+                  </div>
+                </div>
+              </div>
+              {% elseif product.category == 'melee' %}
+              <div class="delivery-options">
+                <div class="delivery-option">
+                  <i class="bi bi-truck"></i>
+                  <div>
+                    <h6>Reach</h6>
+                    <p>Offers a striking distance of <strong>{{ product.reach }} meters</strong>, keep enemies at bay</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-arrow-repeat"></i>
+                  <div>
+                    <h6>Weapon Type</h6>
+                    <p>Classified as <strong>{{ product.type }}</strong>, built for close combat excellence</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-shield-check"></i>
+                  <div>
+                    <h6>Crafted Advantage</h6>
+                    <p>Forged for balance, grip, and lethality; a true warrior’s choice</p>
+                  </div>
+                </div>
+              </div>
+              {% else %}
+              <div class="delivery-options">
+                <div class="delivery-option">
+                  <i class="bi bi-truck"></i>
+                  <div>
+                    <h6>Accessory Type</h6>
+                    <p><strong>{{ product.type|capitalize }}</strong> designed to enhance performance and style</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-arrow-repeat"></i>
+                  <div>
+                    <h6>Compatibility</h6>
+                    <p>Seamlessly fits with most gear setups for versatile use</p>
+                  </div>
+                </div>
+                <div class="delivery-option">
+                  <i class="bi bi-shield-check"></i>
+                  <div>
+                    <h6>Durability</h6>
+                    <p>Crafted with rugged materials and built to withstand any mission</p>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+  </main>
+
+{% endblock %}
