@@ -53,7 +53,7 @@ final class UserController extends AbstractController
     }
 
     #[Route('/user/account', name: 'app_user_account')]
-    public function account(): Response
+    public function account(ManagerRegistry $doctrine): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
@@ -61,9 +61,11 @@ final class UserController extends AbstractController
         if (!$user) {
             return $this->redirectToRoute('app_main');
         }
+
         return $this->render('user/account.html.twig', [
             'user' => $user,
         ]);
+    
     }
     #[Route('/user/update-personal-info', name: 'app_user_update_personal_info', methods: ['POST'])]
 public function updatePersonalInfo(Request $request, ManagerRegistry $doctrine): Response

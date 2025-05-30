@@ -79,11 +79,11 @@
                                     <i class="bi bi-bag-check me-2"></i>
                                     <span>My Orders</span>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="{{ asset('wishlist.html.twig') }}">
+                                <a class="dropdown-item d-flex align-items-center" href="{{ path('app_user_account') }}#wishlist">
                                     <i class="bi bi-heart me-2"></i>
                                     <span>My Wishlist</span>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="{{ asset('returns.html.twig') }}">
+                                    <a class="dropdown-item d-flex align-items-center" href="{{ asset('returns.html.twig') }}">
                                     <i class="bi bi-arrow-return-left me-2"></i>
                                     <span>Returns &amp; Refunds</span>
                                 </a>
@@ -103,24 +103,20 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Wishlist -->
-                {% if is_granted('ROLE_USER') %}
-                <a href="{{ path('app_user_account') }}" class="header-action-btn d-none d-md-flex">
-                    {% else %}
-                    <a href="{{ path('app_login') }}" class="header-action-btn d-none d-md-flex">
-                        {% endif %}
-                        <i class="bi bi-heart"></i>
-                        <span class="action-text d-none d-md-inline-block">Wishlist</span>
-                        <span class="badge">
-                        {% if is_granted('ROLE_USER') %}
-                            {{ app.user.wishlist.wishes|length }}
-                        {% else %}
-                            {{ app.session.get('wishlist').wishes|length }}
-                        {% endif %}
-                    </span>
-                    </a>
-
+            <!-- Wishlist -->
+            {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('app_user_account') }}#wishlist" class="header-action-btn d-none d-md-flex">                  
+            <i class="bi bi-heart"></i>
+                    <span class="action-text d-none d-md-inline-block">Wishlist</span>
+                    <span class="badge">{{ app.user.wishlist.wishes|length }}</span>
+                </a>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="header-action-btn d-none d-md-flex">
+                    <i class="bi bi-heart"></i>
+                    <span class="action-text d-none d-md-inline-block">Wishlist</span>
+                    <span class="badge">{{ app.session.get('wishlist').wishes|length }}</span>
+                </a>
+            {% endif %}
                     {% if is_granted('ROLE_USER') %}
                         {% set cart = app.user.cart %}
                     {% else %}

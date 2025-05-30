@@ -13,7 +13,6 @@ class Order
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
     #[ORM\Column]
     private ?\DateTime $date = null;
 
