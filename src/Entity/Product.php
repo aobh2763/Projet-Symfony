@@ -51,13 +51,13 @@ class Product
     /**
      * @var Collection<int, Order>
      */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'product')]
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'product', cascade: ['remove'])]
     private Collection $orders;
 
     /**
      * @var Collection<int, Wish>
      */
-    #[ORM\OneToMany(targetEntity: Wish::class, mappedBy: 'product', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Wish::class, mappedBy: 'product', orphanRemoval: true, cascade: ['remove'])]
     private Collection $wishes;
 
     public function __construct()

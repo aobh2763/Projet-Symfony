@@ -2,17 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\{Gun, Accessory, Ammo, Melee};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\{Response, RequestStack};
 
-use App\Entity\Product;
+use App\Entity\{Gun, Accessory, Ammo, Melee};
 use App\Service\{AdminService, MainService};
 use App\Form\{
     OrdersFilterTypeForm, 
     FilterTypeForm, 
-    CreateProductTypeForm, 
     CreateGunTypeForm, 
     CreateMeleeTypeForm,
     CreateAmmoTypeForm,
@@ -142,7 +140,6 @@ final class AdminController extends AbstractController
 
         $product = $this->mainService->getProduct($id);
         
-        $form = null;
         if($product instanceof Gun){
             $form = $this->createForm(CreateGunTypeForm::class, $product);
         } elseif($product instanceof Ammo){
