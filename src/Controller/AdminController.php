@@ -45,7 +45,7 @@ final class AdminController extends AbstractController
         ]);
         $form->handleRequest($request);
 
-        $filters = $form->isSubmitted() && $form->isValid()
+        $filters = $form->isSubmitted()
             ? $form->getData()
             : [];
 
@@ -53,7 +53,7 @@ final class AdminController extends AbstractController
 
         return $this->render('admin/orders.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'filterform' => $form,
             'orders' => $orders
         ]);
     }

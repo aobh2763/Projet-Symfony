@@ -71,14 +71,17 @@
                         </div>
                         <div class="dropdown-body">
                             {% if is_granted("ROLE_USER") %}
-                                <a class="dropdown-item d-flex align-items-center" href="{{ path('app_admin_orders') }}">
-                                    <i class="bi bi-person-circle me-2"></i>
-                                    {% if is_granted('ROLE_ADMIN') %}
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <a class="dropdown-item d-flex align-items-center" href="{{ path('app_admin_orders') }}">
+                                        <i class="bi bi-bag-check me-2"></i>
                                         <span>Dashboard</span>
-                                    {% else %}
+                                    </a>
+                                {% else %}
+                                    <a class="dropdown-item d-flex align-items-center" href="{{ asset('app_user') }}">
+                                        <i class="bi bi-bag-check me-2"></i>
                                         <span>My Profile</span>
-                                    {% endif %}
-                                </a>
+                                    </a>
+                                {% endif %}
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <a class="dropdown-item d-flex align-items-center" href="{{ path('app_admin_orders') }}">
                                         <i class="bi bi-bag-check me-2"></i>
