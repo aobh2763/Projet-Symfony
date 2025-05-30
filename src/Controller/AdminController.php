@@ -98,14 +98,16 @@ final class AdminController extends AbstractController
             $form = $this->createForm(CreateMeleeTypeForm::class, $product);
         }
 
-        if($form->isSubmitted() && $form->isValid()){
+        //TODO: fix form validation
+        $form->handleRequest($request);
+        if($form->isSubmitted()){
             $this->adminService->createProduct($product);
         }
 
         return $this->render('admin/create-product.html.twig', [
             'user' => $user,
             'pickTypeForm' => $pickTypeForm,
-            'form' => $form
+            'form' => $form,
         ]);
     }   
 

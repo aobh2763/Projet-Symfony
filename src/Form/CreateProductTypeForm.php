@@ -23,9 +23,10 @@ class CreateProductTypeForm extends AbstractType
                     'placeholder' => 'Enter product description',
                 ],
             ])
-            ->add('image', FileType::class, [
-                'mapped' => false,
-                'required' => false,
+            ->add('image', null, [
+                'attr' => [
+                    'placeholder' => 'Enter image link',
+                ],
             ])
             ->add('price', null, [
                 'attr' => [
@@ -48,6 +49,12 @@ class CreateProductTypeForm extends AbstractType
                 'label' => 'Product Weight',
                 'attr' => [
                     'placeholder' => 'Enter product weight',
+                ],
+            ])
+            ->add('rating', null, [
+                'label' => 'Product Rating',
+                'attr' => [
+                    'placeholder' => 'Enter product rating',
                 ],
             ])
         ;
