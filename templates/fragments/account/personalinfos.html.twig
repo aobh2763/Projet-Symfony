@@ -4,6 +4,9 @@
     </div>
     <div class="personal-info-form" data-aos="fade-up" data-aos-delay="100">
         <form action="{{ path('app_user_update_personal_info') }}" method="post">
+            {# CSRF Protection #}
+            <input type="hidden" name="token" value="{{ csrf_token('update_personal_info') }}"/>
+            
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName" class="form-label">First Name</label>
@@ -28,6 +31,7 @@
                            value="{{ app.user.username }}" required>
                 </div>
             </div>
+            <div class="text-end">
                 <button type="submit" class="btn btn-save">Save Changes</button>
             </div>
         </form>

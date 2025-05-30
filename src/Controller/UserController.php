@@ -68,24 +68,43 @@ final class UserController extends AbstractController
     
     }
     #[Route('/user/update-personal-info', name: 'app_user_update_personal_info', methods: ['POST'])]
-public function updatePersonalInfo(Request $request, ManagerRegistry $doctrine): Response
-{
-    $this->denyAccessUnlessGranted('ROLE_USER');
-    $user = $this->getUser();
+    public function updatePersonalInfo(Request $request, ManagerRegistry $doctrine): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser();
+        
+        // Verify CSRF token
+        $submittedToken = $request->request->get('token');
+        if (!$this->isCsrfTokenValid('update_personal_info', $submittedToken)) {
+            $this->addFlash('error', 'Invalid CSRF token');
+            return $this->redirectToRoute('app_user_account');
+        }
         $firstName = $request->request->get('firstName');
-    $lastName = $request->request->get('lastName');
-    $email = $request->request->get('email');
-    $username = $request->request->get('username');
-    
-    $user->setFirstName($firstName);
-    $user->setLastName($lastName);
-    $user->setEmail($email);
-    $user->setUsername($username);
-    $entityManager = $doctrine->getManager();
-    $entityManager->persist($user);
-    $entityManager->flush();
+        $lastName = $request->request->get('lastName');
+        $email = $request->request->get('email');
+        $username = $request->request->get('username');
+                if (empty($firstName) || empty($lastName) || empty($email) || empty($username)) {
+            $this->addFlash('error', 'All fields are required');
+            return $this->redirectToRoute('app_user_account');
+        }
+        
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->addFlash('error', 'Invalid email format');
+            return $this->redirectToRoute('app_user_account');
+        }
+        
+        $user->setFirstName($firstName);
+        $user->setLastName($lastName);
+        $user->setEmail($email);
+        $user->setUsername($username);
+        
+        $entityManager = $doctrine->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+        
+        $this->addFlash('success', 'Your personal information has been updated successfully!');
         return $this->redirectToRoute('app_user_account');
-}
+    }
 
     #[Route('/user/checkout', name: 'app_user_checkout')]
     public function checkout(Request $request, SessionInterface $session): Response
