@@ -13,6 +13,7 @@ class OrdersFilterTypeForm extends AbstractType
     {
         $builder
             ->add('status', ChoiceType::class, [
+            'required' => false,
             'choices' => [
                 'All statuses' => 'all',
                 'In progress' => 'in-progress',
@@ -25,6 +26,7 @@ class OrdersFilterTypeForm extends AbstractType
             ],
             ])
             ->add('time', ChoiceType::class, [
+            'required' => false,
             'choices' => [
                 'For all time' => 'all-time',
                 'Last year' => 'last-year',
@@ -44,5 +46,9 @@ class OrdersFilterTypeForm extends AbstractType
         $resolver->setDefaults([
             // Configure your form options here
         ]);
+    }
+
+    public function getBlockPrefix(): string {
+        return '';
     }
 }

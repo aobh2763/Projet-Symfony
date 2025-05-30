@@ -13,6 +13,7 @@ class PickProductTypeForm extends AbstractType
     {
         $builder
             ->add('product_type', ChoiceType::class, [
+                'required' => false,
                 'choices' => [
                     'Gun' => 'gun',
                     'Ammo' => 'ammo',
@@ -32,5 +33,9 @@ class PickProductTypeForm extends AbstractType
         $resolver->setDefaults([
             // Configure your form options here
         ]);
+    }
+
+    public function getBlockPrefix(): string {
+        return '';
     }
 }
