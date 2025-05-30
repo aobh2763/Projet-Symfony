@@ -70,6 +70,18 @@ class MainService {
         return $product;
     }
 
+    public function getRandomProducts(int $count = 4) {
+        $productsRepository = $this->entityManager->getRepository(Product::class);
+
+        return $productsRepository->findRandomProducts($count);
+    }
+
+    public function getHighestRated(int $limit = 16) {
+        $productsRepository = $this->entityManager->getRepository(Product::class);
+
+        return $productsRepository->findHighestRated($limit);
+    }
+
     public function registerUser(User $user, Cart $sessionCart, Wishlist $sessionWishlist): Response {
         $user->setCart($this->getCleanCart($sessionCart));
         $user->setWishlist($this->getCleanWishlist($sessionWishlist));

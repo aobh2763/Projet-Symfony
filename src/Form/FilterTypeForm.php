@@ -14,6 +14,7 @@ class FilterTypeForm extends AbstractType {
     {
         $builder
             ->add('name', TextType::class, [
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Search for products...',
                     'length' => 255,

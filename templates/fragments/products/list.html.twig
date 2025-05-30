@@ -52,28 +52,9 @@
                         </div>
                         <div class="product-rating-container">
                             <div class="rating-stars">
-                                {% set stars = product.rating|round(0, 'floor') %}
-                                {% set has_half = (product.rating - stars) >= 0.5 %}
-
-                                {% if has_half == true %}
-                                    {% set empty_stars = 5 - stars - 1 %}
-                                {% else %}
-                                    {% set empty_stars = 5 - stars %}
-                                {% endif %}
-
-                                {% if stars != 0 %}
-                                    {% for i in 0..stars - 1 %}
-                                        <i class="bi bi-star-fill"></i>
-                                    {% endfor %}
-                                {% endif %}
-                                {% if has_half %}
-                                    <i class="bi bi-star-half"></i>
-                                {% endif %}
-                                {% if stars != 5 %}
-                                    {% for i in 0..empty_stars - 1 %}
-                                        <i class="bi bi-star"></i>
-                                    {% endfor %}
-                                {% endif %}
+                                {% for i in 1..5 %}
+                                    <i class="bi bi-star{% if product.rating >= i %}-fill{% elseif product.rating >= i - 0.5 %}-half{% else %}{% endif %}"></i>
+                                {% endfor %}
                             </div>
                             <span class="rating-number">{{ product.rating|number_format(1, '.', '') }}</span>
                         </div>

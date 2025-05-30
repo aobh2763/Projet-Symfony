@@ -20,16 +20,18 @@ final class MainController extends AbstractController
     ){}
 
     #[Route('/', name: 'app_main')]
-    public function index(): Response
-    {
+    public function index(): Response {
         $this->onFirstVisit();
+
+        $newcollection = $this->mainService->getRandomProducts(4);
+        $showcase = $this->mainService->getHighestRated(16);
         
         return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
+            'newcollection' => $newcollection,
+            'showcase' => $showcase
         ]);
     }
 
-    //TODO: paging through request params
     #[Route('/products', name: 'app_products')]
     public function products(): Response
     {
