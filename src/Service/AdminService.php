@@ -20,15 +20,15 @@ class AdminService {
             ->createQueryBuilder('o');
 
         // Filter by name
-        if (!empty($filters['status'])) {
-            $qb->andWhere('p.status LIKE :status')
+        if (!empty($filters['status']) && $filters['status'] !== 'all') {
+            $qb->andWhere('o.status LIKE :status')
                ->setParameter('status', '%' . $filters['status'] . '%');
         }
 
-        // Filter by type
-        if (!empty($filters['time'])) {
-            $qb->andWhere('p.type = :type')
-               ->setParameter('type', $filters['type']);
+        // Filter by order date after a certain time
+        if (!empty($filters['time']) && $filters['time'] !== 'all-time') {
+            $qb->andWhere('o.date > :time')
+               ->setParameter('time', $filters['time']);
         }
 
         $query = $qb->getQuery();
@@ -40,7 +40,7 @@ class AdminService {
         return $orders;
     }
 
-    public function getUsers($filters){
+    public function getUsers(){
         $qb = $this->entityManager->getRepository(User::class)
             ->createQueryBuilder('u');
 

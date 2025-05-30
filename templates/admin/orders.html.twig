@@ -1,49 +1,57 @@
 {% extends 'admin/dashboard.html.twig' %}
 
 {% block content %}
-    <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-        <div class="tab-header">
-            <h2>Orders</h2>
-            <div class="tab-filters">
-                {% include 'fragments/dashboard/orders/filterForm.html.twig' with {'filterform': form} %}
-            </div>
-        </div>
 
-        <div class="orders-table">
-            <div class="table-header">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="sort-header">
-                            Order #
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="sort-header">
-                            Order date
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="sort-header">
-                            Status
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="sort-header">
-                            Total
-                        </div>
-                    </div>
+<!-- Profile Sidebar -->
+    {% include 'fragments/dashboard/sidebar/profilesidebar.html.twig' %}
+<!-- /Profile Content -->
+
+<div class="col-lg-9 profile-content" data-aos="fade-left" data-aos-delay="300">
+    <div class="tab-content" id="profileTabsContent">
+        <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+            <div class="tab-header">
+                <h2>Orders</h2>
+                <div class="tab-filters">
+                    {% include 'fragments/dashboard/orders/filterForm.html.twig' %}
                 </div>
             </div>
 
-            <div class="order-items">
-                {% include 'fragments/dashboard/orders/list.html.twig' with {'orders': orders} %}
-            </div>
+            <div class="orders-table">
+                <div class="table-header">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="sort-header">
+                                Order #
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="sort-header">
+                                Order date
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="sort-header">
+                                Status
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="sort-header">
+                                Total
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="pagination-container">
-                {{ knp_pagination_render(orders) }}
+                <div class="order-items">
+                    {% include 'fragments/dashboard/orders/list.html.twig' %}
+                </div>
+
+                <div class="pagination-container">
+                    {{ knp_pagination_render(orders) }}
+                </div>
             </div>
         </div>
     </div>
-
+</div>
 
 {% endblock %}

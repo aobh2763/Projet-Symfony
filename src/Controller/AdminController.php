@@ -2,14 +2,23 @@
 
 namespace App\Controller;
 
-use App\Form\CreateProductTypeForm;
+use App\Entity\{Gun, Accessory, Ammo, Melee};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\{Response, RequestStack};
 
-use App\Service\{AdminService, MainService};
 use App\Entity\Product;
-use App\Form\{OrdersFilterTypeForm, FilterTypeForm};
+use App\Service\{AdminService, MainService};
+use App\Form\{
+    OrdersFilterTypeForm, 
+    FilterTypeForm, 
+    CreateProductTypeForm, 
+    CreateGunTypeForm, 
+    CreateMeleeTypeForm,
+    CreateAmmoTypeForm,
+    CreateAccessoryTypeForm,
+    PickProductTypeForm
+};
 
 final class AdminController extends AbstractController
 {
@@ -28,6 +37,7 @@ final class AdminController extends AbstractController
     #[Route('/admin/orders', name: 'app_admin_orders')]
     public function getOrders(): Response
     {
+        $user = $this->getUser();
         $request = $this->requestStack->getCurrentRequest();
 
         $form = $this->createForm(OrdersFilterTypeForm::class, null, [
@@ -35,24 +45,27 @@ final class AdminController extends AbstractController
         ]);
         $form->handleRequest($request);
 
-        $filters = $form->isSubmitted() && $form->isValid()
+        $filters = $form->isSubmitted()
             ? $form->getData()
             : [];
 
-        $orders = $this->adminService->getOrders(null);
+        $orders = $this->adminService->getOrders($filters);
 
         return $this->render('admin/orders.html.twig', [
-            'orders' => $orders,
-            'form' => $form
+            'user' => $user,
+            'filterform' => $form,
+            'orders' => $orders
         ]);
     }
 
     #[Route('/admin/users', name: 'app_admin_users')]
     public function getUsers(): Response
     {
-        $users = $this->adminService->getUsers(null);
+        $user = $this->getUser();
+        $users = $this->adminService->getUsers();
 
         return $this->render('admin/users.html.twig', [
+            'user' => $user,
             'users' => $users
         ]);
     }   
@@ -60,19 +73,41 @@ final class AdminController extends AbstractController
     #[Route('/admin/create-product', name: 'app_admin_create_product')]
     public function createProduct(): Response
     {
+        $user = $this->getUser();
         $request = $this->requestStack->getCurrentRequest();
 
-        $product = new Product();
+        $pickTypeForm = $this->createForm(PickProductTypeForm::class);
+        $pickTypeForm->handleRequest($request);
 
-        $form = $this->createForm(CreateProductTypeForm::class, $product);
+        $data = $pickTypeForm->getData() ?? ['product_type' => 'gun'];
+
+        if($data['product_type'] === 'gun'){
+            $product = new Gun();
+            $form = $this->createForm(CreateGunTypeForm::class, $product);
+        }
+        if($data['product_type'] === 'ammo'){
+            $product = new Ammo();
+            $form = $this->createForm(CreateAmmoTypeForm::class, $product);
+        }
+        if($data['product_type'] === 'accessory'){
+            $product = new Accessory();
+            $form = $this->createForm(CreateAccessoryTypeForm::class, $product);
+        }
+        if($data['product_type'] === 'melee'){
+            $product = new Melee();
+            $form = $this->createForm(CreateMeleeTypeForm::class, $product);
+        }
+
+        //TODO: fix form validation
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted()){
             $this->adminService->createProduct($product);
         }
 
         return $this->render('admin/create-product.html.twig', [
-            'form' => $form
+            'user' => $user,
+            'pickTypeForm' => $pickTypeForm,
+            'form' => $form,
         ]);
     }   
 
@@ -95,9 +130,9 @@ final class AdminController extends AbstractController
         $products = $this->mainService->getProducts($filters, $page, $limit);
 
         return $this->render('admin/products.html.twig', [
-            'products' => $products,
-            'filterform' => $form,
             'filters' => $filters,
+            'filterform' => $form,
+            'products' => $products
         ]);
     }
 
@@ -106,7 +141,17 @@ final class AdminController extends AbstractController
         $request = $this->requestStack->getCurrentRequest();
 
         $product = $this->mainService->getProduct($id);
-        $form = $this->createForm(CreateProductTypeForm::class, $product);
+        
+        $form = null;
+        if($product instanceof Gun){
+            $form = $this->createForm(CreateGunTypeForm::class, $product);
+        } elseif($product instanceof Ammo){
+            $form = $this->createForm(CreateAmmoTypeForm::class, $product);
+        } elseif($product instanceof Accessory){
+            $form = $this->createForm(CreateAccessoryTypeForm::class, $product);
+        } elseif($product instanceof Melee){
+            $form = $this->createForm(CreateMeleeTypeForm::class, $product);
+        }
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
