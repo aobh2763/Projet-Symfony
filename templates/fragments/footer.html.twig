@@ -5,9 +5,9 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget footer-about">
                         <a href="{{ asset('index.html.twig') }}" class="logo">
-                            <span class="sitename">FashionStore</span>
+                            <span class="sitename">Aim&Deploy</span>
                         </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula, facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
+                        <p>Where merges hit like bullets.<br>Your trusted destination for quality firearms, accessories, and expert advice. Discover top brands and gear up with confidence at Aim&Deploy.</p>
 
                         <div class="social-links mt-4">
                             <h5>Connect With Us</h5>
@@ -27,12 +27,12 @@
                     <div class="footer-widget">
                         <h4>Shop</h4>
                         <ul class="footer-links">
-                            <li><a href="{{ asset('category.html.twig') }}">New Arrivals</a></li>
-                            <li><a href="{{ asset('category.html.twig') }}">Bestsellers</a></li>
-                            <li><a href="{{ asset('category.html.twig') }}">Women's Clothing</a></li>
-                            <li><a href="{{ asset('category.html.twig') }}">Men's Clothing</a></li>
-                            <li><a href="{{ asset('category.html.twig') }}">Accessories</a></li>
-                            <li><a href="{{ asset('category.html.twig') }}">Sale</a></li>
+                            <li><a href="{{ path('app_products', {'sort': 'customer_rating'}) }}">Bestsellers</a></li>
+                            <li><a href="{{ path('app_products', {'type': 'guns'}) }}">Guns</a></li>
+                            <li><a href="{{ path('app_products', {'type': 'ammo'}) }}">Ammo</a></li>
+                            <li><a href="{{ path('app_products', {'type': 'melee'}) }}">Melee</a></li>
+                            <li><a href="{{ path('app_products', {'type': 'accessories'}) }}">Accessories</a></li>
+                            <li><a href="{{ path('app_products', {'sort': 'on_sale'}) }}">Sale</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,12 +41,10 @@
                     <div class="footer-widget">
                         <h4>Support</h4>
                         <ul class="footer-links">
-                            <li><a href="{{ asset('support.html.twig') }}">Help Center</a></li>
-                            <li><a href="{{ asset('account.html.twig') }}">Order Status</a></li>
-                            <li><a href="{{ asset('shiping-info.html.twig') }}">Shipping Info</a></li>
-                            <li><a href="{{ asset('return-policy.html.twig') }}">Returns &amp; Exchanges</a></li>
-                            <li><a href="#">Size Guide</a></li>
-                            <li><a href="{{ asset('contact.html.twig') }}">Contact Us</a></li>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="{{ path('app_user_account') }}">Order Status</a></li>
+                            <li><a href="{{ path('app_user_checkout') }}">Shipping Info</a></li>
+                            <li><a href="{{ path('app_about') }}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -57,15 +55,15 @@
                         <div class="footer-contact">
                             <div class="contact-item">
                                 <i class="bi bi-geo-alt"></i>
-                                <span>123 Fashion Street, New York, NY 10001</span>
+                                <span>676 Centre Urbain Nord BP, Tunis 1080</span>
                             </div>
                             <div class="contact-item">
                                 <i class="bi bi-telephone"></i>
-                                <span>+1 (555) 123-4567</span>
+                                <span>+216 92 824 054</span>
                             </div>
                             <div class="contact-item">
                                 <i class="bi bi-envelope"></i>
-                                <span>hello@example.com</span>
+                                <span><a href="mailto:support@insat.rnu.tn">support@insat.rnu.tn</a></span>
                             </div>
                             <div class="contact-item">
                                 <i class="bi bi-clock"></i>
@@ -94,7 +92,7 @@
             <div class="row gy-3 align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="copyright">
-                        <p>© <span>Copyright</span> <strong class="sitename">MyWebsite</strong>. All Rights Reserved.</p>
+                        <p>© <span>Copyright</span> <strong class="sitename">Aim&Deploy</strong>. All Rights Reserved.</p>
                     </div>
                     <div class="credits mt-1">
                         <!-- All the links in the footer should remain intact. -->
@@ -119,9 +117,9 @@
                         </div>
 
                         <div class="legal-links">
-                            <a href="{{ asset('tos.html.twig') }}">Terms</a>
-                            <a href="{{ asset('privacy.html.twig') }}">Privacy</a>
-                            <a href="{{ asset('tos.html.twig') }}">Cookies</a>
+                            <a href="#">Terms</a>
+                            <a href="#">Privacy</a>
+                            <a href="#">Cookies</a>
                         </div>
                     </div>
                 </div>

@@ -123,7 +123,7 @@ final class AdminController extends AbstractController
             : [];
 
         $page = $request->query->getInt('page', 1);
-        $limit = $request->query->getInt('limit', 10);
+        $limit = $request->query->getInt('limit', 9);
 
         $products = $this->mainService->getProducts($filters, $page, $limit);
 

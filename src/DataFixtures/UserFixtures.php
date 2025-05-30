@@ -39,6 +39,23 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
             $manager->persist($user);
         }
 
+        $admin = new User();
+        $admin->setUsername('admin')
+            ->setEmail('admin@example.com')
+            ->setFirstName('Admin')
+            ->setLastName('User')
+            ->setIsVerified(true)
+            ->setRoles(['ROLE_ADMIN'])
+            ->setPassword($this->passwordHasher->hashPassword($admin, 'adminadmin'));
+
+        $adminCart = new Cart();
+        $admin->setCart($adminCart);
+
+        $adminWishlist = new Wishlist();
+        $admin->setWishlist($adminWishlist);
+
+        $manager->persist($admin);
+
         $manager->flush();
     }
 
