@@ -24,9 +24,27 @@ final class MainController extends AbstractController
     {
         $this->onFirstVisit();
         $products = $productRepository->findBy([], ['id' => 'DESC'], 6);
+        $bestsellerNames = [
+            'AK-47',
+            '7.62 AK Ammo',
+            'Sniper Rifle',
+            'Tactical Shield',
+            'Pistol',
+            'Combat Knife',
+            'First Aid Kit'
+        ];
+        $bestsellers = [];
+        foreach ($bestsellerNames as $name) {
+            $product = $productRepository->findOneBy(['name' => $name]);
+            if ($product) {
+                $bestsellers[] = $product;
+            }
+        }
+    
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
             'products' => $products,
+            'bestsellers' => $bestsellers,
         ]);
         
     }

@@ -1,145 +1,80 @@
- {% set bestsellers = [
-    {
-        category: "Firearms",
-        name: "AK-47",
-        main_image: "assets/img/uploads/product4.png",
-        hover_image: "assets/img/uploads/product4.png",
-        price: 400.00,
-        original_price: null,
-        rating: 4.7,
-        reviews: 89,
-        badge: null
-    },
-    {
-        category: "Ammunition",
-        name: "7.62 AK Ammo",
-        main_image: "assets/img/uploads/product5.png",
-        hover_image: "assets/img/uploads/product5.png",
-        price: 25.00,
-        original_price: null,
-        rating: 4.8,
-        reviews: 120,
-        badge: null
-    },
-    {
-        category: "Firearms",
-        name: "Sniper Rifle",
-        main_image: "assets/img/uploads/product3.png",
-        hover_image: "assets/img/uploads/product3.png",
-        price: 1200.00,
-        original_price: 1500.00,
-        rating: 4.9,
-        reviews: 45,
-        badge: "sale"
-    },
-    {
-        category: "Melee",
-        name: "Battle Axe",
-        main_image: "assets/img/uploads/product11.png",
-        hover_image: "assets/img/uploads/product11.png",
-        price: 84.00,
-        original_price: 120.00,
-        rating: 4.6,
-        reviews: 32,
-        badge: "sale"
-    },
-    {
-        category: "Accessories",
-        name: "Tactical Shield",
-        main_image: "assets/img/uploads/product14.png",
-        hover_image: "assets/img/uploads/product14.png",
-        price: 200.00,
-        original_price: null,
-        rating: 4.5,
-        reviews: 28,
-        badge: null
-    },
-    {
-        category: "Ammunition",
-        name: "5.56 Ammo",
-        main_image: "assets/img/uploads/product6.png",
-        hover_image: "assets/img/uploads/product6.png",
-        price: 30.00,
-        original_price: null,
-        rating: 4.7,
-        reviews: 95,
-        badge: null
-    },
-    {
-        category: "Melee",
-        name: "Combat Knife",
-        main_image: "assets/img/uploads/product9.png",
-        hover_image: "assets/img/uploads/product9.png",
-        price: 47.50,
-        original_price: 50.00,
-        rating: 4.8,
-        reviews: 67,
-        badge: "sale"
-    },
-    {
-        category: "Accessories",
-        name: "First Aid Kit",
-        main_image: "assets/img/uploads/product15.png",
-        hover_image: "assets/img/uploads/product15.png",
-        price: 55.25,
-        original_price: 85.00,
-        rating: 4.9,
-        reviews: 112,
-        badge: "sale"
-    }
-] %}
+<section id="bestsellers-list" class="category-product-list section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <h2 class="text-center mb-4 mt-5">Bestsellers</h2>
+    
+    <div class="row gy-4">
+      {% for product in bestsellers %}
+      <div class="col-lg-4">
+        <div class="product-box">
+          <div class="product-thumb">
+            {% if product.stock == 0 %}
+            <span class="product-label product-label-sold">Sold Out</span>
+            {% else %}
+              {% if product.sale > 0 %}
+              <span class="product-label product-label-sale">-{{ (product.sale * 100)|round(0, 'floor') }}%</span>
+              {% endif %}
+            {% endif %}
+            <img src="{{ asset(product.image) }}" alt="Product Image" class="main-img" loading="lazy">
+            <div class="product-overlay">
+              <div class="product-quick-actions">
+                <a href="{{ path('app_user_wishlist_add', {'pid': product.id}) }}" type="button" class="quick-action-btn">
+                  <i class="bi bi-heart"></i>
+                </a>
+                <a href="{{ path('app_product_details', {'pid': product.id}) }}" type="button" class="quick-action-btn">
+                  <i class="bi bi-arrow-repeat"></i>
+                </a>
+              </div>
+              {% if product.stock == 0 %}
+              <div class="add-to-cart-container">
+                <button type="button" class="add-to-cart-btn disabled">Sold Out</button>
+              </div>
+              {% else %}
+              <div class="add-to-cart-container">
+                <a href="{{ path('app_user_cart_add', {'pid': product.id, 'qte': 1}) }}">
+                  <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="product-content">
+            <div class="product-details">
+              <h3 class="product-title">
+                <a href="{{ path('app_product_details', {'pid': product.id}) }}">{{ product.name }}</a>
+              </h3>
+              {% if product.sale > 0 %}
+              <div class="product-price">
+                <span class="original">${{ product.price|number_format(2, '.', '') }}</span>
+                <span class="sale">${{ (product.price * (1 - product.sale))|number_format(2, '.', '') }}</span>
+              </div>
+              {% else %}
+              <div class="product-price">
+                <span>${{ product.price|number_format(2, '.', '') }}</span>
+              </div>
+              {% endif %}
+            </div>
+            <div class="product-rating-container">
+              <div class="rating-stars">
+                {% set stars = product.rating|round(0, 'floor') %}
+                {% set has_half = (product.rating - stars) >= 0.5 %}
+                {% set empty_stars = 5 - stars - (has_half ? 1 : 0) %}
 
-<section id="best-sellers" class="best-sellers section">
-    <div class="container section-title" data-aos="fade-up">
-        <h2>Best Sellers</h2>
-        <p>Top performing tactical equipment this season</p>
-    </div>
-
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row g-4">
-            {% for product in bestsellers %}
-                <div class="col-6 col-lg-3">
-                    <div class="product-card" data-aos="zoom-in" data-aos-delay="{{ loop.index0 * 100 }}">
-                        <div class="product-image">
-                            <img src="{{ asset(product.main_image) }}" class="main-image img-fluid" alt="{{ product.name }}">
-                            <img src="{{ asset(product.hover_image) }}" class="hover-image img-fluid" alt="{{ product.name }}">
-                            <div class="product-overlay">
-                                <div class="product-actions">
-                                    <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                                        <i class="bi bi-eye"></i>
-                                    <button type="button"
-                                            class="action-btn"
-                                            data-bs-toggle="tooltip"
-                                            title="Add to Cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            {% if product.badge %}
-                                <div class="product-badge {{ product.badge }}">{{ product.badge == 'sale' ? 'Sale' : 'New' }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="product-details">
-                            <div class="product-category">{{ product.category }}</div>
-                            <h4 class="product-title">
-                                <a href="{{ path('app_product_details', {'pid': 200}) }}">{{ product.name }}</a>
-                            </h4>
-                            <div class="product-meta">
-                                <div class="product-price">
-                                    ${{ product.price|number_format(2) }}
-                                    {% if product.original_price %}
-                                        <span class="original-price">${{ product.original_price|number_format(2) }}</span>
-                                    {% endif %}
-                                </div>
-                                <div class="product-rating">
-                                    <i class="bi bi-star-fill"></i>
-                                    {{ product.rating }} <span>({{ product.reviews }})</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+                {% for i in 1..stars %}
+                  <i class="bi bi-star-fill"></i>
+                {% endfor %}
+                {% if has_half %}
+                  <i class="bi bi-star-half"></i>
+                {% endif %}
+                {% for i in 1..empty_stars %}
+                  <i class="bi bi-star"></i>
+                {% endfor %}
+              </div>
+              <span class="rating-number">{{ product.rating|number_format(1, '.', '') }}</span>
+            </div>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 </section>
