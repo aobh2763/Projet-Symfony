@@ -13,7 +13,6 @@ class PickProductTypeForm extends AbstractType
     {
         $builder
             ->add('product_type', ChoiceType::class, [
-                'required' => false,
                 'choices' => [
                     'Gun' => 'gun',
                     'Ammo' => 'ammo',

@@ -14,7 +14,6 @@ class FilterTypeForm extends AbstractType {
     {
         $builder
             ->add('name', TextType::class, [
-                'required' => false,
                 'attr' => [
                     'placeholder' => 'Search for products...',
                     'length' => 255,
@@ -22,7 +21,6 @@ class FilterTypeForm extends AbstractType {
                 ]
             ])
             ->add('limit', ChoiceType::class, [
-                'required' => false,
                 'multiple' => false,
                 'expanded' => false,
                 'choices' => [
@@ -34,7 +32,6 @@ class FilterTypeForm extends AbstractType {
                 ],
             ])
             ->add('type', ChoiceType::class, [
-                'required' => false,
                 'multiple' => false,
                 'expanded' => false,
                 'choices' => [
@@ -46,7 +43,6 @@ class FilterTypeForm extends AbstractType {
                 ],
             ])
             ->add('range', ChoiceType::class, [
-                'required' => false,
                 'multiple' => false,
                 'expanded' => false,
                 'choices' => [
@@ -59,7 +55,6 @@ class FilterTypeForm extends AbstractType {
                 ],
             ])
             ->add('sort', ChoiceType::class, [
-                'required' => false,
                 'multiple' => false,
                 'expanded' => false,
                 'choices' => [
