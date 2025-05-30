@@ -380,8 +380,8 @@ final class UserController extends AbstractController
         if ($referer) {
             return $this->redirect($referer);
         }
-        $url = $this->generateUrl('app_user_account', [], UrlGeneratorInterface::ABSOLUTE_URL) . '#wishlist';
-        return $this->redirect($url);
+
+        return $this->redirect($this->generateUrl('app_user_account') . '#wishlist');
     }
 
     #[Route('/user/process-payment', name: 'app_user_process_payment')]

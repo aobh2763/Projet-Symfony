@@ -1,7 +1,7 @@
 
 {% extends 'base.html.twig' %}
 {% block title %}
-  v{% endblock %}
+  Account {% endblock %}
 {% block body %}
 
   <body class="account-page">
@@ -69,11 +69,11 @@
     {{ parent() }}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            if (window.location.hash === '#wishlist') {
-                const wishlistTab = document.querySelector('#wishlist-tab');
-                if (wishlistTab) {
-                    const bsTab = new bootstrap.Tab(wishlistTab);
-                    bsTab.show();
+            const hash = window.location.hash;
+            if (hash) {
+                const tabTrigger = document.querySelector(`[data-bs-toggle="tab"][data-bs-target="${hash}"]`);
+                if (tabTrigger) {
+                    new bootstrap.Tab(tabTrigger).show();
                 }
             }
         });
