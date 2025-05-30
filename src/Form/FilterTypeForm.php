@@ -14,7 +14,6 @@ class FilterTypeForm extends AbstractType {
     {
         $builder
             ->add('name', TextType::class, [
-                'required' => false,
                 'attr' => [
                     'placeholder' => 'Search for products...',
                     'length' => 255,
@@ -30,7 +29,7 @@ class FilterTypeForm extends AbstractType {
                     '18' => '18',
                     '24' => '24',
                     '30' => '30'
-                ]
+                ],
             ])
             ->add('type', ChoiceType::class, [
                 'multiple' => false,
@@ -41,7 +40,7 @@ class FilterTypeForm extends AbstractType {
                     'Ammo' => 'ammo',
                     'Melee' => 'melee',
                     'Accessories' => 'accessories'
-                ]
+                ],
             ])
             ->add('range', ChoiceType::class, [
                 'multiple' => false,
@@ -53,7 +52,7 @@ class FilterTypeForm extends AbstractType {
                     '$50 to $100' => '50_to_100',
                     '$100 to $200' => '100_to_200',
                     '$200 & Above' => '200above'
-                ]
+                ],
             ])
             ->add('sort', ChoiceType::class, [
                 'multiple' => false,
@@ -64,10 +63,9 @@ class FilterTypeForm extends AbstractType {
                     'Price: High to Low' => 'price_high_to_low',
                     'Customer Rating' => 'customer_rating',
                     'On Sale' => 'on_sale'
-                ]
+                ],
             ])
-            ->add('submit', SubmitType::class, [
-            ])
+            ->add('submit', SubmitType::class)
         ;
     }
 

@@ -2,14 +2,13 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Accessory;
-use App\Entity\Ammo;
-use App\Entity\Gun;
-use App\Entity\Melee;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 
-class ProductFixtures extends Fixture
+use App\Entity\{Accessory, Ammo, Gun, Melee};
+
+class ProductFixtures extends Fixture implements FixtureGroupInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -206,5 +205,10 @@ class ProductFixtures extends Fixture
         $manager->persist($product15);
 
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['products'];
     }
 }
