@@ -36,7 +36,6 @@
                                     <a href="{{ path('app_product_details', {'pid': product.id}) }}" class="action-btn"><i class="bi bi-eye"></i></a>
                                 </div>
                             </div>
-                            {% endif %}
                         </div>
                         <div class="product-info">
                             <h5 class="product-title">
@@ -48,36 +47,19 @@
                                     <span class="old-price">${{ product.price }}</span>
                                 {% endif %}
                             </div>
-                            {% endif %}
-                        </div>
-                        <div class="product-rating-container">
-                            <div class="rating-stars">
-                                {% set stars = product.rating|round(0, 'floor') %}
-                                {% set has_half = (product.rating - stars) >= 0.5 %}
-                                {% set empty_stars = 5 - stars - (has_half ? 1 : 0) %}
-                                
-                                {% for i in 1..stars %}
-                                    <i class="bi bi-star-fill"></i>
-                                {% endfor %}
-                                {% if has_half %}
-                                    <i class="bi bi-star-half"></i>
-                                {% endif %}
-                                {% for i in 1..empty_stars %}
-                                    <i class="bi bi-star"></i>
+                            <div class="product-rating">
+                                {% for i in 1..5 %}
+                                    <i class="bi bi-star{% if product.rating >= i %}-fill{% elseif product.rating >= i - 0.5 %}-half{% else %}{% endif %}"></i>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-            <!-- End Product -->
- </div>
-<div class="text-center mt-4" data-aos="fade-up">
-    <a href="{{ path('app_products') }}" class="btn btn-lg btn-primary px-4 py-2 rounded-pill shadow-sm view-all-btn d-inline-flex align-items-center gap-2">
-        View All Products <i class="bi bi-arrow-right fs-5"></i>
-    </a>
-</div>
+        </div>
 
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{{ path('app_products') }}" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
+        </div>
     </div>
-
 </section>
