@@ -20,36 +20,19 @@ final class MainController extends AbstractController
     ){}
 
     #[Route('/', name: 'app_main')]
-    public function index(ProductRepository $productRepository): Response
-    {
+    public function index(): Response {
         $this->onFirstVisit();
-        $products = $productRepository->findBy([], ['id' => 'DESC'], 6);
-        $bestsellerNames = [
-            'AK-47',
-            '7.62 AK Ammo',
-            'Sniper Rifle',
-            'Tactical Shield',
-            'Pistol',
-            'Combat Knife',
-            'First Aid Kit'
-        ];
-        $bestsellers = [];
-        foreach ($bestsellerNames as $name) {
-            $product = $productRepository->findOneBy(['name' => $name]);
-            if ($product) {
-                $bestsellers[] = $product;
-            }
-        }
-    
+
+        $newcollection = $this->mainService->getRandomProducts(4);
+        $showcase = $this->mainService->getHighestRated(16);
+        
         return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
-            'products' => $products,
-            'bestsellers' => $bestsellers,
+            'newcollection' => $newcollection,
+            'showcase' => $showcase
         ]);
         
     }
 
-    //TODO: paging through request params
     #[Route('/products', name: 'app_products')]
     public function products(): Response
     {

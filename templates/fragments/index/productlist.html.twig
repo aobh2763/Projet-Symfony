@@ -1,89 +1,65 @@
-<section id="category-product-list" class="category-product-list section">
-    <h2 class="text-center mb-4 mt-5">Products</h2>
+<section id="product-list" class="product-list section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Best Sellers</h2>
+        <p>Top performing tactical equipment this season</p>
+    </div>
 
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="container isotope-layout" data-aos="fade-up" data-aos-delay="100" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+        <div class="row">
+            <div class="col-12">
+                <div class="product-filters isotope-filters mb-5 d-flex justify-content-center" data-aos="fade-up">
+                    <ul class="d-flex flex-wrap gap-2 list-unstyled">
+                        <li class="filter-active" data-filter="*">All</li>
+                        <li data-filter=".filter-gun">Guns</li>
+                        <li data-filter=".filter-ammo">Ammo</li>
+                        <li data-filter=".filter-melee">Melee</li>
+                        <li data-filter=".filter-accessory">Accessories</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <div class="row gy-4">
-            <!-- Product -->
-            {% for product in products %}
-            <div class="col-lg-4">
-                <div class="product-box">
-                    <div class="product-thumb">
-                        {% if product.stock == 0 %}
-                        <span class="product-label product-label-sold">Sold Out</span>
-                        {% elseif product.sale > 0 %}
-                        <span class="product-label product-label-sale">-{{ (product.sale * 100)|round(0, 'floor') }}%</span>
-                        {% endif %}
-                        
-                        <img src="{{ asset(product.image) }}" alt="{{ product.name }}" class="main-img" loading="lazy">
-                        <div class="product-overlay">
-                            <div class="product-quick-actions">
-                                <a href="{{ path('app_user_wishlist_add', {'pid': product.id}) }}" type="button" class="quick-action-btn">
-                                    <i class="bi bi-heart"></i>
-                                </a>
-                                <a href="{{ path('app_product_details', {'pid': product.id}) }}" type="button" class="quick-action-btn">
-                                    <i class="bi bi-arrow-repeat"></i>
-                                </a>
-                            </div>
-                            {% if product.stock == 0 %}
-                            <div class="add-to-cart-container">
-                                <button type="button" class="add-to-cart-btn disabled">Sold Out</button>
-                            </div>
-                            {% else %}
-                            <div class="add-to-cart-container">
-                                <a href="{{ path('app_user_cart_add', {'pid': product.id, 'qte': 1}) }}">
-                                    <button type="button" class="add-to-cart-btn">Add to Cart</button>
-                                </a>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="product-details">
-                            <h3 class="product-title">
-                                <a href="{{ path('app_product_details', {'pid': product.id}) }}">{{ product.name }}</a>
-                            </h3>
+        <div class="row product-container isotope-container" data-aos="fade-up" data-aos-delay="200">
+            {% for product in showcase %}
+                <div class="col-md-6 col-lg-3 product-item isotope-item filter-{{ product.category }}">
+                    <div class="product-card">
+                        <div class="product-image">
                             {% if product.sale > 0 %}
-                            <div class="product-price">
-                                <span class="original">${{ product.price|number_format(2, '.', '') }}</span>
-                                <span class="sale">${{ (product.price * (1 - product.sale))|number_format(2, '.', '') }}</span>
-                            </div>
-                            {% else %}
-                            <div class="product-price">
-                                <span>${{ product.price|number_format(2, '.', '') }}</span>
-                            </div>
+                                <span class="badge">Sale</span>
                             {% endif %}
+                            <img src="{{ asset(product.image) }}" alt="Product" class="img-fluid main-img">
+                            <img src="{{ asset(product.image) }}" alt="Product Hover" class="img-fluid hover-img">
+                            <div class="product-overlay">
+                                <a href="{{ path('app_user_cart_add', {'pid': product.id}) }}" class="btn-cart"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+                                <div class="product-actions">
+                                    <a href="{{ path('app_user_wishlist_add', {'pid': product.id}) }}" class="action-btn"><i class="bi bi-heart"></i></a>
+                                    <a href="{{ path('app_product_details', {'pid': product.id}) }}" class="action-btn"><i class="bi bi-eye"></i></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="product-rating-container">
-                            <div class="rating-stars">
-                                {% set stars = product.rating|round(0, 'floor') %}
-                                {% set has_half = (product.rating - stars) >= 0.5 %}
-                                {% set empty_stars = 5 - stars - (has_half ? 1 : 0) %}
-                                
-                                {% for i in 1..stars %}
-                                    <i class="bi bi-star-fill"></i>
-                                {% endfor %}
-                                {% if has_half %}
-                                    <i class="bi bi-star-half"></i>
+                        <div class="product-info">
+                            <h5 class="product-title">
+                                <a href="{{ path('app_product_details', {'pid': product.id}) }}">{{ product.name }}</a>
+                            </h5>
+                            <div class="product-price">
+                                <span class="current-price">${{ product.price - product.price * product.sale }}</span>
+                                {% if product.sale > 0 %}
+                                    <span class="old-price">${{ product.price }}</span>
                                 {% endif %}
-                                {% for i in 1..empty_stars %}
-                                    <i class="bi bi-star"></i>
+                            </div>
+                            <div class="product-rating">
+                                {% for i in 1..5 %}
+                                    <i class="bi bi-star{% if product.rating >= i %}-fill{% elseif product.rating >= i - 0.5 %}-half{% else %}{% endif %}"></i>
                                 {% endfor %}
                             </div>
-                            <span class="rating-number">{{ product.rating|number_format(1, '.', '') }}</span>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
-            <!-- End Product -->
- </div>
-<div class="text-center mt-4" data-aos="fade-up">
-    <a href="{{ path('app_products') }}" class="btn btn-lg btn-primary px-4 py-2 rounded-pill shadow-sm view-all-btn d-inline-flex align-items-center gap-2">
-        View All Products <i class="bi bi-arrow-right fs-5"></i>
-    </a>
-</div>
+        </div>
 
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{{ path('app_products') }}" class="view-all-btn">View All Products <i class="bi bi-arrow-right"></i></a>
+        </div>
     </div>
-
 </section>

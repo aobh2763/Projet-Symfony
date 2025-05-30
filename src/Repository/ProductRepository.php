@@ -102,6 +102,31 @@ class ProductRepository extends ServiceEntityRepository
         return $qb;
     }
 
+    public function findRandomProducts(int $limit): array {
+        $ids = $this->createQueryBuilder('p')
+                    ->select('p.id')
+                    ->getQuery()
+                    ->getScalarResult();
+
+        $ids = array_column($ids, 'id');
+        shuffle($ids);
+        $randomIds = array_slice($ids, 0, $limit);
+
+        return $this->createQueryBuilder('p')
+                    ->where('p.id IN (:ids)')
+                    ->setParameter('ids', $randomIds)
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    public function findHighestRated(int $limit) {
+        return $this->createQueryBuilder('p')
+                    ->orderBy('p.rating', 'DESC')
+                    ->setMaxResults($limit)
+                    ->getQuery()
+                    ->getResult();
+    }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */
