@@ -17,6 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 
 final class UserController extends AbstractController
 {
@@ -378,8 +380,8 @@ final class UserController extends AbstractController
         if ($referer) {
             return $this->redirect($referer);
         }
-
-        return $this->redirectToRoute('app_user_account');
+        $url = $this->generateUrl('app_user_account', [], UrlGeneratorInterface::ABSOLUTE_URL) . '#wishlist';
+        return $this->redirect($url);
     }
 
     #[Route('/user/process-payment', name: 'app_user_process_payment')]
