@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
+use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\{RequestStack, Response, RedirectResponse};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
 use App\Entity\{User, Cart, Wishlist};
 use App\Form\{FilterTypeForm, RegistrationForm};
 use App\Service\MainService;
@@ -30,6 +30,7 @@ final class MainController extends AbstractController
             'newcollection' => $newcollection,
             'showcase' => $showcase
         ]);
+        
     }
 
     #[Route('/products', name: 'app_products')]

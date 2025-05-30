@@ -1,7 +1,7 @@
 
 {% extends 'base.html.twig' %}
 {% block title %}
-  v{% endblock %}
+  Account {% endblock %}
 {% block body %}
 
   <body class="account-page">
@@ -10,19 +10,18 @@
 {% include 'fragments/header.html.twig' %}
 
 <main class="main">
-
-  <!-- Page Title -->
-  <div class="page-title light-background">
+<!-- Page Title -->
+<div class="page-title light-background">
     <div class="container">
-      <nav class="breadcrumbs">
-        <ol>
-          <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
-          <li class="current">Account</li>
-        </ol>
-      </nav>
-      <h1>Account</h1>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="{{ path('app_main') }}">Home</a></li>
+                <li class="current">Account</li>
+            </ol>
+        </nav>
+        <h1>Account</h1>
     </div>
-  </div><!-- End Page Title -->
+</div><!-- End Page Title -->
 
   <!-- Account Section -->
   <section id="account" class="account section">
@@ -65,5 +64,18 @@
   </section><!-- /Account Section -->
 
 </main>
-
+{%endblock%}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hash = window.location.hash;
+            if (hash) {
+                const tabTrigger = document.querySelector(`[data-bs-toggle="tab"][data-bs-target="${hash}"]`);
+                if (tabTrigger) {
+                    new bootstrap.Tab(tabTrigger).show();
+                }
+            }
+        });
+    </script>
 {% endblock %}

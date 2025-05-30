@@ -3,7 +3,7 @@
     <div class="container" data-aos="fade-up">
 
         <!-- Filter and Sort Options -->
-        {{ form_start(filterform, {'attr': {'class': 'filter-container mb-4 row g-3', 'data-aos': 'fade-up', 'data-aos-delay': '100'}}) }}
+        {{ form_start(filterform, {'attr': {'class': 'filter-container mb-4 row g-3', 'data-aos': 'fade-up', 'data-aos-delay': '100', 'id': 'filterForm'}}) }}
 
         <div class="col-12 col-md-12 col-lg-4">
             <div class="filter-item search-form">
@@ -46,7 +46,32 @@
         </div>
         {{ form_end(filterform, { 'render_rest': false }) }}
 
-
     </div>
 
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('filterForm');
+    if (!form) return;
+
+    // Submit form when any select changes
+    const selects = form.querySelectorAll('select');
+    selects.forEach(select => {
+        select.addEventListener('change', () => {
+            form.submit();
+        });
+    });
+
+    // Submit form when Enter pressed in search input
+    const searchInput = form.querySelector('input[type="text"]');
+    if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                form.submit();
+            }
+        });
+    }
+});
+</script>

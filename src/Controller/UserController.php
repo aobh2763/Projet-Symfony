@@ -17,6 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 
 final class UserController extends AbstractController
 {
@@ -47,18 +49,63 @@ final class UserController extends AbstractController
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
-        return $this->render('user/index.html.twig', [
+        return $this->render('user/account.html.twig', [
             'controller_name' => 'UserController',
         ]);
     }
 
     #[Route('/user/account', name: 'app_user_account')]
-    public function account(): Response
+    public function account(ManagerRegistry $doctrine): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser();
+    
+        if (!$user) {
+            return $this->redirectToRoute('app_main');
+        }
+
         return $this->render('user/account.html.twig', [
-            'controller_name' => 'UserController',
+            'user' => $user,
         ]);
+    
+    }
+    #[Route('/user/update-personal-info', name: 'app_user_update_personal_info', methods: ['POST'])]
+    public function updatePersonalInfo(Request $request, ManagerRegistry $doctrine): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser();
+        
+        // Verify CSRF token
+        $submittedToken = $request->request->get('token');
+        if (!$this->isCsrfTokenValid('update_personal_info', $submittedToken)) {
+            $this->addFlash('error', 'Invalid CSRF token');
+            return $this->redirectToRoute('app_user_account');
+        }
+        $firstName = $request->request->get('firstName');
+        $lastName = $request->request->get('lastName');
+        $email = $request->request->get('email');
+        $username = $request->request->get('username');
+                if (empty($firstName) || empty($lastName) || empty($email) || empty($username)) {
+            $this->addFlash('error', 'All fields are required');
+            return $this->redirectToRoute('app_user_account');
+        }
+        
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->addFlash('error', 'Invalid email format');
+            return $this->redirectToRoute('app_user_account');
+        }
+        
+        $user->setFirstName($firstName);
+        $user->setLastName($lastName);
+        $user->setEmail($email);
+        $user->setUsername($username);
+        
+        $entityManager = $doctrine->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+        
+        $this->addFlash('success', 'Your personal information has been updated successfully!');
+        return $this->redirectToRoute('app_user_account');
     }
 
     #[Route('/user/checkout', name: 'app_user_checkout')]
@@ -334,7 +381,7 @@ final class UserController extends AbstractController
             return $this->redirect($referer);
         }
 
-        return $this->redirectToRoute('app_user_account');
+        return $this->redirect($this->generateUrl('app_user_account') . '#wishlist');
     }
 
     #[Route('/user/process-payment', name: 'app_user_process_payment')]
