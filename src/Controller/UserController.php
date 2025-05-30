@@ -47,7 +47,7 @@ final class UserController extends AbstractController
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
-        return $this->render('user/index.html.twig', [
+        return $this->render('user/account.html.twig', [
             'controller_name' => 'UserController',
         ]);
     }
@@ -56,10 +56,34 @@ final class UserController extends AbstractController
     public function account(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser();
+    
+        if (!$user) {
+            return $this->redirectToRoute('app_main');
+        }
         return $this->render('user/account.html.twig', [
-            'controller_name' => 'UserController',
+            'user' => $user,
         ]);
     }
+    #[Route('/user/update-personal-info', name: 'app_user_update_personal_info', methods: ['POST'])]
+public function updatePersonalInfo(Request $request, ManagerRegistry $doctrine): Response
+{
+    $this->denyAccessUnlessGranted('ROLE_USER');
+    $user = $this->getUser();
+        $firstName = $request->request->get('firstName');
+    $lastName = $request->request->get('lastName');
+    $email = $request->request->get('email');
+    $username = $request->request->get('username');
+    
+    $user->setFirstName($firstName);
+    $user->setLastName($lastName);
+    $user->setEmail($email);
+    $user->setUsername($username);
+    $entityManager = $doctrine->getManager();
+    $entityManager->persist($user);
+    $entityManager->flush();
+        return $this->redirectToRoute('app_user_account');
+}
 
     #[Route('/user/checkout', name: 'app_user_checkout')]
     public function checkout(Request $request, SessionInterface $session): Response
