@@ -39,9 +39,6 @@ class MainService {
     public function __construct(
         private PaginatorInterface $paginator,
         private EntityManagerInterface $entityManager, 
-        private EmailVerifier $emailVerifier, 
-        private Security $security,
-        private ManagerRegistry $doctrine
     ) {}
 
     public function getProducts($filters, $page, $limit){
@@ -82,39 +79,14 @@ class MainService {
         return $productsRepository->findHighestRated($limit);
     }
 
-    public function registerUser(User $user, Cart $sessionCart, Wishlist $sessionWishlist): Response {
-        $user->setCart($this->getCleanCart($sessionCart));
-        $user->setWishlist($this->getCleanWishlist($sessionWishlist));
-
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
-        
-        // generate a signed url and email it to the user
-
-        /*
-        $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-            (new TemplatedEmail())
-                ->from(new Address('gunstore@gmail.com', 'GunStore'))
-                ->to((string) $user->getEmail())
-                ->subject('Please Confirm your Email')
-                ->htmlTemplate('main/confirmation_email.html.twig')
-        );
-
-        // do anything else you need here, like send an email
-        */
-
-        return $this->security->login($user, AppCustomAuthenticator::class, 'main');
-    }
-
-    public function getCleanCart(Cart $sessionCart) {
-        $doctrine = $this->doctrine->getManager();
+    public function getCleanCart($sessionCart) {
         $cart = new Cart();
 
         foreach ($sessionCart->getOrders() as $order) {
             $productId = $order->getProduct()->getId();
 
             if ($this->productExists($productId)) {
-                $product = $doctrine->getRepository(Product::class)->find($productId);
+                $product = $this->entityManager->getRepository(Product::class)->find($productId);
 
                 $newOrder = new Order();
                 $newOrder->setDate(new \DateTime());
@@ -131,7 +103,6 @@ class MainService {
     }
 
     public function getCleanWishlist(Wishlist $sessionWishlist){
-        $doctrine = $this->doctrine->getManager();
         $wishlist = new Wishlist();
 
         foreach ($sessionWishlist->getWishes() as $wish) {
@@ -139,7 +110,7 @@ class MainService {
             $productId = $wish->getProduct()->getId();
 
             if ($this->productExists($curProduct->getId())) {
-                $product = $doctrine->getRepository(Product::class)->find($productId);
+                $product = $this->entityManager->getRepository(Product::class)->find($productId);
 
                 $newWish = new Wish();
                 $newWish->setProduct($product);
