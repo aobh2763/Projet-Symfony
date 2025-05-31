@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Terms and Conditions - Aim&Deploy
+{% endblock %}
+
+{% block body %}
+  <body class="terms-page">
+
+
+  <main class="main">
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ path('app_main') }}">Home</a></li>
+            <li class="current">Terms and Conditions</li>
+          </ol>
+        </nav>
+        <h1>Terms and Conditions</h1>
+      </div>
+    </div>
+
+    <section id="terms" class="section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h2>1. Legal Eligibility</h2>
+        <p>All users must be at least 18 years old and legally authorized to purchase firearms and ammunition under Tunisian law. By using our services, you confirm that you comply with all legal requirements and possess any necessary licenses.</p>
+
+        <h2>2. Compliance with Tunisian Law</h2>
+        <p>Aim&Deploy operates strictly under the regulations of the Republic of Tunisia. You are responsible for knowing and respecting all legal obligations regarding the acquisition, possession, and use of our products.</p>
+
+        <h2>3. Products and Availability</h2>
+        <p>We strive to keep product listings accurate and up-to-date. Availability, specifications, and prices are subject to change without notice. Product images are for illustration purposes only.</p>
+
+        <h2>4. Orders and Payments</h2>
+        <p>All orders are subject to verification and may require legal documentation. Orders will not be processed or delivered until payment is completed and validated. Prices are displayed in TND (Tunisian Dinar).</p>
+
+        <h2>5. Shipping & Delivery</h2>
+        <p>We only ship within Tunisia. Some items (e.g. firearms or ammunition) may require in-person pickup or license verification. Delivery timelines are estimates and not guaranteed.</p>
+
+        <h2>6. Returns & Refunds</h2>
+        <p>Due to safety and legal restrictions, returns of firearms and ammunition are not accepted. Accessories can be returned within 7 days if unused and in their original packaging.</p>
+
+        <h2>7. Prohibited Use</h2>
+        <p>You may not use our services for illegal purposes or misuse our products in any way. Any suspicious or unlawful activity will be reported to the appropriate authorities.</p>
+
+        <h2>8. Limitation of Liability</h2>
+        <p>We are not liable for indirect, incidental, or consequential damages arising from the use or misuse of our website or products. Use them responsibly and legally.</p>
+
+        <h2>9. Account Security</h2>
+        <p>You are responsible for maintaining the confidentiality of your account credentials. We are not responsible for unauthorized access to your account.</p>
+
+        <h2>10. Changes to Terms</h2>
+        <p>We reserve the right to update or modify these terms at any time. Continued use of the site after changes are made implies your acceptance of the new terms.</p>
+
+        <h2>11. Governing Law</h2>
+        <p>These terms are governed by Tunisian law. Any disputes will be resolved in the courts of Tunis.</p>
+
+        <h2>12. Contact</h2>
+        <p>For questions or concerns, contact us at <a href="mailto:support@aimdeploy.tn">support@insat.ucar.tn</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  {% include 'fragments/footer.html.twig' %}
+{% endblock %}

@@ -626,4 +626,5 @@ final class UserController extends AbstractController
 
         return new Response('Invalid payment ID', 400);
     }
+
 }

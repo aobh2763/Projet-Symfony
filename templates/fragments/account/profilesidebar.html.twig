@@ -1,13 +1,13 @@
 <div class="col-lg-3 profile-sidebar collapse d-lg-block" id="profileSidebar" data-aos="fade-right" data-aos-delay="200">
     <div class="profile-header">
         <div class="profile-avatar">
-            {# Use first letter of first name #}
-            <span>{{ app.user.firstName|first|upper }}</span>
+            <span>S</span>
         </div>
         <div class="profile-info">
-            {# Use actual user name #}
-            <h4>{{ app.user.firstName }} {{ app.user.lastName }}</h4>
-            {# Removed bonus section since it doesn't exist in entity #}
+            <h4>{{app.user.firstName}} {{app.user.lastName}}</h4>
+            <div class="profile-bonus">
+                <i class="bi bi-gift"></i>
+            </div>
         </div>
     </div>
 
@@ -17,8 +17,7 @@
                 <button class="nav-link active" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab" aria-controls="orders" aria-selected="true">
                     <i class="bi bi-box-seam"></i>
                     <span>Orders</span>
-                    {# Optional: Add actual order count later #}
-                    {# <span class="badge">{{ order_count }}</span> #}
+                    <span class="badge">1</span>
                 </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -27,12 +26,16 @@
                     <span>Wishlist</span>
                 </button>
             </li>
+
+
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="false">
                     <i class="bi bi-person"></i>
                     <span>Personal info</span>
                 </button>
             </li>
+
+
         </ul>
 
         <h6 class="nav-section-title">Customer service</h6>
@@ -42,16 +45,14 @@
                     <i class="bi bi-question-circle"></i>
                     <span>Help center</span>
                 </a>
-            </li>
+                </li>
+                <a href="{{ path('app_terms') }}" class="nav-link">
+                <i class="bi bi-file-text"></i>
+                <span>Terms and conditions</span>
+            </a>
+
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-file-text"></i>
-                    <span>Terms and conditions</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                {# Updated logout link to use Symfony's logout path #}
-                <a href="{{ path('app_logout') }}" class="nav-link logout">
+                <a href="#" class="nav-link logout">
                     <i class="bi bi-box-arrow-right"></i>
                     <span>Log out</span>
                 </a>
