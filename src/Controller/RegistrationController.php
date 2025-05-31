@@ -26,7 +26,6 @@ class RegistrationController extends AbstractController
         private EmailVerifier $emailVerifier,
         private MainService $mainService,
         private RequestStack $requestStack
-
     )
     {
     }

@@ -166,4 +166,10 @@ final class AdminController extends AbstractController
         $this->adminService->deleteProduct($id);
         return $this->redirectToRoute('app_admin_products');
     }
+
+    #[Route('/admin/users/delete/{id}', 'app_admin_delete_user')]
+    public function deleteUser(int $id){
+        $this->adminService->deleteUser($id);
+        return $this->redirectToRoute('app_admin_users');
+    }
 }

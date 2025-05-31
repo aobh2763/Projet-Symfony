@@ -21,6 +21,12 @@ class AdminService {
 
         // Filter by name
         if (!empty($filters['status']) && $filters['status'] !== 'all') {
+            $filters['status'] = match($filters['status']) {
+                'in-progress' => 'Pending',
+                'delivered' => 'Delivered',
+                'canceled' => 'Canceled',
+            }; 
+
             $qb->andWhere('o.status LIKE :status')
                ->setParameter('status', '%' . $filters['status'] . '%');
         }
@@ -76,7 +82,6 @@ class AdminService {
         }
     }
 
-    //TODO: doesnt work if the product has orders on it
     public function deleteProduct($id){
         $productRepository = $this->entityManager->getRepository(Product::class);
         $product = $productRepository->find($id);
@@ -87,4 +92,13 @@ class AdminService {
         }
     }
 
+    public function deleteUser($id){
+        $userRepository = $this->entityManager->getRepository(User::class);
+        $user = $userRepository->find($id);
+
+        if ($user) {
+            $this->entityManager->remove($user);
+            $this->entityManager->flush();        
+        }
+    }
 }

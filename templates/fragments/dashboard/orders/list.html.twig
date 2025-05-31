@@ -8,7 +8,13 @@
                 <div class="order-date">{{ order.date|date('m/d/Y') }}</div>
             </div>
             <div class="col-md-3">
-                <div class="order-status {{ order.status }}">{{ order.status }}</div>
+                {% if order.status == 'Pending' %}
+                    <div class="order-status in-progress">{{ order.status }}</div>
+                {% elseif order.status == 'Delivered' %}
+                    <div class="order-status delivered">{{ order.status }}</div>
+                {% else %}
+                    <div class="order-status canceled">{{ order.status }}</div>
+                {% endif %}
             </div>
             <div class="col-md-3">
                 <div class="order-total">{{ order.total }}</div>

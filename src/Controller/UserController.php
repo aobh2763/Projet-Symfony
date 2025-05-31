@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cart;
+use App\Entity\User;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Wish;
@@ -103,7 +104,11 @@ final class UserController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
-        $cart = $this->getUser()->getCart();
+        /**
+         * @var User
+         */
+        $user = $this->getUser();
+        $cart = $user->getCart();
         $shippingPrice = $request->request->get('shipping_price');
         if ($shippingPrice === null) {
             $shippingPrice = $session->get('shipping_price', 4.99);
@@ -140,6 +145,9 @@ final class UserController extends AbstractController
         if (!$this->getUser()) {
             $cart = $session->get('cart', new Cart());
         } else {
+            /**
+             * @var User
+             */
             $user = $this->getUser();
             $cart = $user->getCart();
         }
@@ -192,6 +200,9 @@ final class UserController extends AbstractController
         if (!$this->getUser()) {
             $cart = $session->get('cart', new Cart());
         } else {
+            /**
+             * @var User
+             */
             $user = $this->getUser();
             $cart = $user->getCart();
         }
@@ -220,6 +231,9 @@ final class UserController extends AbstractController
         if (!$this->getUser()) {
             $session->set('cart', new Cart());
         } else {
+            /**
+             * @var User
+             */
             $user = $this->getUser();
             $cart = $user->getCart();
             $cart->clearOrders();
@@ -242,8 +256,12 @@ final class UserController extends AbstractController
             return $this->redirectToRoute('app_user_cart');
         }
 
+        /**
+        * @var User
+        */
+        $user = $this->getUser();
         $orderRepository = $doctrine->getRepository(Order::class);
-        $cart = $this->getUser()->getCart();
+        $cart = $user->getCart();
         $entityManager = $doctrine->getManager();
 
         $result = $this->userService->updateCart($cart, $quantities, $orderIds, $orderRepository, $entityManager);
@@ -271,6 +289,9 @@ final class UserController extends AbstractController
         if (!$this->getUser()) {
             $wishlist = $session->get('wishlist', new Wishlist());
         } else {
+            /**
+            * @var User
+            */
             $user = $this->getUser();
             $wishlist = $user->getWishlist();
         }
@@ -312,6 +333,9 @@ final class UserController extends AbstractController
         if (!$this->getUser()) {
             $wishlist = $session->get('wishlist', []);
         } else {
+            /**
+            * @var User
+            */
             $user = $this->getUser();
             $wishlist = $user->getWishlist();
         }
@@ -342,7 +366,12 @@ final class UserController extends AbstractController
     #[Route('/user/process-payment', name: 'app_user_process_payment')]
     public function processPayment(Request $request, SessionInterface $session): Response {
         $this->denyAccessUnlessGranted('ROLE_USER');
-        $cart = $this->getUser()->getCart();
+        
+        /**
+        * @var User
+        */
+        $user = $this->getUser();
+        $cart = $user->getCart();
         $shippingPrice = (float) $session->get('shipping_price', 4.99);
         $paymentMethod = $request->request->get('payment_method');
 
@@ -393,7 +422,11 @@ final class UserController extends AbstractController
 
                 $data = $response->toArray();
                 if ($data['status'] === 'success') {
-                    $cart = $this->getUser()->getCart();
+                    /**
+                    * @var User
+                    */
+                    $user = $this->getUser();
+                    $cart = $user->getCart();
                     foreach ($cart->getOrders() as $order) {
                         $order->setStatus('Paid');
                         $doctrine->getManager()->persist($order);
@@ -425,7 +458,11 @@ final class UserController extends AbstractController
 
                 $data = $response->toArray();
                 if ($data['status'] === 'success') {
-                    $cart = $this->getUser()->getCart();
+                    /**
+                    * @var User
+                    */
+                    $user = $this->getUser();
+                    $cart = $user->getCart();
                     foreach ($cart->getOrders() as $order) {
                         $order->setStatus('Paid');
                         $doctrine->getManager()->persist($order);
@@ -480,7 +517,11 @@ final class UserController extends AbstractController
 
                 $data = $response->toArray();
                 if ($data['status'] === 'success') {
-                    $cart = $this->getUser()->getCart();
+                    /**
+                    * @var User
+                    */
+                    $user = $this->getUser();
+                    $cart = $user->getCart();
                     foreach ($cart->getOrders() as $order) {
                         $order->setStatus('Paid');
                         $doctrine->getManager()->persist($order);
@@ -508,7 +549,11 @@ final class UserController extends AbstractController
 
                 $data = $response->toArray();
                 if ($data['status'] === 'success') {
-                    $cart = $this->getUser()->getCart();
+                    /**
+                    * @var User
+                    */
+                    $user = $this->getUser();
+                    $cart = $user->getCart();
                     foreach ($cart->getOrders() as $order) {
                         $order->setStatus('Paid');
                         $doctrine->getManager()->persist($order);

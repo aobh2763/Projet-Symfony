@@ -140,7 +140,7 @@
                             <button type="button" class="quantity-btn decrease" id="minus_quantity{{ product.id }}">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="number" name="quantities[{{ order.id }}]" class="quantity-input" value="{{ order.quantity }}" min="1" max="100" data-order-id="{{ order.id }}" id="quantity_field{{ product.id }}" disabled>
+                            <input type="text" name="quantities[{{ order.id }}]" class="quantity-input" value="{{ order.quantity }}" min="1" max="100" data-order-id="{{ order.id }}" id="quantity_field{{ product.id }}" disabled>
                             <input type="hidden" name="order_ids[]" value="{{ order.id }}">
                             <button type="button" class="quantity-btn increase" id="plus_quantity{{ product.id }}">
                                 <i class="bi bi-plus"></i>
