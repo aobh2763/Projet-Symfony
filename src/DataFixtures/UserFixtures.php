@@ -11,13 +11,6 @@ use App\Entity\{User, Cart, Wishlist};
 
 class UserFixtures extends Fixture implements FixtureGroupInterface
 {
-    private UserPasswordHasherInterface $passwordHasher;
-
-    public function __construct(UserPasswordHasherInterface $passwordHasher)
-    {
-        $this->passwordHasher = $passwordHasher;
-    }
-
     public function load(ObjectManager $manager): void
     {
         for ($i = 1; $i <= 5; $i++) {
@@ -28,7 +21,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
                 ->setFirstName("FirstName$i")
                 ->setLastName("LastName$i")
                 ->setIsVerified(true)
-                ->setPassword($this->passwordHasher->hashPassword($user, 'password123'));
+            ;
 
             $cart = new Cart();
             $user->setCart($cart);
@@ -45,8 +38,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
             ->setFirstName('Admin')
             ->setLastName('User')
             ->setIsVerified(true)
-            ->setRoles(['ROLE_ADMIN'])
-            ->setPassword($this->passwordHasher->hashPassword($admin, 'adminadmin'));
+            ->setRoles(['ROLE_ADMIN']);
 
         $adminCart = new Cart();
         $admin->setCart($adminCart);

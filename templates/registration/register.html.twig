@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  Register - Aim&Deploy
+{% endblock %}
+{% block body %}
+<body class="register-page">
+
+  <!-- Page Header -->
+  {% include 'fragments/header.html.twig' %}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ asset('../main/index.html.twig') }}">Home</a></li>
+            <li class="current">Register</li>
+          </ol>
+        </nav>
+        <h1>Register</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Register Section -->
+    <section id="register" class="register section">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="registration-form-wrapper" data-aos="zoom-in" data-aos-delay="200">
+            <div class="section-header mb-4 text-center">
+              <h2>Create Your Account</h2>
+              <p>Sign up to start shopping and enjoy exclusive offers</p>
+            </div>
+
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+
+            {{ form_start(registrationForm) }}
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  {{ form_label(registrationForm.firstname) }}
+                  {{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control', 'placeholder': 'John'}}) }}
+                  {{ form_errors(registrationForm.firstname) }}
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  {{ form_label(registrationForm.lastname) }}
+                  {{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Doe'}}) }}
+                  {{ form_errors(registrationForm.lastname) }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              {{ form_label(registrationForm.email) }}
+              {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'you@example.com'}}) }}
+              {{ form_errors(registrationForm.email) }}
+            </div>
+
+            <div class="form-group mb-3">
+              {{ form_label(registrationForm.username) }}
+              {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control', 'placeholder': 'Username'}}) }}
+              {{ form_errors(registrationForm.username) }}
+            </div>
+
+            <div class="form-group mb-3">
+              {{ form_label(registrationForm.plainPassword) }}
+              {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'At least 8 characters'}}) }}
+              {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+
+            <div class="form-group mb-4">
+              <div class="form-check">
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                {{ form_errors(registrationForm.agreeTerms) }}
+              </div>
+            </div>
+
+            <div class="text-center mb-4">
+              <button type="submit" class="btn btn-primary w-100">Create Account</button>
+            </div>
+
+            <div class="text-center">
+              <p class="mb-0">Already have an account? <a href="{{ path('app_login') }}">Sign in</a></p>
+            </div>
+
+            {{ form_end(registrationForm) }}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Register Section -->
+
+  </main>
+
+{% endblock %}
