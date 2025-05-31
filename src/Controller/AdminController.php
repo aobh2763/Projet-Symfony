@@ -43,7 +43,7 @@ final class AdminController extends AbstractController
         ]);
         $form->handleRequest($request);
 
-        $filters = $form->isSubmitted()
+        $filters = $form->isSubmitted() && $form->isValid()
             ? $form->getData()
             : [];
 
@@ -98,7 +98,7 @@ final class AdminController extends AbstractController
 
         //TODO: fix form validation
         $form->handleRequest($request);
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
             $this->adminService->createProduct($product);
         }
 
