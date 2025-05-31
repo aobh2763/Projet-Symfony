@@ -7,6 +7,7 @@ use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Wish;
 use App\Entity\Wishlist;
+use App\Service\UserService;
 use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
@@ -31,8 +32,9 @@ final class UserController extends AbstractController
     private $edinarApiSecret;
     private $edinarMerchantId;
     private $requestStack;
+    private $userService;
 
-    public function __construct(HttpClientInterface $httpClient,RequestStack $rs)
+    public function __construct(HttpClientInterface $httpClient,RequestStack $rs, UserService $userService)
     {
         $this->httpClient = $httpClient;
         $this->flouciApiKey = $_ENV['FLOUCI_API_KEY'];
@@ -43,6 +45,7 @@ final class UserController extends AbstractController
         $this->edinarApiSecret = $_ENV['EDINAR_API_SECRET'];
         $this->edinarMerchantId = $_ENV['EDINAR_MERCHANT_ID'];
         $this->requestStack= $rs;
+        $this->userService = $userService;
     }
 
     #[Route('/user', name: 'app_user')]
@@ -69,42 +72,29 @@ final class UserController extends AbstractController
         ]);
     
     }
+
     #[Route('/user/update-personal-info', name: 'app_user_update_personal_info', methods: ['POST'])]
-    public function updatePersonalInfo(Request $request, ManagerRegistry $doctrine): Response
-    {
+    public function updatePersonalInfo(Request $request): Response {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
-        
+
         // Verify CSRF token
         $submittedToken = $request->request->get('token');
         if (!$this->isCsrfTokenValid('update_personal_info', $submittedToken)) {
             $this->addFlash('error', 'Invalid CSRF token');
             return $this->redirectToRoute('app_user_account');
         }
-        $firstName = $request->request->get('firstName');
-        $lastName = $request->request->get('lastName');
-        $email = $request->request->get('email');
-        $username = $request->request->get('username');
-                if (empty($firstName) || empty($lastName) || empty($email) || empty($username)) {
-            $this->addFlash('error', 'All fields are required');
-            return $this->redirectToRoute('app_user_account');
-        }
-        
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->addFlash('error', 'Invalid email format');
-            return $this->redirectToRoute('app_user_account');
-        }
-        
-        $user->setFirstName($firstName);
-        $user->setLastName($lastName);
-        $user->setEmail($email);
-        $user->setUsername($username);
-        
-        $entityManager = $doctrine->getManager();
-        $entityManager->persist($user);
-        $entityManager->flush();
-        
-        $this->addFlash('success', 'Your personal information has been updated successfully!');
+
+        $data = [
+            'firstName' => $request->request->get('firstName'),
+            'lastName'  => $request->request->get('lastName'),
+            'email'     => $request->request->get('email'),
+            'username'  => $request->request->get('username'),
+        ];
+
+        $result = $this->userService->updatePersonalInfo($user, $data);
+
+        $this->addFlash($result['success'] ? 'success' : 'error', $result['message']);
         return $this->redirectToRoute('app_user_account');
     }
 
@@ -241,63 +231,27 @@ final class UserController extends AbstractController
     }
 
     #[Route('/user/cart/update', name: 'app_user_cart_update', methods: ['POST'])]
-    public function updateCart(Request $request, ManagerRegistry $doctrine, SessionInterface $session): Response
-    {
+    public function updateCart(Request $request, ManagerRegistry $doctrine): Response {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
-        $quantities = $request->request->all('quantities', []);
-        $orderIds = $request->request->all('order_ids', []);
+        $quantities = $request->request->get('quantities', []);
+        $orderIds = $request->request->get('order_ids', []);
 
         if (empty($quantities) || empty($orderIds)) {
-            $this->addFlash('error', message: 'No quantities provided.');
+            $this->addFlash('error', 'No quantities provided.');
             return $this->redirectToRoute('app_user_cart');
         }
 
         $orderRepository = $doctrine->getRepository(Order::class);
         $cart = $this->getUser()->getCart();
         $entityManager = $doctrine->getManager();
-        $errors = [];
 
-        foreach ($orderIds as $orderId) {
-            $quantity = isset($quantities[$orderId]) ? (int) $quantities[$orderId] : null;
+        $result = $this->userService->updateCart($cart, $quantities, $orderIds, $orderRepository, $entityManager);
 
-            // Validate quantity
-            if (!is_numeric($quantity) || $quantity < 1 || $quantity > 100) {
-                $errors[] = "Invalid quantity for order {$orderId}.";
-                continue;
-            }
-
-            // Find order
-            $order = $orderRepository->find($orderId);
-            if (!$order) {
-                $errors[] = "Order not found: {$orderId}.";
-                continue;
-            }
-
-            // Verify order belongs to user's cart
-            if (!$cart->getOrders()->contains($order)) {
-                $errors[] = "Order does not belong to your cart: {$orderId}.";
-                continue;
-            }
-
-            // Update quantity
-            $order->setQuantity($quantity);
-        }
-
-        if (!empty($errors)) {
-            $this->addFlash('error', implode(' ', $errors));
-            return $this->redirectToRoute('app_user_cart');
-        }
-
-        // Update cart total
-        $cart->updatePrixTotal();
-
-        try {
-            $entityManager->persist($cart);
-            $entityManager->flush();
+        if (!$result['success']) {
+            $this->addFlash('error', implode(' ', $result['errors']));
+        } else {
             $this->addFlash('success', 'Cart updated successfully.');
-        } catch (\Exception $e) {
-            $this->addFlash('error', 'Failed to update cart: ' . $e->getMessage());
         }
 
         return $this->redirectToRoute('app_user_cart');
@@ -386,87 +340,35 @@ final class UserController extends AbstractController
     }
 
     #[Route('/user/process-payment', name: 'app_user_process_payment')]
-    public function processPayment(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
-    {
+    public function processPayment(Request $request, SessionInterface $session): Response {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $cart = $this->getUser()->getCart();
-        $cart->updatePrixTotal();
-        $doctrine->getManager()->persist($cart);
-        $doctrine->getManager()->flush();
-
-        $paymentMethod = $request->request->get('payment_method');
         $shippingPrice = (float) $session->get('shipping_price', 4.99);
-        $totalAmount = $cart->getPrixTotal() + $shippingPrice + ($cart->getPrixTotal() * 0.01);
+        $paymentMethod = $request->request->get('payment_method');
 
-        if ($paymentMethod === 'flouci') {
-            try {
-                $apiUrl = $this->isFlouciTestMode
-                    ? 'https://sandbox.flouci.com/v1/payments'
-                    : 'https://api.flouci.com/v1/payments';
+        $result = $this->userService->processPayment(
+            $cart,
+            $shippingPrice,
+            $paymentMethod,
+            $this->httpClient,
+            $this->flouciApiKey,
+            $this->flouciTrackingId,
+            $this->isFlouciTestMode,
+            $this->edinarApiKey,
+            $this->edinarMerchantId
+        );
 
-                $response = $this->httpClient->request('POST', $apiUrl, [
-                    'headers' => [
-                        'Authorization' => 'Bearer ' . $this->flouciApiKey,
-                        'Content-Type' => 'application/json',
-                        'X-Developer-Tracking-Id' => $this->flouciTrackingId,
-                    ],
-                    'json' => [
-                        'amount' => $totalAmount * 1000, // Millimes (TND * 1000)
-                        'currency' => 'TND',
-                        'order_id' => 'FLOUCI_' . uniqid(),
-                        'success_url' => 'http://localhost:8000/user/payment/success',
-                        'cancel_url' => 'http://localhost:8000/user/payment/cancel',
-                        'callback_url' => 'http://localhost:8000/user/payment/callback',
-                    ],
-                ]);
-
-                $data = $response->toArray();
-                if (isset($data['payment_url'])) {
-                    $session->set('flouci_payment_id', $data['payment_id']);
-                    return $this->redirect($data['payment_url']);
-                }
-
-                throw new \Exception('Failed to create Flouci payment');
-            } catch (\Exception $e) {
-                $this->addFlash('error', 'Flouci payment initiation failed: ' . $e->getMessage());
-                return $this->redirectToRoute('app_user_checkout');
+        if ($result['success']) {
+            if ($result['method'] === 'flouci') {
+                $session->set('flouci_payment_id', $result['payment_id']);
+            } elseif ($result['method'] === 'edinar') {
+                $session->set('edinar_payment_id', $result['payment_id']);
             }
-        } elseif ($paymentMethod === 'edinar') {
-            try {
-                // GPGCheckout API for e-Dinar (hypothetical, replace with actual endpoint)
-                $apiUrl = 'https://api.gpgcheckout.com/v1/payments'; // Adjust based on provider
-                $response = $this->httpClient->request('POST', $apiUrl, [
-                    'headers' => [
-                        'Authorization' => 'Bearer ' . $this->edinarApiKey,
-                        'Content-Type' => 'application/json',
-                    ],
-                    'json' => [
-                        'merchant_id' => $this->edinarMerchantId,
-                        'amount' => $totalAmount * 1000, // Millimes (TND * 1000)
-                        'currency' => 'TND',
-                        'order_id' => 'EDINAR_' . uniqid(),
-                        'success_url' => 'http://localhost:8000/user/payment/success',
-                        'cancel_url' => 'http://localhost:8000/user/payment/cancel',
-                        'callback_url' => 'http://localhost:8000/user/payment/callback',
-                        'payment_method' => 'edinar', // Specify e-Dinar wallet/card
-                    ],
-                ]);
-
-                $data = $response->toArray();
-                if (isset($data['payment_url'])) {
-                    $session->set('edinar_payment_id', $data['payment_id']);
-                    return $this->redirect($data['payment_url']);
-                }
-
-                throw new \Exception('Failed to create e-Dinar payment');
-            } catch (\Exception $e) {
-                $this->addFlash('error', 'e-Dinar payment initiation failed: ' . $e->getMessage());
-                return $this->redirectToRoute('app_user_checkout');
-            }
+            return $this->redirect($result['payment_url']);
+        } else {
+            $this->addFlash('error', $result['error']);
+            return $this->redirectToRoute('app_user_checkout');
         }
-
-        $this->addFlash('error', 'Invalid payment method selected.');
-        return $this->redirectToRoute('app_user_checkout');
     }
 
     #[Route('/user/payment/success', name: 'app_user_payment_success')]
