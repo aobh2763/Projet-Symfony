@@ -25,7 +25,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
                 ->setFirstName("FirstName$i")
                 ->setLastName("LastName$i")
                 ->setIsVerified(true)
-                ->setPassword($this->passwordHasher->hashPassword($user, "123456"))
+                ->setPassword($this->passwordHasher->hashPassword($user, "password123"))
             ;
 
             $cart = new Cart();
@@ -44,7 +44,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
             ->setLastName('User')
             ->setIsVerified(true)
             ->setRoles(['ROLE_ADMIN'])
-            ->setPassword($this->passwordHasher->hashPassword($user, "123456"))
+            ->setPassword($this->passwordHasher->hashPassword($user, "adminadmin"))
         ;
 
         $adminCart = new Cart();

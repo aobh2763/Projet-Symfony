@@ -43,7 +43,7 @@ final class MainController extends AbstractController
         $form = $this->createForm(FilterTypeForm::class, null, [
             'method' => 'GET',
             'allow_extra_fields' => true,
-            'csrf_protection' => false,
+            'csrf_protection' => false
         ]);
 
         $form->submit($request->query->all());

@@ -123,7 +123,8 @@ final class AdminController extends AbstractController
         $request = $this->requestStack->getCurrentRequest();
 
         $form = $this->createForm(FilterTypeForm::class, null, [
-            'method' => 'GET'
+            'method' => 'GET',
+            'csrf_protection' => false
         ]);
         $form->handleRequest($request);
 
@@ -149,13 +150,13 @@ final class AdminController extends AbstractController
 
         $product = $this->mainService->getProduct($id);
         
-        if($product instanceof Gun){
+        if($product instanceof Gun) {
             $form = $this->createForm(CreateGunTypeForm::class, $product);
-        } elseif($product instanceof Ammo){
+        } elseif($product instanceof Ammo) {
             $form = $this->createForm(CreateAmmoTypeForm::class, $product);
-        } elseif($product instanceof Accessory){
+        } elseif($product instanceof Accessory) {
             $form = $this->createForm(CreateAccessoryTypeForm::class, $product);
-        } elseif($product instanceof Melee){
+        } else {
             $form = $this->createForm(CreateMeleeTypeForm::class, $product);
         }
 
