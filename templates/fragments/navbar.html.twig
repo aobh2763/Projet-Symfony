@@ -17,11 +17,9 @@
                         <a href="{{ path('app_products') }}" class="{% if current_route == 'app_products' %}active{% endif %}">Products</a>
                     {% endif %}
                 </li>
-                {% if not is_granted('ROLE_ADMIN') %}
-                    <li>
-                        <a href="{{ path('app_user_checkout') }}" class="{% if current_route == 'app_user_checkout' %}active{% endif %}">Checkout</a>
-                    </li>
-                {% endif %}
+                <li>
+                    <a href="{{ path('app_user_checkout') }}" class="{% if current_route == 'app_user_checkout' %}active{% endif %}">Checkout</a>
+                </li>
             </ul>
         </nav>
     </div>

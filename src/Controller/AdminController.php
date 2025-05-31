@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\{Response, RequestStack};
+use Symfony\Component\HttpFoundation\{Response, RequestStack, File\UploadedFile};
 
 use App\Entity\{Gun, Accessory, Ammo, Melee};
-use App\Service\{AdminService, MainService};
+use App\Service\{AdminService, MainService, FileUploaderService};
 use App\Form\{
     OrdersFilterTypeForm, 
     FilterTypeForm, 
@@ -17,13 +17,16 @@ use App\Form\{
     CreateAccessoryTypeForm,
     PickProductTypeForm
 };
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 final class AdminController extends AbstractController
 {
     public function __construct(
         private RequestStack $requestStack,
+        private SluggerInterface $slugger,
         private AdminService $adminService,
-        private MainService $mainService
+        private MainService $mainService,
+        private FileUploaderService $fileUploader
     ){}
 
     #[Route('/admin', name: 'app_admin')]
@@ -96,9 +99,15 @@ final class AdminController extends AbstractController
             $form = $this->createForm(CreateMeleeTypeForm::class, $product);
         }
 
-        //TODO: fix form validation
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $imageFileName = $this->fileUploader->upload($imageFile);
+                $product->setImage('assets/img/product/'.$imageFileName);
+            }
+
             $this->adminService->createProduct($product);
         }
 
@@ -152,6 +161,13 @@ final class AdminController extends AbstractController
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $imageFileName = $this->fileUploader->upload($imageFile);
+                $product->setImage('assets/img/product/'.$imageFileName);
+            }
+
             $this->adminService->updateProduct($product);
         }
 
