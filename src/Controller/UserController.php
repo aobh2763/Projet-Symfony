@@ -112,7 +112,7 @@ final class UserController extends AbstractController
     public function checkout(Request $request, SessionInterface $session): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
-        
+
         $cart = $this->getUser()->getCart();
         $shippingPrice = $request->request->get('shipping_price');
         if ($shippingPrice === null) {
@@ -235,6 +235,69 @@ final class UserController extends AbstractController
             $cart->clearOrders();
             $doctrine->getManager()->persist($cart);
             $doctrine->getManager()->flush();
+        }
+
+        return $this->redirectToRoute('app_user_cart');
+    }
+
+    #[Route('/user/cart/update', name: 'app_user_cart_update', methods: ['POST'])]
+    public function updateCart(Request $request, ManagerRegistry $doctrine, SessionInterface $session): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $quantities = $request->request->all('quantities', []);
+        $orderIds = $request->request->all('order_ids', []);
+
+        if (empty($quantities) || empty($orderIds)) {
+            $this->addFlash('error', message: 'No quantities provided.');
+            return $this->redirectToRoute('app_user_cart');
+        }
+
+        $orderRepository = $doctrine->getRepository(Order::class);
+        $cart = $this->getUser()->getCart();
+        $entityManager = $doctrine->getManager();
+        $errors = [];
+
+        foreach ($orderIds as $orderId) {
+            $quantity = isset($quantities[$orderId]) ? (int) $quantities[$orderId] : null;
+
+            // Validate quantity
+            if (!is_numeric($quantity) || $quantity < 1 || $quantity > 100) {
+                $errors[] = "Invalid quantity for order {$orderId}.";
+                continue;
+            }
+
+            // Find order
+            $order = $orderRepository->find($orderId);
+            if (!$order) {
+                $errors[] = "Order not found: {$orderId}.";
+                continue;
+            }
+
+            // Verify order belongs to user's cart
+            if (!$cart->getOrders()->contains($order)) {
+                $errors[] = "Order does not belong to your cart: {$orderId}.";
+                continue;
+            }
+
+            // Update quantity
+            $order->setQuantity($quantity);
+        }
+
+        if (!empty($errors)) {
+            $this->addFlash('error', implode(' ', $errors));
+            return $this->redirectToRoute('app_user_cart');
+        }
+
+        // Update cart total
+        $cart->updatePrixTotal();
+
+        try {
+            $entityManager->persist($cart);
+            $entityManager->flush();
+            $this->addFlash('success', 'Cart updated successfully.');
+        } catch (\Exception $e) {
+            $this->addFlash('error', 'Failed to update cart: ' . $e->getMessage());
         }
 
         return $this->redirectToRoute('app_user_cart');

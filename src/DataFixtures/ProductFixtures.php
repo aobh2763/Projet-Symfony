@@ -643,6 +643,96 @@ class ProductFixtures extends Fixture implements FixtureGroupInterface
                   ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
                   ->setRating(mt_rand(0, 50) / 10);
         
+        $product53 = new Melee();
+        $product53->setName('Kurki Knife')
+                  ->setDescription('A traditional Kurki knife with a curved blade.')
+                  ->setPrice(80.0)
+                  ->setReach(0.5)
+                  ->setType('knife')
+                  ->setStock(50)
+                  ->setWeight(0.4)
+                  ->setImage("assets/img/uploads/kurkiknife.webp")
+                  ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
+                  ->setRating(mt_rand(0, 50) / 10);
+        
+        $product54 = new Melee();
+        $product54->setName('Baseball Bat')
+                  ->setDescription('A wooden baseball bat for blunt force attacks.')
+                  ->setPrice(40.0)
+                  ->setReach(1.0)
+                  ->setType('bat')
+                  ->setStock(100)
+                  ->setWeight(1.2)
+                  ->setImage("assets/img/uploads/baseballbat.png")
+                  ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
+                  ->setRating(mt_rand(0, 50) / 10);
+
+        $product55 = new Accessory();
+        $product55->setName('Flashbang Grenade')
+                  ->setDescription('A flashbang grenade for disorienting enemies.')
+                  ->setPrice(100.0)
+                  ->setStock(20)
+                  ->setWeight(0.5)
+                  ->setImage("assets/img/uploads/flashbanggrenade.png")
+                  ->setType('grenade')
+                  ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
+                  ->setRating(mt_rand(0, 50) / 10);
+        
+        $product56 = new Accessory();
+        $product56->setName('Incendiary Grenade')
+                  ->setDescription('An incendiary grenade for causing fire damage.')
+                  ->setPrice(150.0)
+                  ->setStock(15)
+                  ->setWeight(0.6)
+                  ->setImage("assets/img/uploads/incendiarygrenade.png")
+                  ->setType('grenade')
+                  ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
+                  ->setRating(mt_rand(0, 50) / 10);
+        
+        $product57 = new Accessory();
+        $product57->setName('Shooting Glasses')
+                  ->setDescription('Protective shooting glasses for eye safety.')
+                  ->setPrice(25.0)
+                  ->setStock(100)
+                  ->setWeight(0.2)
+                  ->setImage("assets/img/uploads/shootingglasses.png")
+                  ->setType('glasses')
+                  ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
+                  ->setRating(mt_rand(0, 50) / 10);
+
+        $product58 = new Accessory();
+        $product58->setName('Shooting Gloves')
+                  ->setDescription('Protective gloves for shooting sports.')
+                  ->setPrice(30.0)
+                  ->setStock(80)
+                  ->setWeight(0.3)
+                  ->setImage("assets/img/uploads/shootingglove.png")
+                  ->setType('gloves')
+                  ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
+                  ->setRating(mt_rand(0, 50) / 10);
+
+        $product59 = new Accessory();
+        $product59->setName('Shuriken')
+                  ->setDescription('A traditional Japanese throwing star.')
+                  ->setPrice(15.0)
+                  ->setStock(200)
+                  ->setWeight(0.1)
+                  ->setImage("assets/img/uploads/shuriken.png")
+                  ->setType('throwing_star')
+                  ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
+                  ->setRating(mt_rand(0, 50) / 10);
+
+        $product60 = new Accessory();
+        $product60->setName('Tactical Helmet')
+                  ->setDescription('A tactical helmet for head protection.')
+                  ->setPrice(200.0)
+                  ->setStock(30)
+                  ->setWeight(1.5)
+                  ->setImage("assets/img/uploads/tacticalhelmet.png")
+                  ->setType('helmet')
+                  ->setSale((mt_rand(1, 100) <= 75) ? 0.0 : [0.1, 0.2, 0.3, 0.4, 0.5][array_rand([0.1, 0.2, 0.3, 0.4, 0.5])])
+                  ->setRating(mt_rand(0, 50) / 10);
+
         $manager->persist($product1);
         $manager->persist($product2);
         $manager->persist($product3);
@@ -695,6 +785,14 @@ class ProductFixtures extends Fixture implements FixtureGroupInterface
         $manager->persist($product50);
         $manager->persist($product51);
         $manager->persist($product52);
+        $manager->persist($product53);
+        $manager->persist($product54);
+        $manager->persist($product55);
+        $manager->persist($product56);
+        $manager->persist($product57);
+        $manager->persist($product58);
+        $manager->persist($product59);
+        $manager->persist($product60);
 
         $manager->flush();
     }

@@ -9,7 +9,7 @@
 
         <div class="summary-item">
             <span class="summary-label">Subtotal</span>
-            <span class="summary-value">${{ cart.prixtotal|number_format(2) }}</span>
+            <span class="summary-value">${{ (cart.prixtotal + 0.0)|number_format(2) }}</span>
         </div>
 
         <div class="summary-item shipping-item">
