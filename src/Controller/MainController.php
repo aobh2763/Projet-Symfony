@@ -165,6 +165,6 @@ final class MainController extends AbstractController
         #[Route('/terms', name: 'app_terms')]
         public function terms(): Response
         {
-            return $this->render('termsandconditions.html.twig');
+            return $this->render('main/termsandconditions.html.twig');
         }
 }

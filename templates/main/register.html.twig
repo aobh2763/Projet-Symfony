@@ -81,7 +81,7 @@
             <div class="form-group mb-4">
               <div class="form-check">
                 {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
-                {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                <a href="{{ path('app_terms') }}">{{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}</a>
                 {{ form_errors(registrationForm.agreeTerms) }}
               </div>
             </div>

@@ -8,7 +8,7 @@
                 // Get price, handle potential null or invalid values
                 const priceElement = item.querySelector('.current-price');
                 if (!priceElement) return;
-                const priceText = priceElement.textContent.replace(' TND', '').trim();
+                const priceText = priceElement.textContent.replace(' $', '').trim();
                 const price = parseFloat(priceText);
                 if (isNaN(price)) return;
 
@@ -24,7 +24,7 @@
                 // Update item total display
                 const itemTotalElement = item.querySelector('.item-total span');
                 if (itemTotalElement) {
-                    itemTotalElement.textContent = `${itemTotal.toFixed(2)} TND`;
+                    itemTotalElement.textContent = `${itemTotal.toFixed(2)} $`;
                 }
 
                 // Add to cart total
@@ -34,7 +34,7 @@
             // Update grand total
             const grandTotalElement = document.querySelector('#cart-grand-total');
             if (grandTotalElement) {
-                grandTotalElement.textContent = `${cartTotal.toFixed(2)} TND`;
+                grandTotalElement.textContent = `${cartTotal.toFixed(2)} $`;
             }
 
             // Show/hide cart items container or display empty message
@@ -129,9 +129,9 @@
                     </div>
                     <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
                         <div class="price-tag">
-                            <span class="current-price">{{ '%.2f'|format(product.price - product.sale * product.price) }} TND</span>
+                            <span class="current-price">{{ '%.2f'|format(product.price - product.sale * product.price) }} $</span>
                             {% if product.sale > 0 %}
-                                <span class="original-price">{{ '%.2f'|format(product.price) }} TND</span>
+                                <span class="original-price">{{ '%.2f'|format(product.price) }} $</span>
                             {% endif %}
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                     </div>
                     <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
                         <div class="item-total">
-                            <span>{{ '%.2f'|format((product.price - product.sale * product.price) * order.quantity) }} TND</span>
+                            <span>{{ '%.2f'|format((product.price - product.sale * product.price) * order.quantity) }} $</span>
                         </div>
                     </div>
                 </div>
