@@ -23,9 +23,12 @@ class CreateProductTypeForm extends AbstractType
                     'placeholder' => 'Enter product description',
                 ],
             ])
-            ->add('image', null, [
+            ->add('image', FileType::class, [
+                'label' => 'Product Image',
+                'mapped' => false,
+                'required' => false,
                 'attr' => [
-                    'placeholder' => 'Enter image link',
+                    'accept' => 'image/*',
                 ],
             ])
             ->add('price', null, [
