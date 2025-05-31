@@ -97,9 +97,16 @@ final class MainController extends AbstractController
             $session->set('wishlist', $wishlist);
         }
     }
-        #[Route('/terms', name: 'app_terms')]
-        public function terms(): Response
-        {
-            return $this->render('main/termsandconditions.html.twig');
-        }
+    
+    #[Route('/terms', name: 'app_terms')]
+    public function terms(): Response
+    {
+        return $this->render('main/termsandconditions.html.twig');
+    }
+
+    #[Route('/about', name: 'app_about')]
+    public function about(): Response
+    {
+        return $this->render('main/about.html.twig');
+    }
 }

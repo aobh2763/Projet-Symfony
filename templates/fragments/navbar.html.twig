@@ -8,7 +8,7 @@
                     <a href="{{ path('app_main') }}" class="{% if current_route == 'app_main' %}active{% endif %}">Home</a>
                 </li>
                 <li>
-                    {# <a href="{{ path('app_about') }}" class="{% if current_route == 'app_about' %}active{% endif %}">About</a> #}
+                    <a href="{{ path('app_about') }}" class="{% if current_route == 'app_about' %}active{% endif %}">About</a>
                 </li>
                 <li>
                     {% if is_granted('ROLE_ADMIN') %}

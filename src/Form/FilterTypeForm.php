@@ -66,7 +66,6 @@ class FilterTypeForm extends AbstractType {
                     'On Sale' => 'on_sale'
                 ],
             ])
-            ->add('submit', SubmitType::class)
         ;
     }
 
