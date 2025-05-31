@@ -38,7 +38,7 @@
                     </div>
                     <div class="product-content">
                         <div class="product-details">
-                            <h3 class="product-title"><a href="{{ path('app_product_details', {'pid': product.id}) }}">{{ product.name }}</a></h3>
+                            <h3 class="product-title"><a href="{{ path('app_product_details', {'pid': product.id}) }}">{{ product.image }}</a></h3>
                             {% if product.sale > 0 %}
                                 <div class="product-price">
                                 <span class="original">${{ product.price|number_format(2, '.', '') }}</span>
